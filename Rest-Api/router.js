@@ -1,7 +1,7 @@
 const router = require("express").Router();
 
-router.get("/", (req, res) => {
-  res.send({ message: "Successfull!" });
-});
+const userController = require("./Controllers/userController");
+
+router.use("/user", userController);
 
 module.exports = router;
