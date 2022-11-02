@@ -21,11 +21,3 @@ exports.isBusiness = () => (req, res, next) => {
     res.status(401).json({ message: "Unauthorized!", status: 401 });
   }
 };
-
-exports.isBusiness = () => (req, res, next) => {
-  if (req.business) {
-    res.status(404).json({ message: "Not Found!", status: 404 });
-  } else {
-    next();
-  }
-};

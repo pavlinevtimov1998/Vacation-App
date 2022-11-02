@@ -1,17 +1,17 @@
-const userController = require("express").Router();
+const authController = require("express").Router();
 
-const userService = require("../Services/userService");
+const authService = require("../Services/authService");
 
 const { catchAsyncError } = require("../Util/errorParser");
 const { isGuest, isUser } = require("../Middlewares/guards");
 
-userController.post(
+authController.post(
   "/register",
   isGuest(),
   catchAsyncError(async (req, res) => {
     const body = req.body;
 
-    const [token, user] = await userService.register(body);
+    const [token, user] = await authService.register(body);
 
     res.cookie(COOKIE_NAME, token, { httpOnly: true });
     res.status(200).json({
@@ -22,14 +22,13 @@ userController.post(
   })
 );
 
-userController.post("/login", isGuest(), async (req, res) => {
+authController.post("/login", isGuest(), async (req, res) => {
   const body = req.body;
 
-  const [token, user] = await userService.login(body);
+  const [token, user] = await authService.login(body);
 
   res.cookie(COOKIE_NAME, token, { httpOnly: true });
 
-  res.cookie(COOKIE_NAME, token, { httpOnly: true });
   res.status(200).json({
     _id: user._id,
     username: user.username,
@@ -37,9 +36,9 @@ userController.post("/login", isGuest(), async (req, res) => {
   });
 });
 
-userController.get("/logout", isUser(), (req, res) => {
+authController.get("/logout", isUser(), (req, res) => {
   res.clearCookie(process.env.COOKIE_NAME);
   res.status(200).json({ message: "Successfull logout!" });
 });
 
-module.exports = userController;
+module.exports = authController;
