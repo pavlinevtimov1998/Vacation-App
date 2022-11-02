@@ -2,8 +2,9 @@ const express = require("express");
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 
-const { initDB } = require("./config/database");
 const router = require("./router");
+const cors = require("./Middlewares/cors");
+const { initDB } = require("./config/database");
 const { isAuth } = require("./Middlewares/isAuthMiddleware");
 
 dotenv.config({
@@ -17,6 +18,7 @@ async function startServer() {
 
   await initDB();
 
+  app.use(cors());
   app.use(express.json());
   app.use(cookieParser());
   app.use(isAuth);
