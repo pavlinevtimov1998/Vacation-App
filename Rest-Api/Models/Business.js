@@ -29,6 +29,6 @@ businessSchema.pre("save", async function (next) {
   next();
 });
 
-const Business = mongoose.model("Business", userSchema);
+const Business = mongoose.model("Business", businessSchema);
 
 module.exports = Business;
