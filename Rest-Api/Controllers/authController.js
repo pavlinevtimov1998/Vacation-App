@@ -4,6 +4,7 @@ const authService = require("../Services/authService");
 
 const { catchAsyncError } = require("../Util/errorParser");
 const { isGuest, isUser } = require("../Middlewares/guards");
+const { getToken } = require("../util/jwtConfig");
 
 authController.post(
   "/register",
@@ -11,13 +12,19 @@ authController.post(
   catchAsyncError(async (req, res) => {
     const body = req.body;
 
-    const [token, user] = await authService.register(body);
+    const account = await authService.register(body);
 
-    res.cookie(COOKIE_NAME, token, { httpOnly: true });
+    let token = await getToken({
+      _id: account._id,
+      email: account.email,
+    });
+
+    res.cookie(process.env.COOKIE_NAME, token, { httpOnly: true });
+
     res.status(200).json({
-      _id: user._id,
-      username: user.username,
-      email: user.email,
+      _id: account._id,
+      email: account.email,
+      isCompany: body.isCompany,
     });
   })
 );
@@ -25,14 +32,19 @@ authController.post(
 authController.post("/login", isGuest(), async (req, res) => {
   const body = req.body;
 
-  const [token, user] = await authService.login(body);
+  const account = await authService.register(body);
 
-  res.cookie(COOKIE_NAME, token, { httpOnly: true });
+  let token = await getToken({
+    _id: account._id,
+    email: account.email,
+  });
+
+  res.cookie(process.env.COOKIE_NAME, token, { httpOnly: true });
 
   res.status(200).json({
-    _id: user._id,
-    username: user.username,
-    email: user.email,
+    _id: account._id,
+    email: account.email,
+    isCompany: body.isCompany,
   });
 });
 
