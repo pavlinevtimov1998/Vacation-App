@@ -1,8 +1,10 @@
 const express = require("express");
 const dotenv = require("dotenv");
+const cookieParser = require("cookie-parser");
 
 const { initDB } = require("./config/database");
 const router = require("./router");
+const { isAuth } = require("./Middlewares/isAuthMiddleware");
 
 dotenv.config({
   path: __dirname + "/config.env",
@@ -14,8 +16,10 @@ async function startServer() {
   const app = express();
 
   await initDB();
-  
+
   app.use(express.json());
+  app.use(cookieParser());
+  app.use(isAuth);
 
   app.use(router);
 
