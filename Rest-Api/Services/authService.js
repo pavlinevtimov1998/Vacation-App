@@ -1,9 +1,13 @@
-const User = require("../models/User");
 const bcrypt = require("bcrypt");
+
+const User = require("../models/User");
+const Business = require("../Models/Business");
 
 const { getToken } = require("../util/jwtConfig");
 
-exports.register = async ({ password, rePassword, username, email }) => {
+exports.register = async (body) => {
+  const { password, rePassword } = body;
+
   if (password !== rePassword) {
     throw {
       message: "Passwords don't match!",
@@ -11,36 +15,53 @@ exports.register = async ({ password, rePassword, username, email }) => {
     };
   }
 
-  const user = await User.create({ email, username, password });
+  if (body.isCompany) {
+    const { companyName, email } = body;
 
-  return [
-    getToken({
-      _id: user._id,
-      email: user.email,
-      username: user.username,
-    }),
-    user,
-  ];
+    return await Business.create({ companyName, email, password });
+  } else {
+    const { email, username } = body;
+
+    return User.create({ email, username, password });
+  }
 };
 
-exports.login = async ({ password, email }) => {
-  const user = await User.findOne({ email });
+exports.login = async ({ password, email, isCompany }) => {
+  let account;
 
-  if (!user) {
+  if (isCompany) {
+    account = await Business.findOne({ email });
+  } else {
+    account = await User.findOne({ email });
+  }
+
+  if (!account) {
     throw unauthorized;
   }
 
-  const isValid = await bcrypt.compare(password, user.password);
+  const isValid = await bcrypt.compare(password, account.password);
 
   if (!isValid) {
     throw unauthorized;
   }
 
-  return getToken({
-    _id: user._id,
-    email: user.email,
-    username: user.username,
-  });
+  return isCompany
+    ? [
+        getToken({
+          _id: account._id,
+          email: account.email,
+          companyName: account.companyName,
+        }),
+        account,
+      ]
+    : [
+        getToken({
+          _id: account._id,
+          email: account.email,
+          username: account.username,
+        }),
+        account,
+      ];
 };
 
 const unauthorized = {
