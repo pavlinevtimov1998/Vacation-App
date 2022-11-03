@@ -17,10 +17,17 @@ const userSchema = new mongoose.Schema({
     // minLength: [4, "Password should be at least 4 characters!"],
     // required: [true, "Password is required!"],
   },
+  photo: {
+    type: String,
+  },
+  role: {
+    type: String,
+    enum: ["user", "admin"],
+    default: "user",
+  },
 });
 
 userSchema.pre("save", async function (next) {
-  console.log(process.env.SALT);
   const hashedPassword = await bcrypt.hash(
     this.password,
     Number(process.env.SALT)
