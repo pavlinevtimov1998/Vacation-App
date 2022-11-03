@@ -13,3 +13,11 @@ exports.isGuest = () => (req, res, next) => {
     next();
   }
 };
+
+exports.isBusiness = () => (req, res, next) => {
+  if (req.business) {
+    next();
+  } else {
+    res.status(401).json({ message: "Unauthorized!", status: 401 });
+  }
+};
