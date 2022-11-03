@@ -19,9 +19,8 @@ const offerSchema = new mongoose.Schema(
     },
     program: [
       {
-        type: mongoose.Types.ObjectId,
-        ref: "Program",
-        default: [],
+        day: Number,
+        description: String,
       },
     ],
     companyId: {
