@@ -17,6 +17,7 @@ authController.post(
     let token = await getToken({
       _id: account._id,
       email: account.email,
+      isCompany: body.isCompany,
     });
 
     res.cookie(process.env.COOKIE_NAME, token, { httpOnly: true });
