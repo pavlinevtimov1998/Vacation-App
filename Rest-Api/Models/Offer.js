@@ -11,12 +11,19 @@ const offerSchema = new mongoose.Schema(
     description: {
       type: String,
     },
+    price: {
+      type: Number,
+    },
     imageCover: {
       type: String,
     },
     program: {
       type: mongoose.Types.ObjectId,
       ref: "Program",
+    },
+    company: {
+      type: mongoose.Types.ObjectId,
+      ref: "Business",
     },
   },
   { timestamps: { createdAt: "createdAt" } }
