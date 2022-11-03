@@ -17,11 +17,14 @@ const offerSchema = new mongoose.Schema(
     imageCover: {
       type: String,
     },
-    program: {
-      type: mongoose.Types.ObjectId,
-      ref: "Program",
-    },
-    company: {
+    program: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "Program",
+        default: [],
+      },
+    ],
+    companyId: {
       type: mongoose.Types.ObjectId,
       ref: "Business",
     },

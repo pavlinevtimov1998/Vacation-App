@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
-const salt = process.env.SALT;
-
 const businessSchema = new mongoose.Schema({
   companyName: {
     type: String,
@@ -22,7 +20,10 @@ const businessSchema = new mongoose.Schema({
 });
 
 businessSchema.pre("save", async function (next) {
-  const hashedPassword = await bcrypt.hash(this.password, salt);
+  const hashedPassword = await bcrypt.hash(
+    this.password,
+    Number(process.env.SALT)
+  );
 
   this.password = hashedPassword;
 
