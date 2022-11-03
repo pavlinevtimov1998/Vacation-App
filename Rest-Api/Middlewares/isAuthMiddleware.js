@@ -13,7 +13,11 @@ exports.isAuth = async (req, res, next) => {
     return next();
   }
 
-  req.user = payload;
+  if (payload.isCompany) {
+    req.business = payload;
+  } else {
+    req.user = payload;
+  }
 
   next();
 };
