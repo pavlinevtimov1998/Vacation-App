@@ -6,8 +6,8 @@ const salt = process.env.SALT;
 const businessSchema = new mongoose.Schema({
   companyName: {
     type: String,
-    // required: [true, "Username is required!"],
-    // minLength: [2, "Username should be at least 2 characters!"],
+    // required: [true, "Company name is required!"],
+    // minLength: [2, "Company name should be at least 2 characters!"],
   },
   email: {
     type: String,
