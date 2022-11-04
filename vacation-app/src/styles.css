@@ -2,32 +2,40 @@
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  border: none;
+  list-style: none;
 }
 
 html,
 body {
   height: 100%;
+  color: #3f51b5;
 }
 
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: "Mukta", sans-serif;
   background-color: #fff;
 }
 
-button {
-  margin: 0;
-  padding: 0;
-  border: unset;
-}
-
-li {
-  list-style: none;
+::-webkit-resizer {
+  display: none;
 }
 
 a {
-  text-decoration: none;
   color: white;
+}
+
+input:focus,
+textarea:focus {
+  border: none;
+  outline: none;
+  outline-style: none;
+  outline: 0;
+  outline: none;
 }
 
 #header {

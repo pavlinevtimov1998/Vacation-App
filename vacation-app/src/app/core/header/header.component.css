@@ -1,13 +1,13 @@
 .nav {
   height: 100%;
   justify-content: space-between;
-  max-width: 1390px;
+  max-width: 1890px;
   margin: auto;
 }
 
 .flex {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
 }
 
@@ -28,14 +28,13 @@
 
 .logo-container,
 .categories {
-  padding-bottom: 18px;
   height: 100%;
 }
 
 .links a {
-  font-size: 19px;
+  font-size: 24px;
   letter-spacing: 2px;
-  font-weight: 600;
+  font-weight: 800;
   transition: all 0.4s ease;
 }
 
@@ -60,7 +59,7 @@
 }
 
 .btn span {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 500;
 }
 
