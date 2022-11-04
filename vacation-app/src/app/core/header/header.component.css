@@ -1,18 +1,74 @@
 .nav {
   height: 100%;
-  display: flex;
-  align-items: flex-end;
   justify-content: space-between;
+  max-width: 1390px;
+  margin: auto;
 }
 
-.logo-container {
+.flex {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.aside {
+  width: 20%;
 }
 
 .categories {
+  width: 60%;
 }
 
 .links {
+  align-items: center;
+  padding: unset;
+  margin: unset;
+  gap: 40px;
+}
+
+.logo-container,
+.categories {
+  padding-bottom: 18px;
+  height: 100%;
+}
+
+.links a {
+  font-size: 19px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  transition: all 0.4s ease;
+}
+
+.links a:hover {
+  text-shadow: 2px 2px 8px #000000;
+  color: #f2f4f5;
 }
 
 .sign-up {
+  height: 100%;
+  padding-bottom: 5px;
+}
+
+.btn {
+  display: flex;
+  border: 5px solid white;
+  border-radius: 50px;
+  padding: 10px 30px;
+  align-items: center;
+  gap: 2px;
+  transition: all 0.4s ease;
+}
+
+.btn span {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.login-icon {
+  padding-top: 2px;
+}
+
+.btn:hover {
+  background-color: #fff;
+  color: #3f51b5;
 }
