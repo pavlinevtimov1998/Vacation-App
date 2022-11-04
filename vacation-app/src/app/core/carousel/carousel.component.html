@@ -3,7 +3,7 @@
     <ng-container *ngFor="let image of images; let i = index">
       <div
         class="img-container"
-        [ngClass]="{ 'category-active': selectedIndex == i }"
+        [ngClass]="{ 'image-active': selectedIndex == i }"
       >
         <img [src]="image.imageUrl" [alt]="image.alt" class="fade" />
       </div>
