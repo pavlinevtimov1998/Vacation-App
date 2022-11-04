@@ -1,0 +1,30 @@
+<section class="wraper">
+  <div class="carousel-container">
+    <ng-container *ngFor="let image of images; let i = index">
+      <div
+        class="img-container"
+        [ngClass]="{ 'category-active': selectedIndex == i }"
+      >
+        <img [src]="image.imageUrl" [alt]="image.alt" class="fade" />
+      </div>
+    </ng-container>
+
+    <div class="carousel-dot-container">
+      <ng-container *ngFor="let dot of images; let i = index">
+        <span
+          class="dot"
+          [ngClass]="{ 'dot-active': selectedIndex == i }"
+          (click)="onDotClick(i)"
+        ></span>
+      </ng-container>
+    </div>
+
+    <button class="arrow-left" (click)="leftArrowHandler()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+
+    <button class="arrow-right" (click)="rightArrowHandler()">
+      <mat-icon>arrow_forward</mat-icon>
+    </button>
+  </div>
+</section>
