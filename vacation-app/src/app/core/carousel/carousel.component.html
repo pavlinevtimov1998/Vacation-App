@@ -1,25 +1,5 @@
 <section class="wraper">
-  <div class="search-destination">
-    <div class="title-container">
-      <h1 class="title">Make your dreamed vacation reality!</h1>
-    </div>
-    <div class="subtitle-container">
-      <h2 class="subtitle">Find your wanted destination</h2>
-    </div>
-    <div class="form-container">
-      <form class="search-form">
-        <input
-          type="search"
-          placeholder="Barcelona, Paris etc."
-          name="search"
-        />
-        <button class="btn-search">
-          <mat-icon>search</mat-icon>
-        </button>
-      </form>
-    </div>
-  </div>
-
+  <app-search class="search-destination"></app-search>
   <div class="carousel-container">
     <ng-container *ngFor="let image of images; let i = index">
       <div
