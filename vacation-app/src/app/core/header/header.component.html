@@ -18,4 +18,53 @@
       <mat-icon class="login-icon">login</mat-icon>
     </a>
   </section>
+  <section class="mobile-menu">
+    <button mat-button class="mobile-btn" (click)="openMobileNav(mobileNav)">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </section>
 </nav>
+<aside class="mobile-nav" #mobileNav>
+  <div class="close-btn-container">
+    <button
+      mat-button
+      class="close-mob-btn"
+      (click)="closeMobileNav(mobileNav)"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+    <div class="space"></div>
+  </div>
+  <ul class="mobile-links">
+    <li>
+      <a href="">
+        <span>Sign Up</span>
+        <mat-icon>login</mat-icon>
+      </a>
+    </li>
+    <li>
+      <a href="">
+        <span>Categories</span>
+        <mat-icon>dataset</mat-icon>
+      </a>
+    </li>
+    <li>
+      <a href="">
+        <span>Top Offers</span>
+        <mat-icon>star</mat-icon>
+      </a>
+    </li>
+    <li>
+      <a href="">
+        <span>Top Agencies</span>
+        <mat-icon>insert_chart</mat-icon>
+      </a>
+    </li>
+    <li>
+      <a href="">
+        <span>About Us</span>
+        <mat-icon>support_agent</mat-icon>
+      </a>
+    </li>
+  </ul>
+</aside>
