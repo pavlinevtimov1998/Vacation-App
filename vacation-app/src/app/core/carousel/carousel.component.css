@@ -1,23 +1,25 @@
 .wraper {
   width: 100%;
-  padding: 32px 0;
+  height: 540px;
+  margin: 70px 0;
   display: flex;
+  align-content: center;
+  align-items: center;
   justify-content: space-evenly;
 }
 
 .carousel-container {
   position: relative;
-  width: 45%;
-  height: 500px;
+  width: 40%;
+  height: 90%;
   display: flex;
   justify-content: center;
   border-radius: 15px;
-  box-shadow: 0 16px 16px #dce1e1;
+  box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
 }
 
 .img-container {
   display: none;
-  width: 70%;
 }
 
 .img-container img {
@@ -30,7 +32,7 @@
 .img-container.image-active {
   display: block;
   width: 100%;
-  height: 500px;
+  height: 100%;
 }
 
 .carousel-dot-container {
@@ -103,51 +105,72 @@
 }
 
 .search-destination {
-  width: 40%;
+  width: 35%;
+  height: 80%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .title {
-  font-size: 5em;
-  font-weight: 800;
+  font-size: 4em;
+  font-weight: 900;
 }
 
-.subtitle {
-  font-size: 2.5em;
-  font-weight: 100;
+.form-container,
+.title-container,
+.subtitle-container {
+  width: 100%;
 }
 
 .search-form {
   display: flex;
-  align-items: center;
+  box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+  border-radius: 10px;
+  height: 70px;
 }
 
 .search-form input {
-  width: 88%;
-  border: 4px solid #3f51b5;
+  width: 85%;
   border-radius: 20px 0 0 20px;
-  padding: 30px;
+  height: 100%;
+  padding-left: 20px;
+  font-size: 14px;
+  letter-spacing: 1px;
 }
 
 .btn-search {
   background-color: #3f51b5;
   height: 100%;
-  width: 12%;
-  border-radius: 0 20px 20px 0;
-  border: 3px solid #3f51b5;
+  width: 15%;
+  border-radius: 0 10px 10px 0;
   color: #fff;
   display: flex;
   align-items: center;
+  transition: all 0.3s ease;
+}
+
+.btn-search:hover {
+  background-color: #26337c;
+  cursor: pointer;
 }
 
 .btn-search mat-icon {
   overflow: unset;
   font-size: 45px;
-  margin: 0 0 18px 16px;
+  margin: 0 0 23% 22%;
 }
 
 .flex {
-    flex: 1;
+  flex: 1;
+}
+
+@media screen and (max-width: 1425px) {
+  .carousel-container {
+    width: 45%;
+  }
+
+  .search-destination {
+    width: 45%;
+  }
 }
