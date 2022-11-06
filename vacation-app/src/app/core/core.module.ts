@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { CarouselComponent } from './carousel/carousel.component';
 import { SearchComponent } from './search/search.component';
 import { PopularDestinationsComponent } from './popular-destinations/popular-destinations.component';
+import { PopularCountriesComponent } from './popular-countries/popular-countries.component';
 
 @NgModule({
   declarations: [
@@ -13,8 +14,14 @@ import { PopularDestinationsComponent } from './popular-destinations/popular-des
     CarouselComponent,
     SearchComponent,
     PopularDestinationsComponent,
+    PopularCountriesComponent,
   ],
   imports: [CommonModule, MaterialModule, RouterModule],
-  exports: [HeaderComponent, CarouselComponent, PopularDestinationsComponent],
+  exports: [
+    HeaderComponent,
+    CarouselComponent,
+    PopularDestinationsComponent,
+    PopularCountriesComponent,
+  ],
 })
 export class CoreModule {}
