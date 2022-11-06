@@ -11,10 +11,10 @@ export class CarouselComponent implements OnInit, OnDestroy {
       imageUrl: '/assets/img/vacation.jpg',
       alt: 'vacation',
     },
-    // {
-    //   imageUrl: '/assets/img/vacation2.jpg',
-    //   alt: 'vacation',
-    // },
+    {
+      imageUrl: '/assets/img/vacation2.jpg',
+      alt: 'vacation',
+    },
   ];
 
   selectedIndex = 0;
@@ -23,9 +23,9 @@ export class CarouselComponent implements OnInit, OnDestroy {
   constructor() {}
 
   ngOnInit(): void {
-    // this.interval = setInterval(() => {
-    //   this.rightArrowHandler();
-    // }, 5000);
+    this.interval = setInterval(() => {
+      this.rightArrowHandler();
+    }, 5000);
   }
 
   onDotClick(index: number) {
