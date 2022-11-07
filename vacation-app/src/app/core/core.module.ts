@@ -8,6 +8,7 @@ import { SearchComponent } from './search/search.component';
 import { PopularDestinationsComponent } from './popular-destinations/popular-destinations.component';
 import { PopularCountriesComponent } from './popular-countries/popular-countries.component';
 import { BannerComponent } from './banner/banner.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { BannerComponent } from './banner/banner.component';
     PopularDestinationsComponent,
     PopularCountriesComponent,
     BannerComponent,
+    FooterComponent,
   ],
   imports: [CommonModule, MaterialModule, RouterModule],
   exports: [
@@ -24,7 +26,8 @@ import { BannerComponent } from './banner/banner.component';
     CarouselComponent,
     PopularDestinationsComponent,
     PopularCountriesComponent,
-    BannerComponent
+    BannerComponent,
+    FooterComponent,
   ],
 })
 export class CoreModule {}

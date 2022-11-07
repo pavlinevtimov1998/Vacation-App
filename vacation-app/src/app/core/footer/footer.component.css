@@ -1,0 +1,84 @@
+.footer {
+  height: 200px;
+  padding-block: 20px;
+  background-color: darkgrey;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1px solid #3f51b5;
+}
+
+.social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.networks {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.networks a {
+  font-size: 28px;
+  color: #3f51b5;
+  transition: all 0.3s ease;
+}
+
+.networks a:hover {
+  color: #fff;
+}
+
+.countries ul,
+.platform ul {
+  display: flex;
+  flex-direction: column;
+  font-style: italic;
+  font-size: 14px;
+  font-weight: 900;
+  margin-top: 5px;
+}
+
+.platform ul {
+  font-size: 16px;
+}
+
+.countries ul a,
+.platform ul a {
+  transition: all 0.3s ease;
+}
+
+.countries ul a:hover,
+.platform ul a:hover {
+  color: #3f51b5;
+}
+
+.btns-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.btn {
+  background-color: #3f51b5;
+  padding: 8px 18px;
+  border: 2px solid #3f51b5;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.sign-up {
+  display: flex;
+  gap: 2px;
+}
+
+.btn:hover {
+  background-color: #fff;
+  color: #3f51b5;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.categories {
+}
