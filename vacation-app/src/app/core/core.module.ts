@@ -9,6 +9,7 @@ import { PopularDestinationsComponent } from './popular-destinations/popular-des
 import { PopularCountriesComponent } from './popular-countries/popular-countries.component';
 import { BannerComponent } from './banner/banner.component';
 import { FooterComponent } from './footer/footer.component';
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { FooterComponent } from './footer/footer.component';
     PopularCountriesComponent,
     BannerComponent,
     FooterComponent,
+    WelcomePageComponent,
   ],
   imports: [CommonModule, MaterialModule, RouterModule],
   exports: [
