@@ -1,19 +1,19 @@
 <nav class="nav flex">
   <section class="logo-container aside flex">
-    <a href="/"><img src="/assets/img/logo.jpg" alt="logo" /></a>
+    <a routerLink="/"><img src="/assets/img/logo.jpg" alt="logo" /></a>
   </section>
 
   <section class="categories flex">
     <ul class="links flex">
-      <li><a href="">Categories</a></li>
-      <li><a href="">Top Offers</a></li>
-      <li><a href="">Top Agencies</a></li>
-      <li><a href="">About Us</a></li>
+      <li><a routerLink="">Categories</a></li>
+      <li><a routerLink="">Top Offers</a></li>
+      <li><a routerLink="">Top Agencies</a></li>
+      <li><a routerLink="about-us">About Us</a></li>
     </ul>
   </section>
 
   <section class="sign-up aside flex">
-    <a href="/" class="btn">
+    <a routerLink="/auth/login" class="btn">
       <span>Sign up</span>
       <mat-icon class="login-icon">login</mat-icon>
     </a>
@@ -37,31 +37,31 @@
   </div>
   <ul class="mobile-links">
     <li>
-      <a href="">
+      <a routerLink="/auth/login">
         <span>Sign Up</span>
         <mat-icon>login</mat-icon>
       </a>
     </li>
     <li>
-      <a href="">
+      <a routerLink="">
         <span>Categories</span>
         <mat-icon>dataset</mat-icon>
       </a>
     </li>
     <li>
-      <a href="">
+      <a routerLink="">
         <span>Top Offers</span>
         <mat-icon>star</mat-icon>
       </a>
     </li>
     <li>
-      <a href="">
+      <a routerLink="">
         <span>Top Agencies</span>
         <mat-icon>insert_chart</mat-icon>
       </a>
     </li>
     <li>
-      <a href="">
+      <a routerLink="/about-us">
         <span>About Us</span>
         <mat-icon>support_agent</mat-icon>
       </a>
