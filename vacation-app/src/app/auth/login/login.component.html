@@ -1,1 +1,58 @@
-<p>login works!</p>
+<section class="login">
+  <article class="title-container">
+    <h1>Sign in</h1>
+    <p>
+      You don't have account yet? <a routerLink="/auth/register">Register</a>
+    </p>
+  </article>
+  <div class="forms-container">
+    <div class="options">
+      <button
+        #user
+        class="opt-btn selected"
+        (click)="handleOptionBtn(user, agency, email, username)"
+      >
+        <span>User Sign in</span>
+        <mat-icon>user</mat-icon>
+      </button>
+      <button
+        #agency
+        class="opt-btn"
+        (click)="handleOptionBtn(agency, user, username, email)"
+      >
+        <span>Agency Sign in</span>
+        <mat-icon>login</mat-icon>
+      </button>
+    </div>
+    <div class="form">
+      <form #username class="user">
+        <div class="username">
+          <label for="username">Username</label>
+          <input type="text" name="username" />
+        </div>
+        <div class="password">
+          <label for="password">Password</label>
+          <input type="password" name="password" />
+        </div>
+        <button class="sign-in-btn" type="submit">
+          <span>Sign in</span>
+          <mat-icon>login</mat-icon>
+        </button>
+      </form>
+      <form #email class="agency">
+        <div class="email">
+          <label for="email">Email</label>
+          <input type="text" name="email" />
+        </div>
+        <div class="password">
+          <label for="password">Password</label>
+          <input type="password" name="password" />
+        </div>
+        <button class="sign-in-btn" type="submit">
+          <span>Sign in</span>
+          <mat-icon>login</mat-icon>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

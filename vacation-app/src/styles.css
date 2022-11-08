@@ -49,7 +49,7 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 #content {
-  min-height: 90vh;
+  min-height: 80vh;
 }
 
 #footer {
