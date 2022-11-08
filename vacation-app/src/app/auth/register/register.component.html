@@ -1,1 +1,68 @@
-<p>register works!</p>
+<section class="register">
+  <article class="title-container">
+    <h1>Sign up</h1>
+    <p>You already have account? <a routerLink="/auth/login">Login</a></p>
+  </article>
+  <div class="forms-container">
+    <div class="options">
+      <button
+        #user
+        class="opt-btn selected"
+        (click)="handleOptionBtn(user, agency, email, username)"
+      >
+        <span>User Sign up</span>
+        <mat-icon>user</mat-icon>
+      </button>
+      <button
+        #agency
+        class="opt-btn"
+        (click)="handleOptionBtn(agency, user, username, email)"
+      >
+        <span>Agency Sign up</span>
+        <mat-icon>login</mat-icon>
+      </button>
+    </div>
+    <div class="form">
+      <form #username class="user">
+        <div class="username">
+          <label for="username">Username</label>
+          <input type="text" name="username" />
+        </div>
+        <div class="password">
+          <label for="password">Password</label>
+          <input type="password" name="password" />
+        </div>
+        <div class="re-pass">
+          <label for="rePassword">Repeat password</label>
+          <input type="password" name="rePassword" />
+        </div>
+        <button class="sign-in-btn" type="submit">
+          <span>Sign up</span>
+          <mat-icon>login</mat-icon>
+        </button>
+      </form>
+      <form #email class="agency">
+        <div class="email">
+          <label for="email">Agency email</label>
+          <input type="text" name="email" />
+        </div>
+        <div class="agency-name">
+          <label for="agencyName">Agency name</label>
+          <input type="text" name="agencyName" />
+        </div>
+        <div class="password">
+          <label for="password">Password</label>
+          <input type="password" name="password" />
+        </div>
+        <div class="re-pass">
+          <label for="rePassword">Repeat password</label>
+          <input type="password" name="rePassword" />
+        </div>
+        <button class="sign-in-btn" type="submit">
+          <span>Sign up</span>
+          <mat-icon>login</mat-icon>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
