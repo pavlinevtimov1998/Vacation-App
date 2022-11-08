@@ -2,7 +2,7 @@
   width: 100%;
   display: flex;
   justify-content: space-evenly;
-  padding-top: 100px;
+  padding-top: 70px;
   flex-wrap: wrap;
 }
 
@@ -79,7 +79,6 @@
 
 .img-container {
   width: 50%;
-  height: 100%;
   border-radius: 20px 0 0 20px;
 }
 
@@ -111,7 +110,7 @@
     flex-flow: column-reverse;
     align-items: center;
     padding-top: 50px;
-    gap: 25px;
+    gap: 35px;
   }
   .user-profile {
     width: 90%;
@@ -119,5 +118,9 @@
 
   .vacations {
     width: 90%;
+  }
+
+  .reserved {
+    width: 100%;
   }
 }

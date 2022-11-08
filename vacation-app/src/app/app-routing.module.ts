@@ -11,6 +11,11 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
+  {
+    path: 'offers',
+    loadChildren: () =>
+      import('./themes/themes.module').then((m) => m.ThemesModule),
+  },
 ];
 
 export const AppRoutingModule = RouterModule.forRoot(routes, {

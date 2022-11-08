@@ -1,6 +1,7 @@
 @import "@angular/material/prebuilt-themes/indigo-pink.css";
 @import url("https://use.fontawesome.com/releases/v6.1.1/css/all.css");
 @import "./assets/styles/authPages.css";
+@import "./assets/styles/countries.css";
 
 * {
   box-sizing: border-box;
