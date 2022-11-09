@@ -1,6 +1,7 @@
+const { catchAsyncError } = require("../Util/errorParser");
 const { verifyToken } = require("../util/jwtConfig");
 
-exports.isAuth = async (req, res, next) => {
+exports.isAuth = catchAsyncError(async (req, res, next) => {
   const token = req.cookies[process.env.COOKIE_NAME];
 
   if (!token) {
@@ -13,11 +14,11 @@ exports.isAuth = async (req, res, next) => {
     return next();
   }
 
-  if (payload.isCompany) {
-    req.business = payload;
+  if (payload.agencyName) {
+    req.agency = payload;
   } else {
     req.user = payload;
   }
 
   next();
-};
+});
