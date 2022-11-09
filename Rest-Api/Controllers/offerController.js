@@ -1,8 +1,8 @@
+const offerController = require("express").Router();
+
 const { isAgency } = require("../Middlewares/guards");
 const offerService = require("../Services/offerService");
 const { catchAsyncError } = require("../Util/errorParser");
-
-const offerController = require("express").Router();
 
 offerController.post(
   "/offer",
