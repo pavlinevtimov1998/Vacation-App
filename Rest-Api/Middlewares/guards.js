@@ -21,3 +21,11 @@ exports.isAgency = () => (req, res, next) => {
     res.status(401).json({ message: "Unauthorized!", status: 401 });
   }
 };
+
+exports.canLogout = () => (req, res, next) => {
+  if (req.agency || req.user) {
+    next();
+  } else {
+    res.status(401).json({ message: "Unauthorized!", status: 401 });
+  }
+};
