@@ -1,5 +1,5 @@
 exports.isUser = () => (req, res, next) => {
-  if (req.user || req.business) {
+  if (req.user) {
     next();
   } else {
     res.status(401).json({ message: "Unauthorized!", status: 401 });
@@ -7,15 +7,15 @@ exports.isUser = () => (req, res, next) => {
 };
 
 exports.isGuest = () => (req, res, next) => {
-  if (req.user || req.business) {
+  if (req.user || req.agency) {
     res.status(404).json({ message: "Not Found!", status: 404 });
   } else {
     next();
   }
 };
 
-exports.isBusiness = () => (req, res, next) => {
-  if (req.business) {
+exports.isAgency = () => (req, res, next) => {
+  if (req.agency) {
     next();
   } else {
     res.status(401).json({ message: "Unauthorized!", status: 401 });
