@@ -31,7 +31,7 @@ authController.post("/login", isGuest(), async (req, res) => {
 });
 
 authController.post(
-  "/register",
+  "/agency/register",
   isGuest(),
   catchAsyncError(async (req, res) => {
     const [token, agency] = await authService.agencyRegister(req.body);
@@ -46,7 +46,7 @@ authController.post(
   })
 );
 
-authController.post("/login", isGuest(), async (req, res) => {
+authController.post("/agency/login", isGuest(), async (req, res) => {
   const [token, agency] = await authService.agencyLogin(req.body);
 
   res.cookie(process.env.COOKIE_NAME, token, { httpOnly: true });
