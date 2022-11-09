@@ -8,6 +8,5 @@ import { TopAgenciesComponent } from './top-agencies/top-agencies.component';
 @NgModule({
   declarations: [CountriesCatalogComponent, TopAgenciesComponent],
   imports: [CommonModule, MaterialModule, themesRoutingModule],
-  exports: [CountriesCatalogComponent],
 })
 export class ThemesModule {}

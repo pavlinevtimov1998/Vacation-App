@@ -9,6 +9,5 @@ import { MaterialModule } from '../material/material.module';
 @NgModule({
   declarations: [LoginComponent, RegisterComponent, ProfileComponent],
   imports: [CommonModule, authRoutingModule, MaterialModule],
-  exports: [LoginComponent, RegisterComponent, ProfileComponent],
 })
 export class AuthModule {}
