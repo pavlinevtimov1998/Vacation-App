@@ -5,27 +5,24 @@ const offerSchema = new mongoose.Schema(
     title: {
       type: String,
     },
-    location: {
+    town: {
+      type: String,
+    },
+    country: {
       type: String,
     },
     description: {
       type: String,
     },
-    price: {
+    pricePerPerson: {
       type: Number,
     },
     imageCover: {
       type: String,
     },
-    program: [
-      {
-        day: Number,
-        description: String,
-      },
-    ],
-    companyId: {
+    agencyId: {
       type: mongoose.Types.ObjectId,
-      ref: "Business",
+      ref: "Agency",
     },
   },
   { timestamps: { createdAt: "createdAt" } }
