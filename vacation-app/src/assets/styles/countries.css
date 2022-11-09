@@ -37,8 +37,10 @@
   border-radius: inherit;
 }
 
-.country h3 {
+.country h1 {
   position: absolute;
+  font-size: 38px;
+  font-weight: 900;
   bottom: 10px;
   z-index: 3;
   left: 15px;
