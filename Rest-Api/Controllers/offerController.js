@@ -1,4 +1,4 @@
-const { isBusiness } = require("../Middlewares/guards");
+const { isAgency } = require("../Middlewares/guards");
 const offerService = require("../Services/offerService");
 const { catchAsyncError } = require("../Util/errorParser");
 
@@ -6,14 +6,14 @@ const offerController = require("express").Router();
 
 offerController.post(
   "/offer",
-  isBusiness(),
+  isAgency(),
   catchAsyncError(async (req, res) => {
     const body = req.body;
-    const companyId = req.business._id;
+    const agencyId = req.agency._id;
 
-    const created = await offerService.create(body, companyId);
+    const offer = await offerService.create(body, agencyId);
 
-    res.status(201).json(created);
+    res.status(201).json(offer);
   })
 );
 
