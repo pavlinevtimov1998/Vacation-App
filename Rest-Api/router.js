@@ -1,12 +1,9 @@
 const router = require("express").Router();
 
-const userController = require("./Controllers/userController");
-const agencyController = require("./Controllers/agencyController");
+const authController = require("./Controllers/authController");
 const offerController = require("./Controllers/offerController");
 
-router.use("/user", userController);
-router.use("/agency", agencyController);
-
+router.use("/auth", authController);
 router.use("/data", offerController);
 
 module.exports = router;
