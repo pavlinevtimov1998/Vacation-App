@@ -17,7 +17,7 @@ exports.register = async (body) => {
 
   const user = await User.create(body);
 
-  return [getToken({ _id: user._id, username: account.username }), user];
+  return [getToken({ _id: user._id, username: user.username }), user];
 };
 
 exports.login = async (body) => {
