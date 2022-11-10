@@ -1,16 +1,18 @@
-<form class="user">
+<form class="user" [formGroup]="userRegisterForm" (submit)="handleUserRegister()">
   <div class="username">
     <label for="username">Username</label>
-    <input type="text" name="username" />
+    <input formControlName="username" type="text" name="username" />
   </div>
-  <div class="password">
-    <label for="password">Password</label>
-    <input type="password" name="password" />
-  </div>
-  <div class="re-pass">
-    <label for="rePassword">Repeat password</label>
-    <input type="password" name="rePassword" />
-  </div>
+  <ng-container [formGroup]="passwordsGroup">
+    <div class="password">
+      <label for="password">Password</label>
+      <input formControlName="password" type="password" name="password" />
+    </div>
+    <div class="re-pass">
+      <label for="rePassword">Repeat password</label>
+      <input formControlName="rePassword" type="password" name="rePassword" />
+    </div>
+  </ng-container>
   <button class="sign-in-btn" type="submit">
     <span>Sign up</span>
     <mat-icon>login</mat-icon>
