@@ -1,11 +1,41 @@
-<form class="agency">
+<form
+  class="agency"
+  [formGroup]="agencyLoginForm"
+  (submit)="handleAgencyLogin()"
+>
   <div class="email">
     <label for="email">Email</label>
-    <input type="text" name="email" />
+    <input
+      [ngClass]="{ 'input-error': errHandler(agencyLoginForm, 'email') }"
+      formControlName="email"
+      type="text"
+      name="email"
+    />
+    <ng-container>
+      <p
+        *ngIf="agencyLoginForm.controls['email'].errors?.['required'] && errHandler(agencyLoginForm, 'email')"
+        class="error"
+      >
+        Email is required!
+      </p>
+    </ng-container>
   </div>
   <div class="password">
     <label for="password">Password</label>
-    <input type="password" name="password" />
+    <input
+      [ngClass]="{ 'input-error': errHandler(agencyLoginForm, 'password') }"
+      formControlName="password"
+      type="password"
+      name="password"
+    />
+    <ng-container>
+      <p
+        *ngIf="agencyLoginForm.controls['password'].errors?.['required'] && errHandler(agencyLoginForm,'password')"
+        class="error"
+      >
+        Password is required!
+      </p>
+    </ng-container>
   </div>
   <button class="sign-in-btn" type="submit">
     <span>Sign in</span>
