@@ -37,5 +37,19 @@ export class AgencyLoginComponent implements OnInit {
     if (this.agencyLoginForm.invalid) {
       return this.agencyLoginForm.markAllAsTouched();
     }
+
+    const body = {
+      email: this.agencyLoginForm.value['email'],
+      password: this.agencyLoginForm.value['password'],
+    };
+
+    this.authService.agencyLogin$(body).subscribe({
+      next: (agency) => {
+        this.authService.handleLogin(agency);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
 }
