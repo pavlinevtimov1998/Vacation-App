@@ -17,7 +17,9 @@ exports.register = async (body) => {
 
   const user = await User.create(body);
 
-  return [getToken({ _id: user._id, username: user.username }), user];
+  return getToken({ _id: user._id, username: user.username }).then((token) => {
+    return [token, user];
+  });
 };
 
 exports.login = async (body) => {
@@ -39,7 +41,9 @@ exports.login = async (body) => {
     };
   }
 
-  return [getToken({ _id: account._id, username: account.username }), user];
+  return getToken({ _id: user._id, username: user.username }).then((token) => {
+    return [token, user];
+  });
 };
 
 exports.agencyRegister = async (body) => {
@@ -54,14 +58,13 @@ exports.agencyRegister = async (body) => {
 
   const agency = await Agency.create(body);
 
-  return [
-    getToken({
-      _id: agency._id,
-      email: agency.email,
-      agencyName: agency.agencyName,
-    }),
-    agency,
-  ];
+  return getToken({
+    _id: agency._id,
+    email: agency.email,
+    agencyName: agency.agencyName,
+  }).then((token) => {
+    return [token, agency];
+  });
 };
 
 exports.agencyLogin = async (body) => {
@@ -83,12 +86,11 @@ exports.agencyLogin = async (body) => {
     };
   }
 
-  return [
-    getToken({
-      _id: agency._id,
-      email: agency.email,
-      agencyName: agency.agencyName,
-    }),
-    agency,
-  ];
+  return getToken({
+    _id: agency._id,
+    email: agency.email,
+    agencyName: agency.agencyName,
+  }).then((token) => {
+    return [token, agency];
+  });
 };
