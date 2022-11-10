@@ -5,7 +5,7 @@ const { catchAsyncError } = require("../Util/errorParser");
 const { isGuest, canLogout } = require("../Middlewares/guards");
 
 authController.post(
-  "/register",
+  "/user/register",
   isGuest(),
   catchAsyncError(async (req, res) => {
     const [token, user] = await authService.register(req.body);
@@ -19,7 +19,7 @@ authController.post(
   })
 );
 
-authController.post("/login", isGuest(), async (req, res) => {
+authController.post("/user/login", isGuest(), async (req, res) => {
   const [token, user] = await authService.login(req.body);
 
   res.cookie(process.env.COOKIE_NAME, token, { httpOnly: true });
