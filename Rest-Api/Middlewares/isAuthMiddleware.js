@@ -20,6 +20,7 @@ exports.isAuth = async (req, res, next) => {
     } else {
       req.user = payload;
     }
+    next();
   } catch (err) {
     res.clearCookie(process.env.COOKIE_NAME);
     res.status(401).json({});
