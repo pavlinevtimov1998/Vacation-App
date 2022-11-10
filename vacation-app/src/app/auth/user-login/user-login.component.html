@@ -1,11 +1,37 @@
-<form class="user">
+<form class="user" [formGroup]="userLoginForm">
   <div class="username">
     <label for="username">Username</label>
-    <input type="text" name="username" />
+    <input
+      [ngClass]="{ 'input-error': errHandler(userLoginForm, 'username') }"
+      formControlName="username"
+      type="text"
+      name="username"
+    />
+    <ng-container>
+      <p
+        *ngIf="userLoginForm.controls['username'].errors?.['required'] && errHandler(userLoginForm,'username')"
+        class="error"
+      >
+        Username is required!
+      </p>
+    </ng-container>
   </div>
   <div class="password">
     <label for="password">Password</label>
-    <input type="password" name="password" />
+    <input
+      [ngClass]="{ 'input-error': errHandler(userLoginForm, 'password') }"
+      formControlName="password"
+      type="password"
+      name="password"
+    />
+    <ng-container>
+      <p
+        *ngIf="userLoginForm.controls['password'].errors?.['required'] && errHandler(userLoginForm,'password')"
+        class="error"
+      >
+        Password is required!
+      </p>
+    </ng-container>
   </div>
   <button class="sign-in-btn" type="submit">
     <span>Sign in</span>
