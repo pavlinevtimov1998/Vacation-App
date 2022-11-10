@@ -64,10 +64,7 @@ export class AuthService {
     );
   }
 
-  loginRegister$(body: {
-    email: string;
-    password: string;
-  }): Observable<IAgency> {
+  agencyLogin$(body: { email: string; password: string }): Observable<IAgency> {
     return this.httpClient.post<IAgency>(
       environment.api + 'auth/agency/login',
       body,
