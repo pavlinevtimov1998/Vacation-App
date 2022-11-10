@@ -37,5 +37,17 @@ export class UserLoginComponent implements OnInit {
     if (this.userLoginForm.invalid) {
       return this.userLoginForm.markAllAsTouched();
     }
+
+    const body = this.userLoginForm.value;
+
+    this.authService.userLogin$(body).subscribe({
+      next: (user) => {
+        this.authService.handleLogin(user);
+        console.log(user);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
 }

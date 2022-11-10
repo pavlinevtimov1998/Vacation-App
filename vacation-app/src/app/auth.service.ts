@@ -30,8 +30,6 @@ export class AuthService {
     password: string;
     rePassword: string;
   }): Observable<IUser> {
-    console.log(body);
-    
     return this.httpClient.post<IUser>(
       environment.api + 'auth/user/register',
       body,

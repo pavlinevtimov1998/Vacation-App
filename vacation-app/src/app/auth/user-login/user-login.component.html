@@ -1,4 +1,4 @@
-<form class="user" [formGroup]="userLoginForm">
+<form class="user" [formGroup]="userLoginForm" (ngSubmit)="handleUserLogin()">
   <div class="username">
     <label for="username">Username</label>
     <input

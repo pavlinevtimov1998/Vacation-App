@@ -69,7 +69,6 @@ export class UserRegisterComponent implements OnInit {
     this.authService.userRegister$(body).subscribe({
       next: (user) => {
         this.authService.handleLogin(user);
-        console.log(user);
       },
       error: (err) => {
         console.log(err);
