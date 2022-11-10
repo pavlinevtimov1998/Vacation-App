@@ -5,26 +5,18 @@ const userSchema = new mongoose.Schema(
   {
     username: {
       type: String,
-      // required: [true, "Username is required!"],
-      // minLength: [2, "Username should be at least 2 characters!"],
+      required: [true, "Username is required!"],
+      minLength: [5, "Username should be at least 2 characters!"],
     },
     email: {
       type: String,
-      // required: [true, "Email is required!"],
-      // minLength: [10, "Email should be at least 10 characters!"],
+      minLength: [10, "Email should be at least 10 characters!"],
+      minLength: [30, "Email should be max 25 characters!"],
     },
     password: {
       type: String,
-      // minLength: [4, "Password should be at least 4 characters!"],
-      // required: [true, "Password is required!"],
-    },
-    photo: {
-      type: String,
-    },
-    role: {
-      type: String,
-      enum: ["user", "admin"],
-      default: "user",
+      minLength: [6, "Password should be at least 4 characters!"],
+      required: [true, "Password is required!"],
     },
   },
   { timestamps: { createdAt: "createdAt" } }
