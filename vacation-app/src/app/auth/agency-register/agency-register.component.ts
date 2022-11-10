@@ -65,5 +65,19 @@ export class AgencyRegisterComponent implements OnInit {
     if (this.agencyRegisterForm.invalid) {
       return this.agencyRegisterForm.markAllAsTouched();
     }
+
+    const body = {
+      email: this.agencyRegisterForm.value['email'],
+      agencyName: this.agencyRegisterForm.value['agencyName'],
+      password: this.passwordsGroup.value['password'],
+      rePassword: this.passwordsGroup.value['rePassword'],
+    };
+
+    this.authService.agencyRegister$(body).subscribe({
+      next: (agency) => {
+        console.log(agency);
+        this.authService.handleLogin(agency);
+      },
+    });
   }
 }
