@@ -32,7 +32,7 @@ exports.login = async (body) => {
     };
   }
 
-  const isValid = await bcrypt.compare(password, account.password);
+  const isValid = await bcrypt.compare(body.password, user.password);
 
   if (!isValid) {
     throw {
