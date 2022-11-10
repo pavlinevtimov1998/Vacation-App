@@ -19,7 +19,7 @@ export class AuthService {
 
   constructor(private httpClient: HttpClient) {}
 
-  loginHandler(user: IUser | IAgency) {
+  handleLogin(user: IUser | IAgency) {
     console.log(user);
 
     this._currentUser.next(user);
@@ -30,8 +30,10 @@ export class AuthService {
     password: string;
     rePassword: string;
   }): Observable<IUser> {
+    console.log(body);
+    
     return this.httpClient.post<IUser>(
-      environment.api + 'auth/register',
+      environment.api + 'auth/user/register',
       body,
       {
         withCredentials: true,
@@ -40,9 +42,13 @@ export class AuthService {
   }
 
   userLogin$(body: { username: string; password: string }): Observable<IUser> {
-    return this.httpClient.post<IUser>(environment.api + 'auth/login', body, {
-      withCredentials: true,
-    });
+    return this.httpClient.post<IUser>(
+      environment.api + 'auth/user/login',
+      body,
+      {
+        withCredentials: true,
+      }
+    );
   }
 
   agencyRegister$(body: {

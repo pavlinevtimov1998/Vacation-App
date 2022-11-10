@@ -59,5 +59,21 @@ export class UserRegisterComponent implements OnInit {
     if (this.userRegisterForm.invalid) {
       return this.userRegisterForm.markAllAsTouched();
     }
+
+    const body = {
+      username: this.userRegisterForm.value['username'],
+      password: this.passwordsGroup.value['password'],
+      rePassword: this.passwordsGroup.value['rePassword'],
+    };
+
+    this.authService.userRegister$(body).subscribe({
+      next: (user) => {
+        this.authService.handleLogin(user);
+        console.log(user);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
 }
