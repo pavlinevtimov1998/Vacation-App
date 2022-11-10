@@ -10,6 +10,7 @@ import {
 } from '@angular/forms';
 
 import { AuthService } from 'src/app/auth.service';
+import { errorHandler, passwordsMismatch } from '../../util/form-errors';
 
 @Component({
   selector: 'app-agency-register',
@@ -19,6 +20,10 @@ import { AuthService } from 'src/app/auth.service';
 export class AgencyRegisterComponent implements OnInit {
   agencyRegisterForm!: FormGroup;
   password!: FormControl;
+
+  get errHandler() {
+    return errorHandler;
+  }
 
   get passwordsGroup() {
     return this.agencyRegisterForm.controls['passwords'] as FormGroup;
@@ -50,7 +55,7 @@ export class AgencyRegisterComponent implements OnInit {
         password: this.password,
         rePassword: new FormControl(null, [
           Validators.required,
-          this.passwordsMismatch(this.password),
+          passwordsMismatch(this.password),
         ]),
       }),
     });
@@ -60,31 +65,5 @@ export class AgencyRegisterComponent implements OnInit {
     if (this.agencyRegisterForm.invalid) {
       return this.agencyRegisterForm.markAllAsTouched();
     }
-  }
-
-  errorHandler(value: string) {
-    if (value.endsWith('ssword')) {
-      return (
-        this.passwordsGroup.controls[value].touched &&
-        this.passwordsGroup.controls[value].errors
-      );
-    }
-
-    return (
-      this.agencyRegisterForm.controls[value].touched &&
-      this.agencyRegisterForm.controls[value].errors
-    );
-  }
-
-  private passwordsMismatch(password: AbstractControl): ValidatorFn {
-    return (rePass: AbstractControl): ValidationErrors | null => {
-      if (rePass.value !== password.value) {
-        return {
-          mismatch: true,
-        };
-      }
-
-      return null;
-    };
   }
 }

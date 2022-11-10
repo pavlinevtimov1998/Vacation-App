@@ -10,6 +10,7 @@ import {
 } from '@angular/forms';
 
 import { AuthService } from 'src/app/auth.service';
+import { errorHandler, passwordsMismatch } from '../../util/form-errors';
 
 @Component({
   selector: 'app-user-register',
@@ -19,6 +20,10 @@ import { AuthService } from 'src/app/auth.service';
 export class UserRegisterComponent implements OnInit {
   userRegisterForm!: FormGroup;
   password!: FormControl;
+
+  get errHandler() {
+    return errorHandler;
+  }
 
   get passwordsGroup() {
     return this.userRegisterForm.controls['passwords'] as FormGroup;
@@ -44,7 +49,7 @@ export class UserRegisterComponent implements OnInit {
         password: this.password,
         rePassword: new FormControl(null, [
           Validators.required,
-          this.passwordsMismatch(this.password),
+          passwordsMismatch(this.password),
         ]),
       }),
     });
@@ -54,31 +59,5 @@ export class UserRegisterComponent implements OnInit {
     if (this.userRegisterForm.invalid) {
       return this.userRegisterForm.markAllAsTouched();
     }
-  }
-
-  errorHandler(value: string) {
-    if (value.endsWith('ssword')) {
-      return (
-        this.passwordsGroup.controls[value].touched &&
-        this.passwordsGroup.controls[value].errors
-      );
-    }
-
-    return (
-      this.userRegisterForm.controls[value].touched &&
-      this.userRegisterForm.controls[value].errors
-    );
-  }
-
-  private passwordsMismatch(password: AbstractControl): ValidatorFn {
-    return (rePass: AbstractControl): ValidationErrors | null => {
-      if (rePass.value !== password.value) {
-        return {
-          mismatch: true,
-        };
-      }
-
-      return null;
-    };
   }
 }

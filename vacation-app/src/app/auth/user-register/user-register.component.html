@@ -6,20 +6,20 @@
   <div class="username">
     <label for="username">Username</label>
     <input
-      [ngClass]="{ 'input-error': errorHandler('username') }"
+      [ngClass]="{ 'input-error': errHandler(userRegisterForm, 'username') }"
       formControlName="username"
       type="text"
       name="username"
     />
     <ng-container>
       <p
-        *ngIf="userRegisterForm.controls['username'].errors?.['required'] && errorHandler('username')"
+        *ngIf="userRegisterForm.controls['username'].errors?.['required'] && errHandler(userRegisterForm,'username')"
         class="error"
       >
         Username is required!
       </p>
       <p
-        *ngIf="userRegisterForm.controls['username'].errors?.['minlength'] && errorHandler('username')"
+        *ngIf="userRegisterForm.controls['username'].errors?.['minlength'] && errHandler(userRegisterForm,'username')"
         class="error"
       >
         Username should be at least 5 characters!
@@ -30,20 +30,20 @@
     <div class="password">
       <label for="password">Password</label>
       <input
-        [ngClass]="{ 'input-error': errorHandler('password') }"
+        [ngClass]="{ 'input-error': errHandler(passwordsGroup, 'password') }"
         formControlName="password"
         type="password"
         name="password"
       />
       <ng-container>
         <p
-          *ngIf="passwordsGroup.controls['password'].errors?.['required'] && errorHandler('password')"
+          *ngIf="passwordsGroup.controls['password'].errors?.['required'] && errHandler(passwordsGroup,'password')"
           class="error"
         >
           Password is required!
         </p>
         <p
-          *ngIf="passwordsGroup.controls['password'].errors?.['minlength'] && errorHandler('password')"
+          *ngIf="passwordsGroup.controls['password'].errors?.['minlength'] && errHandler(passwordsGroup,'password')"
           class="error"
         >
           Password should be at least 6 characters!
@@ -53,20 +53,20 @@
     <div class="re-pass">
       <label for="rePassword">Repeat password</label>
       <input
-        [ngClass]="{ 'input-error': errorHandler('rePassword') }"
+        [ngClass]="{ 'input-error': errHandler(passwordsGroup, 'rePassword') }"
         formControlName="rePassword"
         type="password"
         name="rePassword"
       />
       <ng-container>
         <p
-          *ngIf="passwordsGroup.controls['rePassword'].errors?.['required'] && errorHandler('rePassword')"
+          *ngIf="passwordsGroup.controls['rePassword'].errors?.['required'] && errHandler(passwordsGroup,'rePassword')"
           class="error"
         >
           Repeat password is required!
         </p>
         <p
-          *ngIf="passwordsGroup.controls['rePassword'].errors?.['mismatch'] && errorHandler('rePassword')"
+          *ngIf="passwordsGroup.controls['rePassword'].errors?.['mismatch'] && errHandler(passwordsGroup,'rePassword')"
           class="error"
         >
           Passwords don't match!
