@@ -8,6 +8,7 @@ import { MaterialModule } from './material/material.module';
 import { CoreModule } from './core/core.module';
 import { RouterModule } from '@angular/router';
 import { AuthModule } from './auth/auth.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +16,7 @@ import { AuthModule } from './auth/auth.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     RouterModule,
     MaterialModule,
     CoreModule,
