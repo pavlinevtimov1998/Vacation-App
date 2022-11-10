@@ -77,7 +77,7 @@ exports.agencyLogin = async (body) => {
     };
   }
 
-  const isValid = await bcrypt.compare(body.password, account.password);
+  const isValid = await bcrypt.compare(body.password, agency.password);
 
   if (!isValid) {
     throw {
