@@ -30,10 +30,16 @@ export class UserRegisterComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.password = new FormControl(null, [Validators.required]);
+    this.password = new FormControl(null, [
+      Validators.required,
+      Validators.minLength(6),
+    ]);
 
     this.userRegisterForm = this.formBuilder.group({
-      username: new FormControl(null, [Validators.required]),
+      username: new FormControl(null, [
+        Validators.required,
+        Validators.minLength(5),
+      ]),
       passwords: new FormGroup({
         password: this.password,
         rePassword: new FormControl(null, [
@@ -44,13 +50,31 @@ export class UserRegisterComponent implements OnInit {
     });
   }
 
-  handleUserRegister() {}
+  handleUserRegister() {
+    if (this.userRegisterForm.invalid) {
+      return this.userRegisterForm.markAllAsTouched();
+    }
+  }
+
+  errorHandler(value: string) {
+    if (value.endsWith('ssword')) {
+      return (
+        this.passwordsGroup.controls[value].touched &&
+        this.passwordsGroup.controls[value].errors
+      );
+    }
+
+    return (
+      this.userRegisterForm.controls[value].touched &&
+      this.userRegisterForm.controls[value].errors
+    );
+  }
 
   private passwordsMismatch(password: AbstractControl): ValidatorFn {
     return (rePass: AbstractControl): ValidationErrors | null => {
       if (rePass.value !== password.value) {
         return {
-          notMatch: true,
+          mismatch: true,
         };
       }
 
