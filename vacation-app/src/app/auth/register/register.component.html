@@ -23,46 +23,12 @@
       </button>
     </div>
     <div class="form">
-      <form #username class="user">
-        <div class="username">
-          <label for="username">Username</label>
-          <input type="text" name="username" />
-        </div>
-        <div class="password">
-          <label for="password">Password</label>
-          <input type="password" name="password" />
-        </div>
-        <div class="re-pass">
-          <label for="rePassword">Repeat password</label>
-          <input type="password" name="rePassword" />
-        </div>
-        <button class="sign-in-btn" type="submit">
-          <span>Sign up</span>
-          <mat-icon>login</mat-icon>
-        </button>
-      </form>
-      <form #email class="agency">
-        <div class="email">
-          <label for="email">Agency email</label>
-          <input type="text" name="email" />
-        </div>
-        <div class="agency-name">
-          <label for="agencyName">Agency name</label>
-          <input type="text" name="agencyName" />
-        </div>
-        <div class="password">
-          <label for="password">Password</label>
-          <input type="password" name="password" />
-        </div>
-        <div class="re-pass">
-          <label for="rePassword">Repeat password</label>
-          <input type="password" name="rePassword" />
-        </div>
-        <button class="sign-in-btn" type="submit">
-          <span>Sign up</span>
-          <mat-icon>login</mat-icon>
-        </button>
-      </form>
+      <div #username class="user-form">
+        <app-user-register></app-user-register>
+      </div>
+      <div #email class="agency-form">
+        <app-agency-register></app-agency-register>
+      </div>
     </div>
   </div>
 </section>

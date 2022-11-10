@@ -7,9 +7,11 @@ import { authRoutingModule } from './app-auth-routing.module';
 import { MaterialModule } from '../material/material.module';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { AgencyLoginComponent } from './agency-login/agency-login.component';
+import { AgencyRegisterComponent } from './agency-register/agency-register.component';
+import { UserRegisterComponent } from './user-register/user-register.component';
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent, ProfileComponent, UserLoginComponent, AgencyLoginComponent],
+  declarations: [LoginComponent, RegisterComponent, ProfileComponent, UserLoginComponent, AgencyLoginComponent, AgencyRegisterComponent, UserRegisterComponent],
   imports: [CommonModule, authRoutingModule, MaterialModule],
 })
 export class AuthModule {}
