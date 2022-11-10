@@ -25,34 +25,12 @@
       </button>
     </div>
     <div class="form">
-      <form #username class="user">
-        <div class="username">
-          <label for="username">Username</label>
-          <input type="text" name="username" />
-        </div>
-        <div class="password">
-          <label for="password">Password</label>
-          <input type="password" name="password" />
-        </div>
-        <button class="sign-in-btn" type="submit">
-          <span>Sign in</span>
-          <mat-icon>login</mat-icon>
-        </button>
-      </form>
-      <form #email class="agency">
-        <div class="email">
-          <label for="email">Email</label>
-          <input type="text" name="email" />
-        </div>
-        <div class="password">
-          <label for="password">Password</label>
-          <input type="password" name="password" />
-        </div>
-        <button class="sign-in-btn" type="submit">
-          <span>Sign in</span>
-          <mat-icon>login</mat-icon>
-        </button>
-      </form>
+      <div #username class="user-form">
+        <app-user-login></app-user-login>
+      </div>
+      <div #email class="agency-form">
+        <app-agency-login></app-agency-login>
+      </div>
     </div>
   </div>
 </section>

@@ -1,7 +1,6 @@
-.agency {
+.agency-form {
   display: none;
 }
-
 .register,
 .login {
   width: 100%;
@@ -53,7 +52,7 @@
 
 .user,
 .agency {
-  width: 40%;
+  width: 100%;
 }
 
 .username,
@@ -129,13 +128,6 @@
   color: #3f51b5;
 }
 
-@media screen and (max-width: 1200px) {
-  .user,
-  .agency {
-    width: 50%;
-  }
-}
-
 @media screen and (max-width: 900px) {
   .header-container,
   .forms-container {
@@ -144,11 +136,6 @@
 }
 
 @media screen and (max-width: 600px) {
-  .agency,
-  .user {
-    width: 70%;
-  }
-
   .header-container,
   .forms-container {
     width: 95%;
