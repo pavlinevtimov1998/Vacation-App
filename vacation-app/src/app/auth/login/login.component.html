@@ -10,25 +10,25 @@
       <button
         #user
         class="opt-btn selected"
-        (click)="handleOptionBtn(user, agency, email, username)"
+        (click)="handleOptionBtn(user, agency, agencyForm, userForm)"
       >
         <span>User Sign in</span>
-        <mat-icon>user</mat-icon>
+        <mat-icon>person</mat-icon>
       </button>
       <button
         #agency
         class="opt-btn"
-        (click)="handleOptionBtn(agency, user, username, email)"
+        (click)="handleOptionBtn(agency, user, userForm, agencyForm)"
       >
         <span>Agency Sign in</span>
         <mat-icon>login</mat-icon>
       </button>
     </div>
     <div class="form">
-      <div #username class="user-form">
+      <div #userForm class="user-form">
         <app-user-login></app-user-login>
       </div>
-      <div #email class="agency-form">
+      <div #agencyForm class="agency-form">
         <app-agency-login></app-agency-login>
       </div>
     </div>
