@@ -4,14 +4,22 @@ import { AuthService } from 'src/app/auth.service';
 @Component({
   selector: 'app-account-nav',
   templateUrl: './account-nav.component.html',
-  styleUrls: ['./account-nav.component.css']
+  styleUrls: ['./account-nav.component.css'],
 })
 export class AccountNavComponent implements OnInit {
   currentUser$ = this.authService.currentUser$;
 
-  constructor(private authService: AuthService) { }
+  isMenuOpened: boolean = false;
 
-  ngOnInit(): void {
+  constructor(private authService: AuthService) {}
+
+  ngOnInit(): void {}
+
+  toggleDropDownMenu() {
+    this.isMenuOpened = !this.isMenuOpened;
   }
 
+  clickedOutside() {
+    this.isMenuOpened = false;
+  }
 }

@@ -12,6 +12,7 @@ import { FooterComponent } from './footer/footer.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { MobileNavComponent } from './mobile-nav/mobile-nav.component';
 import { AccountNavComponent } from './account-nav/account-nav.component';
+import { ClickOutsideDirective } from '../click-outside.directive';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { AccountNavComponent } from './account-nav/account-nav.component';
     WelcomePageComponent,
     MobileNavComponent,
     AccountNavComponent,
+    ClickOutsideDirective
   ],
   imports: [CommonModule, MaterialModule, RouterModule],
   exports: [

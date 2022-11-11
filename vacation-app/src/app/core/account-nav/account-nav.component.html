@@ -1,6 +1,14 @@
-<div class="actions-container">
-  <img src="/assets/img/default-user.png" alt="" />
-  <div class="actions">
+<div
+  class="actions-container"
+  appClickOutside
+  (clickOutside)="clickedOutside()"
+>
+  <img
+    src="/assets/img/default-user.png"
+    alt=""
+    (click)="toggleDropDownMenu()"
+  />
+  <div class="actions" *ngIf="isMenuOpened">
     <p>
       Hello, <span>{{ (currentUser$ | async)?.agencyName }}</span>
     </p>
