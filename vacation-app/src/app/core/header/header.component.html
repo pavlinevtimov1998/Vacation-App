@@ -12,12 +12,23 @@
     </ul>
   </section>
 
-  <section class="sign-up aside flex">
+  <section *ngIf="!(isLogged$ | async)" class="sign-up aside flex">
     <a routerLink="/auth/login" class="btn">
       <span>Sign up</span>
       <mat-icon class="login-icon">login</mat-icon>
     </a>
   </section>
+
+  <section *ngIf="isLogged$ | async" class="profile">
+    <article *ngIf="(currentUser$ | async)?.isAgency" class="agency-nav">
+      <a routerLink="/offer/create"> Add new offer </a>
+      <app-account-nav></app-account-nav>
+    </article>
+    <article *ngIf="!(currentUser$ | async)?.isAgency">
+      <p>asdasd</p>
+    </article>
+  </section>
+
   <section class="mobile-menu">
     <button mat-button class="mobile-btn" (click)="openMobileNav(mobileNav)">
       <mat-icon>menu</mat-icon>

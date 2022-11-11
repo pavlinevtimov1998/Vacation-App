@@ -9,12 +9,8 @@
   justify-content: center;
 }
 
-.aside {
-  width: 20%;
-}
-
 .categories {
-  width: 60%;
+  width: 50%;
   align-items: flex-end;
   padding-bottom: 5px;
 }
@@ -27,6 +23,10 @@
 .logo-container,
 .categories {
   height: 100%;
+}
+
+.logo-container {
+  width: 25%;
 }
 
 .links a {
@@ -73,7 +73,7 @@
   display: block;
   width: 80px;
   border-radius: 50%;
-  margin-left: 20%;
+  margin-right: 20%;
 }
 
 .logo-container img {
@@ -111,6 +111,30 @@
 
 .space {
   flex: 1;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  width: 25%;
+  height: 100%;
+}
+
+.agency-nav {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.agency-nav a {
+  border: 3px solid #fff;
+  border-radius: 7px;
+  padding: 6px 18px;
+}
+
+app-account-nav {
+  width: 20%;
+  margin-left: 10%;
 }
 
 @media screen and (max-width: 1050px) {
