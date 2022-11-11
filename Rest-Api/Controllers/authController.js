@@ -63,7 +63,6 @@ authController.get(
   "/profile",
   isAccount(),
   catchAsyncError(async (req, res) => {
-    console.log("asd");
     const [account, isAgency] = await authService.getAccountData(
       req.agency,
       req.user
