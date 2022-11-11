@@ -11,6 +11,7 @@ import { BannerComponent } from './banner/banner.component';
 import { FooterComponent } from './footer/footer.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { MobileNavComponent } from './mobile-nav/mobile-nav.component';
+import { AccountNavComponent } from './account-nav/account-nav.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { MobileNavComponent } from './mobile-nav/mobile-nav.component';
     FooterComponent,
     WelcomePageComponent,
     MobileNavComponent,
+    AccountNavComponent,
   ],
   imports: [CommonModule, MaterialModule, RouterModule],
   exports: [
