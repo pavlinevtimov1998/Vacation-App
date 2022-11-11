@@ -23,6 +23,6 @@ exports.isAuth = async (req, res, next) => {
     next();
   } catch (err) {
     res.clearCookie(process.env.COOKIE_NAME);
-    res.status(401).json({});
+    res.status(401).json({ message: "Token expired!" });
   }
 };
