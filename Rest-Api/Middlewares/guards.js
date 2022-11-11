@@ -29,3 +29,11 @@ exports.canLogout = () => (req, res, next) => {
     res.status(401).json({ message: "Unauthorized!", status: 401 });
   }
 };
+
+exports.isAccount = () => (req, res, next) => {
+  if (req.user || req.agency) {
+    next();
+  } else {
+    res.status(401).json({ message: "Unauthorized!", status: 401 });
+  }
+};
