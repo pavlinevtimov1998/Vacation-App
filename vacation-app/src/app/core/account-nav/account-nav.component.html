@@ -1,0 +1,19 @@
+<div class="actions-container">
+  <img src="/assets/img/default-user.png" alt="" />
+  <div class="actions">
+    <p>
+      Hello, <span>{{ (currentUser$ | async)?.agencyName }}</span>
+    </p>
+    <ul class="profile-links">
+      <li>
+        <a routerLink="/auth/profile">Profile</a>
+      </li>
+      <li>
+        <a routerLink="/auth/profile/edit">Edit Profile</a>
+      </li>
+      <li>
+        <a href="javascript:void(0)">Logout</a>
+      </li>
+    </ul>
+  </div>
+</div>
