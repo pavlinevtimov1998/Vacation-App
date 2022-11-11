@@ -1,12 +1,9 @@
-<div
-  class="actions-container"
-  (click)="toggleDropDownMenu()"
-  >
+<div class="actions-container" (click)="toggleDropDownMenu()">
   <img
-  src="/assets/img/default-user.png"
-  alt=""
-  appClickOutside
-  (clickOutside)="clickedOutside()"
+    src="/assets/img/default-user.png"
+    alt=""
+    appClickOutside
+    (clickOutside)="clickedOutside()"
   />
   <div class="actions" *ngIf="isMenuOpened">
     <p>
