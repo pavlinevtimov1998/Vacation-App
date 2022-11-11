@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 
 import { AuthService } from 'src/app/auth.service';
-import { errorHandler } from '../../util/form-errors';
+import { errorHandler } from '../../../util/form-errors';
 
 @Component({
   selector: 'app-agency-login',

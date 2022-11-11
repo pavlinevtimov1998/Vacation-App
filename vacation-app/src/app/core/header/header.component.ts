@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth.service';
-import { IAccount } from '../interfaces/account.interface';
+import { IAccount } from '../../shared/interfaces/account.interface';
 
 @Component({
   selector: 'app-header',

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth.service';
-import { IAccount } from 'src/app/core/interfaces/account.interface';
+import { IAccount } from 'src/app/shared/interfaces/account.interface';
 
 @Component({
   selector: 'app-profile',

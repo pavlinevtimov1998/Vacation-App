@@ -7,12 +7,11 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { SearchComponent } from './search/search.component';
 import { PopularDestinationsComponent } from './popular-destinations/popular-destinations.component';
 import { PopularCountriesComponent } from './popular-countries/popular-countries.component';
-import { BannerComponent } from './banner/banner.component';
 import { FooterComponent } from './footer/footer.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { MobileNavComponent } from './mobile-nav/mobile-nav.component';
 import { AccountNavComponent } from './account-nav/account-nav.component';
-import { ClickOutsideDirective } from '../click-outside.directive';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -21,21 +20,12 @@ import { ClickOutsideDirective } from '../click-outside.directive';
     SearchComponent,
     PopularDestinationsComponent,
     PopularCountriesComponent,
-    BannerComponent,
     FooterComponent,
     WelcomePageComponent,
     MobileNavComponent,
     AccountNavComponent,
-    ClickOutsideDirective
   ],
-  imports: [CommonModule, MaterialModule, RouterModule],
-  exports: [
-    HeaderComponent,
-    CarouselComponent,
-    PopularDestinationsComponent,
-    PopularCountriesComponent,
-    BannerComponent,
-    FooterComponent,
-  ],
+  imports: [CommonModule, MaterialModule, RouterModule, SharedModule],
+  exports: [HeaderComponent, FooterComponent],
 })
 export class CoreModule {}
