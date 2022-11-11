@@ -94,3 +94,15 @@ exports.agencyLogin = async (body) => {
     return [token, agency];
   });
 };
+
+exports.getAccountData = async (agency, user) => {
+  if (agency) {
+    return Agency.findById(agency._id).then((agency) => {
+      return [agency, true];
+    });
+  } else {
+    return User.findById(user._id).then((user) => {
+      return [user, false];
+    });
+  }
+};
