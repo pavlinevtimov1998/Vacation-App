@@ -75,7 +75,7 @@ export class AuthService {
   }
 
   logout$(): Observable<{ message: string }> {
-    return this.httpClient.delete<{ message: string }>(
+    return this.httpClient.get<{ message: string }>(
       environment.api + 'auth/logout',
       { withCredentials: true }
     );
