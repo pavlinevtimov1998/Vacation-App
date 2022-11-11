@@ -2,7 +2,7 @@ const authController = require("express").Router();
 
 const authService = require("../Services/authService");
 const { catchAsyncError } = require("../Util/errorParser");
-const { isGuest, canLogout } = require("../Middlewares/guards");
+const { isGuest, canLogout, isAccount } = require("../Middlewares/guards");
 
 authController.post(
   "/user/register",
@@ -58,6 +58,29 @@ authController.post("/agency/login", isGuest(), async (req, res) => {
     agencyName: agency.agencyName,
   });
 });
+
+authController.get(
+  "/profile",
+  isAccount(),
+  catchAsyncError(async (req, res) => {
+    console.log("asd");
+    const [account, isAgency] = await authService.getAccountData(
+      req.agency,
+      req.user
+    );
+
+    isAgency
+      ? res.status(200).json({
+          _id: account._id,
+          email: account.email,
+          agencyName: account.agencyName,
+        })
+      : res.status(200).json({
+          _id: account._id,
+          username: account.username,
+        });
+  })
+);
 
 authController.get("/logout", canLogout(), (req, res) => {
   res.clearCookie(process.env.COOKIE_NAME);
