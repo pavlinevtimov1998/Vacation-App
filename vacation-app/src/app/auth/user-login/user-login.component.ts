@@ -43,7 +43,6 @@ export class UserLoginComponent implements OnInit {
     this.authService.userLogin$(body).subscribe({
       next: (user) => {
         this.authService.handleLogin(user);
-        console.log(user);
       },
       error: (err) => {
         console.log(err);
