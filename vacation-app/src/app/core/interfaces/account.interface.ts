@@ -10,5 +10,7 @@ interface IUser {
 }
 
 export interface IAccount extends IAgency, IUser {
+  createdAt: string;
+  adress: string;
   isAgency: boolean;
 }
