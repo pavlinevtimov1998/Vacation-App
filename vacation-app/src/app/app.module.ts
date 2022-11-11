@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -7,8 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { CoreModule } from './core/core.module';
 import { RouterModule } from '@angular/router';
-import { AuthModule } from './auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './auth.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,7 +21,16 @@ import { HttpClientModule } from '@angular/common/http';
     MaterialModule,
     CoreModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (authService: AuthService) => {
+        return () => authService.appInitializer();
+      },
+      deps: [AuthService],
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

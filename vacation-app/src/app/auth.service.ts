@@ -1,36 +1,39 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable } from 'rxjs';
+import { BehaviorSubject, EMPTY, map, Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
-import { IAgency } from './core/interfaces/agency.interface';
-import { IUser } from './core/interfaces/user.interface';
+import { IAccount } from './core/interfaces/account.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  guest!: IUser | IAgency;
+  guest!: IAccount;
 
   private _currentUser = new BehaviorSubject(this.guest);
 
   currentUser$ = this._currentUser.asObservable();
-  islogged$ = this._currentUser.pipe(map((user) => !user));
+  islogged$ = this._currentUser.pipe(map((user) => !!user));
 
   constructor(private httpClient: HttpClient) {}
 
-  handleLogin(user: IUser | IAgency) {
-    console.log(user);
-
-    this._currentUser.next(user);
+  handleLogin(account: IAccount) {
+    if (account.agencyName) {
+      account.isAgency = true;
+    } else {
+      account.isAgency = false;
+    }
+    
+    this._currentUser.next(account);
   }
 
   userRegister$(body: {
     username: string;
     password: string;
     rePassword: string;
-  }): Observable<IUser> {
-    return this.httpClient.post<IUser>(
+  }): Observable<IAccount> {
+    return this.httpClient.post<IAccount>(
       environment.api + 'auth/user/register',
       body,
       {
@@ -39,8 +42,11 @@ export class AuthService {
     );
   }
 
-  userLogin$(body: { username: string; password: string }): Observable<IUser> {
-    return this.httpClient.post<IUser>(
+  userLogin$(body: {
+    username: string;
+    password: string;
+  }): Observable<IAccount> {
+    return this.httpClient.post<IAccount>(
       environment.api + 'auth/user/login',
       body,
       {
@@ -54,8 +60,8 @@ export class AuthService {
     agencyName: string;
     password: string;
     rePassword: string;
-  }): Observable<IAgency> {
-    return this.httpClient.post<IAgency>(
+  }): Observable<IAccount> {
+    return this.httpClient.post<IAccount>(
       environment.api + 'auth/agency/register',
       body,
       {
@@ -64,8 +70,11 @@ export class AuthService {
     );
   }
 
-  agencyLogin$(body: { email: string; password: string }): Observable<IAgency> {
-    return this.httpClient.post<IAgency>(
+  agencyLogin$(body: {
+    email: string;
+    password: string;
+  }): Observable<IAccount> {
+    return this.httpClient.post<IAccount>(
       environment.api + 'auth/agency/login',
       body,
       {
@@ -79,5 +88,21 @@ export class AuthService {
       environment.api + 'auth/logout',
       { withCredentials: true }
     );
+  }
+
+  appInitializer() {
+    this.httpClient
+      .get<IAccount>(environment.api + 'auth/profile', {
+        withCredentials: true,
+      })
+      .subscribe({
+        next: (account: IAccount) => {
+          this.handleLogin(account);
+        },
+        error: (err) => {
+          console.error(err);
+          return EMPTY;
+        },
+      });
   }
 }
