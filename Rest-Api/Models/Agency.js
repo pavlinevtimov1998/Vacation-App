@@ -15,6 +15,18 @@ const agencySchema = new mongoose.Schema(
       minLength: [10, "Email should be at least 10 characters!"],
       maxLength: [30, "Email should be max 30 characters!"],
     },
+    phone: {
+      type: Number,
+    },
+    adress: {
+      type: String,
+    },
+    agencyDescription: {
+      type: String,
+    },
+    website: {
+      type: String,
+    },
     password: {
       type: String,
       minLength: [4, "Password should be at least 4 characters!"],
