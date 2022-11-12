@@ -91,7 +91,6 @@
   color: white;
 }
 .mobile-nav {
-  display: none;
   position: fixed;
   top: 0;
   right: -300px;
@@ -107,6 +106,10 @@
 .close-btn-container {
   display: flex;
   height: 60px;
+}
+
+.close-btn-container mat-icon {
+  color: #3f51b5;
 }
 
 .space {
