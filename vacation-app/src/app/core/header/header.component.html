@@ -20,12 +20,13 @@
   </section>
 
   <section *ngIf="isLogged$ | async" class="profile">
-    <article *ngIf="(currentUser$ | async)?.isAgency" class="agency-nav">
+    <article *ngIf="(currentUser$ | async)?.isAgency" class="account-nav">
       <a routerLink="/offer/create"> Add new offer </a>
+      <div class="underline"></div>
       <app-account-nav></app-account-nav>
     </article>
-    <article *ngIf="!(currentUser$ | async)?.isAgency">
-      <p>asdasd</p>
+    <article *ngIf="!(currentUser$ | async)?.isAgency" class="account-nav">
+      <app-account-nav></app-account-nav>
     </article>
   </section>
 
@@ -37,18 +38,18 @@
     <button mat-button class="mobile-btn" (click)="openMobileNav(mobileNav)">
       <mat-icon>menu</mat-icon>
     </button>
-    <aside class="mobile-nav" #mobileNav>
-      <div class="close-btn-container">
-        <button
-          mat-button
-          class="close-mob-btn"
-          (click)="closeMobileNav(mobileNav)"
-        >
-          <mat-icon>close</mat-icon>
-        </button>
-        <div class="space"></div>
-      </div>
-      <app-mobile-nav></app-mobile-nav>
-    </aside>
   </section>
 </nav>
+<aside class="mobile-nav" #mobileNav>
+  <div class="close-btn-container">
+    <button
+      mat-button
+      class="close-mob-btn"
+      (click)="closeMobileNav(mobileNav)"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+    <div class="space"></div>
+  </div>
+  <app-mobile-nav></app-mobile-nav>
+</aside>
