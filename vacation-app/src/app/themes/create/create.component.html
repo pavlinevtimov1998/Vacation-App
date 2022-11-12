@@ -1,0 +1,36 @@
+<section class="wrapper">
+  <div class="form-container">
+    <h1>Add Offer</h1>
+    <form>
+      <div class="offer-title input-container">
+        <input type="text" placeholder="Title of your offer" name="title" />
+      </div>
+      <div class="offer-description input-container">
+        <textarea
+          name="description"
+          placeholder="Detail description"
+          cols="30"
+          rows="10"
+        ></textarea>
+      </div>
+      <div class="offer-destination">
+        <input type="text" placeholder="Country" />
+        <input type="text" placeholder="Town" />
+      </div>
+
+      <div class="offer-images input-container" (click)="imagesUpload.click()">
+        <span>Click here to add one or multiple images for your offer!</span>
+        <input
+          #imagesUpload
+          type="file"
+          multiple
+          accept="image/png, image/jpeg"
+        />
+      </div>
+      <div class="offer-price input-container">
+        <input type="number" name="price" placeholder="Price per person" />
+      </div>
+      <button type="submit">Create</button>
+    </form>
+  </div>
+</section>
