@@ -1,6 +1,7 @@
 <section class="wrapper">
   <article class="vacations">
-    <h1>Your reserved vacations</h1>
+    <h1 *ngIf="!account.isAgency">Your reserved vacations</h1>
+    <h1 *ngIf="account.isAgency">{{ account.agencyName }} Offers</h1>
     <div class="reserved">
       <div class="vacation-container">
         <div class="img-container">
@@ -23,11 +24,12 @@
     <a class="edit" routerLink="/auth/edit-profile">Edit profile</a>
 
     <div class="user-info">
-      <h1>For Me</h1>
+      <h1 *ngIf="account.isAgency">Agency contacts</h1>
+      <h1 *ngIf="!account.isAgency">Your contacts</h1>
       <div class="details">
         <div class="detail">
           <h4>Phone:</h4>
-          <p>9798709</p>
+          <p>{{ account.phone }}</p>
         </div>
         <div class="detail">
           <h4>Email:</h4>
@@ -36,10 +38,6 @@
         <div class="detail">
           <h4>Adress:</h4>
           <p>{{ account.adress }}</p>
-        </div>
-        <div class="detail">
-          <h4>Payment methods:</h4>
-          <p></p>
         </div>
       </div>
     </div>
