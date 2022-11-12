@@ -29,22 +29,26 @@
     </article>
   </section>
 
-  <section class="mobile-menu">
+  <section
+    appClickOutside
+    (clickOutside)="clickedOutside(mobileNav)"
+    class="mobile-menu"
+  >
     <button mat-button class="mobile-btn" (click)="openMobileNav(mobileNav)">
       <mat-icon>menu</mat-icon>
     </button>
+    <aside class="mobile-nav" #mobileNav>
+      <div class="close-btn-container">
+        <button
+          mat-button
+          class="close-mob-btn"
+          (click)="closeMobileNav(mobileNav)"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+        <div class="space"></div>
+      </div>
+      <app-mobile-nav></app-mobile-nav>
+    </aside>
   </section>
 </nav>
-<aside class="mobile-nav" #mobileNav>
-  <div class="close-btn-container">
-    <button
-      mat-button
-      class="close-mob-btn"
-      (click)="closeMobileNav(mobileNav)"
-    >
-      <mat-icon>close</mat-icon>
-    </button>
-    <div class="space"></div>
-  </div>
-  <app-mobile-nav></app-mobile-nav>
-</aside>
