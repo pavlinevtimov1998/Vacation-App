@@ -20,7 +20,7 @@ authController.post(
 );
 
 authController.post("/user/login", isGuest(), async (req, res) => {
-  console.log(req.body);
+  
   const [token, user] = await authService.login(req.body);
 
   res.cookie(process.env.COOKIE_NAME, token, { httpOnly: true });
