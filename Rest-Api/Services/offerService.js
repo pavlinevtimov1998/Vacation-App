@@ -4,14 +4,15 @@ const getAll = () => Offer.find().select("-description -program");
 
 const getOne = (offerId) => Offer.findById(offerId);
 
-const create = (body, companyId) => {
+const create = (body, agencyId) => {
   const offerData = {
     title: body.title,
-    location: body.location,
+    town: body.town,
+    country: body.country,
+    pricePerPerson: body.pricePerPerson,
     description: body.description,
     price: Number(body.price),
-    program: body.program,
-    companyId,
+    agencyId,
   };
 
   return Offer.create(offerData);
