@@ -23,4 +23,8 @@ export class HeaderComponent implements OnInit {
   closeMobileNav(aside: HTMLElement) {
     aside.style.right = '-300px';
   }
+
+  clickedOutside(aside: HTMLElement): void {
+    aside.style.right = '-300px';
+  }
 }
