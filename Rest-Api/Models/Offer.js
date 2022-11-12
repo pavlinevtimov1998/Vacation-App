@@ -4,20 +4,25 @@ const offerSchema = new mongoose.Schema(
   {
     title: {
       type: String,
+      trim: true,
     },
     town: {
       type: String,
+      trim: true,
     },
     country: {
       type: String,
+      trim: true,
     },
     description: {
       type: String,
+      trim: true,
     },
     pricePerPerson: {
       type: Number,
+      trim: true,
     },
-    imageCover: {
+    images: {
       type: String,
     },
     agencyId: {
