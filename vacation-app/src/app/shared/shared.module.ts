@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BannerComponent } from './banner/banner.component';
+import { BenefitsComponent } from './benefits/benefits.component';
 import { MaterialModule } from '../material/material.module';
 import { ClickOutsideDirective } from './click-outside.directive';
 
 @NgModule({
-  declarations: [BannerComponent, ClickOutsideDirective],
+  declarations: [BenefitsComponent, ClickOutsideDirective],
   imports: [CommonModule, MaterialModule],
-  exports: [BannerComponent, ClickOutsideDirective],
+  exports: [BenefitsComponent, ClickOutsideDirective],
 })
 export class SharedModule {}
