@@ -136,7 +136,8 @@
 .account-nav {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
+  gap: 20px;
   width: 200px;
   position: absolute;
   top: 10px;
@@ -177,6 +178,12 @@
 .mob-profile img {
   width: 80px;
   border-radius: 50%;
+}
+
+@media screen and (max-width: 900px) {
+  .account-nav {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 1050px) {

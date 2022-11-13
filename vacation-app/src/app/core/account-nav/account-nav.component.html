@@ -6,8 +6,11 @@
     (clickOutside)="clickedOutside()"
   />
   <div class="actions" *ngIf="isMenuOpened">
-    <p>
+    <p *ngIf="(currentUser$ | async)?.isAgency">
       Hello, <span>{{ (currentUser$ | async)?.agencyName }}</span>
+    </p>
+    <p *ngIf="!(currentUser$ | async)?.isAgency">
+      Hello, <span>{{ (currentUser$ | async)?.username }}</span>
     </p>
     <ul class="profile-links">
       <li>
@@ -17,7 +20,9 @@
         <a routerLink="/auth/profile/edit">Edit Profile</a>
       </li>
       <li>
-         <a class="logout" href="javascript:void(0)">Logout</a>
+        <a class="logout" href="javascript:void(0)" (click)="logoutHandler()"
+          >Logout</a
+        >
       </li>
     </ul>
   </div>

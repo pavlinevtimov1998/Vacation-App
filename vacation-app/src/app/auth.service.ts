@@ -19,13 +19,17 @@ export class AuthService {
   constructor(private httpClient: HttpClient) {}
 
   handleLogin(account: IAccount) {
-    if (account.agencyName) {
+    if (account?.agencyName) {
       account.isAgency = true;
-    } else {
+    } else if (account?.username) {
       account.isAgency = false;
     }
-    
+
     this._currentUser.next(account);
+  }
+
+  handleLogout() {
+    this._currentUser.next(this.guest);
   }
 
   userRegister$(body: {

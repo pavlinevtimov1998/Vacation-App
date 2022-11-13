@@ -48,7 +48,9 @@
       </a>
     </li>
     <li *ngIf="isLogged$">
-      <a href=""><span>Logout</span><mat-icon>logout</mat-icon></a>
+      <a href="javascript:void(0)" (click)="logoutHandler()"
+        ><span>Logout</span><mat-icon>logout</mat-icon></a
+      >
     </li>
   </ul>
 </ul>

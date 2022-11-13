@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class AccountNavComponent implements OnInit {
 
   isMenuOpened: boolean = false;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -21,5 +22,18 @@ export class AccountNavComponent implements OnInit {
 
   clickedOutside() {
     this.isMenuOpened = false;
+  }
+
+  logoutHandler() {
+    this.authService.logout$().subscribe({
+      next: (response) => {
+        this.authService.handleLogout();
+        this.router.navigate(['/']);
+      },
+      error: (err) => {
+        console.log(err);
+        this.router.navigate(['/']);
+      },
+    });
   }
 }
