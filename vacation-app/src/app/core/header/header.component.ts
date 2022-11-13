@@ -12,6 +12,8 @@ export class HeaderComponent implements OnInit {
   currentUser$ = this.authService.currentUser$;
   isLogged$ = this.authService.islogged$;
 
+  toggleProfileMobNav = false;
+
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {}
@@ -26,5 +28,9 @@ export class HeaderComponent implements OnInit {
 
   clickedOutside(aside: HTMLElement): void {
     aside.style.right = '-300px';
+  }
+
+  profileMobileLinks() {
+    this.toggleProfileMobNav = !this.toggleProfileMobNav;
   }
 }
