@@ -17,7 +17,7 @@
         <mat-icon>create</mat-icon>
       </a>
     </li>
-    <li *ngIf="!isLogged$">
+    <li *ngIf="!(isLogged$ | async)">
       <a routerLink="/auth/login">
         <span>Sign Up</span>
         <mat-icon>login</mat-icon>
