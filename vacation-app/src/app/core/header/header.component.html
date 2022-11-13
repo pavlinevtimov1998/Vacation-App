@@ -1,10 +1,10 @@
-<nav class="nav flex">
-  <section class="logo-container aside flex">
+<nav class="nav">
+  <section class="logo-container">
     <a routerLink="/"><img src="/assets/img/logo.jpg" alt="logo" /></a>
   </section>
 
-  <section class="categories flex">
-    <ul class="links flex">
+  <section class="categories">
+    <ul class="links">
       <li><a routerLink="/offers/countries">Countries</a></li>
       <li><a routerLink="">Top Offers</a></li>
       <li><a routerLink="/offers/top-agencies">Top Agencies</a></li>
@@ -12,7 +12,7 @@
     </ul>
   </section>
 
-  <section *ngIf="!(isLogged$ | async)" class="sign-up aside flex">
+  <section *ngIf="!(isLogged$ | async)" class="sign-up">
     <a routerLink="/auth/login" class="btn">
       <span>Sign up</span>
       <mat-icon class="login-icon">login</mat-icon>

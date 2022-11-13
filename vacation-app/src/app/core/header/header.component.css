@@ -1,32 +1,32 @@
 .nav {
   height: 100%;
-  margin: auto;
-}
-
-.flex {
   display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .categories {
   width: 50%;
-  align-items: flex-end;
   padding-bottom: 5px;
+  justify-content: center;
+  align-items: flex-end;
 }
 
 .links {
+  display: flex;
+  /* justify-content: center; */
   align-items: center;
   gap: 30px;
 }
 
 .logo-container,
-.categories {
+.categories,
+.sign-up {
+  display: flex;
   height: 100%;
 }
 
 .logo-container {
-  justify-content: unset;
+  justify-content: flex-start;
+  align-items: center;
   width: 25%;
 }
 
@@ -44,15 +44,19 @@
 
 .sign-up {
   height: 100%;
+  width: 25%;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .btn {
   display: flex;
-  border: 5px solid white;
-  border-radius: 50px;
+  border: 3px solid white;
+  border-radius: 10px;
   padding: 4px 24px;
   align-items: center;
   gap: 2px;
+  margin-right: 10px;
   transition: all 0.4s ease;
 }
 
