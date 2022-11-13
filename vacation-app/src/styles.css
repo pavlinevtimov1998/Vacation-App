@@ -15,7 +15,7 @@
 html,
 body {
   height: 100%;
-  color: #3f51b5;
+  color: #0d47a1;
 }
 
 body {
@@ -29,12 +29,12 @@ body {
 }
 
 a {
-  color: white;
+  color: #fafafa;
 }
 
 input:focus,
 textarea:focus {
-  border: 1px solid #3f51b5;
+  border: 1px solid #0d47a1;
   outline: none;
   outline-style: none;
   outline: 0;
@@ -47,7 +47,7 @@ input[type="search"]::-webkit-search-cancel-button {
 
 #header {
   height: 100px;
-  background-color: #3f51b5;
+  background-color: #0d47a1;
   box-shadow: 5px -3px 15px 5px rgb(0 0 0 / 50%);
 }
 
