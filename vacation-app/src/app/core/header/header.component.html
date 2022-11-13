@@ -26,7 +26,7 @@
       <app-account-nav></app-account-nav>
     </article>
     <article *ngIf="!(currentUser$ | async)?.isAgency" class="account-nav">
-      <a routerLink="/auth/profile">My Favorites</a>
+      <a routerLink="/offers/favorites">My Favorites</a>
       <div class="underline"></div>
       <app-account-nav></app-account-nav>
     </article>
