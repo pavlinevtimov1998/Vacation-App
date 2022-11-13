@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { AuthService } from 'src/app/auth.service';
 import { errorHandler } from '../../../util/form-errors';
@@ -23,7 +24,8 @@ export class UserLoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -43,6 +45,7 @@ export class UserLoginComponent implements OnInit {
     this.authService.userLogin$(body).subscribe({
       next: (user) => {
         this.authService.handleLogin(user);
+        this.router.navigate(['/']);
       },
       error: (err) => {
         console.log(err);

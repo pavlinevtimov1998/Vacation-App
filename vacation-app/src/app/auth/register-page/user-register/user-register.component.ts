@@ -8,6 +8,7 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { AuthService } from 'src/app/auth.service';
 import { errorHandler, passwordsMismatch } from '../../../util/form-errors';
@@ -31,7 +32,8 @@ export class UserRegisterComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -69,6 +71,7 @@ export class UserRegisterComponent implements OnInit {
     this.authService.userRegister$(body).subscribe({
       next: (user) => {
         this.authService.handleLogin(user);
+        this.router.navigate(['/']);
       },
       error: (err) => {
         console.log(err);
