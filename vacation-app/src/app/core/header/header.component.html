@@ -41,15 +41,17 @@
   </section>
 </nav>
 <aside class="mobile-nav" #mobileNav>
-  <div class="close-btn-container">
-    <button
-      mat-button
-      class="close-mob-btn"
-      (click)="closeMobileNav(mobileNav)"
-    >
-      <mat-icon>close</mat-icon>
-    </button>
-    <div class="space"></div>
+  <button mat-button class="close-mob-btn" (click)="closeMobileNav(mobileNav)">
+    <mat-icon>close</mat-icon>
+  </button>
+  <div *ngIf="isLogged$ | async" class="mob-profile">
+    <img src="/assets/img/default-user.png" alt="" />
+    <h1 *ngIf="(currentUser$ | async)?.isAgency">
+      Hello, {{ (currentUser$ | async)?.agencyName }}
+    </h1>
+    <h1 *ngIf="!(currentUser$ | async)?.isAgency">
+      Hello, {{ (currentUser$ | async)?.username }}
+    </h1>
   </div>
   <app-mobile-nav></app-mobile-nav>
 </aside>
