@@ -21,7 +21,7 @@
 
   <section *ngIf="isLogged$ | async" class="profile">
     <article *ngIf="(currentUser$ | async)?.isAgency" class="account-nav">
-      <a routerLink="/offer/create"> Add new offer </a>
+      <a routerLink="/offers/create"> Add new offer </a>
       <div class="underline"></div>
       <app-account-nav></app-account-nav>
     </article>

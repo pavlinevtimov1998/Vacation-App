@@ -1,21 +1,67 @@
 <section class="wrapper">
   <div class="form-container">
     <h1>Add Offer</h1>
-    <form>
+    <form [formGroup]="createOfferForm" (submit)="handleCreateOffer()">
       <div class="offer-title input-container">
-        <input type="text" placeholder="Title of your offer" name="title" />
+        <div class="flex">
+          <input
+            formControlName="title"
+            type="text"
+            placeholder="Title of your offer"
+            name="title"
+          />
+          <ng-container *ngIf="errHandler(createOfferForm, 'title')">
+            <p
+              class="error"
+              *ngIf="createOfferForm.controls['title'].errors?.['required']"
+            >
+              Title is required!
+            </p>
+          </ng-container>
+        </div>
       </div>
       <div class="offer-description input-container">
-        <textarea
-          name="description"
-          placeholder="Detail description"
-          cols="30"
-          rows="10"
-        ></textarea>
+        <div class="flex">
+          <textarea
+            formControlName="description"
+            name="description"
+            placeholder="Detail description"
+            cols="30"
+            rows="10"
+          ></textarea>
+          <ng-container *ngIf="errHandler(createOfferForm, 'description')">
+            <p
+              class="error"
+              *ngIf="createOfferForm.controls['description'].errors?.['required']"
+            >
+              Description is required!
+            </p>
+          </ng-container>
+        </div>
       </div>
       <div class="offer-destination">
-        <input type="text" placeholder="Country" />
-        <input type="text" placeholder="Town" />
+        <div>
+          <input formControlName="country" type="text" placeholder="Country" />
+          <ng-container *ngIf="errHandler(createOfferForm, 'country')">
+            <p
+              class="error"
+              *ngIf="createOfferForm.controls['country'].errors?.['required']"
+            >
+              Country is required!
+            </p>
+          </ng-container>
+        </div>
+        <div>
+          <input formControlName="town" type="text" placeholder="Town" />
+          <ng-container *ngIf="errHandler(createOfferForm, 'town')">
+            <p
+              class="error"
+              *ngIf="createOfferForm.controls['town'].errors?.['required']"
+            >
+              Town is required!
+            </p>
+          </ng-container>
+        </div>
       </div>
 
       <div class="offer-images input-container" (click)="imagesUpload.click()">
@@ -28,7 +74,22 @@
         />
       </div>
       <div class="offer-price input-container">
-        <input type="number" name="price" placeholder="Price per person" />
+        <div class="flex">
+          <input
+            formControlName="price"
+            type="number"
+            name="price"
+            placeholder="Price per person"
+          />
+          <ng-container *ngIf="errHandler(createOfferForm, 'price')">
+            <p
+              class="error"
+              *ngIf="createOfferForm.controls['price'].errors?.['required']"
+            >
+              Price is required!
+            </p>
+          </ng-container>
+        </div>
       </div>
       <button type="submit">Create</button>
     </form>
