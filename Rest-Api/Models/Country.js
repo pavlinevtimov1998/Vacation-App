@@ -15,6 +15,7 @@ const countrySchema = new mongoose.Schema({
     {
       type: mongoose.Types.ObjectId,
       ref: "Offer",
+      default: [],
     },
   ],
 });
