@@ -10,6 +10,13 @@ offerController.post(
   isAgency(),
   upload.array("images"),
   catchAsyncError(async (req, res) => {
+    if (req.files.length == 0) {
+      throw {
+        message: "Images are required!",
+        status: 400,
+      };
+    }
+
     const body = req.body;
     body.agencyId = req.agency._id;
 
