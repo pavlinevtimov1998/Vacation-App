@@ -1,6 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
+const cloudinary = require("cloudinary").v2;
 
 const router = require("./router");
 const cors = require("./Middlewares/cors");
@@ -15,6 +16,12 @@ const port = process.env.PORT || 3030;
 
 async function startServer() {
   const app = express();
+
+  cloudinary.config({
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.API_KEY,
+    api_secret: process.env.API_SECRET,
+  });
 
   await initDB();
 
