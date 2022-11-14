@@ -1,25 +1,68 @@
-const Offer = require("../Models/Offer");
+const { unlink } = require("fs");
 
-const getAll = () => Offer.find().select("-description -program");
+const Offer = require("../Models/Offer");
+const Country = require("../Models/Country");
+
+const { uploadToCloudinary } = require("../Util/imageUpload");
+
+const getAll = () => Offer.find();
 
 const getOne = (offerId) => Offer.findById(offerId);
 
-const create = (body, agencyId) => {
-  const offerData = {
-    title: body.title,
-    town: body.town,
-    country: body.country,
-    pricePerPerson: body.pricePerPerson,
-    description: body.description,
-    price: Number(body.price),
-    agencyId,
-  };
+const createOffer = async (body, files) => {
+  if (files.length == 0) {
+    throw {
+      message: "Images are required!",
+      status: 400,
+    };
+  }
 
-  return Offer.create(offerData);
+  body.images = await getImagesUrl(files);
+
+  const country = await Country.findOne({ country: body.country });
+
+  if (country) {
+    return Offer.create(body);
+  }
+
+  return Offer.create(body)
+    .then((offer) => {
+      return [
+        Country.create({
+          country: body.country,
+          image: body.images[0],
+          offerId: offer._id,
+        }),
+        offer,
+      ];
+    })
+    .then(([_, offer]) => {
+      return offer;
+    });
+};
+
+const getImagesUrl = async (files) => {
+  const imagesUrl = [];
+
+  for (let i = 0; i < files.length; i++) {
+    const localFilePath = files[i].path;
+
+    await uploadToCloudinary(localFilePath).then((result) => {
+      unlink(localFilePath, (err) => {
+        if (err) {
+          throw { message: "Unsuccessful img deleting!" };
+        }
+      });
+
+      imagesUrl.push(result.url);
+    });
+  }
+
+  return imagesUrl;
 };
 
 module.exports = {
-  create,
+  createOffer,
   getAll,
   getOne,
 };
