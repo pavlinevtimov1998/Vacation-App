@@ -1,4 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { IOffer } from 'src/app/shared/interfaces/offer.interface';
+import { WelcomeService } from '../../welcome.service';
 
 @Component({
   selector: 'app-carousel',
@@ -6,16 +8,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   styleUrls: ['./carousel.component.css'],
 })
 export class CarouselComponent implements OnInit, OnDestroy {
-  images = [
-    {
-      imageUrl: '/assets/img/vacation.jpg',
-      alt: 'vacation',
-    },
-    {
-      imageUrl: '/assets/img/vacation2.jpg',
-      alt: 'vacation',
-    },
-  ];
+  @Input() carouselData!: IOffer[];
 
   selectedIndex = 0;
   interval: any;
@@ -36,12 +29,12 @@ export class CarouselComponent implements OnInit, OnDestroy {
     if (this.selectedIndex > 0) {
       this.selectedIndex--;
     } else {
-      this.selectedIndex = this.images.length - 1;
+      this.selectedIndex = this.carouselData.length - 1;
     }
   }
 
   rightArrowHandler(): void {
-    if (this.selectedIndex < this.images.length - 1) {
+    if (this.selectedIndex < this.carouselData.length - 1) {
       this.selectedIndex++;
     } else {
       this.selectedIndex = 0;

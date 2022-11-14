@@ -1,17 +1,17 @@
 <section class="wraper">
   <app-search class="search-destination"></app-search>
   <div class="carousel-container">
-    <ng-container *ngFor="let image of images; let i = index">
+    <ng-container *ngFor="let offer of carouselData; let i = index">
       <div
         class="img-container"
         [ngClass]="{ 'image-active': selectedIndex == i }"
       >
-        <img [src]="image.imageUrl" [alt]="image.alt" class="fade" />
+        <img [src]="offer.images[0]" [alt]="offer.title" class="fade" />
       </div>
     </ng-container>
 
     <div class="carousel-dot-container">
-      <ng-container *ngFor="let dot of images; let i = index">
+      <ng-container *ngFor="let dot of carouselData; let i = index">
         <span
           class="dot"
           [ngClass]="{ 'dot-active': selectedIndex == i }"

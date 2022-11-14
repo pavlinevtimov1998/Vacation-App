@@ -1,3 +1,5 @@
+import { IAgency } from './account.interface';
+
 export interface IOffer {
   title: string;
   town: string;
@@ -8,5 +10,5 @@ export interface IOffer {
   ratingsQuantity: string;
   rating: string;
   peopleBooked: number;
-  agencyId: string;
+  agencyId: IAgency;
 }
