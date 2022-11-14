@@ -2,11 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CountriesCatalogComponent } from './countries-catalog/countries-catalog.component';
 import { MaterialModule } from '../material/material.module';
-import { themesRoutingModule } from './app-themes-routing.module';
+import { futuresRoutingModule } from './app-futures-routing.module';
 import { TopAgenciesComponent } from './top-agencies/top-agencies.component';
 import { CreateComponent } from './create/create.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -17,8 +16,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     MaterialModule,
-    themesRoutingModule,
+    futuresRoutingModule,
     ReactiveFormsModule,
   ],
 })
-export class ThemesModule {}
+export class FuturesModule {}

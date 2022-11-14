@@ -18,4 +18,4 @@ const routes: Routes = [
   },
 ];
 
-export const themesRoutingModule = RouterModule.forChild(routes);
+export const futuresRoutingModule = RouterModule.forChild(routes);
