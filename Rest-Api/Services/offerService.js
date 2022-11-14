@@ -10,17 +10,12 @@ const getAll = () => Offer.find();
 const getOne = (offerId) => Offer.findById(offerId);
 
 const createOffer = async (body, files) => {
-  console.log(body);
-  if (files.length == 0) {
-    throw {
-      message: "Images are required!",
-      status: 400,
-    };
-  }
+  const [country, images] = await Promise.all([
+    Country.findOne({ country: body.country }),
+    getImagesUrl(files),
+  ]);
 
-  body.images = await getImagesUrl(files);
-
-  const country = await Country.findOne({ country: body.country });
+  body.images = images;
 
   if (country) {
     return Offer.create(body)
