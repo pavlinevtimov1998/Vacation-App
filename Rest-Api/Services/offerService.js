@@ -10,6 +10,7 @@ const getAll = () => Offer.find();
 const getOne = (offerId) => Offer.findById(offerId);
 
 const createOffer = async (body, files) => {
+  console.log(body);
   if (files.length == 0) {
     throw {
       message: "Images are required!",
@@ -22,7 +23,18 @@ const createOffer = async (body, files) => {
   const country = await Country.findOne({ country: body.country });
 
   if (country) {
-    return Offer.create(body);
+    return Offer.create(body)
+      .then((offer) => {
+        return [
+          Country.findByIdAndUpdate(country._id, {
+            $push: { offersId: offer._id },
+          }),
+          offer,
+        ];
+      })
+      .then(([_, offer]) => {
+        return offer;
+      });
   }
 
   return Offer.create(body)
@@ -31,7 +43,7 @@ const createOffer = async (body, files) => {
         Country.create({
           country: body.country,
           image: body.images[0],
-          offerId: offer._id,
+          offersId: offer._id,
         }),
         offer,
       ];
