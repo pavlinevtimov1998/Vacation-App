@@ -2,8 +2,10 @@ const router = require("express").Router();
 
 const authController = require("./Controllers/authController");
 const offerController = require("./Controllers/offerController");
+const welcomeController = require("./Controllers/welcomeController");
 const { globalErrorHandler } = require("./Middlewares/globallErrHandler");
 
+router.use("/", welcomeController);
 router.use("/auth", authController);
 router.use("/data", offerController);
 
