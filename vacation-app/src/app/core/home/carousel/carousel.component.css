@@ -20,6 +20,7 @@
 
 .img-container {
   display: none;
+  position: relative;
 }
 
 .img-container img {
@@ -92,6 +93,36 @@
 .fade {
   animation-name: fade;
   animation-duration: 2s;
+}
+
+.agency {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 1;
+  background-color: hsla(0, 0%, 100%, 0.8);
+  border-radius: 20px;
+  width: 10rem;
+  height: 9rem;
+  display: flex;
+}
+
+.agency a {
+  width: 100%;
+  height: 100%;
+  padding: 1%;
+  color: #1c1c1c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 20px;
+}
+
+.agency img {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
 }
 
 @keyframes fade {

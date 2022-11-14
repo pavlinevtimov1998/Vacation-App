@@ -7,6 +7,13 @@
         [ngClass]="{ 'image-active': selectedIndex == i }"
       >
         <img [src]="offer.images[0]" [alt]="offer.title" class="fade" />
+        <div class="agency">
+          <a href="">
+            <img src="/assets/img/default-user.png" alt="default" />
+            <h3>Agency</h3>
+            <p>5 Offers</p>
+          </a>
+        </div>
       </div>
     </ng-container>
 
