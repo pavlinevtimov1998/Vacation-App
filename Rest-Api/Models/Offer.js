@@ -25,13 +25,13 @@ const offerSchema = new mongoose.Schema(
       required: [true, "Offer description is required!"],
       minLength: [20, "Offer description should be at least 20 characters!"],
     },
-    pricePerPerson: {
+    price: {
       type: Number,
       trim: true,
       required: [true, "Price per person is required!"],
     },
     images: {
-      type: String,
+      type: [String],
       required: [true, "At least one image is required!"],
     },
     ratingsQuantity: {
