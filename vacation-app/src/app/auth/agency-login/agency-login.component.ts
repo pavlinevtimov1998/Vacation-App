@@ -6,9 +6,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-
 import { AuthService } from 'src/app/auth.service';
-import { errorHandler } from '../../../util/form-errors';
+import { errorHandler } from 'src/app/util/form-errors';
 
 @Component({
   selector: 'app-agency-login',

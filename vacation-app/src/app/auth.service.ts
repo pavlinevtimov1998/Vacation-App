@@ -89,7 +89,7 @@ export class AuthService {
 
   logout$(): Observable<{ message: string }> {
     return this.httpClient.get<{ message: string }>(
-      environment.api + 'auth/logout',
+      environment.api + '/auth/logout',
       { withCredentials: true }
     );
   }

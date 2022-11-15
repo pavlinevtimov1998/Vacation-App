@@ -8,7 +8,7 @@ import {
 import { Router } from '@angular/router';
 
 import { AuthService } from 'src/app/auth.service';
-import { errorHandler } from '../../../util/form-errors';
+import { errorHandler } from '../../util/form-errors';
 
 @Component({
   selector: 'app-user-login',

@@ -1,0 +1,54 @@
+<section class="login">
+  <article class="header-container">
+    <h1>Sign in</h1>
+    <p>
+      You don't have account yet? <a routerLink="/auth/register">Register</a>
+    </p>
+  </article>
+  <div class="form">
+    <form
+      class="agency"
+      [formGroup]="agencyLoginForm"
+      (submit)="handleAgencyLogin()"
+    >
+      <div class="email">
+        <label for="email">Email</label>
+        <input
+          [ngClass]="{ 'input-error': errHandler(agencyLoginForm, 'email') }"
+          formControlName="email"
+          type="text"
+          name="email"
+        />
+        <ng-container>
+          <p
+            *ngIf="agencyLoginForm.controls['email'].errors?.['required'] && errHandler(agencyLoginForm, 'email')"
+            class="error"
+          >
+            Email is required!
+          </p>
+        </ng-container>
+      </div>
+      <div class="password">
+        <label for="password">Password</label>
+        <input
+          [ngClass]="{ 'input-error': errHandler(agencyLoginForm, 'password') }"
+          formControlName="password"
+          type="password"
+          name="password"
+        />
+        <ng-container>
+          <p
+            *ngIf="agencyLoginForm.controls['password'].errors?.['required'] && errHandler(agencyLoginForm,'password')"
+            class="error"
+          >
+            Password is required!
+          </p>
+        </ng-container>
+      </div>
+      <button class="sign-in-btn" type="submit">
+        <span>Sign in</span>
+        <mat-icon>login</mat-icon>
+      </button>
+    </form>
+  </div>
+</section>

@@ -11,7 +11,7 @@ export class WelcomeService {
   constructor(private httpClient: HttpClient) {}
 
   getCarouselData$(): Observable<IOffer[]> {
-    return this.httpClient.get<IOffer[]>(environment.api, {
+    return this.httpClient.get<IOffer[]>(environment.api + '/', {
       withCredentials: true,
     });
   }
@@ -21,6 +21,6 @@ export class WelcomeService {
   > {
     return this.httpClient.get<
       { country: string; id: string; imageUrl: string }[]
-    >(environment.api + 'top-countries', { withCredentials: true });
+    >(environment.api + '/top-countries', { withCredentials: true });
   }
 }

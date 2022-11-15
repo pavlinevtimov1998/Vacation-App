@@ -1,0 +1,54 @@
+<section class="login">
+  <article class="header-container">
+    <h1>Sign in</h1>
+    <p>
+      You don't have account yet? <a routerLink="/auth/register">Register</a>
+    </p>
+  </article>
+  <div class="form">
+    <form
+      class="user"
+      [formGroup]="userLoginForm"
+      (ngSubmit)="handleUserLogin()"
+    >
+      <div class="username">
+        <label for="username">Username</label>
+        <input
+          [ngClass]="{ 'input-error': errHandler(userLoginForm, 'username') }"
+          formControlName="username"
+          type="text"
+          name="username"
+        />
+        <ng-container>
+          <p
+            *ngIf="userLoginForm.controls['username'].errors?.['required'] && errHandler(userLoginForm,'username')"
+            class="error"
+          >
+            Username is required!
+          </p>
+        </ng-container>
+      </div>
+      <div class="password">
+        <label for="password">Password</label>
+        <input
+          [ngClass]="{ 'input-error': errHandler(userLoginForm, 'password') }"
+          formControlName="password"
+          type="password"
+          name="password"
+        />
+        <ng-container>
+          <p
+            *ngIf="userLoginForm.controls['password'].errors?.['required'] && errHandler(userLoginForm,'password')"
+            class="error"
+          >
+            Password is required!
+          </p>
+        </ng-container>
+      </div>
+      <button class="sign-in-btn" type="submit">
+        <span>Sign in</span>
+        <mat-icon>login</mat-icon>
+      </button>
+    </form>
+  </div>
+</section>
