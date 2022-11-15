@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth.service';
+import { AuthDialogComponent } from 'src/app/shared/dialog/auth-dialog.component';
 import { IAccount } from '../../shared/interfaces/account.interface';
 
 @Component({
@@ -14,7 +16,7 @@ export class HeaderComponent implements OnInit {
 
   toggleProfileMobNav = false;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private dialog: MatDialog) {}
 
   ngOnInit(): void {}
 
@@ -32,5 +34,12 @@ export class HeaderComponent implements OnInit {
 
   profileMobileLinks() {
     this.toggleProfileMobNav = !this.toggleProfileMobNav;
+  }
+
+  loginClick() {
+    this.dialog.open(AuthDialogComponent, {
+      width: '300px',
+      height: '200px',
+    });
   }
 }

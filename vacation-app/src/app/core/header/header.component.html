@@ -14,7 +14,7 @@
 
   <section *ngIf="!(isLogged$ | async)" class="sign-up">
     <article class="absolute">
-      <a routerLink="/auth/login" class="btn">
+      <a href="javascript:void(0)" class="btn" (click)="loginClick()">
         <span>Sign up</span>
         <mat-icon class="login-icon">login</mat-icon>
       </a>
