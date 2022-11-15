@@ -13,14 +13,20 @@
   </section>
 
   <section *ngIf="!(isLogged$ | async)" class="sign-up">
-    <a routerLink="/auth/login" class="btn">
-      <span>Sign up</span>
-      <mat-icon class="login-icon">login</mat-icon>
-    </a>
+    <article class="absolute">
+      <a routerLink="/auth/login" class="btn">
+        <span>Sign up</span>
+        <mat-icon class="login-icon">login</mat-icon>
+      </a>
+      <div class="underline btns"></div>
+    </article>
   </section>
 
   <section *ngIf="isLogged$ | async" class="profile">
-    <article *ngIf="(currentUser$ | async)?.isAgency" class="account-nav">
+    <article
+      *ngIf="(currentUser$ | async)?.isAgency"
+      class="account-nav absolute"
+    >
       <a routerLink="/offers/create"> Add new offer </a>
       <div class="underline"></div>
       <app-account-nav></app-account-nav>
