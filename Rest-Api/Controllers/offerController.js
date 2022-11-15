@@ -6,7 +6,7 @@ const { catchAsyncError } = require("../Util/errorParser");
 const { upload } = require("../Util/imageUpload");
 
 offerController.post(
-  "/offers",
+  "/",
   isAgency(),
   upload.array("images"),
   catchAsyncError(async (req, res) => {
