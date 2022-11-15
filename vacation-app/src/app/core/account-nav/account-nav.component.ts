@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { combineLatest, mergeMap, Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { AuthService } from 'src/app/auth.service';
 })
 export class AccountNavComponent implements OnInit {
   currentUser$ = this.authService.currentUser$;
+  subscription!: Subscription;
 
   isMenuOpened: boolean = false;
 
@@ -25,15 +27,24 @@ export class AccountNavComponent implements OnInit {
   }
 
   logoutHandler() {
-    this.authService.logout$().subscribe({
-      next: (response) => {
-        this.authService.handleLogout();
-        this.router.navigate(['/']);
-      },
-      error: (err) => {
-        console.log(err);
-        this.router.navigate(['/']);
-      },
-    });
+    this.subscription = this.currentUser$
+      .pipe(
+        mergeMap((account) => {
+          const url = account.isAgency ? '/agency/' : '/user/';
+
+          return this.authService.logout$(url);
+        })
+      )
+      .subscribe({
+        next: (response) => {
+          console.log(response);
+          this.authService.handleLogout();
+          this.router.navigate(['/']);
+        },
+        error: (err) => {
+          console.log(err);
+          this.router.navigate(['/']);
+        },
+      });
   }
 }

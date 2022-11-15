@@ -38,7 +38,7 @@ export class AuthService {
     rePassword: string;
   }): Observable<IAccount> {
     return this.httpClient.post<IAccount>(
-      environment.api + '/auth/user/register',
+      environment.api + '/user/register',
       body,
       {
         withCredentials: true,
@@ -51,7 +51,7 @@ export class AuthService {
     password: string;
   }): Observable<IAccount> {
     return this.httpClient.post<IAccount>(
-      environment.api + '/auth/user/login',
+      environment.api + '/user/login',
       body,
       {
         withCredentials: true,
@@ -66,7 +66,7 @@ export class AuthService {
     rePassword: string;
   }): Observable<IAccount> {
     return this.httpClient.post<IAccount>(
-      environment.api + '/auth/agency/register',
+      environment.api + '/agency/register',
       body,
       {
         withCredentials: true,
@@ -79,7 +79,7 @@ export class AuthService {
     password: string;
   }): Observable<IAccount> {
     return this.httpClient.post<IAccount>(
-      environment.api + '/auth/agency/login',
+      environment.api + '/agency/login',
       body,
       {
         withCredentials: true,
@@ -87,9 +87,9 @@ export class AuthService {
     );
   }
 
-  logout$(): Observable<{ message: string }> {
+  logout$(url: string): Observable<{ message: string }> {
     return this.httpClient.get<{ message: string }>(
-      environment.api + '/auth/logout',
+      environment.api + url + '/logout',
       { withCredentials: true }
     );
   }
