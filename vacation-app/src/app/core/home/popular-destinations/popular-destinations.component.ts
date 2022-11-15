@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { createFind } from 'rxjs/internal/operators/find';
+import { IOffer } from 'src/app/shared/interfaces/offer.interface';
 
 @Component({
   selector: 'app-popular-destinations',
@@ -6,67 +8,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./popular-destinations.component.css'],
 })
 export class PopularDestinationsComponent implements OnInit {
-  images = [
-    {
-      imageUrl: '/assets/img/vacation.jpg',
-      alt: 'vacation',
-    },
-    {
-      imageUrl: '/assets/img/vacation2.jpg',
-      alt: 'vacation',
-    },
-    {
-      imageUrl: '/assets/img/vacation.jpg',
-      alt: 'vacation',
-    },
-    {
-      imageUrl: '/assets/img/vacation2.jpg',
-      alt: 'vacation',
-    },
-    {
-      imageUrl: '/assets/img/vacation.jpg',
-      alt: 'vacation',
-    },
-    {
-      imageUrl: '/assets/img/vacation2.jpg',
-      alt: 'vacation',
-    },
-    {
-      imageUrl: '/assets/img/vacation.jpg',
-      alt: 'vacation',
-    },
-    {
-      imageUrl: '/assets/img/vacation2.jpg',
-      alt: 'vacation',
-    },
-    {
-      imageUrl: '/assets/img/vacation.jpg',
-      alt: 'vacation',
-    },
-  ];
-  currentImages = this.images.slice(0, 1);
+  @Input() topDestinations!: IOffer[];
 
-  index = 0;
-  dotIndex = 0;
-  interval: any;
+  selectedIndex = 0;
 
   constructor() {}
 
   ngOnInit(): void {}
 
   leftArrowHandler(): void {
-    if (this.index > 0) {
-      this.index--;
+    if (this.selectedIndex > 0) {
+      this.selectedIndex--;
+    } else {
+      this.selectedIndex = this.topDestinations.length - 1;
     }
-
-    this.currentImages = this.images.slice(0 + this.index, 1 + this.index);
   }
 
   rightArrowHandler(): void {
-    if (this.index < this.images.length - 1) {
-      this.index++;
+    if (this.selectedIndex < this.topDestinations.length - 1) {
+      this.selectedIndex++;
+    } else {
+      this.selectedIndex = 0;
     }
-    
-    this.currentImages = this.images.slice(0 + this.index, 1 + this.index);
   }
 }

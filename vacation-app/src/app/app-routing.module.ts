@@ -14,7 +14,7 @@ const routes: Routes = [
   {
     path: 'offers',
     loadChildren: () =>
-      import('./themes/themes.module').then((m) => m.ThemesModule),
+      import('./feature/feature.module').then((m) => m.FeatureModule),
   },
 ];
 

@@ -10,9 +10,17 @@ import { IOffer } from '../shared/interfaces/offer.interface';
 export class WelcomeService {
   constructor(private httpClient: HttpClient) {}
 
-  getCarouselData(): Observable<IOffer[]> {
+  getCarouselData$(): Observable<IOffer[]> {
     return this.httpClient.get<IOffer[]>(environment.api, {
       withCredentials: true,
     });
+  }
+
+  getTopCountries$(): Observable<
+    { country: string; id: string; imageUrl: string }[]
+  > {
+    return this.httpClient.get<
+      { country: string; id: string; imageUrl: string }[]
+    >(environment.api + 'top-countries', { withCredentials: true });
   }
 }

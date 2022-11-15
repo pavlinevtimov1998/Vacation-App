@@ -4,26 +4,11 @@
     <p>Click to view vacation offers!</p>
   </article>
   <article class="countries-container">
-    <a class="country" href="">
-      <img
-        src="https://res.cloudinary.com/dlw7pmlvx/image/upload/v1668461400/spain_vuznoh.jpg"
-        alt=""
-      />
-      <h1>Spain</h1>
-    </a>
-    <a class="country" href="">
-      <img
-        src="https://res.cloudinary.com/dlw7pmlvx/image/upload/v1668461422/france_fum18o.jpg"
-        alt=""
-      />
-      <h1>Spain</h1>
-    </a>
-    <a class="country" href="">
-      <img
-        src="https://res.cloudinary.com/dlw7pmlvx/image/upload/v1668461413/greece_gmgi32.jpg"
-        alt=""
-      />
-      <h1>Spain</h1>
-    </a>
+    <ng-container *ngFor="let country of topCountries">
+      <a class="country" [routerLink]="['/countries', country.id]">
+        <img [src]="country.imageUrl" [alt]="country.country" />
+        <h1>{{ country.country }}</h1>
+      </a>
+    </ng-container>
   </article>
 </section>

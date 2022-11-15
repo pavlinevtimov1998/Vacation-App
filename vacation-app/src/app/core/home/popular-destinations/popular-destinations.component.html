@@ -4,9 +4,13 @@
     <p class="text">Click on each for more details!</p>
   </article>
   <article class="carousel">
-    <ng-container *ngFor="let image of currentImages">
-      <div class="image-active">
-        <img [src]="image.imageUrl" [alt]="image.alt" class="fade" />
+    <ng-container *ngFor="let destination of topDestinations; let i = index">
+      <div class="img-container" [ngClass]="{ 'image-active': selectedIndex == i }">
+        <img
+          [src]="destination.images[0]"
+          [alt]="destination.title"
+          class="fade"
+        />
       </div>
     </ng-container>
 
