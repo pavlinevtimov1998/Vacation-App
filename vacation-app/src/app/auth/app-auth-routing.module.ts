@@ -1,16 +1,26 @@
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login-page/login/login.component';
-import { RegisterComponent } from './register-page/register/register.component';
+import { AgencyLoginComponent } from './agency-login/agency-login.component';
+import { AgencyRegisterComponent } from './agency-register/agency-register.component';
 import { ProfileComponent } from './profile/profile.component';
+import { UserLoginComponent } from './user-login/user-login.component';
+import { UserRegisterComponent } from './user-register/user-register.component';
 
 const routes: Routes = [
   {
-    path: 'login',
-    component: LoginComponent,
+    path: 'agency/login',
+    component: AgencyLoginComponent,
   },
   {
-    path: 'register',
-    component: RegisterComponent,
+    path: 'agency/register',
+    component: AgencyRegisterComponent,
+  },
+  {
+    path: 'user/login',
+    component: UserLoginComponent,
+  },
+  {
+    path: 'user/register',
+    component: UserRegisterComponent,
   },
   {
     path: 'profile',
