@@ -3,41 +3,19 @@
     <article class="header">
       <h1>All Countries</h1>
       <form>
-        <input
-          type="search"
-          name="search"
-          placeholder="Search country"
-        />
+        <input type="search" name="search" placeholder="Search country" />
         <button>
           <mat-icon>search</mat-icon>
         </button>
       </form>
     </article>
     <article class="countries-container">
-      <a class="country" href="">
-        <img src="/assets/img/vacation.jpg" alt="" />
-        <h1>Spain</h1>
-      </a>
-      <a class="country" href="">
-        <img src="/assets/img/iphone1.jpg" alt="" />
-        <h1>Spain</h1>
-      </a>
-      <a class="country" href="">
-        <img src="/assets/img/iphone1.jpg" alt="" />
-        <h1>Spain</h1>
-      </a>
-      <a class="country" href="">
-        <img src="/assets/img/iphone1.jpg" alt="" />
-        <h1>Spain</h1>
-      </a>
-      <a class="country" href="">
-        <img src="/assets/img/iphone1.jpg" alt="" />
-        <h1>Spain</h1>
-      </a>
-      <a class="country" href="">
-        <img src="/assets/img/iphone1.jpg" alt="" />
-        <h1>Spain</h1>
-      </a>
+      <ng-container *ngFor="let country of countries">
+        <a class="country" [routerLink]="['/countries', country._id]">
+          <img [src]="country.image" [alt]="country.country" />
+          <h1>{{ country.country }}</h1>
+        </a>
+      </ng-container>
     </article>
   </div>
 </section>
