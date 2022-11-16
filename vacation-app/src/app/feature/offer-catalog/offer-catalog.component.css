@@ -1,0 +1,19 @@
+.wrapper {
+  padding-top: 5%;
+  padding-bottom: 7%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+}
+
+.offers-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+app-offer-item {
+  width: 28%;
+}
