@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-auth-dialog',
   template: `<div class="sign-in">
-      <h1 mat-dialog-title>You already have account?</h1>
+      <h1 mat-dialog-title>Searching for vacations?</h1>
       <mat-dialog-actions>
         <button
           (click)="userHandler('login')"
@@ -12,28 +12,29 @@ import { Router } from '@angular/router';
           mat-dialog-close="true"
           color="primary"
         >
-          Sign In
+          Login
         </button>
-        <button
-          (click)="agencyHandler('login')"
-          mat-raised-button
-          mat-dialog-close="true"
-          color="primary"
-        >
-          Agency Sign In
-        </button>
-      </mat-dialog-actions>
-    </div>
-    <div class="sign-up">
-      <h1 mat-dialog-title>Choose one if you don't have account!</h1>
-      <mat-dialog-actions>
         <button
           (click)="userHandler('register')"
           mat-raised-button
           mat-dialog-close="true"
           color="primary"
         >
-          Sign Up
+          Register
+        </button>
+      </mat-dialog-actions>
+    </div>
+    <div class="line"></div>
+    <div class="sign-up">
+      <h1 mat-dialog-title>Searching place to grow your Agency?</h1>
+      <mat-dialog-actions>
+        <button
+          (click)="agencyHandler('login')"
+          mat-raised-button
+          mat-dialog-close="true"
+          color="primary"
+        >
+          Agency Login
         </button>
         <button
           (click)="agencyHandler('register')"
@@ -41,7 +42,7 @@ import { Router } from '@angular/router';
           mat-dialog-close="true"
           color="primary"
         >
-          Agency Sign Up
+          Agency Register
         </button>
       </mat-dialog-actions>
     </div>`,
