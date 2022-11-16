@@ -5,12 +5,14 @@ const countryController = require("./Controllers/countryController");
 const offerController = require("./Controllers/offerController");
 const welcomeController = require("./Controllers/welcomeController");
 const agencyController = require("./Controllers/agencyController");
+const profileController = require("./Controllers/profileController");
 
 const { globalErrorHandler } = require("./Middlewares/globallErrHandler");
 
 router.use("/", welcomeController);
 router.use("/user", userController);
 router.use("/agency", agencyController);
+router.use("/profile", profileController);
 router.use("/countries", countryController);
 router.use("/offers", offerController);
 
