@@ -5,6 +5,15 @@ const offerService = require("../Services/offerService");
 const { catchAsyncError } = require("../Util/errorParser");
 const { upload } = require("../Util/imageUpload");
 
+offerController.get(
+  "/",
+  catchAsyncError(async (req, res) => {
+    const offers = await offerService.getOffers();
+
+    res.status(200).json(offers);
+  })
+);
+
 offerController.post(
   "/",
   isAgency(),
