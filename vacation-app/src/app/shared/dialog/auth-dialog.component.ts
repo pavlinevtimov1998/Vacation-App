@@ -52,8 +52,6 @@ export class AuthDialogComponent {
   constructor(private router: Router) {}
 
   agencyHandler(route: string) {
-    console.log('here', route);
-
     this.router.navigate([`/auth/agency/${route}`]);
   }
 
