@@ -11,6 +11,12 @@ import { IOffer } from './shared/interfaces/offer.interface';
 export class OfferService {
   constructor(private httpClient: HttpClient) {}
 
+  getOffers$(): Observable<IOffer[]> {
+    return this.httpClient.get<IOffer[]>(environment.api + '/offers', {
+      withCredentials: true,
+    });
+  }
+
   createOffer(body: FormData): Observable<IOffer> {
     return this.httpClient.post<IOffer>(environment.api + '/offers', body, {
       withCredentials: true,

@@ -1,6 +1,7 @@
 import { IAgency } from './account.interface';
 
 export interface IOffer {
+  _id: string;
   title: string;
   town: string;
   country: string;

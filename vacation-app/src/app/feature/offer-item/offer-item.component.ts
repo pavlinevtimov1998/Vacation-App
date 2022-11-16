@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { IOffer } from 'src/app/shared/interfaces/offer.interface';
 
 @Component({
   selector: 'app-offer-item',
   templateUrl: './offer-item.component.html',
-  styleUrls: ['./offer-item.component.css']
+  styleUrls: ['./offer-item.component.css'],
 })
 export class OfferItemComponent implements OnInit {
+  @Input() offer!: IOffer;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
