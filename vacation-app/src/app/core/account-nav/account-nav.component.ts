@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { combineLatest, mergeMap, Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth.service';
@@ -8,7 +8,7 @@ import { AuthService } from 'src/app/auth.service';
   templateUrl: './account-nav.component.html',
   styleUrls: ['./account-nav.component.css'],
 })
-export class AccountNavComponent implements OnInit {
+export class AccountNavComponent implements OnInit, OnDestroy {
   currentUser$ = this.authService.currentUser$;
   subscription!: Subscription;
 
@@ -30,14 +30,13 @@ export class AccountNavComponent implements OnInit {
     this.subscription = this.currentUser$
       .pipe(
         mergeMap((account) => {
-          const url = account.isAgency ? '/agency/' : '/user/';
+          const url = account?.isAgency ? '/agency' : '/user';
 
           return this.authService.logout$(url);
         })
       )
       .subscribe({
         next: (response) => {
-          console.log(response);
           this.authService.handleLogout();
           this.router.navigate(['/']);
         },
@@ -46,5 +45,9 @@ export class AccountNavComponent implements OnInit {
           this.router.navigate(['/']);
         },
       });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
   }
 }
