@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { OfferCatalogComponent } from './offer-catalog/offer-catalog.component';
 import { OfferItemComponent } from './offer-item/offer-item.component';
 import { OfferDetailsComponent } from './offer-details/offer-details.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { OfferDetailsComponent } from './offer-details/offer-details.component';
     MaterialModule,
     featureRoutingModule,
     ReactiveFormsModule,
+    SharedModule,
   ],
 })
 export class FeatureModule {}

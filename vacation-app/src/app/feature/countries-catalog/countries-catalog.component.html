@@ -11,10 +11,7 @@
     </article>
     <article class="countries-container">
       <ng-container *ngFor="let country of countries">
-        <a class="country" [routerLink]="['/countries', country._id]">
-          <img [src]="country.image" [alt]="country.country" />
-          <h1>{{ country.country }}</h1>
-        </a>
+        <app-country-item [country]="country"></app-country-item>
       </ng-container>
     </article>
   </div>

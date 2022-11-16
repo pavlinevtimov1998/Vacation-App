@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { combineLatest, combineLatestAll, Subscription } from 'rxjs';
+import { ICountry } from 'src/app/shared/interfaces/country.interface';
 import { IOffer } from 'src/app/shared/interfaces/offer.interface';
 import { WelcomeService } from '../../welcome.service';
 
@@ -10,11 +11,7 @@ import { WelcomeService } from '../../welcome.service';
 })
 export class WelcomePageComponent implements OnInit, OnDestroy {
   carouselData!: IOffer[];
-  topCountries!: {
-    country: string;
-    id: string;
-    imageUrl: string;
-  }[];
+  topCountries!: ICountry[];
 
   subscribtion$!: Subscription;
 

@@ -1,14 +1,11 @@
-<section class="countries">
+<section class="wrapper">
   <article class="title-container">
     <h1>Popular Countries</h1>
     <p>Click to view vacation offers!</p>
   </article>
   <article class="countries-container">
     <ng-container *ngFor="let country of topCountries">
-      <a class="country" [routerLink]="['/countries', country.id]">
-        <img [src]="country.imageUrl" [alt]="country.country" />
-        <h1>{{ country.country }}</h1>
-      </a>
+      <app-country-item [country]="country"></app-country-item>
     </ng-container>
   </article>
 </section>

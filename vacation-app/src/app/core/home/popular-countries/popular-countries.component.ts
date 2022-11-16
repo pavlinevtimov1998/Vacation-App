@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ICountry } from 'src/app/shared/interfaces/country.interface';
 
 @Component({
   selector: 'app-popular-countries',
@@ -6,11 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./popular-countries.component.css'],
 })
 export class PopularCountriesComponent implements OnInit {
-  @Input() topCountries!: {
-    country: string;
-    id: string;
-    imageUrl: string;
-  }[];
+  @Input() topCountries!: ICountry[];
 
   constructor() {}
 

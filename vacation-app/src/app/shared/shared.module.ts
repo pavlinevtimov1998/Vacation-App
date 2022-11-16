@@ -5,10 +5,16 @@ import { MaterialModule } from '../material/material.module';
 import { ClickOutsideDirective } from './click-outside.directive';
 import { AuthDialogComponent } from './dialog/auth-dialog.component';
 import { RouterModule } from '@angular/router';
+import { CountryItemComponent } from './country-item/country-item.component';
 
 @NgModule({
-  declarations: [BenefitsComponent, ClickOutsideDirective, AuthDialogComponent],
+  declarations: [
+    BenefitsComponent,
+    ClickOutsideDirective,
+    AuthDialogComponent,
+    CountryItemComponent,
+  ],
   imports: [CommonModule, MaterialModule, RouterModule],
-  exports: [BenefitsComponent, ClickOutsideDirective],
+  exports: [BenefitsComponent, ClickOutsideDirective, CountryItemComponent],
 })
 export class SharedModule {}

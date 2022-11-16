@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { ICountry } from '../shared/interfaces/country.interface';
 import { IOffer } from '../shared/interfaces/offer.interface';
 
 @Injectable({
@@ -16,11 +17,9 @@ export class WelcomeService {
     });
   }
 
-  getTopCountries$(): Observable<
-    { country: string; id: string; imageUrl: string }[]
-  > {
-    return this.httpClient.get<
-      { country: string; id: string; imageUrl: string }[]
-    >(environment.api + '/top-countries', { withCredentials: true });
+  getTopCountries$(): Observable<ICountry[]> {
+    return this.httpClient.get<ICountry[]>(environment.api + '/top-countries', {
+      withCredentials: true,
+    });
   }
 }
