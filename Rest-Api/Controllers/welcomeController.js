@@ -12,8 +12,13 @@ welcomeController.get(
   })
 );
 
-welcomeController.get("/top-countries", (req, res) => {
-  res.status(200).json(welcomeService.mockData);
-});
+welcomeController.get(
+  "/top-countries",
+  catchAsyncError(async (req, res) => {
+    const topCountries = await welcomeService.TopCointries();
+
+    res.status(200).json(topCountries);
+  })
+);
 
 module.exports = welcomeController;
