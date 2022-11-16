@@ -1,6 +1,7 @@
 import { RouterModule, Routes } from '@angular/router';
 import { CountriesCatalogComponent } from './countries-catalog/countries-catalog.component';
 import { CreateComponent } from './create/create.component';
+import { OfferCatalogComponent } from './offer-catalog/offer-catalog.component';
 import { TopAgenciesComponent } from './top-agencies/top-agencies.component';
 
 const routes: Routes = [
@@ -15,6 +16,10 @@ const routes: Routes = [
   {
     path: 'create',
     component: CreateComponent,
+  },
+  {
+    path: 'catalog',
+    component: OfferCatalogComponent,
   },
 ];
 
