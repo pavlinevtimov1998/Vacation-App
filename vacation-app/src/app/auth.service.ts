@@ -96,7 +96,7 @@ export class AuthService {
 
   appInitializer() {
     this.httpClient
-      .get<IAccount>(environment.api + '/auth/profile', {
+      .get<IAccount>(environment.api + '/profile', {
         withCredentials: true,
       })
       .subscribe({
