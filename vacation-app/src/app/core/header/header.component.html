@@ -31,7 +31,7 @@
       <div class="underline"></div>
       <app-account-nav></app-account-nav>
     </article>
-    <article *ngIf="!(currentUser$ | async)?.isAgency" class="account-nav">
+    <article *ngIf="!(currentUser$ | async)?.isAgency" class="account-nav absolute">
       <a routerLink="/offers/favorites">My Favorites</a>
       <div class="underline"></div>
       <app-account-nav></app-account-nav>
