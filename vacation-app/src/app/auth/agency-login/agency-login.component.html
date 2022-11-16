@@ -1,23 +1,20 @@
 <section class="login">
   <article class="header-container">
-    <h1>Sign in</h1>
+    <h1>Agency Sign In</h1>
     <p>
-      You don't have account yet? <a routerLink="/auth/register">Register</a>
+      Your Agency don't have account yet?
+      <a routerLink="/auth/agency/register">Sign Up</a>
     </p>
   </article>
-  <div class="form">
-    <form
-      class="agency"
-      [formGroup]="agencyLoginForm"
-      (submit)="handleAgencyLogin()"
-    >
+  <div class="form-container">
+    <form [formGroup]="agencyLoginForm" (submit)="handleAgencyLogin()">
       <div class="email">
-        <label for="email">Email</label>
         <input
           [ngClass]="{ 'input-error': errHandler(agencyLoginForm, 'email') }"
           formControlName="email"
           type="text"
           name="email"
+          placeholder="Email"
         />
         <ng-container>
           <p
@@ -29,12 +26,12 @@
         </ng-container>
       </div>
       <div class="password">
-        <label for="password">Password</label>
         <input
           [ngClass]="{ 'input-error': errHandler(agencyLoginForm, 'password') }"
           formControlName="password"
           type="password"
           name="password"
+          placeholder="Password"
         />
         <ng-container>
           <p

@@ -1,21 +1,20 @@
 <section class="register">
   <article class="header-container">
     <h1>Sign up</h1>
-    <p>You already have account? <a routerLink="/auth/login">Login</a></p>
+    <p>
+      Your Agency already have account?
+      <a routerLink="/auth/agency/login">Sign In</a>
+    </p>
   </article>
-  <div class="form">
-    <form
-      class="agency"
-      [formGroup]="agencyRegisterForm"
-      (submit)="handleAgencyRegister()"
-    >
+  <div class="form-container">
+    <form [formGroup]="agencyRegisterForm" (submit)="handleAgencyRegister()">
       <div class="email">
-        <label for="email">Agency email</label>
         <input
           [ngClass]="{ 'input-error': errHandler(agencyRegisterForm, 'email') }"
           formControlName="email"
           type="text"
           name="email"
+          placeholder="Email"
         />
         <ng-container>
           <p
@@ -39,7 +38,6 @@
         </ng-container>
       </div>
       <div class="agency-name">
-        <label for="agencyName">Agency name</label>
         <input
           [ngClass]="{
             'input-error': errHandler(agencyRegisterForm, 'agencyName')
@@ -47,6 +45,7 @@
           formControlName="agencyName"
           type="text"
           name="agencyName"
+          placeholder="Agency name"
         />
         <ng-container>
           <p
@@ -71,7 +70,6 @@
       </div>
       <ng-container [formGroup]="passwordsGroup">
         <div class="password">
-          <label for="password">Password</label>
           <input
             [ngClass]="{
               'input-error': errHandler(passwordsGroup, 'password')
@@ -79,6 +77,7 @@
             formControlName="password"
             type="password"
             name="password"
+            placeholder="Password"
           />
           <ng-container>
             <p
@@ -96,7 +95,6 @@
           </ng-container>
         </div>
         <div class="re-pass">
-          <label for="rePassword">Repeat password</label>
           <input
             [ngClass]="{
               'input-error': errHandler(passwordsGroup, 'rePassword')
@@ -104,6 +102,7 @@
             formControlName="rePassword"
             type="password"
             name="rePassword"
+            placeholder="Repeat password"
           />
           <ng-container [formGroup]="passwordsGroup">
             <p

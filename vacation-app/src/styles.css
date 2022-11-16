@@ -1,6 +1,5 @@
 @import "@angular/material/prebuilt-themes/indigo-pink.css";
 @import url("https://use.fontawesome.com/releases/v6.1.1/css/all.css");
-@import "./assets/styles/authPages.css";
 @import "./assets/styles/countries.css";
 
 * {
@@ -34,7 +33,6 @@ a {
 
 input:focus,
 textarea:focus {
-  border: 1px solid #0d47a1;
   outline: none;
   outline-style: none;
   outline: 0;

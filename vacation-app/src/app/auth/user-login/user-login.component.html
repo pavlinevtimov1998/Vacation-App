@@ -2,22 +2,19 @@
   <article class="header-container">
     <h1>Sign in</h1>
     <p>
-      You don't have account yet? <a routerLink="/auth/register">Register</a>
+      You don't have account yet?
+      <a routerLink="/auth/user/register">Sign Up</a>
     </p>
   </article>
-  <div class="form">
-    <form
-      class="user"
-      [formGroup]="userLoginForm"
-      (ngSubmit)="handleUserLogin()"
-    >
+  <div class="form-container">
+    <form [formGroup]="userLoginForm" (ngSubmit)="handleUserLogin()">
       <div class="username">
-        <label for="username">Username</label>
         <input
           [ngClass]="{ 'input-error': errHandler(userLoginForm, 'username') }"
           formControlName="username"
           type="text"
           name="username"
+          placeholder="Username"
         />
         <ng-container>
           <p
@@ -29,12 +26,12 @@
         </ng-container>
       </div>
       <div class="password">
-        <label for="password">Password</label>
         <input
           [ngClass]="{ 'input-error': errHandler(userLoginForm, 'password') }"
           formControlName="password"
           type="password"
           name="password"
+          placeholder="Passwrod"
         />
         <ng-container>
           <p

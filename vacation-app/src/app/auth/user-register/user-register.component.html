@@ -1,16 +1,13 @@
 <section class="register">
   <article class="header-container">
     <h1>Sign up</h1>
-    <p>You already have account? <a routerLink="/auth/login">Login</a></p>
+    <p>
+      You already have account? <a routerLink="/auth/user/login">Sign In</a>
+    </p>
   </article>
-  <div class="form">
-    <form
-      class="user"
-      [formGroup]="userRegisterForm"
-      (submit)="handleUserRegister()"
-    >
+  <div class="form-container">
+    <form [formGroup]="userRegisterForm" (submit)="handleUserRegister()">
       <div class="username">
-        <label for="username">Username</label>
         <input
           [ngClass]="{
             'input-error': errHandler(userRegisterForm, 'username')
@@ -18,6 +15,7 @@
           formControlName="username"
           type="text"
           name="username"
+          placeholder="Username"
         />
         <ng-container>
           <p
@@ -36,7 +34,6 @@
       </div>
       <ng-container [formGroup]="passwordsGroup">
         <div class="password">
-          <label for="password">Password</label>
           <input
             [ngClass]="{
               'input-error': errHandler(passwordsGroup, 'password')
@@ -44,6 +41,7 @@
             formControlName="password"
             type="password"
             name="password"
+            placeholder="Password"
           />
           <ng-container>
             <p
@@ -61,7 +59,6 @@
           </ng-container>
         </div>
         <div class="re-pass">
-          <label for="rePassword">Repeat password</label>
           <input
             [ngClass]="{
               'input-error': errHandler(passwordsGroup, 'rePassword')
@@ -69,6 +66,7 @@
             formControlName="rePassword"
             type="password"
             name="rePassword"
+            placeholder="Repeat password"
           />
           <ng-container>
             <p
