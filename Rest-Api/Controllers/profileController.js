@@ -5,10 +5,10 @@ const { isAccount } = require("../Middlewares/guards");
 const { catchAsyncError } = require("../Util/errorParser");
 
 profileController.get(
-  "/accountId",
+  "/",
   isAccount(),
   catchAsyncError(async (req, res) => {
-    const [account, isAgency] = await profileController.getAccountData(
+    const [account, isAgency] = await profileService.getAccountData(
       req.agency,
       req.user
     );
