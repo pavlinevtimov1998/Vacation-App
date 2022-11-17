@@ -5,7 +5,6 @@ import { MaterialModule } from '../material/material.module';
 import { RouterModule } from '@angular/router';
 import { CarouselComponent } from './home/carousel/carousel.component';
 import { SearchComponent } from './home/search/search.component';
-import { PopularDestinationsComponent } from './home/popular-destinations/popular-destinations.component';
 import { PopularCountriesComponent } from './home/popular-countries/popular-countries.component';
 import { FooterComponent } from './footer/footer.component';
 import { WelcomePageComponent } from './home/welcome-page/welcome-page.component';
@@ -18,7 +17,6 @@ import { SharedModule } from '../shared/shared.module';
     HeaderComponent,
     CarouselComponent,
     SearchComponent,
-    PopularDestinationsComponent,
     PopularCountriesComponent,
     FooterComponent,
     WelcomePageComponent,

@@ -23,17 +23,12 @@ export class OfferItemComponent implements OnInit {
       (event.target as HTMLElement).tagName !== 'BUTTON' &&
       (event.target as HTMLElement).tagName !== 'MAT-ICON'
     ) {
-      console.log(
-        (event.target as HTMLElement).tagName !== 'BUTTON',
-        (event.target as HTMLElement).tagName !== 'MAT-ICON'
-      );
-      this.router.navigate([`/offer/${this.offer._id}`]);
+      this.router.navigate([`/offers/${this.offer._id}`]);
     }
   }
 
   //TODO
   addToFavorite() {}
-
 
   //TODO
   removeFromFavorite() {}

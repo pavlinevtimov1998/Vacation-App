@@ -2,6 +2,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CountriesCatalogComponent } from './countries-catalog/countries-catalog.component';
 import { CreateComponent } from './create/create.component';
 import { OfferCatalogComponent } from './offer-catalog/offer-catalog.component';
+import { OfferDetailsComponent } from './offer-details/offer-details.component';
 import { TopAgenciesComponent } from './top-agencies/top-agencies.component';
 
 const routes: Routes = [
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path: 'catalog',
     component: OfferCatalogComponent,
+  },
+  {
+    path: ':offerId',
+    component: OfferDetailsComponent,
   },
 ];
 
