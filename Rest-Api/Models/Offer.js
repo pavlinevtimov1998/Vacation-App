@@ -7,7 +7,7 @@ const offerSchema = new mongoose.Schema(
       trim: true,
       required: [true, "Title is required!"],
       minLength: [6, "Title should be at least 6 characters!"],
-      maxLength: [35, "Title should be max 6 characters!"],
+      maxLength: [35, "Title should be max 35 characters!"],
     },
     town: {
       type: String,
@@ -15,9 +15,9 @@ const offerSchema = new mongoose.Schema(
       required: [true, "Town is required!"],
     },
     country: {
-      type: String,
-      trim: true,
-      required: [true, "Country is required!"],
+      type: mongoose.Types.ObjectId,
+      ref: "Country",
+      required: true,
     },
     description: {
       type: String,
