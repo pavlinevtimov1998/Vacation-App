@@ -58,7 +58,11 @@
           </div>
           <div class="booking">
             <h1>Price: {{ offer.price }}$</h1>
-            <a class="book-btn" routerLink="/">
+            <a
+              class="book-btn"
+              routerLink="/"
+              *ngIf="(isLogged$ | async) && !currentUser?.isAgency"
+            >
               <span>Book</span>
               <mat-icon>airplane_ticket</mat-icon>
             </a>
