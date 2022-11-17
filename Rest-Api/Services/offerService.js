@@ -14,7 +14,7 @@ const getOffers = () =>
     .sort({ createdAt: -1 })
     .populate({
       path: "country",
-      select: "image, __v -offersId",
+      select: "-image, -__v -offersId",
     });
 
 const getOne = (offerId) =>
