@@ -45,6 +45,12 @@
   gap: 5px;
 }
 
+.card-title h1 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
 .location {
   display: flex;
   align-items: center;

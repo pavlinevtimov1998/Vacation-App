@@ -1,10 +1,11 @@
 import { IAgency } from './account.interface';
+import { ICountry } from './country.interface';
 
 export interface IOffer {
   _id: string;
   title: string;
   town: string;
-  country: string;
+  country: ICountry;
   description: string;
   price: number;
   images: string[];

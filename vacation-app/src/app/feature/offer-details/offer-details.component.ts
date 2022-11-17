@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { mergeMap, Subscription } from 'rxjs';
+import { combineLatest, mergeMap, Subscription } from 'rxjs';
+import { AuthService } from 'src/app/auth.service';
 import { OfferService } from 'src/app/offer.service';
+import { IAccount } from 'src/app/shared/interfaces/account.interface';
 import { IOffer } from 'src/app/shared/interfaces/offer.interface';
 
 @Component({
@@ -12,20 +14,27 @@ import { IOffer } from 'src/app/shared/interfaces/offer.interface';
 export class OfferDetailsComponent implements OnInit {
   offer!: IOffer;
 
+  currentUser!: IAccount;
+  isLogged$ = this.authService.islogged$;
   subscription!: Subscription;
 
   isLoading = true;
   selectedIndex = 0;
 
   constructor(
+    private authService: AuthService,
     private offerService: OfferService,
     private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.subscription = this.activatedRoute.params
+    this.subscription = combineLatest([
+      this.activatedRoute.params,
+      this.authService.currentUser$,
+    ])
       .pipe(
-        mergeMap((params) => {
+        mergeMap(([params, account]) => {
+          this.currentUser = account;
           const offerId = params['offerId'];
 
           return this.offerService.getOne$(offerId);
@@ -33,8 +42,6 @@ export class OfferDetailsComponent implements OnInit {
       )
       .subscribe({
         next: (offer) => {
-          console.log(offer);
-          
           this.offer = offer;
           this.isLoading = false;
         },
@@ -42,6 +49,10 @@ export class OfferDetailsComponent implements OnInit {
           console.error(err);
         },
       });
+  }
+
+  similarOffers() {
+    return this.offer.country.offersId as IOffer[];
   }
 
   leftArrowHandler(): void {

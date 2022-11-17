@@ -24,15 +24,32 @@
           <h1>{{ offer.title }}</h1>
           <h4 class="location">
             <mat-icon>location_on</mat-icon
-            ><span>{{ offer.town }}, {{ offer.country }}</span>
+            ><span>{{ offer.town }}, {{ offer.country.country }}</span>
           </h4>
         </div>
         <div class="info">
           <div class="subtitle">
             <h3>Tranquil Mediterranean sanctuary.</h3>
-            <div class="actions">
-              <button>Like</button>
-              <button>Rate</button>
+            <div
+              class="actions"
+              *ngIf="(isLogged$ | async) && !currentUser?.isAgency"
+            >
+              <button
+                class="rate"
+                mat-icon-button
+                title="Rate this offer"
+                type="button"
+              >
+                <mat-icon>rate_review</mat-icon>
+              </button>
+              <button
+                class="favorites"
+                title="Add to favorites"
+                mat-icon-button
+                type="button"
+              >
+                <mat-icon>favorite_border</mat-icon>
+              </button>
             </div>
           </div>
           <div></div>
@@ -67,8 +84,10 @@
     <article class="more-offers-title">
       <h1>You May Also Be Interest In</h1>
     </article>
-    <article class="">
-      
+    <article class="similar-offers">
+      <ng-container *ngFor="let offer of similarOffers()">
+        <app-offer-item [offer]="offer"></app-offer-item>
+      </ng-container>
     </article>
   </section>
 </div>
