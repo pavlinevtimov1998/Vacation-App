@@ -44,10 +44,13 @@ const offerSchema = new mongoose.Schema(
       min: 1,
       max: 5,
     },
-    peopleBooked: {
-      type: Number,
-      default: 0,
-    },
+    peopleBooked: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "User",
+        default: [],
+      },
+    ],
     agencyId: {
       type: mongoose.Types.ObjectId,
       ref: "Agency",
