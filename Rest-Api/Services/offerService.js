@@ -1,4 +1,5 @@
 const { unlink } = require("fs");
+const mongoose = require("mongoose");
 
 const Offer = require("../Models/Offer");
 const Country = require("../Models/Country");
@@ -10,12 +11,33 @@ const getOffers = () =>
     .select(
       "-description -__v -ratingsQuantity -rating -peopleBooked -createdAt"
     )
-    .sort({ createdAt: -1 });
+    .sort({ createdAt: -1 })
+    .populate({
+      path: "country",
+      select: "image, __v -offersId",
+    });
 
 const getOne = (offerId) =>
   Offer.findById(offerId)
     .select("-__v  -updatedAt")
-    .populate("agencyId", "-__v -createdAt -updatedAt -password");
+    .populate({
+      path: "agencyId",
+      select: "-__v -createdAt -updatedAt -password",
+    })
+    .populate({
+      path: "country",
+      select: "-image -__v",
+      populate: {
+        path: "offersId",
+        select:
+          "-description -__v -ratingsQuantity -rating -peopleBooked -createdAt",
+        options: { limit: 3 },
+        populate: {
+          path: "country",
+          select: "-image -__v -offersId",
+        },
+      },
+    });
 
 const createOffer = async (body, files) => {
   const [country, images] = await Promise.all([
@@ -24,36 +46,17 @@ const createOffer = async (body, files) => {
   ]);
 
   body.images = images;
+  body.country = country._id;
+  body._id = new mongoose.Types.ObjectId();
 
-  if (country) {
-    return Offer.create(body)
-      .then((offer) => {
-        return [
-          Country.findByIdAndUpdate(country._id, {
-            $push: { offersId: offer._id },
-          }),
-          offer,
-        ];
-      })
-      .then(([_, offer]) => {
-        return offer;
-      });
-  }
+  const offer = new Offer(body);
 
-  return Offer.create(body)
-    .then((offer) => {
-      return [
-        Country.create({
-          country: body.country,
-          image: body.images[0],
-          offersId: offer._id,
-        }),
-        offer,
-      ];
-    })
-    .then(([_, offer]) => {
-      return offer;
-    });
+  return Promise.all([
+    offer.save(),
+    Country.findByIdAndUpdate(country._id, {
+      $push: { offersId: offer._id },
+    }),
+  ]);
 };
 
 const getImagesUrl = async (files) => {
