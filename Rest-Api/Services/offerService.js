@@ -7,8 +7,15 @@ const { uploadToCloudinary } = require("../Util/imageUpload");
 
 const getOffers = () =>
   Offer.find()
-    .select("-description -__v -ratingsQuantity -rating -peopleBooked")
+    .select(
+      "-description -__v -ratingsQuantity -rating -peopleBooked -createdAt"
+    )
     .sort({ createdAt: -1 });
+
+const getOne = (offerId) =>
+  Offer.findById(offerId)
+    .select("-__v  -updatedAt")
+    .populate("agencyId", "-__v -createdAt -updatedAt -password");
 
 const createOffer = async (body, files) => {
   const [country, images] = await Promise.all([
@@ -72,4 +79,5 @@ const getImagesUrl = async (files) => {
 module.exports = {
   createOffer,
   getOffers,
+  getOne,
 };

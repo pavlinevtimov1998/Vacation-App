@@ -17,6 +17,12 @@ export class OfferService {
     });
   }
 
+  getOne$(offerId: string): Observable<IOffer> {
+    return this.httpClient.get<IOffer>(environment.api + '/offers/' + offerId, {
+      withCredentials: true,
+    });
+  }
+
   createOffer(body: FormData): Observable<IOffer> {
     return this.httpClient.post<IOffer>(environment.api + '/offers', body, {
       withCredentials: true,

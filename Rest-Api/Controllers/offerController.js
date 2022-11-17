@@ -35,4 +35,15 @@ offerController.post(
   })
 );
 
+offerController.get(
+  "/:offerId",
+  catchAsyncError(async (req, res) => {
+    const offerId = req.params.offerId;
+
+    const offer = await offerService.getOne(offerId);
+
+    res.status(200).json(offer);
+  })
+);
+
 module.exports = offerController;

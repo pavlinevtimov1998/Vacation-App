@@ -1,21 +1,74 @@
-<section class="wrapper">
-    <article class="carousel">
-        <ng-container *ngFor="let destination of topDestinations; let i = index">
-          <div class="img-container" [ngClass]="{ 'image-active': selectedIndex == i }">
-            <img
-              [src]="destination.images[0]"
-              [alt]="destination.title"
-              class="fade"
-            />
+<div class="wrapper" *ngIf="!isLoading">
+  <section class="carousel">
+    <ng-container *ngFor="let image of offer.images; let i = index">
+      <div
+        class="img-container"
+        [ngClass]="{ 'image-active': selectedIndex == i }"
+      >
+        <img [src]="image" [alt]="offer.title" class="fade" />
+      </div>
+    </ng-container>
+
+    <button class="arrow-left" (click)="leftArrowHandler()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+
+    <button class="arrow-right" (click)="rightArrowHandler()">
+      <mat-icon>arrow_forward</mat-icon>
+    </button>
+  </section>
+  <section class="offer-data">
+    <div class="info-container">
+      <div class="info-left">
+        <div class="title">
+          <h1>{{ offer.title }}</h1>
+          <h4 class="location">
+            <mat-icon>location_on</mat-icon
+            ><span>{{ offer.town }}, {{ offer.country }}</span>
+          </h4>
+        </div>
+        <div class="info">
+          <div class="subtitle">
+            <h3>Tranquil Mediterranean sanctuary.</h3>
+            <div class="actions">
+              <button>Like</button>
+              <button>Rate</button>
+            </div>
           </div>
-        </ng-container>
-    
-        <button class="arrow-left" (click)="leftArrowHandler()">
-          <mat-icon>arrow_back</mat-icon>
-        </button>
-    
-        <button class="arrow-right" (click)="rightArrowHandler()">
-          <mat-icon>arrow_forward</mat-icon>
-        </button>
-      </article>
-</section>
+          <div></div>
+          <div class="description">
+            <p>{{ offer.description }}</p>
+          </div>
+          <div class="booking">
+            <h1>Price: {{ offer.price }}$</h1>
+            <a class="book-btn" routerLink="/">
+              <span>Book</span>
+              <mat-icon>airplane_ticket</mat-icon>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="features">
+        <div class="features-title">
+          <h1>Features</h1>
+        </div>
+        <ul class="feature-list">
+          <li>asdasdasda</li>
+          <li>asdasdasda</li>
+          <li>asdasdasda</li>
+          <li>asdasdasda</li>
+          <li>asdasdasda</li>
+          <li>asdasdasda</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="more-offers">
+    <article class="more-offers-title">
+      <h1>You May Also Be Interest In</h1>
+    </article>
+    <article class="">
+      
+    </article>
+  </section>
+</div>
