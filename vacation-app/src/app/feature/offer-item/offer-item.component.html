@@ -1,4 +1,4 @@
-<a class="offer" [routerLink]="['/offers', offer._id]">
+<div class="offer" (click)="routeHandler($event)">
   <div class="img-container">
     <img [src]="offer.images[0]" [alt]="offer.title" />
   </div>
@@ -12,9 +12,15 @@
     </div>
     <div class="card-footer">
       <h4 class="price">{{ offer.price }}$</h4>
-      <button class="save-btn" mat-icon-button>
+      <button
+        (click)="addToFavorite()"
+        *ngIf="!(currentUser$ | async)?.isAgency && (isLogged$ | async)"
+        title="Save to favorites"
+        class="save-btn"
+        mat-icon-button
+      >
         <mat-icon>favorite_border</mat-icon>
       </button>
     </div>
   </div>
-</a>
+</div>

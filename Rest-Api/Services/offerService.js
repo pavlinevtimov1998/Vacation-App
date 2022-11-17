@@ -6,9 +6,9 @@ const Country = require("../Models/Country");
 const { uploadToCloudinary } = require("../Util/imageUpload");
 
 const getOffers = () =>
-  Offer.find().select(
-    "-description -__v -ratingsQuantity -rating -peopleBooked"
-  );
+  Offer.find()
+    .select("-description -__v -ratingsQuantity -rating -peopleBooked")
+    .sort({ createdAt: -1 });
 
 const createOffer = async (body, files) => {
   const [country, images] = await Promise.all([

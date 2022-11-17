@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
 import { IOffer } from 'src/app/shared/interfaces/offer.interface';
 
 @Component({
@@ -9,7 +11,30 @@ import { IOffer } from 'src/app/shared/interfaces/offer.interface';
 export class OfferItemComponent implements OnInit {
   @Input() offer!: IOffer;
 
-  constructor() {}
+  currentUser$ = this.authService.currentUser$;
+  isLogged$ = this.authService.islogged$;
+
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
+
+  routeHandler(event: Event) {
+    if (
+      (event.target as HTMLElement).tagName !== 'BUTTON' &&
+      (event.target as HTMLElement).tagName !== 'MAT-ICON'
+    ) {
+      console.log(
+        (event.target as HTMLElement).tagName !== 'BUTTON',
+        (event.target as HTMLElement).tagName !== 'MAT-ICON'
+      );
+      this.router.navigate([`/offer/${this.offer._id}`]);
+    }
+  }
+
+  //TODO
+  addToFavorite() {}
+
+
+  //TODO
+  removeFromFavorite() {}
 }
