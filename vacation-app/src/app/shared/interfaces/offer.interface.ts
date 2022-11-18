@@ -12,5 +12,10 @@ export interface IOffer {
   ratingsQuantity: string;
   rating: string;
   peopleBooked: number;
+  features: string[];
   agencyId: IAgency;
+}
+
+export interface IFeature {
+  name: string;
 }
