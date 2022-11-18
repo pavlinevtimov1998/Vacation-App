@@ -38,17 +38,34 @@
 }
 
 input,
-textarea {
+textarea,
+select {
   width: 100%;
   padding: 20px;
   border: 1px solid #d3d3d3;
   border-radius: 10px;
 }
 
+.features {
+  display: flex;
+  width: 80%;
+  align-items: center;
+  flex-wrap: wrap;
+
+}
+
+input[type="chackbox"] {
+  width: 20px;
+}
+
 .offer-destination {
   display: flex;
   width: 100%;
   justify-content: space-evenly;
+}
+
+.offer-destination select {
+  font-size: 18px;
 }
 
 .offer-destination div {
