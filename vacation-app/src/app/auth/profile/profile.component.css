@@ -21,10 +21,11 @@
 
 .user-profile {
   width: 35%;
+  min-height: 60vh;
   background-color: #f0f8ff;
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  justify-content: space-between;
   padding: 30px 15px;
   border-radius: 20px;
   box-shadow: rgb(0 0 0 / 19%) 0px 10px 20px, rgb(0 0 0 / 23%) 0px 6px 6px;
