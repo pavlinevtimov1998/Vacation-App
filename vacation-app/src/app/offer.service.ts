@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ICountry } from './shared/interfaces/country.interface';
-import { IOffer } from './shared/interfaces/offer.interface';
+import { IFeature, IOffer } from './shared/interfaces/offer.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -31,6 +31,12 @@ export class OfferService {
 
   getAllCountries$(): Observable<ICountry[]> {
     return this.httpClient.get<ICountry[]>(environment.api + '/countries', {
+      withCredentials: true,
+    });
+  }
+
+  getAllFeatures$(): Observable<IFeature[]> {
+    return this.httpClient.get<IFeature[]>(environment.api + '/features', {
       withCredentials: true,
     });
   }
