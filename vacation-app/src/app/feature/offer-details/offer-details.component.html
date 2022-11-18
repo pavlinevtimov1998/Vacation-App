@@ -74,12 +74,10 @@
           <h1>Features</h1>
         </div>
         <ul class="feature-list">
-          <li>asdasdasda</li>
-          <li>asdasdasda</li>
-          <li>asdasdasda</li>
-          <li>asdasdasda</li>
-          <li>asdasdasda</li>
-          <li>asdasdasda</li>
+          <ng-container *ngIf="offer.features.length > 0">
+            <li *ngFor="let feature of offer.features">{{ feature }}</li>
+          </ng-container>
+          <li *ngIf="offer.features.length == 0">No Features added...</li>
         </ul>
       </div>
     </div>
