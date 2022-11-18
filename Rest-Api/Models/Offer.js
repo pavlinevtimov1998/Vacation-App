@@ -44,6 +44,11 @@ const offerSchema = new mongoose.Schema(
       min: 1,
       max: 5,
     },
+    features: [
+      {
+        type: String,
+      },
+    ],
     peopleBooked: [
       {
         type: mongoose.Types.ObjectId,
