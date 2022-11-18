@@ -48,6 +48,7 @@ const createOffer = async (body, files) => {
   body.images = images;
   body.country = country._id;
   body._id = new mongoose.Types.ObjectId();
+  body.features = body.features.split(",");
 
   const offer = new Offer(body);
 
