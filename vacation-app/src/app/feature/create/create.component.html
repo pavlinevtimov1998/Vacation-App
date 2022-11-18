@@ -1,13 +1,17 @@
 <section class="wrapper">
-  <div class="form-container">
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <div class="form-container" *ngIf="!isLoading">
     <h1>Add Offer</h1>
-    <form [formGroup]="createOfferForm" (submit)="handleCreateOffer()">
+    <form
+      [formGroup]="createOfferForm"
+      (submit)="handleCreateOffer(checkboxes)"
+    >
       <div class="offer-title input-container">
         <div class="flex">
           <input
             formControlName="title"
             type="text"
-            placeholder="Title of your offer"
+            placeholder="Title of your Offer"
             name="title"
           />
           <ng-container *ngIf="errHandler(createOfferForm, 'title')">
@@ -25,7 +29,7 @@
           <textarea
             formControlName="description"
             name="description"
-            placeholder="Detail description"
+            placeholder="Detail Description"
             cols="30"
             rows="10"
           ></textarea>
@@ -41,15 +45,17 @@
       </div>
       <div class="offer-destination">
         <div>
-          <input formControlName="country" type="text" placeholder="Country" />
-          <ng-container *ngIf="errHandler(createOfferForm, 'country')">
-            <p
-              class="error"
-              *ngIf="createOfferForm.controls['country'].errors?.['required']"
-            >
-              Country is required!
-            </p>
-          </ng-container>
+          <mat-form-field appearance="fill">
+            <mat-label>Country</mat-label>
+            <mat-select formControlName="country">
+              <mat-option
+                *ngFor="let country of countries"
+                [value]="country.country"
+              >
+                {{ country.country }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
         <div>
           <input formControlName="town" type="text" placeholder="Town" />
@@ -61,6 +67,12 @@
               Town is required!
             </p>
           </ng-container>
+        </div>
+      </div>
+      <div class="features" #checkboxes>
+        <div class="checkbox" *ngFor="let feature of features">
+          <input type="checkbox" [value]="feature.name" />
+          <label [for]="feature.name">{{ feature.name }}</label>
         </div>
       </div>
 
