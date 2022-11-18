@@ -6,6 +6,7 @@ const offerController = require("./Controllers/offerController");
 const welcomeController = require("./Controllers/welcomeController");
 const agencyController = require("./Controllers/agencyController");
 const profileController = require("./Controllers/profileController");
+const featureController = require("./Controllers/featureController");
 
 const { globalErrorHandler } = require("./Middlewares/globallErrHandler");
 
@@ -15,6 +16,7 @@ router.use("/agency", agencyController);
 router.use("/profile", profileController);
 router.use("/countries", countryController);
 router.use("/offers", offerController);
+router.use("/features", featureController);
 
 router.use("*", (req, res) => {
   res.status(404).json({ message: "Not Found!" });
