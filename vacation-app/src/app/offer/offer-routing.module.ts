@@ -5,12 +5,13 @@ import { OfferDetailsComponent } from '../offer/offer-details/offer-details.comp
 
 const routes: Routes = [
   {
-    path: 'create',
-    component: CreateComponent,
+    path: '',
+    pathMatch: 'full',
+    component: OfferCatalogComponent,
   },
   {
-    path: 'catalog',
-    component: OfferCatalogComponent,
+    path: 'create',
+    component: CreateComponent,
   },
   {
     path: ':offerId',
