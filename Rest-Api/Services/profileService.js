@@ -3,13 +3,7 @@ const Agency = require("../Models/Agency");
 
 exports.getAccountData = async (agency, user) => {
   if (agency) {
-    return Agency.findById(agency._id)
-      .select("-password -__v -updatedAt")
-      .populate({
-        path: "offers",
-        select:
-          "-description -updatedAt -__v -peopleBooked -ratingsQuantity -features",
-      });
+    return Agency.findById(agency._id).select("-password -__v -updatedAt");
   } else {
     return User.findById(user._id).select("-password -__v -updatedAt");
   }
@@ -18,14 +12,17 @@ exports.getAccountData = async (agency, user) => {
 exports.getProfile = async (profileId) => {
   const [agency, user] = await Promise.all([
     Agency.findOne(profileId)
-    .select("-password -__v -updatedAt")
-    .populate({
-      path: "offers",
-      select:
-        "-description -updatedAt -__v -peopleBooked -ratingsQuantity -features",
-    }),
-    User.findOne(profileId)
-    .select("-password -__v -updatedAt"),
+      .select("-password -__v -updatedAt")
+      .populate({
+        path: "offers",
+        select:
+          "-description -updatedAt -__v -peopleBooked -ratingsQuantity -features",
+        populate: {
+          path: "country",
+          select: "-image -offersId -__v -_id",
+        },
+      }),
+    User.findOne(profileId).select("-password -__v -updatedAt"),
   ]);
 
   if (agency) {
