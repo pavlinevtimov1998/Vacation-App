@@ -1,53 +1,58 @@
 <section class="wrapper">
-  <app-agency-offers
-    *ngIf="profile.isAgency"
-    [profile]="profile"
-    [currentUser]="currentUser"
-    [isOwnerOfProfile]="isOwnerOfProfile"
-  ></app-agency-offers>
-  <app-reserved-vacations
-    *ngIf="!profile.isAgency"
-    [profile]="profile"
-    [currentUser]="currentUser"
-    [isOwnerOfProfile]="isOwnerOfProfile"
-  ></app-reserved-vacations>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <ng-container *ngIf="!isLoading">
+    <div class="container">
+      <app-agency-offers
+        *ngIf="isAgency"
+        [profile]="profile"
+        [currentUser]="currentUser"
+        [isOwnerOfProfile]="isOwnerOfProfile"
+      ></app-agency-offers>
+      <app-reserved-vacations
+        *ngIf="!isAgency"
+        [profile]="profile"
+        [currentUser]="currentUser"
+        [isOwnerOfProfile]="isOwnerOfProfile"
+      ></app-reserved-vacations>
 
-  <article class="user-profile">
-    <h1 *ngIf="profile.isAgency">
-      {{ profile.agencyName }}
-    </h1>
-    <h1 *ngIf="!profile.isAgency">
-      {{ profile.username }}
-    </h1>
-    <ng-container *ngIf="isOwnerOfProfile">
-      <a class="edit" routerLink="/auth/edit-profile">Edit profile</a>
-    </ng-container>
+      <article class="user-profile">
+        <h1 *ngIf="isAgency">
+          {{ profile.agencyName }}
+        </h1>
+        <h1 *ngIf="!isAgency">
+          {{ profile.username }}
+        </h1>
+        <ng-container *ngIf="isOwnerOfProfile">
+          <a class="edit" routerLink="/auth/edit-profile">Edit profile</a>
+        </ng-container>
 
-    <div class="user-info">
-      <h1 *ngIf="profile.isAgency">Agency contacts</h1>
-      <h1 *ngIf="!profile.isAgency">Your contacts</h1>
-      <div class="details">
-        <div class="detail">
-          <h4>Phone:</h4>
-          <p>{{ profile.phone }}</p>
+        <div class="user-info">
+          <h1 *ngIf="profile.isAgency">Agency contacts</h1>
+          <h1 *ngIf="!profile.isAgency">Your contacts</h1>
+          <div class="details">
+            <div class="detail">
+              <h4>Phone:</h4>
+              <p>{{ profile.phone }}</p>
+            </div>
+            <div class="detail">
+              <h4>Email:</h4>
+              <p>{{ profile.email }}</p>
+            </div>
+            <div class="detail">
+              <h4>Adress:</h4>
+              <p>{{ profile.adress }}</p>
+            </div>
+            <div *ngIf="isAgency" class="detail">
+              <h4>Website:</h4>
+              <p>{{ profile.website }}</p>
+            </div>
+          </div>
         </div>
-        <div class="detail">
-          <h4>Email:</h4>
-          <p>{{ profile.email }}</p>
+        <div class="sign-up-date">
+          <p>Sign up date:</p>
+          <span>{{ profile.createdAt | date: "longDate" }}</span>
         </div>
-        <div class="detail">
-          <h4>Adress:</h4>
-          <p>{{ profile.adress }}</p>
-        </div>
-        <div *ngIf="profile.isAgency" class="detail">
-          <h4>Website:</h4>
-          <p>{{ profile.website }}</p>
-        </div>
-      </div>
+      </article>
     </div>
-    <div class="sign-up-date">
-      <p>Sign up date:</p>
-      <span>{{ profile.createdAt | date: "longDate" }}</span>
-    </div>
-  </article>
+  </ng-container>
 </section>
