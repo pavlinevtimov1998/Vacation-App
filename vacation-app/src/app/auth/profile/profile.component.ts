@@ -38,7 +38,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
       )
       .subscribe({
         next: ([currentUser, profile]) => {
-          this.isOwnerOfProfile = currentUser._id == profile._id;
+          this.isOwnerOfProfile = currentUser?._id == profile._id;
           this.currentUser = currentUser;
           this.profile = profile;
           this.isAgency = !!profile.agencyName;
