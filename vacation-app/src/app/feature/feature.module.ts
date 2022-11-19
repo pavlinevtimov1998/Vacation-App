@@ -7,7 +7,7 @@ import { TopAgenciesComponent } from './top-agencies/top-agencies.component';
 import { CreateComponent } from './create/create.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OfferCatalogComponent } from './offer-catalog/offer-catalog.component';
-import { OfferItemComponent } from './offer-item/offer-item.component';
+import { OfferItemComponent } from '../shared/offer-item/offer-item.component';
 import { OfferDetailsComponent } from './offer-details/offer-details.component';
 import { SharedModule } from '../shared/shared.module';
 
@@ -17,7 +17,6 @@ import { SharedModule } from '../shared/shared.module';
     TopAgenciesComponent,
     CreateComponent,
     OfferCatalogComponent,
-    OfferItemComponent,
     OfferDetailsComponent,
   ],
   imports: [

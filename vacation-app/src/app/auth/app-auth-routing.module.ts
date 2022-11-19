@@ -23,7 +23,7 @@ const routes: Routes = [
     component: UserRegisterComponent,
   },
   {
-    path: 'profile',
+    path: 'profile/:profileId',
     component: ProfileComponent,
   },
 ];

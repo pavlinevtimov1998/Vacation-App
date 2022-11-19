@@ -6,6 +6,7 @@ import { ClickOutsideDirective } from './click-outside.directive';
 import { AuthDialogComponent } from './dialog/auth-dialog.component';
 import { RouterModule } from '@angular/router';
 import { CountryItemComponent } from './country-item/country-item.component';
+import { OfferItemComponent } from './offer-item/offer-item.component';
 
 @NgModule({
   declarations: [
@@ -13,8 +14,14 @@ import { CountryItemComponent } from './country-item/country-item.component';
     ClickOutsideDirective,
     AuthDialogComponent,
     CountryItemComponent,
+    OfferItemComponent,
   ],
   imports: [CommonModule, MaterialModule, RouterModule],
-  exports: [BenefitsComponent, ClickOutsideDirective, CountryItemComponent],
+  exports: [
+    BenefitsComponent,
+    ClickOutsideDirective,
+    CountryItemComponent,
+    OfferItemComponent,
+  ],
 })
 export class SharedModule {}

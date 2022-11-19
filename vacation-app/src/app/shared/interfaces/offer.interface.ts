@@ -14,6 +14,7 @@ export interface IOffer {
   peopleBooked: number;
   features: string[];
   agencyId: IAgency;
+  createdAt: string;
 }
 
 export interface IFeature {

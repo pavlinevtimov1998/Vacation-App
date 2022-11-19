@@ -40,6 +40,13 @@ const agencySchema = new mongoose.Schema(
       maxLength: [20, "Password should be max 20 characters!"],
       required: [true, "Password is required!"],
     },
+    offers: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "Offer",
+        default: [],
+      },
+    ],
   },
   { timestamps: { createdAt: "createdAt" } }
 );

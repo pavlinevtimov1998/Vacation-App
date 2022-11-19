@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { mergeMap, Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth.service';
+import { AgencyService } from 'src/app/auth/agency.service';
+import { UserService } from 'src/app/auth/user.service';
 
 @Component({
   selector: 'app-mobile-nav',
@@ -14,7 +16,12 @@ export class MobileNavComponent implements OnInit {
 
   subscription!: Subscription;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private agencyService: AgencyService,
+    private userService: UserService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
@@ -22,9 +29,11 @@ export class MobileNavComponent implements OnInit {
     this.subscription = this.currentUser$
       .pipe(
         mergeMap((account) => {
-          const url = account.isAgency ? '/agency/' : '/user/';
-
-          return this.authService.logout$(url);
+          if (account.isAgency) {
+            return this.agencyService.logout$();
+          } else {
+            return this.userService.logout$();
+          }
         })
       )
       .subscribe({

@@ -1,8 +1,11 @@
+import { IOffer } from './offer.interface';
+
 export interface IAgency {
   _id: string;
   email: string;
   agencyName: string;
   website: string;
+  offers: IOffer[];
 }
 
 interface IUser {

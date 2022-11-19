@@ -4,6 +4,7 @@ import { BehaviorSubject, EMPTY, map, Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
 import { IAccount } from './shared/interfaces/account.interface';
+import { IOffer } from './shared/interfaces/offer.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -32,66 +33,10 @@ export class AuthService {
     this._currentUser.next(this.guest);
   }
 
-  userRegister$(body: {
-    username: string;
-    password: string;
-    rePassword: string;
-  }): Observable<IAccount> {
-    return this.httpClient.post<IAccount>(
-      environment.api + '/user/register',
-      body,
-      {
-        withCredentials: true,
-      }
-    );
-  }
-
-  userLogin$(body: {
-    username: string;
-    password: string;
-  }): Observable<IAccount> {
-    return this.httpClient.post<IAccount>(
-      environment.api + '/user/login',
-      body,
-      {
-        withCredentials: true,
-      }
-    );
-  }
-
-  agencyRegister$(body: {
-    email: string;
-    agencyName: string;
-    password: string;
-    rePassword: string;
-  }): Observable<IAccount> {
-    return this.httpClient.post<IAccount>(
-      environment.api + '/agency/register',
-      body,
-      {
-        withCredentials: true,
-      }
-    );
-  }
-
-  agencyLogin$(body: {
-    email: string;
-    password: string;
-  }): Observable<IAccount> {
-    return this.httpClient.post<IAccount>(
-      environment.api + '/agency/login',
-      body,
-      {
-        withCredentials: true,
-      }
-    );
-  }
-
-  logout$(url: string): Observable<{ message: string }> {
-    return this.httpClient.get<{ message: string }>(
-      environment.api + url + '/logout',
-      { withCredentials: true }
-    );
+  getProfileData$(id: string): Observable<IAccount> {
+    return this.httpClient.get<IAccount>(environment.api + '/profile/' + id, {
+      withCredentials: true,
+    });
   }
 
   appInitializer() {

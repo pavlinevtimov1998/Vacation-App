@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 
 import { AuthService } from 'src/app/auth.service';
 import { errorHandler, passwordsMismatch } from '../../util/form-errors';
+import { AgencyService } from '../agency.service';
 
 @Component({
   selector: 'app-agency-register',
@@ -32,6 +33,7 @@ export class AgencyRegisterComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
+    private agencyService: AgencyService,
     private formBuilder: FormBuilder,
     private router: Router
   ) {}
@@ -75,7 +77,7 @@ export class AgencyRegisterComponent implements OnInit {
       rePassword: this.passwordsGroup.value['rePassword'],
     };
 
-    this.authService.agencyRegister$(body).subscribe({
+    this.agencyService.agencyRegister$(body).subscribe({
       next: (agency) => {
         this.authService.handleLogin(agency);
         this.router.navigate(['/']);

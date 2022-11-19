@@ -1,0 +1,12 @@
+<article class="vacations">
+  <h1>{{ profile.agencyName }} Offers</h1>
+
+  <div class="posted" *ngIf="profile.agencyName">
+    <ng-container *ngIf="profile.offers.length > 0">
+      <app-offer-item *ngFor="let offer of profile.offers"></app-offer-item>
+    </ng-container>
+    <ng-container *ngIf="profile.offers.length == 0">
+      <h1>No Results</h1>
+    </ng-container>
+  </div>
+</article>

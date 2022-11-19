@@ -8,21 +8,20 @@ profileController.get(
   "/",
   isAccount(),
   catchAsyncError(async (req, res) => {
-    const [account, isAgency] = await profileService.getAccountData(
-      req.agency,
-      req.user
-    );
+    const account = await profileService.getAccountData(req.agency, req.user);
 
-    isAgency
-      ? res.status(200).json({
-          _id: account._id,
-          email: account.email,
-          agencyName: account.agencyName,
-        })
-      : res.status(200).json({
-          _id: account._id,
-          username: account.username,
-        });
+    res.status(200).json(account);
+  })
+);
+
+profileController.get(
+  "/:profileId",
+  catchAsyncError(async (req, res) => {
+    const profileId = req.profileId;
+
+    const account = await profileService.getProfile(profileId);
+
+    res.status(200).json(account);
   })
 );
 

@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 
 import { AuthService } from 'src/app/auth.service';
 import { errorHandler } from '../../util/form-errors';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-user-login',
@@ -24,6 +25,7 @@ export class UserLoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
+    private userService: UserService,
     private formBuilder: FormBuilder,
     private router: Router
   ) {}
@@ -42,7 +44,7 @@ export class UserLoginComponent implements OnInit {
 
     const body = this.userLoginForm.value;
 
-    this.authService.userLogin$(body).subscribe({
+    this.userService.userLogin$(body).subscribe({
       next: (user) => {
         this.authService.handleLogin(user);
         this.router.navigate(['/']);

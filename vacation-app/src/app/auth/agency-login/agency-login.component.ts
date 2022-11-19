@@ -8,6 +8,7 @@ import {
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
 import { errorHandler } from 'src/app/util/form-errors';
+import { AgencyService } from '../agency.service';
 
 @Component({
   selector: 'app-agency-login',
@@ -23,6 +24,7 @@ export class AgencyLoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
+    private agencyService: AgencyService,
     private formBuilder: FormBuilder,
     private router: Router
   ) {}
@@ -44,7 +46,7 @@ export class AgencyLoginComponent implements OnInit {
       password: this.agencyLoginForm.value['password'],
     };
 
-    this.authService.agencyLogin$(body).subscribe({
+    this.agencyService.agencyLogin$(body).subscribe({
       next: (agency) => {
         this.authService.handleLogin(agency);
         this.router.navigate(['/']);

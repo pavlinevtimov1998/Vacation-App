@@ -1,0 +1,19 @@
+.vacations {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  align-items: center;
+}
+
+.vacations h1 {
+  font-size: 28px;
+  font-weight: 900;
+}
+
+.posted {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+}

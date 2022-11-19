@@ -1,53 +1,53 @@
 <section class="wrapper">
-  <article class="vacations">
-    <h1 *ngIf="!account.isAgency">Your reserved vacations</h1>
-    <h1 *ngIf="account.isAgency">{{ account.agencyName }} Offers</h1>
-    <div class="reserved">
-      <div class="vacation-container">
-        <div class="img-container">
-          <img src="/assets/img/vacation.jpg" alt="" />
-        </div>
-        <div class="info">
-          <h2>Destination</h2>
-          <p>date</p>
-        </div>
-      </div>
-    </div>
-  </article>
+  <app-agency-offers
+    *ngIf="profile.isAgency"
+    [profile]="profile"
+    [currentUser]="currentUser"
+    [isOwnerOfProfile]="isOwnerOfProfile"
+  ></app-agency-offers>
+  <app-reserved-vacations
+    *ngIf="!profile.isAgency"
+    [profile]="profile"
+    [currentUser]="currentUser"
+    [isOwnerOfProfile]="isOwnerOfProfile"
+  ></app-reserved-vacations>
+
   <article class="user-profile">
-    <h1 *ngIf="account.isAgency">
-      {{ account.agencyName }}
+    <h1 *ngIf="profile.isAgency">
+      {{ profile.agencyName }}
     </h1>
-    <h1 *ngIf="!account.isAgency">
-      {{ account.username }}
+    <h1 *ngIf="!profile.isAgency">
+      {{ profile.username }}
     </h1>
-    <a class="edit" routerLink="/auth/edit-profile">Edit profile</a>
+    <ng-container *ngIf="isOwnerOfProfile">
+      <a class="edit" routerLink="/auth/edit-profile">Edit profile</a>
+    </ng-container>
 
     <div class="user-info">
-      <h1 *ngIf="account.isAgency">Agency contacts</h1>
-      <h1 *ngIf="!account.isAgency">Your contacts</h1>
+      <h1 *ngIf="profile.isAgency">Agency contacts</h1>
+      <h1 *ngIf="!profile.isAgency">Your contacts</h1>
       <div class="details">
         <div class="detail">
           <h4>Phone:</h4>
-          <p>{{ account.phone }}</p>
+          <p>{{ profile.phone }}</p>
         </div>
         <div class="detail">
           <h4>Email:</h4>
-          <p>{{ account.email }}</p>
+          <p>{{ profile.email }}</p>
         </div>
         <div class="detail">
           <h4>Adress:</h4>
-          <p>{{ account.adress }}</p>
+          <p>{{ profile.adress }}</p>
         </div>
-        <div class="detail">
+        <div *ngIf="profile.isAgency" class="detail">
           <h4>Website:</h4>
-          <p>{{ account.website }}</p>
+          <p>{{ profile.website }}</p>
         </div>
       </div>
     </div>
     <div class="sign-up-date">
       <p>Sign up date:</p>
-      <span>{{ account.createdAt }}</span>
+      <span>{{ profile.createdAt | date: "longDate" }}</span>
     </div>
   </article>
 </section>
