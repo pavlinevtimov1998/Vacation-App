@@ -11,7 +11,7 @@ exports.getAccountData = async (agency, user) => {
 
 exports.getProfile = async (profileId) => {
   const [agency, user] = await Promise.all([
-    Agency.findOne(profileId)
+    Agency.findOne({ _id: profileId })
       .select("-password -__v -updatedAt")
       .populate({
         path: "offers",
@@ -22,7 +22,7 @@ exports.getProfile = async (profileId) => {
           select: "-image -offersId -__v -_id",
         },
       }),
-    User.findOne(profileId).select("-password -__v -updatedAt"),
+    User.findOne({ _id: profileId }).select("-password -__v -updatedAt"),
   ]);
 
   if (agency) {
