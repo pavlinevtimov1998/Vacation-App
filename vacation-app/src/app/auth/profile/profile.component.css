@@ -1,11 +1,17 @@
 .wrapper {
   width: 100%;
   display: flex;
-  justify-content: space-evenly;
-  padding-top: 70px;
-  flex-wrap: wrap;
+  min-height: 90vh;
+  padding-top: 5%;
+  padding-bottom: 7%;
 }
 
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
 .user-profile {
   width: 35%;
   height: 60vh;
@@ -48,11 +54,12 @@
   font-weight: 900;
 }
 
+app-agency-offers {
+  width: 60%;
+}
 
-app-offer-item {
-  width: 45%;
-  height: 30vw;
-  margin-top: 5%;
+mat-spinner {
+  margin: auto;
 }
 
 @media screen and (max-width: 1200px) {
