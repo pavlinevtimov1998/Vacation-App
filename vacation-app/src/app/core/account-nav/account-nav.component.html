@@ -14,7 +14,9 @@
     </p>
     <ul class="profile-links">
       <li>
-        <a routerLink="/auth/profile">Profile</a>
+        <a [routerLink]="['/auth/profile', (currentUser$ | async)?._id]"
+          >Profile</a
+        >
       </li>
       <li>
         <a routerLink="/auth/profile/edit">Edit Profile</a>
