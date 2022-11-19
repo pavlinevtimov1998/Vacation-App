@@ -17,7 +17,7 @@ profileController.get(
 profileController.get(
   "/:profileId",
   catchAsyncError(async (req, res) => {
-    const profileId = req.profileId;
+    const profileId = req.params.profileId;
 
     const account = await profileService.getProfile(profileId);
 
