@@ -11,6 +11,7 @@ export interface IAgency {
 interface IUser {
   _id: string;
   username: string;
+  bookedOffers: string[] | IOffer[];
 }
 
 export interface IAccount extends IAgency, IUser {
