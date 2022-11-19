@@ -58,6 +58,10 @@ app-agency-offers {
   width: 60%;
 }
 
+app-reserved-vacations {
+  width: 60%;
+}
+
 mat-spinner {
   margin: auto;
 }
