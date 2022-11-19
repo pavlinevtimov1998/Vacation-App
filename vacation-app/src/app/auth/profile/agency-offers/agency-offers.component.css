@@ -1,7 +1,7 @@
 .vacations {
   display: flex;
   flex-direction: column;
-  width: 60%;
+  width: 100%;
   align-items: center;
 }
 
@@ -16,4 +16,10 @@
   flex-wrap: wrap;
   justify-content: space-around;
   width: 100%;
+}
+
+app-offer-item {
+  width: 30%;
+  height: 25vw;
+  margin-top: 3%;
 }
