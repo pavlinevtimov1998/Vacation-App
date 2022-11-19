@@ -34,7 +34,7 @@ export class AccountNavComponent implements OnInit, OnDestroy {
   }
 
   logoutHandler() {
-    this.subscription = this.currentUser$
+    this.subscription = this.authService.currentUser$
       .pipe(
         mergeMap((account) => {
           if (account.isAgency) {
