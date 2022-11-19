@@ -3,7 +3,10 @@
 
   <div class="posted" *ngIf="profile.agencyName">
     <ng-container *ngIf="profile.offers.length > 0">
-      <app-offer-item *ngFor="let offer of profile.offers"></app-offer-item>
+      <app-offer-item
+        *ngFor="let offer of profile.offers"
+        [offer]="offer"
+      ></app-offer-item>
     </ng-container>
     <ng-container *ngIf="profile.offers.length == 0">
       <h1>No Results</h1>
