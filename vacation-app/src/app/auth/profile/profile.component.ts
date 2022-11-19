@@ -13,7 +13,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
   currentUser!: IAccount;
   profile!: IAccount;
 
+  isAgency!: boolean;
   isOwnerOfProfile!: boolean;
+  isLoading = true;
 
   subscription!: Subscription;
 
@@ -39,6 +41,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
           this.isOwnerOfProfile = currentUser._id == profile._id;
           this.currentUser = currentUser;
           this.profile = profile;
+          this.isAgency = !!profile.agencyName;
+          this.isLoading = false;
         },
         error: (err) => {
           console.log(err);
