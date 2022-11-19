@@ -14,7 +14,12 @@ const routes: Routes = [
   {
     path: 'offers',
     loadChildren: () =>
-      import('./feature/feature.module').then((m) => m.FeatureModule),
+      import('./offer/offer.module').then((m) => m.OfferModule),
+  },
+  {
+    path: 'countries',
+    loadChildren: () =>
+      import('./country/country.module').then((m) => m.CountryModule),
   },
 ];
 
