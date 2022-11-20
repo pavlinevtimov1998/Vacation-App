@@ -3,14 +3,24 @@ const mongoose = require("mongoose");
 const countrySchema = new mongoose.Schema({
   country: {
     type: String,
-    trim: true,
-    unique: true,
-    required: [true, "Country is required!"],
   },
   image: {
     type: String,
   },
-  offersId: [
+  description: {
+    type: String,
+  },
+  ratingsQuantity: {
+    type: Number,
+    default: 0,
+  },
+  rating: {
+    type: Number,
+    default: 3.5,
+    min: 1,
+    max: 5,
+  },
+  offers: [
     {
       type: mongoose.Types.ObjectId,
       ref: "Offer",
