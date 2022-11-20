@@ -90,6 +90,7 @@
       <ng-container *ngFor="let offer of similarOffers()">
         <app-offer-item [offer]="offer"></app-offer-item>
       </ng-container>
+      <h1 *ngIf="similarOffers().length == 0">No similar offers...</h1>
     </article>
   </section>
 </div>
