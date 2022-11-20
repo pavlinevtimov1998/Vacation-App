@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './header/header.component';
 import { RouterModule } from '@angular/router';
+
+import { HeaderComponent } from './header/header.component';
 import { CarouselComponent } from './home/carousel/carousel.component';
 import { SearchComponent } from './home/search/search.component';
 import { PopularCountriesComponent } from './home/popular-countries/popular-countries.component';

@@ -4,7 +4,6 @@ import { BehaviorSubject, EMPTY, map, Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
 import { IAccount } from '../shared/interfaces/account.interface';
-import { IOffer } from '../shared/interfaces/offer.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -34,14 +33,14 @@ export class AuthService {
   }
 
   getProfileData$(id: string): Observable<IAccount> {
-    return this.httpClient.get<IAccount>(environment.api + '/profile/' + id, {
+    return this.httpClient.get<IAccount>(`${environment.api}/profile/${id}`, {
       withCredentials: true,
     });
   }
 
   appInitializer() {
     this.httpClient
-      .get<IAccount>(environment.api + '/profile', {
+      .get<IAccount>(`${environment.api}/profile`, {
         withCredentials: true,
       })
       .subscribe({

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { OfferService } from 'src/app/offer/offer.service';
+
 import { ICountry } from 'src/app/shared/interfaces/country.interface';
+import { CountryService } from '../country.service';
 
 @Component({
   selector: 'app-countries-catalog',
@@ -13,10 +14,10 @@ export class CountriesCatalogComponent implements OnInit {
 
   subscription$!: Subscription;
 
-  constructor(private offerService: OfferService) {}
+  constructor(private countryService: CountryService) {}
 
   ngOnInit(): void {
-    this.subscription$ = this.offerService.getAllCountries$().subscribe({
+    this.subscription$ = this.countryService.getAllCountries$().subscribe({
       next: (countries) => {
         this.countries = countries;
       },

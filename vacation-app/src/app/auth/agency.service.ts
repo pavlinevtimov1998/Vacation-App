@@ -18,7 +18,7 @@ export class AgencyService {
     rePassword: string;
   }): Observable<IAccount> {
     return this.httpClient.post<IAccount>(
-      environment.api + '/agency/register',
+      `${environment.api}/agency/register`,
       body,
       {
         withCredentials: true,
@@ -31,7 +31,7 @@ export class AgencyService {
     password: string;
   }): Observable<IAccount> {
     return this.httpClient.post<IAccount>(
-      environment.api + '/agency/login',
+      `${environment.api}/agency/login`,
       body,
       {
         withCredentials: true,
@@ -41,7 +41,7 @@ export class AgencyService {
 
   logout$(): Observable<{ message: string }> {
     return this.httpClient.get<{ message: string }>(
-      environment.api + '/agency/logout',
+      `${environment.api}/agency/logout`,
       { withCredentials: true }
     );
   }

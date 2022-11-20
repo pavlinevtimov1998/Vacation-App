@@ -17,7 +17,7 @@ export class UserService {
     rePassword: string;
   }): Observable<IAccount> {
     return this.httpClient.post<IAccount>(
-      environment.api + '/user/register',
+      `${environment.api}/user/register`,
       body,
       {
         withCredentials: true,
@@ -30,7 +30,7 @@ export class UserService {
     password: string;
   }): Observable<IAccount> {
     return this.httpClient.post<IAccount>(
-      environment.api + '/user/login',
+      `${environment.api}/user/login`,
       body,
       {
         withCredentials: true,
@@ -40,12 +40,8 @@ export class UserService {
 
   logout$(): Observable<{ message: string }> {
     return this.httpClient.get<{ message: string }>(
-      environment.api + '/user/logout',
+      `${environment.api}/user/logout`,
       { withCredentials: true }
     );
   }
-
-  // userProfileData$(): Observable<IAccount> {
-  //   return this.httpClient.get<IAccount>(environment.api + '/profile/')
-  // }
 }
