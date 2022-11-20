@@ -1,4 +1,4 @@
-import { IAgency } from './account.interface';
+import { IAgency, IUser } from './account.interface';
 import { ICountry } from './country.interface';
 
 export interface IOffer {
@@ -13,8 +13,16 @@ export interface IOffer {
   rating: string;
   peopleBooked: number;
   features: string[];
+  reviews: IReview[];
   agency: IAgency;
   createdAt: string;
+}
+
+export interface IReview {
+  user: IUser;
+  offer: IOffer | string;
+  content: string;
+  rating: number;
 }
 
 export interface IFeature {
