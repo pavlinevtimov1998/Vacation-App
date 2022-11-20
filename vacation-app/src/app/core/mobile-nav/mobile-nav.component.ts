@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { mergeMap, Subscription } from 'rxjs';
 
@@ -11,7 +11,7 @@ import { UserService } from 'src/app/auth/user.service';
   templateUrl: './mobile-nav.component.html',
   styleUrls: ['./mobile-nav.component.css'],
 })
-export class MobileNavComponent implements OnInit {
+export class MobileNavComponent implements OnInit, OnDestroy {
   isLogged$ = this.authService.islogged$;
   currentUser$ = this.authService.currentUser$;
 
@@ -48,5 +48,9 @@ export class MobileNavComponent implements OnInit {
           this.router.navigate(['/']);
         },
       });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
   }
 }

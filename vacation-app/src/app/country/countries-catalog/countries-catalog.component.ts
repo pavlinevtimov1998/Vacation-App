@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { ICountry } from 'src/app/shared/interfaces/country.interface';
@@ -9,7 +9,7 @@ import { CountryService } from '../country.service';
   templateUrl: './countries-catalog.component.html',
   styleUrls: ['./countries-catalog.component.css'],
 })
-export class CountriesCatalogComponent implements OnInit {
+export class CountriesCatalogComponent implements OnInit, OnDestroy {
   countries!: ICountry[];
 
   subscription$!: Subscription;
@@ -23,5 +23,9 @@ export class CountriesCatalogComponent implements OnInit {
       },
       error: (err) => {},
     });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription$?.unsubscribe();
   }
 }

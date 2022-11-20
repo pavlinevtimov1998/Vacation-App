@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { combineLatest, mergeMap, Subscription } from 'rxjs';
 
@@ -11,7 +11,7 @@ import { IOffer, IAccount } from 'src/app/shared/interfaces';
   templateUrl: './offer-details.component.html',
   styleUrls: ['./offer-details.component.css'],
 })
-export class OfferDetailsComponent implements OnInit {
+export class OfferDetailsComponent implements OnInit, OnDestroy {
   offer!: IOffer;
 
   currentUser!: IAccount;
@@ -57,5 +57,9 @@ export class OfferDetailsComponent implements OnInit {
 
   similarOffers() {
     return this.offer.agency.offers as IOffer[];
+  }
+
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
   }
 }

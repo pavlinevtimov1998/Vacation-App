@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   FormArray,
   FormBuilder,
@@ -20,7 +20,7 @@ import { errorHandler } from 'src/app/util/form-errors';
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css'],
 })
-export class CreateComponent implements OnInit {
+export class CreateComponent implements OnInit, OnDestroy {
   createOfferForm!: FormGroup;
 
   get errHandler() {
@@ -103,12 +103,16 @@ export class CreateComponent implements OnInit {
 
     this.offerService.createOffer(formData).subscribe({
       next: (offer) => {
-        this.router.navigate(['/offers/' + offer._id]);
+        this.router.navigate(['/offers/', offer._id]);
       },
       error: (err) => {
         console.error(err);
         this.router.navigate(['/']);
       },
     });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
   }
 }
