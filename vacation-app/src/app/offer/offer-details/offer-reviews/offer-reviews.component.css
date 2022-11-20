@@ -5,6 +5,12 @@
   width: 100%;
 }
 
+.start {
+  justify-content: start;
+  padding-left: 10%;
+  gap: 5%;
+}
+
 .review {
   position: relative;
   display: flex;

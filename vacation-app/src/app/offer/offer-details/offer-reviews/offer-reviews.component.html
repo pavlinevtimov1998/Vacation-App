@@ -1,4 +1,4 @@
-<section class="review-list">
+<section class="review-list" [ngClass]="{ 'start': reviews.length < 3 }">
   <h1 *ngIf="reviews.length == 0">No Reviews...</h1>
   <article class="review" *ngFor="let review of reviews">
     <div class="review-header">
