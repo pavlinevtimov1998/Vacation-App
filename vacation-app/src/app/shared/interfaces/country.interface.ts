@@ -4,5 +4,5 @@ export interface ICountry {
   _id: string;
   name: string;
   image: string;
-  offersId: IOffer[] | string[];
+  offers: IOffer[] | string[];
 }
