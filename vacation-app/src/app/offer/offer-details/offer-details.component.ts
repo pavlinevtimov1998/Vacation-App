@@ -52,7 +52,7 @@ export class OfferDetailsComponent implements OnInit {
   }
 
   similarOffers() {
-    return this.offer.country.offersId as IOffer[];
+    return this.offer.country.offers as IOffer[];
   }
 
   leftArrowHandler(): void {
