@@ -9,6 +9,7 @@ import { OfferDetailsComponent } from './offer-details/offer-details.component';
 import { offerRoutingModule } from './offer-routing.module';
 import { OfferImagesCarouselComponent } from './offer-details/offer-images-carousel/offer-images-carousel.component';
 import { OfferReviewsComponent } from './offer-details/offer-reviews/offer-reviews.component';
+import { ReviewComponent } from './offer-details/review/review.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { OfferReviewsComponent } from './offer-details/offer-reviews/offer-revie
     OfferDetailsComponent,
     OfferImagesCarouselComponent,
     OfferReviewsComponent,
+    ReviewComponent,
   ],
   imports: [
     CommonModule,
