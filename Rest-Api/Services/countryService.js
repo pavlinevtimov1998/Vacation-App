@@ -1,6 +1,6 @@
 const Country = require("../Models/Country");
 
-const getAll = () => Country.find().sort({ name: -1 });
+const getAll = () => Country.find().sort({ name: 1 });
 
 const getCountryOffers = (countryId) =>
   Country.findById(countryId)
