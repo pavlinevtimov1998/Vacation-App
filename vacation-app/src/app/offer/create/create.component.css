@@ -130,12 +130,6 @@ button[type="submit"]:hover {
   text-align: center;
 }
 
-.checkbox input {
-}
-
-.checkbox label {
-}
-
 .error {
   align-self: flex-start;
 }
