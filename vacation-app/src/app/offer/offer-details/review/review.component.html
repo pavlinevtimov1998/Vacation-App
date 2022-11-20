@@ -1,0 +1,25 @@
+<section class="container">
+  <h1 class="title">Review Offer</h1>
+  <div class="close-btn">
+    <mat-icon>close</mat-icon>
+  </div>
+  <div class="stars" #starContainer>
+    <ng-container mat-icon-button *ngFor="let rate of rates; let i = index">
+      <mat-icon (click)="rateHandler(starContainer, i, rate)"
+        >star_border</mat-icon
+      >
+    </ng-container>
+  </div>
+  <form class="form">
+    <textarea
+      name="review"
+      placeholder="Write you review"
+      cols="30"
+      rows="10"
+    ></textarea>
+    <button>
+      <mat-icon>send</mat-icon>
+      <span>Send</span>
+    </button>
+  </form>
+</section>

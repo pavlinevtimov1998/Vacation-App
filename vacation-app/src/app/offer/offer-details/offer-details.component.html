@@ -17,6 +17,7 @@
               class="actions"
               *ngIf="(isLogged$ | async) && !currentUser?.isAgency"
             >
+            <app-review class="review-container"></app-review>
               <button
                 class="rate"
                 mat-icon-button
