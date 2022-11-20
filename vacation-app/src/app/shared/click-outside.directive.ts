@@ -42,7 +42,7 @@ export class ClickOutsideDirective implements AfterViewInit, OnDestroy {
   isOutside(elementForCheck: HTMLElement): boolean {
     return (
       elementForCheck === this.element.nativeElement ||
-      this.element.nativeElement.contains(elementForCheck)
+      this.element.nativeElement.parentNode.contains(elementForCheck)
     );
   }
 
