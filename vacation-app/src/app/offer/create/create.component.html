@@ -50,9 +50,9 @@
             <mat-select formControlName="country">
               <mat-option
                 *ngFor="let country of countries"
-                [value]="country.country"
+                [value]="country.name"
               >
-                {{ country.country }}
+                {{ country.name }}
               </mat-option>
             </mat-select>
           </mat-form-field>
