@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { combineLatest, mergeMap, Subscription } from 'rxjs';
+import { combineLatest, EMPTY, mergeMap, Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth.service';
 import { AgencyService } from 'src/app/auth/agency.service';
 import { UserService } from 'src/app/auth/user.service';
@@ -37,10 +37,12 @@ export class AccountNavComponent implements OnInit, OnDestroy {
     this.subscription = this.authService.currentUser$
       .pipe(
         mergeMap((account) => {
-          if (account.isAgency) {
+          if (account?.isAgency) {
             return this.agencyService.logout$();
-          } else {
+          } else if (!account?.isAgency) {
             return this.UserService.logout$();
+          } else {
+            return EMPTY;
           }
         })
       )
