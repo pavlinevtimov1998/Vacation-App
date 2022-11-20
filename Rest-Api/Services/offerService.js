@@ -31,7 +31,7 @@ const getOne = (offerId) =>
         path: "offers",
         select:
           "-description -__v -ratingsQuantity -rating -peopleBooked -createdAt",
-        options: { limit: 3 },
+        options: { limit: 3, sort: { rating: -1 } },
         populate: {
           path: "country",
           select: "-image -__v -offersId",
