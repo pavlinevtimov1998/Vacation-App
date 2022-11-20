@@ -8,11 +8,11 @@ const topOffers = () =>
     .select(
       "-town -country -description -ratingsQuantity -updatedAt -createdAt -__v"
     )
-    .populate("agencyId", "-password -email -updatedAt -createdAt -__v");
+    .populate("agency", "-password -email -updatedAt -createdAt -__v");
 
-const TopCointries = () => Country.find();
+const TopCountries = () => Country.find().sort({ rating: -1 }).limit(3);
 
 module.exports = {
   topOffers,
-  TopCointries,
+  TopCountries,
 };
