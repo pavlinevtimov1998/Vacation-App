@@ -56,7 +56,7 @@ const offerSchema = new mongoose.Schema(
         default: [],
       },
     ],
-    agencyId: {
+    agency: {
       type: mongoose.Types.ObjectId,
       ref: "Agency",
     },
