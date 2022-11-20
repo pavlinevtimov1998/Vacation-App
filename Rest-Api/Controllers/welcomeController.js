@@ -15,7 +15,7 @@ welcomeController.get(
 welcomeController.get(
   "/top-countries",
   catchAsyncError(async (req, res) => {
-    const topCountries = await welcomeService.TopCointries();
+    const topCountries = await welcomeService.TopCountries();
 
     res.status(200).json(topCountries);
   })
