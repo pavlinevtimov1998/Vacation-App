@@ -1,0 +1,16 @@
+<section class="review-list">
+  <h1 *ngIf="reviews.length == 0">No Reviews...</h1>
+  <article class="review" *ngFor="let review of reviews">
+    <div class="review-header">
+      <div class="user-rating">
+        <h1>{{ review.user.username }}</h1>
+        <div class="rating">
+          <div class="stars">stars</div>
+          <span>{{ review.rating }}</span>
+        </div>
+      </div>
+      <div class="line"></div>
+    </div>
+    <p>{{ review.content }}</p>
+  </article>
+</section>
