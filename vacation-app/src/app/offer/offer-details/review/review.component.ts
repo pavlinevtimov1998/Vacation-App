@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-review',
@@ -25,4 +25,6 @@ export class ReviewComponent implements OnInit {
 
     this.rate = rate;
   }
+
+  closeReviewContainer() {}
 }
