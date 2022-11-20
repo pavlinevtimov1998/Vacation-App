@@ -8,7 +8,7 @@ export interface IAgency {
   offers: IOffer[];
 }
 
-interface IUser {
+export interface IUser {
   _id: string;
   username: string;
   bookedOffers: string[] | IOffer[];
