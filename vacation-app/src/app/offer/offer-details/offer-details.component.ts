@@ -18,6 +18,7 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
   isLogged$ = this.authService.islogged$;
   subscription!: Subscription;
 
+  isReviewOpen = false;
   isLoading = true;
   selectedIndex = 0;
 
@@ -53,6 +54,10 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
           console.error(err);
         },
       });
+  }
+
+  toggleReviewHandler() {
+    this.isReviewOpen = !this.isReviewOpen;
   }
 
   similarOffers() {
