@@ -23,10 +23,6 @@ const getOne = (offerId) =>
     .populate({
       path: "agency",
       select: "-__v -createdAt -updatedAt -password",
-    })
-    .populate({
-      path: "country",
-      select: "-image -__v",
       populate: {
         path: "offers",
         select:
@@ -34,9 +30,13 @@ const getOne = (offerId) =>
         options: { limit: 3, sort: { rating: -1 } },
         populate: {
           path: "country",
-          select: "-image -__v -offersId",
+          select: "-image -__v -offers",
         },
       },
+    })
+    .populate({
+      path: "country",
+      select: "-image -__v -offers -rating -ratingQuantity",
     });
 
 const createOffer = async (body, files) => {
