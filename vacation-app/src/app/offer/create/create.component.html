@@ -71,7 +71,11 @@
       </div>
       <div class="features" #checkboxes>
         <div class="checkbox" *ngFor="let feature of features">
-          <input type="checkbox" [value]="feature.name" />
+          <input
+            type="checkbox"
+            [title]="feature.name"
+            [value]="feature.name"
+          />
           <label [for]="feature.name">{{ feature.name }}</label>
         </div>
       </div>

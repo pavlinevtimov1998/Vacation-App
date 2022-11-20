@@ -51,7 +51,6 @@ select {
   width: 80%;
   align-items: center;
   flex-wrap: wrap;
-
 }
 
 input[type="chackbox"] {
@@ -124,6 +123,17 @@ button[type="submit"]:hover {
   cursor: pointer;
   background-color: #3f51b5;
   color: #fff;
+}
+
+.checkbox {
+  width: 30%;
+  text-align: center;
+}
+
+.checkbox input {
+}
+
+.checkbox label {
 }
 
 .error {
