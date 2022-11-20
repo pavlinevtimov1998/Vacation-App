@@ -1,22 +1,5 @@
 <div class="wrapper" *ngIf="!isLoading">
-  <section class="carousel">
-    <ng-container *ngFor="let image of offer.images; let i = index">
-      <div
-        class="img-container"
-        [ngClass]="{ 'image-active': selectedIndex == i }"
-      >
-        <img [src]="image" [alt]="offer.title" class="fade" />
-      </div>
-    </ng-container>
-
-    <button class="arrow-left" (click)="leftArrowHandler()">
-      <mat-icon>arrow_back</mat-icon>
-    </button>
-
-    <button class="arrow-right" (click)="rightArrowHandler()">
-      <mat-icon>arrow_forward</mat-icon>
-    </button>
-  </section>
+  <app-offer-images-carousel [offer]="offer"></app-offer-images-carousel>
   <section class="offer-data">
     <div class="info-container">
       <div class="info-left">
@@ -51,6 +34,22 @@
                 <mat-icon>favorite_border</mat-icon>
               </button>
             </div>
+            <div
+              class="actions"
+              *ngIf="(isLogged$ | async) && currentUser?.isAgency"
+            >
+              <button class="rate" mat-icon-button title="Edit" type="button">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button
+                class="favorites"
+                title="Delete"
+                mat-icon-button
+                type="button"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
           </div>
           <div></div>
           <div class="description">
@@ -82,7 +81,48 @@
       </div>
     </div>
   </section>
-  <section class="more-offers">
+  <section class="review-list">
+    <article class="review">
+      <div class="review-header">
+        <div class="user-rating">
+          <h1>Reviewed user</h1>
+          <div class="rating">
+            <div class="stars">stast</div>
+            <span>5</span>
+          </div>
+        </div>
+        <div class="line"></div>
+      </div>
+      <p>This offer is very good!</p>
+    </article>
+    <article class="review">
+      <div class="review-header">
+        <div class="user-rating">
+          <h1>Reviewed user</h1>
+          <div class="rating">
+            <div class="stars">stast</div>
+            <span>5</span>
+          </div>
+        </div>
+        <div class="line"></div>
+      </div>
+      <p>This offer is very good!</p>
+    </article>
+    <article class="review">
+      <div class="review-header">
+        <div class="user-rating">
+          <h1>Reviewed user</h1>
+          <div class="rating">
+            <div class="stars">stast</div>
+            <span>5</span>
+          </div>
+        </div>
+        <div class="line"></div>
+      </div>
+      <p>This offer is very good!</p>
+    </article>
+  </section>
+  <section class="more-offers" *ngIf="!currentUser?.isAgency">
     <article class="more-offers-title">
       <h1>You May Also Be Interest In</h1>
     </article>

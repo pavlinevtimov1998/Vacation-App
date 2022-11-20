@@ -8,6 +8,8 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { combineLatest, Subscription } from 'rxjs';
+import { CountryService } from 'src/app/country/country.service';
+
 import { OfferService } from 'src/app/offer/offer.service';
 import { ICountry } from 'src/app/shared/interfaces/country.interface';
 import { IFeature } from 'src/app/shared/interfaces/offer.interface';
@@ -32,13 +34,14 @@ export class CreateComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private countryService: CountryService,
     private offerService: OfferService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
     this.subscription = combineLatest([
-      this.offerService.getAllCountries$(),
+      this.countryService.getAllCountries$(),
       this.offerService.getAllFeatures$(),
     ]).subscribe({
       next: ([countries, features]) => {

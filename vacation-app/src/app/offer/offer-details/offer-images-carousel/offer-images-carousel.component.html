@@ -1,0 +1,18 @@
+<section class="carousel">
+  <ng-container *ngFor="let image of offer.images; let i = index">
+    <div
+      class="img-container"
+      [ngClass]="{ 'image-active': selectedIndex == i }"
+    >
+      <img [src]="image" [alt]="offer.title" class="fade" />
+    </div>
+  </ng-container>
+
+  <button class="arrow-left" (click)="leftArrowHandler()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+
+  <button class="arrow-right" (click)="rightArrowHandler()">
+    <mat-icon>arrow_forward</mat-icon>
+  </button>
+</section>

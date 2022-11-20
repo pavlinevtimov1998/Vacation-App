@@ -54,20 +54,4 @@ export class OfferDetailsComponent implements OnInit {
   similarOffers() {
     return this.offer.country.offers as IOffer[];
   }
-
-  leftArrowHandler(): void {
-    if (this.selectedIndex > 0) {
-      this.selectedIndex--;
-    } else {
-      this.selectedIndex = this.offer.images.length - 1;
-    }
-  }
-
-  rightArrowHandler(): void {
-    if (this.selectedIndex < this.offer.images.length - 1) {
-      this.selectedIndex++;
-    } else {
-      this.selectedIndex = 0;
-    }
-  }
 }
