@@ -21,14 +21,14 @@ const getOne = (offerId) =>
   Offer.findById(offerId)
     .select("-__v  -updatedAt")
     .populate({
-      path: "agencyId",
+      path: "agency",
       select: "-__v -createdAt -updatedAt -password",
     })
     .populate({
       path: "country",
       select: "-image -__v",
       populate: {
-        path: "offersId",
+        path: "offers",
         select:
           "-description -__v -ratingsQuantity -rating -peopleBooked -createdAt",
         options: { limit: 3 },
