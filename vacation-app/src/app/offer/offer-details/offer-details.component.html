@@ -81,50 +81,10 @@
       </div>
     </div>
   </section>
-  <section class="review-list">
-    <article class="review">
-      <div class="review-header">
-        <div class="user-rating">
-          <h1>Reviewed user</h1>
-          <div class="rating">
-            <div class="stars">stast</div>
-            <span>5</span>
-          </div>
-        </div>
-        <div class="line"></div>
-      </div>
-      <p>This offer is very good!</p>
-    </article>
-    <article class="review">
-      <div class="review-header">
-        <div class="user-rating">
-          <h1>Reviewed user</h1>
-          <div class="rating">
-            <div class="stars">stast</div>
-            <span>5</span>
-          </div>
-        </div>
-        <div class="line"></div>
-      </div>
-      <p>This offer is very good!</p>
-    </article>
-    <article class="review">
-      <div class="review-header">
-        <div class="user-rating">
-          <h1>Reviewed user</h1>
-          <div class="rating">
-            <div class="stars">stast</div>
-            <span>5</span>
-          </div>
-        </div>
-        <div class="line"></div>
-      </div>
-      <p>This offer is very good!</p>
-    </article>
-  </section>
+  <app-offer-reviews [reviews]="offer.reviews"></app-offer-reviews>
   <section class="more-offers" *ngIf="!currentUser?.isAgency">
     <article class="more-offers-title">
-      <h1>You May Also Be Interest In</h1>
+      <h1>More Offers From {{ offer.agency.agencyName }}</h1>
     </article>
     <article class="similar-offers">
       <ng-container *ngFor="let offer of similarOffers()">
