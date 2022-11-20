@@ -1,17 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CountriesCatalogComponent } from './countries-catalog/countries-catalog.component';
-import { MaterialModule } from '../material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
+
 import { SharedModule } from '../shared/shared.module';
-import { countryRoutingModule } from './country-routing.module';
+import { CountryRoutingModule } from './country-routing.module';
+import { CountriesCatalogComponent } from './countries-catalog/countries-catalog.component';
 
 @NgModule({
   declarations: [CountriesCatalogComponent],
   imports: [
     CommonModule,
-    MaterialModule,
-    countryRoutingModule,
+    CountryRoutingModule,
     ReactiveFormsModule,
     SharedModule,
   ],

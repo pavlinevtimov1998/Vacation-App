@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { combineLatest, mergeMap, Subscription } from 'rxjs';
-import { AuthService } from 'src/app/auth.service';
-import { OfferService } from 'src/app/offer.service';
+import { AuthService } from 'src/app/auth/auth.service';
+import { OfferService } from 'src/app/offer/offer.service';
 import { IAccount } from 'src/app/shared/interfaces/account.interface';
 import { IOffer } from 'src/app/shared/interfaces/offer.interface';
 

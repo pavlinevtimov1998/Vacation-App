@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { combineLatest, EMPTY, mergeMap, Subscription } from 'rxjs';
-import { AuthService } from 'src/app/auth.service';
+import { EMPTY, mergeMap, Subscription } from 'rxjs';
+
+import { AuthService } from 'src/app/auth/auth.service';
 import { AgencyService } from 'src/app/auth/agency.service';
 import { UserService } from 'src/app/auth/user.service';
 

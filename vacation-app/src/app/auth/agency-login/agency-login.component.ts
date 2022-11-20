@@ -6,7 +6,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/auth.service';
+
+import { AuthService } from 'src/app/auth/auth.service';
 import { errorHandler } from 'src/app/util/form-errors';
 import { AgencyService } from '../agency.service';
 

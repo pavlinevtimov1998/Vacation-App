@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { OfferService } from 'src/app/offer.service';
+import { OfferService } from 'src/app/offer/offer.service';
 import { IOffer } from 'src/app/shared/interfaces/offer.interface';
 
 @Component({

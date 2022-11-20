@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { OfferService } from 'src/app/offer.service';
+import { OfferService } from 'src/app/offer/offer.service';
 import { ICountry } from 'src/app/shared/interfaces/country.interface';
 
 @Component({

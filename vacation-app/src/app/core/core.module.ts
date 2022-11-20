@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
-import { MaterialModule } from '../material/material.module';
 import { RouterModule } from '@angular/router';
 import { CarouselComponent } from './home/carousel/carousel.component';
 import { SearchComponent } from './home/search/search.component';
@@ -23,7 +22,7 @@ import { SharedModule } from '../shared/shared.module';
     MobileNavComponent,
     AccountNavComponent,
   ],
-  imports: [CommonModule, MaterialModule, RouterModule, SharedModule],
+  imports: [CommonModule, RouterModule, SharedModule],
   exports: [HeaderComponent, FooterComponent],
 })
 export class CoreModule {}

@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { ICountry } from './shared/interfaces/country.interface';
-import { IFeature, IOffer } from './shared/interfaces/offer.interface';
+import { ICountry } from '../shared/interfaces/country.interface';
+import { IFeature, IOffer } from '../shared/interfaces/offer.interface';
 
 @Injectable({
   providedIn: 'root',

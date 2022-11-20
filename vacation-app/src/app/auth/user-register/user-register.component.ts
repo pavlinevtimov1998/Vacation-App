@@ -1,16 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  AbstractControl,
   FormBuilder,
   FormControl,
   FormGroup,
-  ValidationErrors,
-  ValidatorFn,
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { AuthService } from 'src/app/auth.service';
+import { AuthService } from 'src/app/auth/auth.service';
 import { errorHandler, passwordsMismatch } from '../../util/form-errors';
 import { UserService } from '../user.service';
 

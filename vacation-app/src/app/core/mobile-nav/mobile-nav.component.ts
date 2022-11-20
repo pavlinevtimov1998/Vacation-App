@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { mergeMap, Subscription } from 'rxjs';
-import { AuthService } from 'src/app/auth.service';
+import { AuthService } from 'src/app/auth/auth.service';
 import { AgencyService } from 'src/app/auth/agency.service';
 import { UserService } from 'src/app/auth/user.service';
 

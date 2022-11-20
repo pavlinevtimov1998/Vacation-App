@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { combineLatest, Subscription } from 'rxjs';
-import { OfferService } from 'src/app/offer.service';
+import { OfferService } from 'src/app/offer/offer.service';
 import { ICountry } from 'src/app/shared/interfaces/country.interface';
 import { IFeature } from 'src/app/shared/interfaces/offer.interface';
 import { errorHandler } from 'src/app/util/form-errors';

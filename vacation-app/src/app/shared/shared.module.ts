@@ -1,10 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSelectModule } from '@angular/material/select';
+
 import { BenefitsComponent } from './benefits/benefits.component';
-import { MaterialModule } from '../material/material.module';
 import { ClickOutsideDirective } from './click-outside.directive';
 import { AuthDialogComponent } from './dialog/auth-dialog.component';
-import { RouterModule } from '@angular/router';
 import { CountryItemComponent } from './country-item/country-item.component';
 import { OfferItemComponent } from './offer-item/offer-item.component';
 
@@ -16,12 +22,27 @@ import { OfferItemComponent } from './offer-item/offer-item.component';
     CountryItemComponent,
     OfferItemComponent,
   ],
-  imports: [CommonModule, MaterialModule, RouterModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    MatIconModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatProgressSpinnerModule,
+    MatFormFieldModule,
+    MatSelectModule,
+  ],
   exports: [
     BenefitsComponent,
     ClickOutsideDirective,
     CountryItemComponent,
     OfferItemComponent,
+    MatIconModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatProgressSpinnerModule,
+    MatFormFieldModule,
+    MatSelectModule,
   ],
 })
 export class SharedModule {}

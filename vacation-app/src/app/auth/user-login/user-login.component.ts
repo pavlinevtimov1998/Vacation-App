@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { AuthService } from 'src/app/auth.service';
+import { AuthService } from 'src/app/auth/auth.service';
 import { errorHandler } from '../../util/form-errors';
 import { UserService } from '../user.service';
 

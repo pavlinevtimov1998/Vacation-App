@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Subscription } from 'rxjs';
-import { AuthService } from 'src/app/auth.service';
+
+import { AuthService } from 'src/app/auth/auth.service';
 import { AuthDialogComponent } from 'src/app/shared/dialog/auth-dialog.component';
-import { IAccount } from '../../shared/interfaces/account.interface';
 
 @Component({
   selector: 'app-header',
