@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { combineLatest, mergeMap, Subscription } from 'rxjs';
+
 import { AuthService } from 'src/app/auth/auth.service';
 import { OfferService } from 'src/app/offer/offer.service';
-import { IAccount } from 'src/app/shared/interfaces/account.interface';
-import { IOffer } from 'src/app/shared/interfaces/offer.interface';
+import { IOffer, IAccount } from 'src/app/shared/interfaces';
 
 @Component({
   selector: 'app-offer-details',
@@ -37,12 +37,16 @@ export class OfferDetailsComponent implements OnInit {
           this.currentUser = account;
           const offerId = params['offerId'];
 
-          return this.offerService.getOne$(offerId);
+          return combineLatest([
+            this.offerService.getOne$(offerId),
+            this.offerService.getOfferReviews$(offerId),
+          ]);
         })
       )
       .subscribe({
-        next: (offer) => {
+        next: ([offer, reviews]) => {
           this.offer = offer;
+          this.offer.reviews = reviews;
           this.isLoading = false;
         },
         error: (err) => {
@@ -52,6 +56,6 @@ export class OfferDetailsComponent implements OnInit {
   }
 
   similarOffers() {
-    return this.offer.country.offers as IOffer[];
+    return this.offer.agency.offers as IOffer[];
   }
 }
