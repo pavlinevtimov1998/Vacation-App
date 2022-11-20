@@ -13,7 +13,7 @@ export interface IOffer {
   rating: string;
   peopleBooked: number;
   features: string[];
-  agencyId: IAgency;
+  agency: IAgency;
   createdAt: string;
 }
 
