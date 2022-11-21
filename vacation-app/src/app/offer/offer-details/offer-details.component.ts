@@ -4,7 +4,7 @@ import { combineLatest, mergeMap, Subscription } from 'rxjs';
 
 import { AuthService } from 'src/app/auth/auth.service';
 import { OfferService } from 'src/app/offer/offer.service';
-import { IOffer, IAccount } from 'src/app/shared/interfaces';
+import { IOffer, IAccount, IReview } from 'src/app/shared/interfaces';
 
 @Component({
   selector: 'app-offer-details',
@@ -58,6 +58,18 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
 
   openReviewWindow(reviewContainer: HTMLElement) {
     reviewContainer.style.display = 'block';
+  }
+
+  addedReviewHandler(review: IReview) {
+    console.log(this.offer.reviews);
+
+    this.offer.reviews = this.offer.reviews.filter(
+      (r) => r.user._id != review.user._id
+    );
+    console.log(this.offer.reviews);
+
+    this.offer.reviews.push(review);
+    console.log(this.offer.reviews);
   }
 
   similarOffers() {
