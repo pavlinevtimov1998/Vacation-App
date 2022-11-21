@@ -10,13 +10,37 @@
       >
     </ng-container>
   </div>
-  <form class="form">
-    <textarea
-      name="review"
-      placeholder="Write you review"
-      cols="30"
-      rows="10"
-    ></textarea>
+  <ng-container
+    *ngIf="
+      reviewForm.controls['rating'].touched &&
+      reviewForm.controls['rating'].invalid
+    "
+  >
+    <p class="error rating-err">Rating is required!</p>
+  </ng-container>
+  <form class="form" [formGroup]="reviewForm" (submit)="reviewHandler()">
+    <div>
+      <textarea
+        name="review"
+        placeholder="Write you review"
+        cols="30"
+        rows="10"
+        formControlName="content"
+      ></textarea>
+      <ng-container
+        *ngIf="
+          reviewForm.controls['content'].touched &&
+          reviewForm.controls['content'].invalid
+        "
+      >
+        <p
+          class="error"
+          *ngIf="reviewForm.controls['content'].errors?.['required']"
+        >
+          Review content is required!
+        </p>
+      </ng-container>
+    </div>
     <button type="submit">
       <mat-icon>send</mat-icon>
       <span>Send</span>

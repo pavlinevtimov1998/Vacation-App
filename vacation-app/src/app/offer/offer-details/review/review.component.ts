@@ -1,18 +1,75 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { mergeMap, Subscription } from 'rxjs';
+import { OfferService } from '../../offer.service';
 
 @Component({
   selector: 'app-review',
   templateUrl: './review.component.html',
   styleUrls: ['./review.component.css'],
 })
-export class ReviewComponent implements OnInit {
-  rates = [1, 2, 3, 4, 5];
+export class ReviewComponent implements OnInit, OnDestroy {
+  readonly rates = [1, 2, 3, 4, 5];
 
-  constructor() {}
+  @Input() reviewContainer!: HTMLElement;
+  @Input() offerId!: string;
 
-  rate = 0;
+  reviewForm!: FormGroup;
 
-  ngOnInit(): void {}
+  subscription!: Subscription;
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private offerService: OfferService,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
+    this.reviewForm = this.formBuilder.group({
+      rating: new FormControl(null, [
+        Validators.required,
+        Validators.min(1),
+        Validators.max(5),
+      ]),
+      content: new FormControl(null, [
+        Validators.required,
+        Validators.minLength(10),
+        Validators.maxLength(100),
+      ]),
+    });
+  }
+
+  reviewHandler() {
+    if (this.reviewContainer.style.display == 'none') {
+      return;
+    }
+
+    if (this.reviewForm.invalid) {
+      return this.reviewForm.markAllAsTouched();
+    }
+
+    const body = this.reviewForm.value;
+    console.log(body);
+
+    this.subscription = this.offerService
+      .addReview$(body, this.offerId)
+      .subscribe({
+        next: (response) => {
+          console.log(response);
+          this.closeReviewContainer();
+        },
+        error: (err) => {
+          console.log(err);
+          this.closeReviewContainer();
+        },
+      });
+  }
 
   rateHandler(starsContainer: HTMLDivElement, index: number, rate: number) {
     for (let i = 0; i < starsContainer.children.length; i++) {
@@ -23,8 +80,14 @@ export class ReviewComponent implements OnInit {
       }
     }
 
-    this.rate = rate;
+    this.reviewForm.controls['rating'].patchValue(rate);
   }
 
-  closeReviewContainer() {}
+  closeReviewContainer() {
+    this.reviewContainer.style.display = 'none';
+  }
+
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
+  }
 }

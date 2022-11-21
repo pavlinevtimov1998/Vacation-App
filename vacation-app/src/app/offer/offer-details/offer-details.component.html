@@ -17,15 +17,18 @@
               class="actions"
               *ngIf="(isLogged$ | async) && !currentUser?.isAgency"
             >
-              <section *ngIf="isReviewOpen" class="review-container">
-                <app-review></app-review>
+              <section #reviewContainer class="review-container">
+                <app-review
+                  [reviewContainer]="reviewContainer"
+                  [offerId]="offerId"
+                ></app-review>
               </section>
               <button
                 class="rate"
                 mat-icon-button
                 title="Rate this offer"
                 type="button"
-                (click)="toggleReviewHandler()"
+                (click)="openReviewWindow(reviewContainer)"
               >
                 <mat-icon>rate_review</mat-icon>
               </button>

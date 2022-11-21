@@ -28,15 +28,6 @@ export class OfferService {
     });
   }
 
-  getOfferReviews$(offerId: string): Observable<IReview[]> {
-    return this.httpClient.get<IReview[]>(
-      `${environment.api}/review/${offerId}`,
-      {
-        withCredentials: true,
-      }
-    );
-  }
-
   createOffer(body: FormData): Observable<IOffer> {
     return this.httpClient.post<IOffer>(`${environment.api}/offers`, body, {
       withCredentials: true,
@@ -47,5 +38,28 @@ export class OfferService {
     return this.httpClient.get<IFeature[]>(`${environment.api}/features`, {
       withCredentials: true,
     });
+  }
+
+  getOfferReviews$(offerId: string): Observable<IReview[]> {
+    return this.httpClient.get<IReview[]>(
+      `${environment.api}/reviews/${offerId}`,
+      {
+        withCredentials: true,
+      }
+    );
+  }
+
+  addReview$(
+    body: {
+      rating: number;
+      content: string;
+    },
+    offerId: string
+  ): Observable<{ [message: string]: string }> {
+    return this.httpClient.post<{ [message: string]: string }>(
+      `${environment.api}/reviews/${offerId}`,
+      body,
+      { withCredentials: true }
+    );
   }
 }

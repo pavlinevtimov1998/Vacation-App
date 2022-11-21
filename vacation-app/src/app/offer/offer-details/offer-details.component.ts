@@ -18,7 +18,7 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
   isLogged$ = this.authService.islogged$;
   subscription!: Subscription;
 
-  isReviewOpen = false;
+  offerId!: string;
   isLoading = true;
   selectedIndex = 0;
 
@@ -36,11 +36,11 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
       .pipe(
         mergeMap(([params, account]) => {
           this.currentUser = account;
-          const offerId = params['offerId'];
+          this.offerId = params['offerId'];
 
           return combineLatest([
-            this.offerService.getOne$(offerId),
-            this.offerService.getOfferReviews$(offerId),
+            this.offerService.getOne$(this.offerId),
+            this.offerService.getOfferReviews$(this.offerId),
           ]);
         })
       )
@@ -56,8 +56,8 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
       });
   }
 
-  toggleReviewHandler() {
-    this.isReviewOpen = !this.isReviewOpen;
+  openReviewWindow(reviewContainer: HTMLElement) {
+    reviewContainer.style.display = 'block';
   }
 
   similarOffers() {
