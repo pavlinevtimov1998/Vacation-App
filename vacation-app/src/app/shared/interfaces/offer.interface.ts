@@ -20,7 +20,7 @@ export interface IOffer {
 
 export interface IReview {
   user: IUser;
-  offer: IOffer | string;
+  offer: string;
   content: string;
   rating: number;
 }
