@@ -17,7 +17,7 @@ router.use("/agency", agencyController);
 router.use("/profile", profileController);
 router.use("/countries", countryController);
 router.use("/offers", offerController);
-router.use("/review", reviewController);
+router.use("/reviews", reviewController);
 router.use("/features", featureController);
 
 router.use("*", (req, res) => {
