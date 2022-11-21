@@ -6,7 +6,18 @@ const getOfferReviews = (offerId) =>
     select: "-password -createdAt -updatedAt -__v -bookedOffers",
   });
 
-const addReview = (body) => Review.create(body);
+const addReview = async (body) => {
+  const review = await Review.findOne({ user: body.user, offer: body.offer });
+
+  if (review) {
+    review.rating = body.rating;
+    review.content = body.content;
+
+    return review.save();
+  }
+
+  return Review.create(body);
+};
 
 module.exports = {
   getOfferReviews,
