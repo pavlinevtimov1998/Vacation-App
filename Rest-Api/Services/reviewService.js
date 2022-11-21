@@ -7,7 +7,13 @@ const getOfferReviews = (offerId) =>
   });
 
 const addReview = async (body) => {
-  const review = await Review.findOne({ user: body.user, offer: body.offer });
+  const review = await Review.findOne({
+    user: body.user,
+    offer: body.offer,
+  }).populate({
+    path: "user",
+    select: "-password -createdAt -updatedAt -__v",
+  });
 
   if (review) {
     review.rating = body.rating;
@@ -16,7 +22,10 @@ const addReview = async (body) => {
     return review.save();
   }
 
-  return Review.create(body);
+  return Review.create(body).populate({
+    path: "user",
+    select: "-password -createdAt -updatedAt -__v",
+  });
 };
 
 module.exports = {
