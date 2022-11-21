@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   isAgency!: boolean;
   isOwnerOfProfile!: boolean;
-  isLoading = true;
+  isLoading: boolean = true;
 
   subscription!: Subscription;
 

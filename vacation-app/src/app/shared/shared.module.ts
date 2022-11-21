@@ -13,6 +13,7 @@ import { ClickOutsideDirective } from './click-outside.directive';
 import { AuthDialogComponent } from './dialog/auth-dialog.component';
 import { CountryItemComponent } from './country-item/country-item.component';
 import { OfferItemComponent } from './offer-item/offer-item.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { OfferItemComponent } from './offer-item/offer-item.component';
     AuthDialogComponent,
     CountryItemComponent,
     OfferItemComponent,
+    SpinnerComponent,
   ],
   imports: [
     CommonModule,
@@ -40,9 +42,9 @@ import { OfferItemComponent } from './offer-item/offer-item.component';
     MatIconModule,
     MatButtonModule,
     MatDialogModule,
-    MatProgressSpinnerModule,
     MatFormFieldModule,
     MatSelectModule,
+    SpinnerComponent,
   ],
 })
 export class SharedModule {}

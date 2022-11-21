@@ -5,8 +5,8 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { mergeMap, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
+
 import { OfferService } from '../../offer.service';
 
 @Component({
@@ -26,8 +26,7 @@ export class ReviewComponent implements OnInit, OnDestroy {
 
   constructor(
     private formBuilder: FormBuilder,
-    private offerService: OfferService,
-    private router: Router
+    private offerService: OfferService
   ) {}
 
   ngOnInit(): void {
@@ -55,13 +54,11 @@ export class ReviewComponent implements OnInit, OnDestroy {
     }
 
     const body = this.reviewForm.value;
-    console.log(body);
 
     this.subscription = this.offerService
       .addReview$(body, this.offerId)
       .subscribe({
         next: (response) => {
-          console.log(response);
           this.closeReviewContainer();
         },
         error: (err) => {

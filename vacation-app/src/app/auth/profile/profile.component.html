@@ -1,57 +1,55 @@
-<section class="wrapper">
-  <mat-spinner *ngIf="isLoading"></mat-spinner>
-  <ng-container *ngIf="!isLoading">
-    <div class="container">
-      <app-agency-offers
-        *ngIf="isAgency"
-        [profile]="profile"
-        [currentUser]="currentUser"
-        [isOwnerOfProfile]="isOwnerOfProfile"
-      ></app-agency-offers>
-      <app-reserved-vacations
-        *ngIf="!isAgency"
-        [profile]="profile"
-        [currentUser]="currentUser"
-        [isOwnerOfProfile]="isOwnerOfProfile"
-      ></app-reserved-vacations>
+<app-spinner *ngIf="isLoading"></app-spinner>
+<section class="wrapper" *ngIf="!isLoading">
+  <div class="container">
+    <app-agency-offers
+      *ngIf="isAgency"
+      [profile]="profile"
+      [currentUser]="currentUser"
+      [isOwnerOfProfile]="isOwnerOfProfile"
+    ></app-agency-offers>
+    <app-reserved-vacations
+      *ngIf="!isAgency"
+      [profile]="profile"
+      [currentUser]="currentUser"
+      [isOwnerOfProfile]="isOwnerOfProfile"
+    ></app-reserved-vacations>
 
-      <article class="user-profile">
-        <h1 *ngIf="isAgency">
-          {{ profile.agencyName }}
-        </h1>
-        <h1 *ngIf="!isAgency">
-          {{ profile.username }}
-        </h1>
-        <ng-container *ngIf="isOwnerOfProfile">
-          <a class="edit" routerLink="/auth/edit-profile">Edit profile</a>
-        </ng-container>
+    <article class="user-profile">
+      <h1 *ngIf="isAgency">
+        {{ profile.agencyName }}
+      </h1>
+      <h1 *ngIf="!isAgency">
+        {{ profile.username }}
+      </h1>
+      <ng-container *ngIf="isOwnerOfProfile">
+        <a class="edit" routerLink="/auth/edit-profile">Edit profile</a>
+      </ng-container>
 
-        <div class="user-info">
-          <h1>Contacts</h1>
-          <div class="details">
-            <div class="detail">
-              <h4>Phone:</h4>
-              <p>{{ profile.phone || "(Not added...)" }}</p>
-            </div>
-            <div class="detail">
-              <h4>Email:</h4>
-              <p>{{ profile.email || "(Not added...)" }}</p>
-            </div>
-            <div class="detail">
-              <h4>Adress:</h4>
-              <p>{{ profile.adress || "(Not added...)" }}</p>
-            </div>
-            <div *ngIf="isAgency" class="detail">
-              <h4>Website:</h4>
-              <p>{{ profile.website || "(Not added...)" }}</p>
-            </div>
+      <div class="user-info">
+        <h1>Contacts</h1>
+        <div class="details">
+          <div class="detail">
+            <h4>Phone:</h4>
+            <p>{{ profile.phone || "(Not added...)" }}</p>
+          </div>
+          <div class="detail">
+            <h4>Email:</h4>
+            <p>{{ profile.email || "(Not added...)" }}</p>
+          </div>
+          <div class="detail">
+            <h4>Adress:</h4>
+            <p>{{ profile.adress || "(Not added...)" }}</p>
+          </div>
+          <div *ngIf="isAgency" class="detail">
+            <h4>Website:</h4>
+            <p>{{ profile.website || "(Not added...)" }}</p>
           </div>
         </div>
-        <div class="sign-up-date">
-          <p>Sign up date:</p>
-          <span>{{ profile.createdAt | date: "longDate" }}</span>
-        </div>
-      </article>
-    </div>
-  </ng-container>
+      </div>
+      <div class="sign-up-date">
+        <p>Sign up date:</p>
+        <span>{{ profile.createdAt | date: "longDate" }}</span>
+      </div>
+    </article>
+  </div>
 </section>

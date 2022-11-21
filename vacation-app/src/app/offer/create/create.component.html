@@ -1,6 +1,6 @@
-<section class="wrapper">
-  <mat-spinner *ngIf="isLoading"></mat-spinner>
-  <div class="form-container" *ngIf="!isLoading">
+<app-spinner *ngIf="isLoading"></app-spinner>
+<section class="wrapper" *ngIf="!isLoading">
+  <div class="form-container">
     <h1>Add Offer</h1>
     <form
       [formGroup]="createOfferForm"

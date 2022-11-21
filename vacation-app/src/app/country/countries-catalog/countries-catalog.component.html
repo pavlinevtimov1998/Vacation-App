@@ -1,4 +1,5 @@
-<section class="wrapper">
+<app-spinner *ngIf="isLoading"></app-spinner>
+<section class="wrapper" *ngIf="!isLoading">
   <div class="container">
     <article class="header">
       <h1>All Countries</h1>

@@ -15,6 +15,8 @@ export class WelcomePageComponent implements OnInit, OnDestroy {
 
   subscribtion$!: Subscription;
 
+  isLoading: boolean = true;
+
   constructor(private welcomeService: WelcomeService) {}
 
   ngOnInit(): void {
@@ -25,9 +27,11 @@ export class WelcomePageComponent implements OnInit, OnDestroy {
       next: ([carousel, countries]) => {
         this.carouselData = carousel;
         this.topCountries = countries;
+        this.isLoading = false;
       },
       error: (err) => {
         console.log(err);
+        this.isLoading = false;
       },
     });
   }

@@ -60,6 +60,7 @@ export class CreateComponent implements OnInit, OnDestroy {
       },
       error: (err) => {
         console.log(err);
+        this.isLoading = false;
       },
     });
   }

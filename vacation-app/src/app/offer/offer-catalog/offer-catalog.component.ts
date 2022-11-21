@@ -13,12 +13,15 @@ export class OfferCatalogComponent implements OnInit, OnDestroy {
 
   subscribtion!: Subscription;
 
+  isLoading: boolean = true;
+
   constructor(private offerService: OfferService) {}
 
   ngOnInit(): void {
     this.subscribtion = this.offerService.getOffers$().subscribe({
       next: (offers) => {
         this.offers = offers;
+        this.isLoading = false;
       },
       error: (err) => {
         console.log(err);

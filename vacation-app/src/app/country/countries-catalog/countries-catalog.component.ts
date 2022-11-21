@@ -14,14 +14,20 @@ export class CountriesCatalogComponent implements OnInit, OnDestroy {
 
   subscription$!: Subscription;
 
+  isLoading: boolean = true;
+
   constructor(private countryService: CountryService) {}
 
   ngOnInit(): void {
     this.subscription$ = this.countryService.getAllCountries$().subscribe({
       next: (countries) => {
         this.countries = countries;
+        this.isLoading = false;
       },
-      error: (err) => {},
+      error: (err) => {
+        console.log(err);
+        this.isLoading = false;
+      },
     });
   }
 
