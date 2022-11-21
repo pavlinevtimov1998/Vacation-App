@@ -55,8 +55,8 @@ export class OfferService {
       content: string;
     },
     offerId: string
-  ): Observable<{ [message: string]: string }> {
-    return this.httpClient.post<{ [message: string]: string }>(
+  ): Observable<IReview> {
+    return this.httpClient.post<IReview>(
       `${environment.api}/reviews/${offerId}`,
       body,
       { withCredentials: true }
