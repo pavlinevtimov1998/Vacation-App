@@ -9,7 +9,6 @@ reviewController.get(
   "/:offerId",
   catchAsyncError(async (req, res) => {
     const offerId = req.params.offerId;
-
     const reviews = await reviewService.getOfferReviews(offerId);
 
     res.status(200).json(reviews);
@@ -24,7 +23,7 @@ reviewController.post(
     body.offer = req.params.offerId;
     body.user = req.user._id;
 
-    await reviewService.review(body);
+    await reviewService.addReview(body);
 
     res.status(200).json({ message: "Successfull review!" });
   })
