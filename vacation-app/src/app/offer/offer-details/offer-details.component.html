@@ -20,6 +20,7 @@
             >
               <section #reviewContainer class="review-container">
                 <app-review
+                  (addedReview)="addedReviewHandler($event)"
                   [reviewContainer]="reviewContainer"
                   [offerId]="offerId"
                 ></app-review>
