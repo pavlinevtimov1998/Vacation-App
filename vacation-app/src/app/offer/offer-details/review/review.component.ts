@@ -1,4 +1,11 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -7,6 +14,7 @@ import {
 } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
+import { IReview } from 'src/app/shared/interfaces';
 import { OfferService } from '../../offer.service';
 
 @Component({
@@ -19,6 +27,7 @@ export class ReviewComponent implements OnInit, OnDestroy {
 
   @Input() reviewContainer!: HTMLElement;
   @Input() offerId!: string;
+  @Output() addedReview = new EventEmitter<IReview>();
 
   reviewForm!: FormGroup;
 
@@ -58,7 +67,10 @@ export class ReviewComponent implements OnInit, OnDestroy {
     this.subscription = this.offerService
       .addReview$(body, this.offerId)
       .subscribe({
-        next: (response) => {
+        next: (review) => {
+          this.addedReview.emit(review);
+
+          this.reviewForm.reset();
           this.closeReviewContainer();
         },
         error: (err) => {
