@@ -23,9 +23,9 @@ reviewController.post(
     body.offer = req.params.offerId;
     body.user = req.user._id;
 
-    await reviewService.addReview(body);
+    const review = await reviewService.addReview(body);
 
-    res.status(200).json({ message: "Successfull review!" });
+    res.status(200).json(review);
   })
 );
 
