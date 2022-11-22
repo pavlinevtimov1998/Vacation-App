@@ -8,6 +8,7 @@ import { IOffer } from 'src/app/shared/interfaces/offer.interface';
   styleUrls: ['./offer-images-carousel.component.css'],
 })
 export class OfferImagesCarouselComponent implements OnInit {
+  @Input() isBooking: boolean = false;
   @Input() offer!: IOffer;
 
   selectedIndex = 0;
