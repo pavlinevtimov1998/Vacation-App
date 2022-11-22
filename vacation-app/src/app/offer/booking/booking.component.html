@@ -1,0 +1,53 @@
+<app-spinner *ngIf="isLoading"></app-spinner>
+<section class="wrapper" *ngIf="!isLoading">
+  <div class="container">
+    <div class="destination">
+      <h1>{{ offer.title }}</h1>
+      <h3>{{ offer.town }}, {{ offer.country.name }}</h3>
+    </div>
+    <div class="carousel-form-container">
+      <article class="offer">
+        <div class="carousel">
+          <app-offer-images-carousel
+            [offer]="offer"
+            [isBooking]="true"
+          ></app-offer-images-carousel>
+        </div>
+      </article>
+      <div class="form-date">
+        <div class="date">
+          <mat-form-field [formGroup]="dateForm" appearance="fill">
+            <mat-label>Enter a date range</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+              <input
+                matStartDate
+                formControlName="startDate"
+                placeholder="Start date"
+              />
+              <input
+                matEndDate
+                formControlName="endDate"
+                placeholder="End date"
+              />
+            </mat-date-range-input>
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
+        </div>
+        <div class="cost">
+          <h3>
+            <span>0</span>
+            <span>$</span>
+          </h3>
+          <button (click)="dateFormHandler()" class="pay-btn">
+            <mat-icon>credit_card</mat-icon>
+            <span>Checkout</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
