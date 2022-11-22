@@ -10,6 +10,8 @@ import { IReview } from 'src/app/shared/interfaces';
 export class OfferReviewsComponent implements OnInit {
   @Input() reviews!: IReview[];
 
+  readonly rates = [1, 2, 3, 4, 5];
+
   constructor() {}
 
   ngOnInit(): void {}
