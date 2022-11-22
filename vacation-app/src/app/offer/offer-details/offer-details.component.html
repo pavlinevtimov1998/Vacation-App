@@ -68,7 +68,7 @@
             <h1>Price: {{ offer.price }}$</h1>
             <a
               class="book-btn"
-              routerLink="/"
+              [routerLink]="['/offers/book/', offer._id]"
               *ngIf="(isLogged$ | async) && !currentUser?.isAgency"
             >
               <span>Book</span>
