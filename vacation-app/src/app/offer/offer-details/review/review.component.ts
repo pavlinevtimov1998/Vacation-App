@@ -30,7 +30,7 @@ export class ReviewComponent implements OnInit, OnDestroy {
   @Output() addedReview = new EventEmitter<IReview>();
 
   reviewForm!: FormGroup;
-
+  isLoading: boolean = false;
   subscription!: Subscription;
 
   constructor(
@@ -64,12 +64,15 @@ export class ReviewComponent implements OnInit, OnDestroy {
 
     const body = this.reviewForm.value;
 
+    this.isLoading = true;
+
     this.subscription = this.offerService
       .addReview$(body, this.offerId)
       .subscribe({
         next: (review) => {
           this.addedReview.emit(review);
 
+          this.isLoading = false;
           this.reviewForm.reset();
           this.closeReviewContainer();
         },

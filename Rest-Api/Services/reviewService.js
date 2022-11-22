@@ -22,10 +22,7 @@ const addReview = async (body) => {
     return review.save();
   }
 
-  return Review.create(body).populate({
-    path: "user",
-    select: "-password -createdAt -updatedAt -__v",
-  });
+  return Review.create(body)
 };
 
 module.exports = {

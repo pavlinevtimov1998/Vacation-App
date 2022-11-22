@@ -61,15 +61,11 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
   }
 
   addedReviewHandler(review: IReview) {
-    console.log(this.offer.reviews);
-
     this.offer.reviews = this.offer.reviews.filter(
       (r) => r.user._id != review.user._id
     );
-    console.log(this.offer.reviews);
 
     this.offer.reviews.push(review);
-    console.log(this.offer.reviews);
   }
 
   similarOffers() {
