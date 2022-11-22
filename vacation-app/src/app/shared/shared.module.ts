@@ -7,6 +7,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 import { BenefitsComponent } from './benefits/benefits.component';
 import { ClickOutsideDirective } from './click-outside.directive';
@@ -14,6 +16,7 @@ import { AuthDialogComponent } from './dialog/auth-dialog.component';
 import { CountryItemComponent } from './country-item/country-item.component';
 import { OfferItemComponent } from './offer-item/offer-item.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { OfferImagesCarouselComponent } from './offer-images-carousel/offer-images-carousel.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
     CountryItemComponent,
     OfferItemComponent,
     SpinnerComponent,
+    OfferImagesCarouselComponent,
   ],
   imports: [
     CommonModule,
@@ -33,6 +37,8 @@ import { SpinnerComponent } from './spinner/spinner.component';
     MatProgressSpinnerModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   exports: [
     BenefitsComponent,
@@ -45,6 +51,8 @@ import { SpinnerComponent } from './spinner/spinner.component';
     MatFormFieldModule,
     MatSelectModule,
     SpinnerComponent,
+    MatDatepickerModule,
+    OfferImagesCarouselComponent,
   ],
 })
 export class SharedModule {}
