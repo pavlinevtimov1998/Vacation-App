@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
+import { IBooking } from '../shared/interfaces/booking.interface';
 import { ICountry } from '../shared/interfaces/country.interface';
 import {
   IFeature,
@@ -71,8 +72,8 @@ export class OfferService {
       agency: string;
     },
     offerId: string
-  ): Observable<any> {
-    return this.httpClient.post<any>(
+  ): Observable<IBooking> {
+    return this.httpClient.post<IBooking>(
       `${environment.api}/booking/${offerId}`,
       body,
       { withCredentials: true }
