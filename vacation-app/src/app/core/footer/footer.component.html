@@ -17,19 +17,20 @@
     <h5>Top Countries</h5>
     <ul>
       <li>
-        <a routerLink="/offers/countries/spain">Spain</a>
+        <a routerLink="/countries/6379e31cac559a805696342d">Bulgaria</a>
       </li>
       <li>
-        <a routerLink="/offers/countries/france">France</a>
+        <a routerLink="/countries/63722dd7bb32f901346fd4ad">Spain</a>
       </li>
       <li>
-        <a routerLink="/offers/countries/italy">Italy</a>
+        <a routerLink="/countries/6372359c40b9485b69897803">France</a>
+      </li>
+
+      <li>
+        <a routerLink="/countries/6379dc18ac559a8056963428">Turkey</a>
       </li>
       <li>
-        <a routerLink="/offers/countries/turkey">Turkey</a>
-      </li>
-      <li>
-        <a routerLink="/offers/countries/greece">Greece</a>
+        <a routerLink="/countries/63737c59db5822ea9ef334e8">Greece</a>
       </li>
     </ul>
   </article>
@@ -39,15 +40,22 @@
         <a routerLink="/about-us">About Us</a>
       </li>
       <li>
-        <a routerLink="/agencies/top">Top Agensies</a>
+        <a routerLink="/top-agencies">Top Agensies</a>
       </li>
     </ul>
   </article>
   <article class="btns-container">
-    <a class="sign-up btn" routerLink="/auth/register">
+    <a
+      class="sign-up btn"
+      href="javascript:void(0)"
+      (click)="signUpDialogHandler()"
+    >
       <span>Sign Up</span>
       <mat-icon>login</mat-icon>
     </a>
-    <a class="categories btn" routerLink="/offers/countries">Countries</a>
+    <a class="categories btn" routerLink="/countries"
+      ><span>All Countries</span>
+      <mat-icon>map</mat-icon>
+    </a>
   </article>
 </section>
