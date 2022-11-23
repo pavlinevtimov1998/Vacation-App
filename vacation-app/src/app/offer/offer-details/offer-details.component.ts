@@ -14,8 +14,8 @@ import { IOffer, IAccount, IReview } from 'src/app/shared/interfaces';
 export class OfferDetailsComponent implements OnInit, OnDestroy {
   offer!: IOffer;
 
-  currentUser!: IAccount;
   isLogged$ = this.authService.islogged$;
+  currentUser!: IAccount;
   subscription!: Subscription;
 
   offerId!: string;
@@ -68,7 +68,7 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
     this.offer.reviews.push(review);
   }
 
-  similarOffers() {
+  moreOffersFromAgency() {
     return this.offer.agency.offers as IOffer[];
   }
 
