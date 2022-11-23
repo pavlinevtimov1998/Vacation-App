@@ -47,11 +47,12 @@
 .top-countries ul a,
 .platform ul a {
   transition: all 0.3s ease;
+  color: #3f51b5;
 }
 
 .top-countries ul a:hover,
 .platform ul a:hover {
-  color: #3f51b5;
+  color: #fff;
 }
 
 .btns-container {
@@ -66,11 +67,9 @@
   border: 2px solid #3f51b5;
   border-radius: 10px;
   transition: all 0.3s ease;
-}
-
-.sign-up {
   display: flex;
   gap: 2px;
+  justify-content: center;
 }
 
 .btn:hover {
