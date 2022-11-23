@@ -1,10 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { mergeMap, Subscription } from 'rxjs';
+import { EMPTY, mergeMap, Subscription } from 'rxjs';
 
 import { AuthService } from 'src/app/auth/auth.service';
 import { AgencyService } from 'src/app/auth/agency.service';
 import { UserService } from 'src/app/auth/user.service';
+import { AuthDialogComponent } from 'src/app/shared/dialog/auth-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-mobile-nav',
@@ -21,19 +23,22 @@ export class MobileNavComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private agencyService: AgencyService,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {}
 
   logoutHandler() {
-    this.subscription = this.currentUser$
+    this.subscription = this.authService.currentUser$
       .pipe(
         mergeMap((account) => {
-          if (account.isAgency) {
+          if (account?.isAgency) {
             return this.agencyService.logout$();
-          } else {
+          } else if (!account?.isAgency) {
             return this.userService.logout$();
+          } else {
+            return EMPTY;
           }
         })
       )
@@ -44,10 +49,18 @@ export class MobileNavComponent implements OnInit, OnDestroy {
           this.router.navigate(['/']);
         },
         error: (err) => {
+          debugger;
           console.log(err);
           this.router.navigate(['/']);
         },
       });
+  }
+
+  signUpDialogHandler() {
+    this.dialog.open(AuthDialogComponent, {
+      width: '400px',
+      height: '300px',
+    });
   }
 
   ngOnDestroy(): void {
