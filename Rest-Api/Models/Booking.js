@@ -20,7 +20,7 @@ const bookinkSchema = new mongoose.Schema(
       type: Date,
       required: true,
     },
-    cost: {
+    price: {
       type: Number,
       required: true,
     },
