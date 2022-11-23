@@ -20,7 +20,7 @@
       </a>
     </li>
     <li *ngIf="!(isLogged$ | async)">
-      <a routerLink="/auth/login">
+      <a href="javascript:void(0)" (click)="signUpDialogHandler()">
         <span>Sign Up</span>
         <mat-icon>login</mat-icon>
       </a>
@@ -32,13 +32,7 @@
       </a>
     </li>
     <li>
-      <a routerLink="">
-        <span>Top Offers</span>
-        <mat-icon>star</mat-icon>
-      </a>
-    </li>
-    <li>
-      <a routerLink="/">
+      <a routerLink="/top-agencies">
         <span>Top Agencies</span>
         <mat-icon>insert_chart</mat-icon>
       </a>
@@ -49,7 +43,7 @@
         <mat-icon>support_agent</mat-icon>
       </a>
     </li>
-    <li *ngIf="isLogged$">
+    <li *ngIf="isLogged$ | async">
       <a href="javascript:void(0)" (click)="logoutHandler()"
         ><span>Logout</span><mat-icon>logout</mat-icon></a
       >
