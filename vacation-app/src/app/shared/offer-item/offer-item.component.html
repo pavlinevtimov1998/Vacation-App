@@ -1,6 +1,6 @@
 <div class="offer" (click)="routeHandler($event)">
   <div class="img-container">
-    <img [src]="offer.images[0]" [alt]="offer.title" />
+    <app-offer-images-carousel [offer]="offer" [isCatalog]="true"></app-offer-images-carousel>
   </div>
   <div class="info">
     <div class="card-title">
