@@ -83,6 +83,11 @@
   width: 18px;
 }
 
+app-offer-images-carousel {
+  border-top-right-radius: inherit;
+  border-top-left-radius: inherit;
+}
+
 @media screen and (max-width: 1000px) {
   .offer {
     height: 45vw;
