@@ -65,7 +65,7 @@ export class BookingComponent implements OnInit {
     if (
       !this.startDate.value ||
       !this.endDate.value ||
-      this.startDate.value < this.minDate
+      this.startDate.value <= this.minDate
     ) {
       this.dateError = true;
       return;
@@ -73,12 +73,11 @@ export class BookingComponent implements OnInit {
 
     const body = this.dateForm.value;
     body.agency = this.offer.agency._id;
-    body.price = this.price;
+    body.price = +this.price.toFixed(2);
 
     this.offerService.booking$(body, this.offer._id).subscribe({
       next: (response) => {
-        console.log(response);
-        alert('Successfull booking!');
+        this.router.navigate(['/payment-system']);
       },
       error: (err) => {
         console.log(err);
@@ -90,7 +89,7 @@ export class BookingComponent implements OnInit {
     if (
       this.startDate.value &&
       this.endDate.value &&
-      this.startDate.value >= this.minDate
+      this.startDate.value > this.minDate
     ) {
       this.dateError = false;
       const differenceInTime =
