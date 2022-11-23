@@ -35,7 +35,7 @@ export class HeaderComponent implements OnInit {
     this.toggleProfileMobNav = !this.toggleProfileMobNav;
   }
 
-  loginClick() {
+  signUpDialogHandler() {
     this.dialog.open(AuthDialogComponent, {
       width: '400px',
       height: '300px',
