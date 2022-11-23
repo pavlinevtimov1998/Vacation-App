@@ -5,19 +5,16 @@
   height: 75vh;
   position: relative;
   z-index: 1;
-}
-
-.smaller {
-  height: 30vh;
   border-top-right-radius: inherit;
   border-top-left-radius: inherit;
 }
 
-.image-active img {
-  width: 100%;
+.smaller {
   height: 100%;
-  object-fit: fill;
+  border-top-right-radius: inherit;
+  border-top-left-radius: inherit;
 }
+
 .arrow-left,
 .arrow-right {
   position: absolute;
@@ -25,7 +22,7 @@
   align-items: center;
   justify-content: center;
   width: 15%;
-  color: #3f51b5;
+  color: #fff;
   bottom: 0;
   top: 0;
   background: 0 0;
@@ -34,12 +31,33 @@
   transition: all 0.3s ease;
 }
 
+.arrow-left mat-icon,
+.arrow-right mat-icon {
+  width: 40px;
+  height: 40px;
+  font-size: 40px;
+}
+
 .arrow-left {
   left: 0px;
+  border-top-left-radius: inherit;
+  background: linear-gradient(
+    to right,
+    rgb(0 11 255 / 60%) 0%,
+    rgb(12 0 255 / 60%) 20%,
+    rgb(232 231 241 / 0%) 100%
+  );
 }
 
 .arrow-right {
   right: 0px;
+  border-top-right-radius: inherit;
+  background: linear-gradient(
+    to left,
+    rgb(0 11 255 / 60%) 0%,
+    rgb(12 0 255 / 60%) 20%,
+    rgb(232 231 241 / 0%) 100%
+  );
 }
 
 .arrow-left:hover,
@@ -55,12 +73,16 @@
 .img-container {
   display: none;
   position: relative;
+  border-top-right-radius: inherit;
+  border-top-left-radius: inherit;
 }
 
 .img-container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-top-right-radius: inherit;
+  border-top-left-radius: inherit;
 }
 
 .img-container.image-active {
