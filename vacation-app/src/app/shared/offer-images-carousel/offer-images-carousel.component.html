@@ -1,4 +1,4 @@
-<section class="carousel" [ngClass]="{ 'smaller': isBooking }">
+<section class="carousel" [ngClass]="{ 'smaller': isBooking || isCatalog }">
   <ng-container *ngFor="let image of offer.images; let i = index">
     <div
       class="img-container"
