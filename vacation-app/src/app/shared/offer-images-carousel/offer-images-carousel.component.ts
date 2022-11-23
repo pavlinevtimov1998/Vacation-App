@@ -9,9 +9,10 @@ import { IOffer } from 'src/app/shared/interfaces/offer.interface';
 })
 export class OfferImagesCarouselComponent implements OnInit {
   @Input() isBooking: boolean = false;
+  @Input() isCatalog: boolean = false;
   @Input() offer!: IOffer;
 
-  selectedIndex = 0;
+  selectedIndex: number = 0;
 
   constructor() {}
 
