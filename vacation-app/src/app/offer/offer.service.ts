@@ -62,4 +62,20 @@ export class OfferService {
       { withCredentials: true }
     );
   }
+
+  booking$(
+    body: {
+      startDate: Date;
+      endDate: Date;
+      price: number;
+      agency: string;
+    },
+    offerId: string
+  ): Observable<any> {
+    return this.httpClient.post<any>(
+      `${environment.api}/booking/${offerId}`,
+      body,
+      { withCredentials: true }
+    );
+  }
 }
