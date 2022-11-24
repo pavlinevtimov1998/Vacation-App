@@ -1,0 +1,96 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+  min-height: 90vh;
+  padding-top: 5%;
+  padding-bottom: 7%;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.user-profile {
+  width: 35%;
+  height: 60vh;
+  background-color: #f0f8ff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2%;
+  border-radius: 20px;
+  box-shadow: rgb(0 0 0 / 19%) 0px 10px 20px, rgb(0 0 0 / 23%) 0px 6px 6px;
+}
+
+.user-profile h1 {
+  font-weight: 900;
+}
+.edit {
+  color: #3f51b5;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.edit:hover {
+  text-decoration: underline;
+}
+
+.detail {
+  display: flex;
+  gap: 5px;
+  align-items: baseline;
+  margin-bottom: 2px;
+}
+
+.user-info {
+  border-bottom: 1px solid;
+  padding-bottom: 10px;
+}
+
+.user-info h1 {
+  margin-bottom: 5px;
+  font-weight: 900;
+}
+
+app-agency-offers {
+  width: 60%;
+}
+
+app-reserved-vacations {
+  width: 60%;
+}
+
+mat-spinner {
+  margin: auto;
+}
+
+@media screen and (max-width: 1200px) {
+  .user-profile {
+    width: 30%;
+  }
+  .vacations {
+    width: 55%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .wrapper {
+    flex-flow: column-reverse;
+    align-items: center;
+    padding-top: 50px;
+    gap: 35px;
+  }
+  .user-profile {
+    width: 90%;
+  }
+
+  .vacations {
+    width: 90%;
+  }
+
+  .reserved {
+    width: 100%;
+  }
+}

@@ -9,8 +9,13 @@ const routes: Routes = [
     component: WelcomePageComponent,
   },
   {
-    path: 'auth',
-    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+    path: 'user',
+    loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
+  },
+  {
+    path: 'agency',
+    loadChildren: () =>
+      import('./agency/agency.module').then((m) => m.AgencyModule),
   },
   {
     path: 'offers',

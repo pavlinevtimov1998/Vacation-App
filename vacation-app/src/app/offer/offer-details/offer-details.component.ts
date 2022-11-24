@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { combineLatest, mergeMap, Subscription } from 'rxjs';
 
-import { AuthService } from 'src/app/auth/auth.service';
+import { AuthService } from 'src/app/auth.service';
 import { OfferService } from 'src/app/offer/offer.service';
 import { IOffer, IAccount, IReview } from 'src/app/shared/interfaces';
 

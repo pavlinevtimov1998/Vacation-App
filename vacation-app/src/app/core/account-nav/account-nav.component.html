@@ -13,10 +13,13 @@
       Hello, <span>{{ (currentUser$ | async)?.username }}</span>
     </p>
     <ul class="profile-links">
-      <li>
-        <a [routerLink]="['/auth/profile', (currentUser$ | async)?._id]"
+      <li *ngIf="(currentUser$ | async)?.isAgency">
+        <a [routerLink]="['/agency/profile', (currentUser$ | async)?._id]"
           >Profile</a
         >
+      </li>
+      <li *ngIf="!(currentUser$ | async)?.isAgency">
+        <a routerLink="/user/profile">Profile</a>
       </li>
       <li>
         <a routerLink="/auth/profile/edit">Edit Profile</a>

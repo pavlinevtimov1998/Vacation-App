@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AuthService } from 'src/app/auth/auth.service';
+import { AuthService } from 'src/app/auth.service';
 import { IOffer } from 'src/app/shared/interfaces/offer.interface';
 
 @Component({
