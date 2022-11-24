@@ -32,12 +32,6 @@ export class AuthService {
     this._currentUser.next(this.guest);
   }
 
-  getProfileData$(id: string): Observable<IAccount> {
-    return this.httpClient.get<IAccount>(`${environment.api}/profile/${id}`, {
-      withCredentials: true,
-    });
-  }
-
   appInitializer() {
     this.httpClient
       .get<IAccount>(`${environment.api}/profile`, {
