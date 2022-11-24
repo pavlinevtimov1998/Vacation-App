@@ -6,12 +6,16 @@ export interface IAgency {
   agencyName: string;
   website: string;
   offers: IOffer[];
+  phone: string;
+  createdAt: string;
 }
 
 export interface IUser {
   _id: string;
   username: string;
-  bookedOffers: string[] | IOffer[];
+  email: string;
+  phone: string;
+  createdAt: string;
 }
 
 export interface IAccount extends IAgency, IUser {
