@@ -1,5 +1,6 @@
 const User = require("../models/User");
 const Agency = require("../Models/Agency");
+const Booking = require("../Models/Booking");
 
 exports.getAccountData = async (agency, user) => {
   if (agency) {
@@ -9,30 +10,19 @@ exports.getAccountData = async (agency, user) => {
   }
 };
 
-exports.getProfile = async (profileId) => {
-  const [agency, user] = await Promise.all([
-    Agency.findOne({ _id: profileId })
-      .select("-password -__v -updatedAt")
+exports.getUserProfile = async (_id) =>
+  Promise.all([
+    User.findOne({ _id }).select("-password -__v -updatedAt"),
+    Booking.find({ user: _id })
       .populate({
-        path: "offers",
+        path: "offer",
         select:
-          "-description -updatedAt -__v -peopleBooked -ratingsQuantity -features",
+          "-rating -ratingQuantity -createdAt -updatedAt -__v -description",
         populate: {
           path: "country",
-          select: "-image -offersId -__v -_id",
+          select: "-__v -rating -ratingQuantity -offers -image",
         },
-      }),
-    User.findOne({ _id: profileId }).select("-password -__v -updatedAt"),
+      })
+      .sort({ createdAt: -1 })
+      .limit(3),
   ]);
-
-  if (agency) {
-    return agency;
-  } else if (user) {
-    return user;
-  }
-
-  throw {
-    message: "Not Found!",
-    status: 404,
-  };
-};
