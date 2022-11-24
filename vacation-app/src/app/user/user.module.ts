@@ -6,17 +6,15 @@ import { UserLoginComponent } from './user-login/user-login.component';
 import { UserRegisterComponent } from './user-register/user-register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserProfileComponent } from './profile/profile.component';
-import { ReservedVacationsComponent } from './profile/reserved-vacations/reserved-vacations.component';
-
-
+import { BookedVacationsComponent } from './profile/booked-vacations/booked-vacations.component';
 
 @NgModule({
-  declarations: [UserLoginComponent, UserRegisterComponent, UserProfileComponent, ReservedVacationsComponent],
-  imports: [
-    CommonModule,
-    SharedModule,
-    userRoutingModule,
-    ReactiveFormsModule
-  ]
+  declarations: [
+    UserLoginComponent,
+    UserRegisterComponent,
+    UserProfileComponent,
+    BookedVacationsComponent,
+  ],
+  imports: [CommonModule, SharedModule, userRoutingModule, ReactiveFormsModule],
 })
-export class UserModule { }
+export class UserModule {}
