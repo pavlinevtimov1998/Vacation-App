@@ -23,8 +23,6 @@ export class UserProfileComponent implements OnInit {
       next: ({ profileData, bookings }) => {
         this.profileData = profileData;
         this.bookings = bookings;
-        console.log(profileData);
-        
         this.isLoading = false;
       },
       error: (err) => {

@@ -12,7 +12,6 @@ import { MatNativeDateModule } from '@angular/material/core';
 
 import { BenefitsComponent } from './benefits/benefits.component';
 import { ClickOutsideDirective } from './click-outside.directive';
-import { AuthDialogComponent } from './dialog/auth-dialog.component';
 import { CountryItemComponent } from './country-item/country-item.component';
 import { OfferItemComponent } from './offer-item/offer-item.component';
 import { SpinnerComponent } from './spinner/spinner.component';
@@ -22,7 +21,6 @@ import { OfferImagesCarouselComponent } from './offer-images-carousel/offer-imag
   declarations: [
     BenefitsComponent,
     ClickOutsideDirective,
-    AuthDialogComponent,
     CountryItemComponent,
     OfferItemComponent,
     SpinnerComponent,

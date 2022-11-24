@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
-import { IAccount } from '../shared/interfaces/account.interface';
+import { IAccount, IAgency } from '../shared/interfaces/account.interface';
+import { IBooking } from '../shared/interfaces/booking.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -36,6 +37,13 @@ export class AgencyService {
       {
         withCredentials: true,
       }
+    );
+  }
+
+  getAgencyProfileData$(): Observable<{ agency: IAgency; bookings: IBooking }> {
+    return this.httpClient.get<{ agency: IAgency; bookings: IBooking }>(
+      `${environment.api}/profile/agency/:agencyId`,
+      { withCredentials: true }
     );
   }
 

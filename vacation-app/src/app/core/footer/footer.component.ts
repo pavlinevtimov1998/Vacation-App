@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { AuthDialogComponent } from 'src/app/shared/dialog/auth-dialog.component';
 
 @Component({
   selector: 'app-footer',
@@ -8,14 +6,7 @@ import { AuthDialogComponent } from 'src/app/shared/dialog/auth-dialog.component
   styleUrls: ['./footer.component.css'],
 })
 export class FooterComponent implements OnInit {
-  constructor(private dialog: MatDialog) {}
+  constructor() {}
 
   ngOnInit(): void {}
-
-  signUpDialogHandler() {
-    this.dialog.open(AuthDialogComponent, {
-      width: '400px',
-      height: '300px',
-    });
-  }
 }

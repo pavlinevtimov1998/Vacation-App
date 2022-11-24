@@ -5,8 +5,6 @@ import { EMPTY, mergeMap, Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth.service';
 import { AgencyService } from 'src/app/agency/agency.service';
 import { UserService } from 'src/app/user/user.service';
-import { AuthDialogComponent } from 'src/app/shared/dialog/auth-dialog.component';
-import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-mobile-nav',
@@ -23,8 +21,7 @@ export class MobileNavComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private agencyService: AgencyService,
     private userService: UserService,
-    private router: Router,
-    private dialog: MatDialog
+    private router: Router
   ) {}
 
   ngOnInit(): void {}
@@ -54,13 +51,6 @@ export class MobileNavComponent implements OnInit, OnDestroy {
           this.router.navigate(['/']);
         },
       });
-  }
-
-  signUpDialogHandler() {
-    this.dialog.open(AuthDialogComponent, {
-      width: '400px',
-      height: '300px',
-    });
   }
 
   ngOnDestroy(): void {
