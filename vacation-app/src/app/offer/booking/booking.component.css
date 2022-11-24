@@ -42,6 +42,10 @@
   align-items: center;
 }
 
+.date {
+  max-width: 50%;
+}
+
 .form-date {
   width: 50%;
   height: 100%;
@@ -85,6 +89,10 @@
   width: 25px;
   height: 25px;
   font-size: 26px;
+}
+
+mat-error {
+  margin-left: 5%;
 }
 
 app-offer-images-carousel {

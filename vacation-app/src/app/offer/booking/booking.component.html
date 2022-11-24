@@ -44,7 +44,10 @@
               #picker
             ></mat-date-range-picker>
           </mat-form-field>
-          <mat-error *ngIf="dateError">Invalid dates</mat-error>
+          <mat-error *ngIf="dateError"
+            >Invalid date! Your vacation cannot start before
+            {{ minDate | date: "shortDate" }}</mat-error
+          >
         </div>
         <div class="cost">
           <h3>

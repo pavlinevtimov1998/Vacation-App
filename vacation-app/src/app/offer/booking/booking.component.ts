@@ -1,4 +1,3 @@
-import { CdkOverlayOrigin } from '@angular/cdk/overlay';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -34,7 +33,7 @@ export class BookingComponent implements OnInit {
   minDate = new Date(
     new Date().getFullYear(),
     new Date().getMonth(),
-    new Date().getDate()
+    new Date().getDate() + 1
   );
   price: number = 0;
   dateError: boolean = false;
@@ -65,7 +64,7 @@ export class BookingComponent implements OnInit {
     if (
       !this.startDate.value ||
       !this.endDate.value ||
-      this.startDate.value <= this.minDate
+      this.startDate.value < this.minDate
     ) {
       this.dateError = true;
       return;
@@ -89,7 +88,7 @@ export class BookingComponent implements OnInit {
     if (
       this.startDate.value &&
       this.endDate.value &&
-      this.startDate.value > this.minDate
+      this.startDate.value >= this.minDate
     ) {
       this.dateError = false;
       const differenceInTime =
