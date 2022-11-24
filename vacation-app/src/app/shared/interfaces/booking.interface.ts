@@ -1,3 +1,6 @@
+import { IAgency } from './account.interface';
+import { IOffer } from './offer.interface';
+
 export interface IBooking {
   _id: string;
   user: string;
@@ -5,5 +8,5 @@ export interface IBooking {
   startDate: Date;
   endDate: Date;
   price: number;
-  offer: string;
+  offer: IOffer;
 }
