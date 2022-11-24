@@ -1,0 +1,48 @@
+<article class="vacations">
+  <h1>{{ profileData.username }}'s reserved vacations</h1>
+
+  <div class="reserved">
+    <ng-container *ngFor="let booking of bookings">
+      <div class="booking">
+        <div class="img-container">
+          <app-offer-images-carousel
+            [offer]="booking.offer"
+            [isCatalog]="true"
+          ></app-offer-images-carousel>
+        </div>
+        <div class="info">
+          <div class="card-title">
+            <h1>{{ booking.offer.title }}</h1>
+            <p class="location">
+              <mat-icon>location_on</mat-icon>
+              <span
+                >{{ booking.offer.town }},
+                {{ booking.offer.country.name }}</span
+              >
+            </p>
+          </div>
+          <div class="card-footer">
+            <h4 class="price">{{ booking.price }}$</h4>
+            <div class="dates">
+              <p>
+                <span>From:</span
+                ><span class="date">{{
+                  booking.startDate | date: "mediumDate"
+                }}</span>
+              </p>
+              <p>
+                <span>To:</span
+                ><span class="date">{{
+                  booking.endDate | date: "mediumDate"
+                }}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="bookings.length == 0">
+      <h1>No Results</h1>
+    </ng-container>
+  </div>
+</article>
