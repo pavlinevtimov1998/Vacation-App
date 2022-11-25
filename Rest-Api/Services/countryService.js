@@ -9,7 +9,7 @@ const getCountryOffers = (countryId) =>
       "-description -__v -ratingsQuantity -rating -peopleBooked -createdAt -updatedAt",
     populate: {
       path: "country",
-      select: "-image -__v -info -rating -ratingQuantity",
+      select: "name",
     },
   });
 
