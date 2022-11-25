@@ -16,4 +16,11 @@ export class CountryService {
       withCredentials: true,
     });
   }
+
+  getCountryWithOffers$(countryId: string): Observable<ICountry> {
+    return this.httpClient.get<ICountry>(
+      `${environment.api}/countries/${countryId}`,
+      { withCredentials: true }
+    );
+  }
 }
