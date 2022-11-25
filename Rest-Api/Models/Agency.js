@@ -25,7 +25,7 @@ const agencySchema = new mongoose.Schema(
       trim: true,
       type: String,
     },
-    agencyDescription: {
+    description: {
       trim: true,
       type: String,
     },
@@ -39,6 +39,14 @@ const agencySchema = new mongoose.Schema(
       minLength: [4, "Password should be at least 4 characters!"],
       maxLength: [20, "Password should be max 20 characters!"],
       required: [true, "Password is required!"],
+    },
+    ratingQuantity: {
+      type: Number,
+      default: 0,
+    },
+    rating: {
+      type: Number,
+      default: 3.5,
     },
     offers: [
       {
