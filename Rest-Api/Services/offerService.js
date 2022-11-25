@@ -8,13 +8,12 @@ const { uploadToCloudinary } = require("../Util/imageUpload");
 
 const getOffers = () =>
   Offer.find()
-    .select(
-      "-description -__v -ratingsQuantity -rating -peopleBooked -createdAt"
+    .fields(
+      "-description -ratingsQuantity -rating -peopleBooked -createdAt -__v -updatedAt"
     )
-    .sort({ createdAt: -1 })
     .populate({
       path: "country",
-      select: "-image, -__v -offersId",
+      select: "name",
     });
 
 const getOne = (offerId) =>
@@ -22,25 +21,24 @@ const getOne = (offerId) =>
     .select("-__v  -updatedAt")
     .populate({
       path: "agency",
-      select: "-__v -createdAt -updatedAt -password",
+      select: "agencyName offers",
       populate: {
         path: "offers",
         select:
           "-description -__v -ratingsQuantity -rating -peopleBooked -createdAt",
-        options: { limit: 3, sort: { rating: -1 } },
+        options: { limit: 3, sort: { createdAt: -1 } },
         populate: {
           path: "country",
-          select: "-image -__v -offers",
+          select: "name",
         },
       },
     })
     .populate({
       path: "country",
-      select: "-image -__v -offers -rating -ratingQuantity",
+      select: "name",
     });
 
 const createOffer = async (body, files) => {
-  console.log(body);
   const [country, images] = await Promise.all([
     Country.findOne({ name: body.country }),
     getImagesUrl(files),
