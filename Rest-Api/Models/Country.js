@@ -20,6 +20,10 @@ const countrySchema = new mongoose.Schema({
     min: 1,
     max: 5,
   },
+  info: {
+    type: String,
+    required: true,
+  },
   offers: [
     {
       type: mongoose.Types.ObjectId,
