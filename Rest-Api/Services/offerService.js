@@ -40,8 +40,9 @@ const getOne = (offerId) =>
     });
 
 const createOffer = async (body, files) => {
+  console.log(body);
   const [country, images] = await Promise.all([
-    Country.findOne({ country: body.country }),
+    Country.findOne({ name: body.country }),
     getImagesUrl(files),
   ]);
 
@@ -55,7 +56,7 @@ const createOffer = async (body, files) => {
   return Promise.all([
     offer.save(),
     Country.findByIdAndUpdate(country._id, {
-      $push: { offersId: offer._id },
+      $push: { offers: offer._id },
     }),
   ]);
 };
