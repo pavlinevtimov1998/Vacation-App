@@ -1,60 +1,43 @@
-<section class="wrapper">
+<app-spinner *ngIf="isLoading"></app-spinner>
+<section class="wrapper" *ngIf="!isLoading">
   <div class="container">
     <article class="header">
       <h1>Top Agencies</h1>
     </article>
+
     <div class="agencies-container">
-      <a class="agency-info" routerLink="/">
-        <img class="img" src="/assets/img/vacation.jpg" alt="" />
-        <div class="info">
-          <div class="title">
-            <h1>Top Agency</h1>
+      <ng-container *ngFor="let agency of agencies">
+        <a class="agency-info" [routerLink]="['/agency/profile', agency._id]">
+          <div class="img-container">
+            <img
+              class="img"
+              [src]="
+                agency.image ||
+                'https://res.cloudinary.com/dlw7pmlvx/image/upload/v1668376214/cld-sample.jpg'
+              "
+              [alt]="agency.agencyName"
+            />
+          </div>
+          <div class="info">
+            <div class="title">
+              <h1>{{ agency.agencyName }}</h1>
 
-            <p>Rating: 6</p>
+              <p>Rating: {{ agency.rating }}</p>
+            </div>
+            <div class="contacts">
+              <p>
+                Email: <span>{{ agency.email }}</span>
+              </p>
+              <p>
+                Phone: <span>{{ agency.phone || "Not added..." }}</span>
+              </p>
+            </div>
+            <p class="description">
+              Company description: {{ agency.description || "Not added..." }}
+            </p>
           </div>
-          <div class="contacts">
-            <p>Email: asdasd@asd.asd</p>
-            <p>Phone: 09781688</p>
-          </div>
-          <p class="description">
-            Company description: ajsodlanlckjbqkusodqjsljhvqksdljhsbaljd
-          </p>
-        </div>
-      </a>
-      <a class="agency-info" routerLink="/">
-        <img class="img" src="/assets/img/vacation.jpg" alt="" />
-        <div class="info">
-          <div class="title">
-            <h1>Top Agency</h1>
-
-            <p>Rating: 6</p>
-          </div>
-          <div class="contacts">
-            <p>Email: asdasd@asd.asd</p>
-            <p>Phone: 09781688</p>
-          </div>
-          <p class="description">
-            Company description: ajsodlanlckjbqkusodqjsljhvqksdljhsbaljd
-          </p>
-        </div>
-      </a>
-      <a class="agency-info" routerLink="/">
-        <img class="img" src="/assets/img/vacation.jpg" alt="" />
-        <div class="info">
-          <div class="title">
-            <h1>Top Agency</h1>
-
-            <p>Rating: 6</p>
-          </div>
-          <div class="contacts">
-            <p>Email: asdasd@asd.asd</p>
-            <p>Phone: 09781688</p>
-          </div>
-          <p class="description">
-            Company description: ajsodlanlckjbqkusodqjsljhvqksdljhsbaljd
-          </p>
-        </div>
-      </a>
+        </a>
+      </ng-container>
     </div>
   </div>
 </section>

@@ -35,8 +35,6 @@ export class CountryOffersComponent implements OnInit {
       )
       .subscribe({
         next: (country) => {
-          console.log(country);
-          
           this.country = country;
           this.offers = country.offers as IOffer[];
 

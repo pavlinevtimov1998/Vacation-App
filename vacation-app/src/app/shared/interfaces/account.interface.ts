@@ -8,6 +8,10 @@ export interface IAgency {
   offers: IOffer[];
   phone: string;
   createdAt: string;
+  adress: string;
+  image: string;
+  rating: number;
+  description: string;
 }
 
 export interface IUser {
@@ -19,8 +23,5 @@ export interface IUser {
 }
 
 export interface IAccount extends IAgency, IUser {
-  phone: string;
-  createdAt: string;
-  adress: string;
   isAgency: boolean;
 }

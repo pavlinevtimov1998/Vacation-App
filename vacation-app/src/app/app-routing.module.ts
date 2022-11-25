@@ -1,12 +1,17 @@
 import { RouterModule, Routes } from '@angular/router';
 
 import { WelcomePageComponent } from './core/home/welcome-page/welcome-page.component';
+import { TopAgenciesComponent } from './core/top-agencies/top-agencies.component';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
     component: WelcomePageComponent,
+  },
+  {
+    path: 'top-agencies',
+    component: TopAgenciesComponent,
   },
   {
     path: 'user',

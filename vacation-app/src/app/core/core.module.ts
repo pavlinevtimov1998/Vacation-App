@@ -11,6 +11,7 @@ import { WelcomePageComponent } from './home/welcome-page/welcome-page.component
 import { MobileNavComponent } from './mobile-nav/mobile-nav.component';
 import { AccountNavComponent } from './account-nav/account-nav.component';
 import { SharedModule } from '../shared/shared.module';
+import { TopAgenciesComponent } from './top-agencies/top-agencies.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { SharedModule } from '../shared/shared.module';
     WelcomePageComponent,
     MobileNavComponent,
     AccountNavComponent,
+    TopAgenciesComponent,
   ],
   imports: [CommonModule, RouterModule, SharedModule],
   exports: [HeaderComponent, FooterComponent],

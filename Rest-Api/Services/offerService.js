@@ -8,7 +8,7 @@ const { uploadToCloudinary } = require("../Util/imageUpload");
 
 const getOffers = () =>
   Offer.find()
-    .fields(
+    .select(
       "-description -ratingsQuantity -rating -peopleBooked -createdAt -__v -updatedAt"
     )
     .populate({

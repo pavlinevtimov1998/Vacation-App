@@ -51,3 +51,6 @@ exports.agencyLogin = async (body) => {
     return [token, agency];
   });
 };
+
+exports.getTopAgencies = () =>
+  Agency.find().select("-password -__v").sort({ rating: -1 }).limit(3);

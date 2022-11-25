@@ -47,6 +47,13 @@ export class AgencyService {
     );
   }
 
+  getTopAgencies$(): Observable<IAgency[]> {
+    return this.httpClient.get<IAgency[]>(
+      `${environment.api}/agency/top-agencies`,
+      { withCredentials: true }
+    );
+  }
+
   logout$(): Observable<{ message: string }> {
     return this.httpClient.get<{ message: string }>(
       `${environment.api}/agency/logout`,
