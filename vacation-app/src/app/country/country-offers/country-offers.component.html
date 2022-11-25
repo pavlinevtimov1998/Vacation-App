@@ -1,10 +1,26 @@
-
-<section class="wrapper">
-    <div class="country-details">
-        <!-- <app-country-item></app-country-item> -->
-        <article>
-            
-        </article>
+<app-spinner *ngIf="isLoading"></app-spinner>
+<section class="wrapper" *ngIf="!isLoading">
+  <div class="country-details">
+    <article class="country-image">
+      <img [src]="country.image" [alt]="country.name" />
+    </article>
+    <article class="country-info">
+      <h1>{{ country.name }}</h1>
+      <p>
+        {{ country.info }}
+      </p>
+    </article>
+  </div>
+  <div class="country-offers">
+    <div class="offers-container-title">
+      <h1>
+        All Offers in <span>{{ country.name }}</span>
+      </h1>
     </div>
-
+    <div class="offers-container" [ngClass]="{ justify: offers.length > 3 }">
+      <ng-container *ngFor="let offer of offers">
+        <app-offer-item [offer]="offer"></app-offer-item>
+      </ng-container>
+    </div>
+  </div>
 </section>
