@@ -13,13 +13,13 @@ countryController.get(
 );
 
 countryController.get(
-  "/:countryId/offers",
+  "/:countryId",
   catchAsyncError(async (req, res) => {
-    const countryId = req.countryId;
+    const countryId = req.params.countryId;
 
-    const countryOffers = await countryService.getCountryOffers(countryId);
-
-    res.status(200).json(countryOffers);
+    const country = await countryService.getCountryOffers(countryId);
+    console.log(country);
+    res.status(200).json(country);
   })
 );
 
