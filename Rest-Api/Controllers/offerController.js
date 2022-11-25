@@ -9,6 +9,7 @@ offerController.get(
   "/",
   catchAsyncError(async (req, res) => {
     const offers = await offerService.getOffers();
+    console.log(offers);
 
     res.status(200).json(offers);
   })
@@ -27,7 +28,7 @@ offerController.post(
     }
 
     const body = req.body;
-    body.agencyId = req.agency._id;
+    body.agency = req.agency._id;
 
     const [offer, _] = await offerService.createOffer(body, req.files);
 
@@ -41,6 +42,7 @@ offerController.get(
     const offerId = req.params.offerId;
 
     const offer = await offerService.getOne(offerId);
+    console.log(offer);
 
     res.status(200).json(offer);
   })
