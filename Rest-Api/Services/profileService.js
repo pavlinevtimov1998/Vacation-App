@@ -20,7 +20,7 @@ exports.getUserProfile = async (_id) =>
           "-rating -ratingQuantity -createdAt -updatedAt -__v -description",
         populate: {
           path: "country",
-          select: "-__v -rating -ratingQuantity -offers -image",
+          select: "name",
         },
       })
       .sort({ createdAt: -1 })
