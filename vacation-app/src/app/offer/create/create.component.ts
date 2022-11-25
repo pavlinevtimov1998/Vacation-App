@@ -84,6 +84,8 @@ export class CreateComponent implements OnInit, OnDestroy {
       return this.createOfferForm.markAllAsTouched();
     }
 
+    this.isLoading = true;
+
     const checkedFeatures: string[] = [];
     checkboxes.querySelectorAll('input').forEach((input) => {
       input.checked ? checkedFeatures.push(input.value) : null;
