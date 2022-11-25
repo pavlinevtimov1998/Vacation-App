@@ -1,6 +1,9 @@
 .nav {
   height: 100%;
   display: flex;
+  width: 100%;
+  max-width: 1600px;
+  margin: auto;
 }
 
 .categories {

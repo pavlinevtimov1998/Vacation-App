@@ -1,5 +1,7 @@
 .wrapper {
   width: 100%;
+  max-width: 1600px;
+  margin: auto;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -30,6 +32,13 @@
 
 app-country-item {
   width: 30%;
+  height: 25vw;
+}
+
+@media screen and (min-width: 1600px) {
+  app-country-item {
+    height: 400px;
+  }
 }
 
 @media screen and (max-width: 1100px) {
@@ -39,4 +48,5 @@ app-country-item {
   .countries-container {
     width: 90%;
   }
+
 }

@@ -5,6 +5,8 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+  max-width: 1600px;
+  margin: auto;
 }
 
 .header {
@@ -52,8 +54,14 @@
 
 app-offer-item {
   width: 30%;
-  height: 30vw;
+  height: 28vw;
   padding-bottom: 4%;
+}
+
+@media screen and (min-width: 1600px) {
+  app-offer-item {
+    height: 450px;
+  }
 }
 
 @media screen and (max-width: 1000px) {

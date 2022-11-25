@@ -9,6 +9,7 @@
 
 .info-container {
   width: 90%;
+  max-width: 1600px;
   margin: -110px auto 0 auto;
   z-index: 10;
   position: relative;
@@ -131,17 +132,19 @@
   padding-top: 5%;
   color: #333;
   width: 100%;
+  max-width: 1600px;
+  margin: auto;
 }
 
 .more-offers-title {
-  margin: auto;
   padding-bottom: 15px;
-  width: 80%;
+  width: 100%;
   border-bottom: 2px solid #333;
 }
 
 .more-offers-title h1 {
   font-size: 32px;
+  padding-left: 5%;
 }
 
 .actions {
@@ -186,8 +189,7 @@
 .similar-offers {
   display: flex;
   justify-content: space-around;
-  width: 90%;
-  margin: auto;
+  width: 100%;
   padding-top: 3%;
 }
 

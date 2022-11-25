@@ -7,7 +7,9 @@
 
 .start {
   justify-content: start;
-  padding-left: 10%;
+  margin: auto;
+  max-width: 1600px;
+  width: 100%;
   gap: 5%;
 }
 
@@ -59,7 +61,4 @@
   width: 18px;
   height: 16px;
   font-size: 18px;
-}
-
-.review-content {
 }

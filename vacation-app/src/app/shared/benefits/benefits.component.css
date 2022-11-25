@@ -1,5 +1,7 @@
 .banner {
   width: 100%;
+  max-width: 1600px;
+  margin: auto;
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;

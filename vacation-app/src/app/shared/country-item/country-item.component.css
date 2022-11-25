@@ -1,7 +1,7 @@
 .country {
   display: block;
   width: 100%;
-  height: 25vw;
+  height: 100%;
   position: relative;
   border-radius: 10px;
   box-shadow: rgb(0 0 0 / 19%) 0px 10px 20px, rgb(0 0 0 / 23%) 0px 6px 6px;
