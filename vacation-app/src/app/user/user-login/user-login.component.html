@@ -11,37 +11,35 @@
     </p>
   </article>
   <div class="form-container">
-    <form [formGroup]="userLoginForm" (ngSubmit)="handleUserLogin()">
+    <form #loginForm="ngForm" (ngSubmit)="handleUserLogin(loginForm)">
       <div class="username">
         <input
-          [ngClass]="{ 'input-error': errHandler(userLoginForm, 'username') }"
-          formControlName="username"
+          [ngClass]="{ 'input-error': username.touched && username.errors }"
           type="text"
           name="username"
           placeholder="Username"
+          ngModel
+          #username="ngModel"
+          required
         />
-        <ng-container>
-          <p
-            *ngIf="userLoginForm.controls['username'].errors?.['required'] && errHandler(userLoginForm,'username')"
-            class="error"
-          >
+        <ng-container *ngIf="username.touched">
+          <p *ngIf="username.errors?.['required']" class="error">
             Username is required!
           </p>
         </ng-container>
       </div>
       <div class="password">
         <input
-          [ngClass]="{ 'input-error': errHandler(userLoginForm, 'password') }"
-          formControlName="password"
+          [ngClass]="{ 'input-error': password.touched && password.errors }"
           type="password"
           name="password"
           placeholder="Passwrod"
+          ngModel
+          #password="ngModel"
+          required
         />
-        <ng-container>
-          <p
-            *ngIf="userLoginForm.controls['password'].errors?.['required'] && errHandler(userLoginForm,'password')"
-            class="error"
-          >
+        <ng-container *ngIf="password.touched">
+          <p *ngIf="password.errors?.['required']" class="error">
             Password is required!
           </p>
         </ng-container>

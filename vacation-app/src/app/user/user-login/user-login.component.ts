@@ -1,14 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { AuthService } from 'src/app/auth.service';
-import { errorHandler } from '../../util/form-errors';
 import { UserService } from '../user.service';
 
 @Component({
@@ -16,33 +9,18 @@ import { UserService } from '../user.service';
   templateUrl: './user-login.component.html',
   styleUrls: ['./user-login.component.css'],
 })
-export class UserLoginComponent implements OnInit {
-  userLoginForm!: FormGroup;
+export class UserLoginComponent {
+  constructor(private userService: UserService, private router: Router) {}
 
-  get errHandler() {
-    return errorHandler;
-  }
-
-  constructor(
-    private authService: AuthService,
-    private userService: UserService,
-    private formBuilder: FormBuilder,
-    private router: Router
-  ) {}
-
-  ngOnInit(): void {
-    this.userLoginForm = this.formBuilder.group({
-      username: new FormControl(null, [Validators.required]),
-      password: new FormControl(null, [Validators.required]),
-    });
-  }
-
-  handleUserLogin() {
-    if (this.userLoginForm.invalid) {
-      return this.userLoginForm.markAllAsTouched();
+  handleUserLogin(loginForm: NgForm) {
+    if (loginForm.invalid) {
+      return;
     }
 
-    const body = this.userLoginForm.value;
+    const body = {
+      username: loginForm.value['username'],
+      password: loginForm.value['password'],
+    };
 
     this.userService.userLogin$(body).subscribe({
       next: () => {

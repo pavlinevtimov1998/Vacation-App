@@ -8,12 +8,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { BenefitsComponent } from './benefits/benefits.component';
-import { ClickOutsideDirective } from './click-outside.directive';
+import { ClickOutsideDirective } from './directives/click-outside.directive';
 import { CountryItemComponent } from './country-item/country-item.component';
 import { OfferItemComponent } from './offer-item/offer-item.component';
 import { OfferImagesCarouselComponent } from './offer-images-carousel/offer-images-carousel.component';
+import { PasswordsValidatorDirective } from './directives/passwords-validator.directive';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { OfferImagesCarouselComponent } from './offer-images-carousel/offer-imag
     CountryItemComponent,
     OfferItemComponent,
     OfferImagesCarouselComponent,
+    PasswordsValidatorDirective,
   ],
   imports: [
     CommonModule,
@@ -33,6 +36,7 @@ import { OfferImagesCarouselComponent } from './offer-images-carousel/offer-imag
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     BenefitsComponent,
@@ -46,6 +50,8 @@ import { OfferImagesCarouselComponent } from './offer-images-carousel/offer-imag
     MatSelectModule,
     MatDatepickerModule,
     OfferImagesCarouselComponent,
+    PasswordsValidatorDirective,
+    MatProgressSpinnerModule
   ],
 })
 export class SharedModule {}

@@ -1,7 +1,7 @@
 .login {
   width: 100%;
-    max-width: 1600px;
-    margin: auto;
+  max-width: 1600px;
+  margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -96,6 +96,10 @@
   font-weight: 700;
   padding-top: 4px;
   padding-left: 5px;
+}
+
+.input-error {
+  border-color: red !important;
 }
 
 @media screen and (max-width: 900px) {
