@@ -78,8 +78,7 @@ export class AgencyRegisterComponent implements OnInit {
     };
 
     this.agencyService.agencyRegister$(body).subscribe({
-      next: (agency) => {
-        this.authService.handleLogin(agency);
+      next: () => {
         this.router.navigate(['/']);
       },
       error: (err) => {

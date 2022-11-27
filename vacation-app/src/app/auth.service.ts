@@ -3,11 +3,12 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   BehaviorSubject,
+  catchError,
   EMPTY,
   map,
   mergeMap,
-  Observable,
   Subscription,
+  tap,
 } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
@@ -19,17 +20,10 @@ import { UserService } from './user/user.service';
   providedIn: 'root',
 })
 export class AuthService {
-  guest!: IAccount;
+  private _currentUser = new BehaviorSubject<IAccount | undefined>(undefined);
 
-  private _currentUser = new BehaviorSubject(this.guest);
-
-  get currentUser$() {
-    return this._currentUser.asObservable();
-  }
-
-  get isLogged$() {
-    return this._currentUser.pipe(map((user) => !!user));
-  }
+  currentUser$ = this._currentUser.asObservable();
+  isLogged$ = this._currentUser.pipe(map((user) => !!user));
 
   constructor(
     private httpClient: HttpClient,
@@ -39,36 +33,30 @@ export class AuthService {
   ) {}
 
   handleLogin(account: IAccount) {
-    if (account?.agencyName) {
-      account.isAgency = true;
-    } else if (account?.username) {
-      account.isAgency = false;
-    }
-
     this._currentUser.next(account);
   }
 
   handleLogout() {
-    this._currentUser.next(this.guest);
+    this._currentUser.next(undefined);
   }
 
   logout$(): Subscription {
     return this.currentUser$
       .pipe(
         mergeMap((account) => {
+          if (!account) {
+            return EMPTY;
+          }
           if (account?.isAgency) {
             return this.agencyService.logout$();
-          } else if (!account?.isAgency) {
-            return this.userService.logout$();
           } else {
-            return EMPTY;
+            return this.userService.logout$();
           }
         })
       )
       .subscribe({
         next: (response) => {
           console.log(response);
-          this.handleLogout();
           this.router.navigate(['/']);
         },
         error: (err) => {
@@ -84,12 +72,17 @@ export class AuthService {
         withCredentials: true,
       })
       .subscribe({
-        next: (account: IAccount) => {
+        next: (account) => {
+          if (account.agencyName) {
+            account.isAgency = true;
+          } else {
+            account.isAgency = false;
+          }
+
           this.handleLogin(account);
         },
         error: (err) => {
-          console.error(err);
-          return EMPTY;
+          console.log(err);
         },
       });
   }

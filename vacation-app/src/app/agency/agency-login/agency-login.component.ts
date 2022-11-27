@@ -48,8 +48,7 @@ export class AgencyLoginComponent implements OnInit {
     };
 
     this.agencyService.agencyLogin$(body).subscribe({
-      next: (agency) => {
-        this.authService.handleLogin(agency);
+      next: () => {
         this.router.navigate(['/']);
       },
       error: (err) => {
