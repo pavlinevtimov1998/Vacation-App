@@ -89,6 +89,10 @@
   color: #3f51b5;
 }
 
+.input-error {
+  border-color: red !important;
+}
+
 .error {
   color: red;
   font-size: 14px;

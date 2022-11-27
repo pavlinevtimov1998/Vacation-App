@@ -1,14 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { AuthService } from 'src/app/auth.service';
-import { errorHandler } from 'src/app/util/form-errors';
 import { AgencyService } from '../agency.service';
 
 @Component({
@@ -16,35 +9,17 @@ import { AgencyService } from '../agency.service';
   templateUrl: './agency-login.component.html',
   styleUrls: ['./agency-login.component.css'],
 })
-export class AgencyLoginComponent implements OnInit {
-  agencyLoginForm!: FormGroup;
+export class AgencyLoginComponent {
+  constructor(private agencyService: AgencyService, private router: Router) {}
 
-  get errHandler() {
-    return errorHandler;
-  }
-
-  constructor(
-    private authService: AuthService,
-    private agencyService: AgencyService,
-    private formBuilder: FormBuilder,
-    private router: Router
-  ) {}
-
-  ngOnInit(): void {
-    this.agencyLoginForm = this.formBuilder.group({
-      email: new FormControl(null, [Validators.required]),
-      password: new FormControl(null, [Validators.required]),
-    });
-  }
-
-  handleAgencyLogin() {
-    if (this.agencyLoginForm.invalid) {
-      return this.agencyLoginForm.markAllAsTouched();
+  handleAgencyLogin(loginForm: NgForm) {
+    if (loginForm.invalid) {
+      return;
     }
 
     const body = {
-      email: this.agencyLoginForm.value['email'],
-      password: this.agencyLoginForm.value['password'],
+      email: loginForm.value['email'],
+      password: loginForm.value['password'],
     };
 
     this.agencyService.agencyLogin$(body).subscribe({

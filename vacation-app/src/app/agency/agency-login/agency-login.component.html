@@ -7,37 +7,35 @@
     </p>
   </article>
   <div class="form-container">
-    <form [formGroup]="agencyLoginForm" (submit)="handleAgencyLogin()">
+    <form #loginForm="ngForm" (ngSubmit)="handleAgencyLogin(loginForm)">
       <div class="email">
         <input
-          [ngClass]="{ 'input-error': errHandler(agencyLoginForm, 'email') }"
-          formControlName="email"
+          [ngClass]="{ 'input-error': email.touched && email.errors?.['required'] }"
           type="text"
           name="email"
           placeholder="Email"
+          ngModel
+          #email="ngModel"
+          required
         />
-        <ng-container>
-          <p
-            *ngIf="agencyLoginForm.controls['email'].errors?.['required'] && errHandler(agencyLoginForm, 'email')"
-            class="error"
-          >
+        <ng-container *ngIf="email.touched">
+          <p *ngIf="email.errors?.['required']" class="error">
             Email is required!
           </p>
         </ng-container>
       </div>
       <div class="password">
         <input
-          [ngClass]="{ 'input-error': errHandler(agencyLoginForm, 'password') }"
-          formControlName="password"
+          [ngClass]="{ 'input-error': password.touched && password.errors?.['required']}"
           type="password"
           name="password"
           placeholder="Password"
+          ngModel
+          #password="ngModel"
+          required
         />
-        <ng-container>
-          <p
-            *ngIf="agencyLoginForm.controls['password'].errors?.['required'] && errHandler(agencyLoginForm,'password')"
-            class="error"
-          >
+        <ng-container *ngIf="password.touched">
+          <p *ngIf="password.errors?.['required']" class="error">
             Password is required!
           </p>
         </ng-container>

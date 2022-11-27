@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { AgencyLoginComponent } from './agency-login/agency-login.component';
 import { AgencyRegisterComponent } from './agency-register/agency-register.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { agencyRoutingModule } from './app-agency-routing.module';
 import { AgencyProfileComponent } from './profile/profile.component';
 
@@ -18,6 +18,7 @@ import { AgencyProfileComponent } from './profile/profile.component';
     SharedModule,
     agencyRoutingModule,
     ReactiveFormsModule,
+    FormsModule
   ],
 })
 export class AgencyModule {}
