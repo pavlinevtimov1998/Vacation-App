@@ -1,93 +1,82 @@
 <section class="register">
   <article class="header-container">
     <h1>Sign up</h1>
-    <p>
-      You already have account? <a routerLink="/user/login">Sign In</a>
-    </p>
+    <p>You already have account? <a routerLink="/user/login">Sign In</a></p>
     <p class="agency-sign-up">
       If you are Agency and you want to grow exponentialy
       <a routerLink="/agency/register">Sign Up</a>
     </p>
   </article>
   <div class="form-container">
-    <form [formGroup]="userRegisterForm" (submit)="handleUserRegister()">
+    <form #registerForm="ngForm" (ngSubmit)="handleUserRegister(registerForm)">
       <div class="username">
         <input
           [ngClass]="{
-            'input-error': errHandler(userRegisterForm, 'username')
+            'input-error': username.touched && username.errors
           }"
-          formControlName="username"
           type="text"
           name="username"
           placeholder="Username"
+          ngModel
+          #username="ngModel"
+          required
+          minlength="5"
         />
-        <ng-container>
-          <p
-            *ngIf="userRegisterForm.controls['username'].errors?.['required'] && errHandler(userRegisterForm,'username')"
-            class="error"
-          >
+        <ng-container *ngIf="username.touched">
+          <p *ngIf="username.errors?.['required']" class="error">
             Username is required!
           </p>
-          <p
-            *ngIf="userRegisterForm.controls['username'].errors?.['minlength'] && errHandler(userRegisterForm,'username')"
-            class="error"
-          >
+          <p *ngIf="username.errors?.['minlength']" class="error">
             Username should be at least 5 characters!
           </p>
         </ng-container>
       </div>
-      <ng-container [formGroup]="passwordsGroup">
-        <div class="password">
-          <input
-            [ngClass]="{
-              'input-error': errHandler(passwordsGroup, 'password')
-            }"
-            formControlName="password"
-            type="password"
-            name="password"
-            placeholder="Password"
-          />
-          <ng-container>
-            <p
-              *ngIf="passwordsGroup.controls['password'].errors?.['required'] && errHandler(passwordsGroup,'password')"
-              class="error"
-            >
-              Password is required!
-            </p>
-            <p
-              *ngIf="passwordsGroup.controls['password'].errors?.['minlength'] && errHandler(passwordsGroup,'password')"
-              class="error"
-            >
-              Password should be at least 6 characters!
-            </p>
-          </ng-container>
-        </div>
-        <div class="re-pass">
-          <input
-            [ngClass]="{
-              'input-error': errHandler(passwordsGroup, 'rePassword')
-            }"
-            formControlName="rePassword"
-            type="password"
-            name="rePassword"
-            placeholder="Repeat password"
-          />
-          <ng-container>
-            <p
-              *ngIf="passwordsGroup.controls['rePassword'].errors?.['required'] && errHandler(passwordsGroup,'rePassword')"
-              class="error"
-            >
-              Repeat password is required!
-            </p>
-            <p
-              *ngIf="passwordsGroup.controls['rePassword'].errors?.['mismatch'] && errHandler(passwordsGroup,'rePassword')"
-              class="error"
-            >
-              Passwords don't match!
-            </p>
-          </ng-container>
-        </div>
-      </ng-container>
+      <div class="password">
+        <input
+          [ngClass]="{
+            'input-error': password.touched && password.errors
+          }"
+          type="password"
+          name="password"
+          placeholder="Password"
+          ngModel
+          #password="ngModel"
+          appPasswordsValidator="rePassword"
+          reverse="true"
+          required
+          minlength="6"
+        />
+        <ng-container *ngIf="password.touched">
+          <p *ngIf="password.errors?.['required']" class="error">
+            Password is required!
+          </p>
+          <p *ngIf="password.errors?.['minlength']" class="error">
+            Password should be at least 6 characters!
+          </p>
+        </ng-container>
+      </div>
+      <div class="re-pass">
+        <input
+          [ngClass]="{
+            'input-error': rePassword.touched && rePassword.errors
+          }"
+          type="password"
+          name="rePassword"
+          placeholder="Repeat password"
+          ngModel
+          #rePassword="ngModel"
+          appPasswordsValidator="password"
+          required
+        />
+        <ng-container *ngIf="rePassword.touched">
+          <p *ngIf="rePassword.errors?.['required']" class="error">
+            Repeat password is required!
+          </p>
+          <p *ngIf="rePassword.errors?.['mismatch']" class="error">
+            Passwords don't match!
+          </p>
+        </ng-container>
+      </div>
       <button class="sign-in-btn" type="submit">
         <span>Sign up</span>
         <mat-icon>login</mat-icon>

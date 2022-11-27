@@ -1,14 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { AuthService } from 'src/app/auth.service';
-import { errorHandler, passwordsMismatch } from '../../util/form-errors';
 import { UserService } from '../user.service';
 
 @Component({
@@ -16,60 +9,22 @@ import { UserService } from '../user.service';
   templateUrl: './user-register.component.html',
   styleUrls: ['./user-register.component.css'],
 })
-export class UserRegisterComponent implements OnInit {
-  userRegisterForm!: FormGroup;
-  password!: FormControl;
+export class UserRegisterComponent {
+  constructor(private userService: UserService, private router: Router) {}
 
-  get errHandler() {
-    return errorHandler;
-  }
-
-  get passwordsGroup() {
-    return this.userRegisterForm.controls['passwords'] as FormGroup;
-  }
-
-  constructor(
-    private authService: AuthService,
-    private userService: UserService,
-    private formBuilder: FormBuilder,
-    private router: Router
-  ) {}
-
-  ngOnInit(): void {
-    this.password = new FormControl(null, [
-      Validators.required,
-      Validators.minLength(6),
-    ]);
-
-    this.userRegisterForm = this.formBuilder.group({
-      username: new FormControl(null, [
-        Validators.required,
-        Validators.minLength(5),
-      ]),
-      passwords: new FormGroup({
-        password: this.password,
-        rePassword: new FormControl(null, [
-          Validators.required,
-          passwordsMismatch(this.password),
-        ]),
-      }),
-    });
-  }
-
-  handleUserRegister() {
-    if (this.userRegisterForm.invalid) {
-      return this.userRegisterForm.markAllAsTouched();
+  handleUserRegister(registerForm: NgForm) {
+    if (registerForm.invalid) {
+      return;
     }
 
     const body = {
-      username: this.userRegisterForm.value['username'],
-      password: this.passwordsGroup.value['password'],
-      rePassword: this.passwordsGroup.value['rePassword'],
+      username: registerForm.value['username'],
+      password: registerForm.value['password'],
+      rePassword: registerForm.value['rePassword'],
     };
 
     this.userService.userRegister$(body).subscribe({
-      next: (user) => {
-        this.authService.handleLogin(user);
+      next: () => {
         this.router.navigate(['/']);
       },
       error: (err) => {
