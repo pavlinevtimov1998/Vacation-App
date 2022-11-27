@@ -1,7 +1,7 @@
 const agencyController = require("express").Router();
 
 const agencyService = require("../Services/agencyService");
-const { isGuest, isAccount } = require("../Middlewares/guards");
+const { isGuest, isAgency } = require("../Middlewares/guards");
 const { catchAsyncError } = require("../Util/errorParser");
 
 agencyController.post(
@@ -36,7 +36,7 @@ agencyController.post(
   })
 );
 
-agencyController.get("/logout", isAccount(), (req, res) => {
+agencyController.get("/logout", isAgency(), (req, res) => {
   res.clearCookie(process.env.COOKIE_NAME);
   res.status(200).json({ message: "Successfull logout!" });
 });

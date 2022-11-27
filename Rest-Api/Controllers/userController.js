@@ -2,7 +2,7 @@ const userController = require("express").Router();
 
 const userService = require("../Services/userService");
 const { catchAsyncError } = require("../Util/errorParser");
-const { isGuest, isAccount } = require("../Middlewares/guards");
+const { isGuest, isAccount, isUser } = require("../Middlewares/guards");
 
 userController.post(
   "/register",
@@ -30,7 +30,7 @@ userController.post("/login", isGuest(), async (req, res) => {
   });
 });
 
-userController.get("/logout", isAccount(), (req, res) => {
+userController.get("/logout", isUser(), (req, res) => {
   res.clearCookie(process.env.COOKIE_NAME);
   res.status(200).json({ message: "Successfull logout!" });
 });
