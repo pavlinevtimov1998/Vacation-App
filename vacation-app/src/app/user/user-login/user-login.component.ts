@@ -45,8 +45,7 @@ export class UserLoginComponent implements OnInit {
     const body = this.userLoginForm.value;
 
     this.userService.userLogin$(body).subscribe({
-      next: (user) => {
-        this.authService.handleLogin(user);
+      next: () => {
         this.router.navigate(['/']);
       },
       error: (err) => {

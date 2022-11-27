@@ -13,19 +13,24 @@ import { IAccount } from 'src/app/shared/interfaces';
   styleUrls: ['./mobile-nav.component.css'],
 })
 export class MobileNavComponent implements OnInit, OnDestroy {
-  @Input() currentUser$!: Observable<IAccount>;
+  @Input() currentUser$!: Observable<IAccount | undefined>;
   @Input() isLogged$!: Observable<boolean>;
+
+  isLoggedOut = false;
 
   subscription!: Subscription;
 
-  constructor(
-    private authService: AuthService,
-  ) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {}
 
   logoutHandler() {
+    if (this.isLoggedOut) {
+      return;
+    }
+    
     this.subscription = this.authService.logout$();
+    this.isLoggedOut = true;
   }
 
   ngOnDestroy(): void {

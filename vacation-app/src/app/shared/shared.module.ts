@@ -21,7 +21,6 @@ import { OfferImagesCarouselComponent } from './offer-images-carousel/offer-imag
     ClickOutsideDirective,
     CountryItemComponent,
     OfferItemComponent,
-    // SpinnerComponent,
     OfferImagesCarouselComponent,
   ],
   imports: [
@@ -45,7 +44,6 @@ import { OfferImagesCarouselComponent } from './offer-images-carousel/offer-imag
     MatDialogModule,
     MatFormFieldModule,
     MatSelectModule,
-    // SpinnerComponent,
     MatDatepickerModule,
     OfferImagesCarouselComponent,
   ],

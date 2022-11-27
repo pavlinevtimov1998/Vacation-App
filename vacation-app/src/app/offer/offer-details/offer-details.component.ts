@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { combineLatest, mergeMap, Subscription } from 'rxjs';
 
 import { AuthService } from 'src/app/auth.service';
+import { LoadingService } from 'src/app/loading.service';
 import { OfferService } from 'src/app/offer/offer.service';
 import { IOffer, IAccount, IReview } from 'src/app/shared/interfaces';
 
@@ -15,17 +16,21 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
   offer!: IOffer;
 
   isLogged$ = this.authService.isLogged$;
-  currentUser!: IAccount;
+  currentUser!: IAccount | undefined;
   subscription!: Subscription;
 
   offerId!: string;
-  isLoading = true;
   selectedIndex = 0;
+
+  get isLoading$() {
+    return this.loadingService.isLoading$;
+  }
 
   constructor(
     private authService: AuthService,
     private offerService: OfferService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private loadingService: LoadingService
   ) {}
 
   ngOnInit(): void {
@@ -48,7 +53,6 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
         next: ([offer, reviews]) => {
           this.offer = offer;
           this.offer.reviews = reviews;
-          this.isLoading = false;
         },
         error: (err) => {
           console.error(err);

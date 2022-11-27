@@ -31,16 +31,14 @@ export class ReviewComponent implements OnInit, OnDestroy {
   @Output() addedReview = new EventEmitter<IReview>();
 
   reviewForm!: FormGroup;
-  subscription!: Subscription;
 
-  get isLoading$() {
-    return this.loadingService.isLoading$;
-  }
+  isLoading = false;
+
+  subscription!: Subscription;
 
   constructor(
     private formBuilder: FormBuilder,
-    private offerService: OfferService,
-    private loadingService: LoadingService
+    private offerService: OfferService
   ) {}
 
   ngOnInit(): void {
@@ -68,6 +66,8 @@ export class ReviewComponent implements OnInit, OnDestroy {
     }
 
     const body = this.reviewForm.value;
+    
+    this.isLoading = true;
 
     this.subscription = this.offerService
       .addReview$(body, this.offerId)

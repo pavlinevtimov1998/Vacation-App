@@ -9,10 +9,4 @@ import { LoadingService } from './loading.service';
 })
 export class AppComponent {
   title = 'vacation-app';
-
-  get isLoading$() {
-    return this.loadingService.isLoading$;
-  }
-
-  constructor(private loadingService: LoadingService) {}
 }
