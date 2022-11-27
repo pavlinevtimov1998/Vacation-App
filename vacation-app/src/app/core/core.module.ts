@@ -12,6 +12,7 @@ import { MobileNavComponent } from './mobile-nav/mobile-nav.component';
 import { AccountNavComponent } from './account-nav/account-nav.component';
 import { SharedModule } from '../shared/shared.module';
 import { TopAgenciesComponent } from './top-agencies/top-agencies.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +25,9 @@ import { TopAgenciesComponent } from './top-agencies/top-agencies.component';
     MobileNavComponent,
     AccountNavComponent,
     TopAgenciesComponent,
+    SpinnerComponent,
   ],
   imports: [CommonModule, RouterModule, SharedModule],
-  exports: [HeaderComponent, FooterComponent],
+  exports: [HeaderComponent, FooterComponent, SpinnerComponent],
 })
 export class CoreModule {}

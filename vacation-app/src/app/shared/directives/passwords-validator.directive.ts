@@ -2,7 +2,7 @@ import { Attribute, Directive, forwardRef } from '@angular/core';
 import { AbstractControl, NG_VALIDATORS, Validator } from '@angular/forms';
 
 @Directive({
-  selector: '[appPasswordsValidator][ngModel]',
+  selector: '[appPasswordsValidator]',
   providers: [
     {
       provide: NG_VALIDATORS,
@@ -11,7 +11,7 @@ import { AbstractControl, NG_VALIDATORS, Validator } from '@angular/forms';
     },
   ],
 })
-export class PasswordsValidatorDirective {
+export class PasswordsValidatorDirective implements Validator {
   private get isReverse() {
     if (!this.reverse) return false;
     return this.reverse === 'true' ? true : false;
@@ -23,28 +23,34 @@ export class PasswordsValidatorDirective {
   ) {}
 
   validate(control: AbstractControl): { [key: string]: any } | null {
-    let rePassword = control.value;
+    let rePassword = control;
 
     let password = control.root.get(this.password);
 
-    if (password && rePassword !== password.value && !this.isReverse) {
+    if (password && rePassword.value !== password.value && !this.isReverse) {
       return {
         mismatch: true,
       };
     }
 
-    if (password && rePassword === password.value && !this.isReverse) {
-      password.setErrors(null);
+    if (password && rePassword.value !== password.value && this.isReverse) {
+      password.setErrors({ mismatch: true });
     }
 
-    if (password && rePassword === password.value && this.isReverse) {
-      password.setErrors(null);
+    if (
+      !password?.errors &&
+      rePassword.value === password?.value &&
+      !this.isReverse
+    ) {
+      password?.setErrors(null);
     }
 
-    if (password && rePassword !== password.value && this.isReverse) {
-      return {
-        mismatch: true,
-      };
+    if (
+      password?.value &&
+      rePassword.value === password.value &&
+      this.isReverse
+    ) {
+      password.setErrors(null);
     }
 
     return null;
