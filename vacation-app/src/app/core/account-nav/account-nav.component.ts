@@ -9,7 +9,7 @@ import { IAccount } from 'src/app/shared/interfaces';
   templateUrl: './account-nav.component.html',
   styleUrls: ['./account-nav.component.css'],
 })
-export class AccountNavComponent implements OnInit, OnDestroy {
+export class AccountNavComponent implements OnDestroy {
   get currentUser$() {
     return this.authService.currentUser$;
   }
@@ -20,10 +20,6 @@ export class AccountNavComponent implements OnInit, OnDestroy {
   isMenuOpened: boolean = false;
 
   constructor(private authService: AuthService) {}
-
-  ngOnInit(): void {
-    this.currentUser$.subscribe((u) => console.log(u));
-  }
 
   toggleDropDownMenu() {
     this.isMenuOpened = !this.isMenuOpened;

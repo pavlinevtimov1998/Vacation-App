@@ -7,89 +7,71 @@
     </p>
   </article>
   <div class="form-container">
-    <form [formGroup]="agencyRegisterForm" (submit)="handleAgencyRegister()">
+    <form
+      #registerForm="ngForm"
+      (ngSubmit)="handleAgencyRegister(registerForm)"
+    >
       <div class="email">
         <input
-          [ngClass]="{ 'input-error': errHandler(agencyRegisterForm, 'email') }"
-          formControlName="email"
+          [ngClass]="{ 'input-error': email.touched && email.errors }"
           type="text"
           name="email"
           placeholder="Email"
+          ngModel
+          #email="ngModel"
+          required
+          email
         />
-        <ng-container>
-          <p
-            *ngIf="agencyRegisterForm.controls['email'].errors?.['required'] && errHandler(agencyRegisterForm,'email')"
-            class="error"
-          >
+        <ng-container *ngIf="email.touched">
+          <p *ngIf="email.errors?.['required']" class="error">
             Email is required!
           </p>
-          <p
-            *ngIf="agencyRegisterForm.controls['email'].errors?.['minlength'] && errHandler(agencyRegisterForm,'email')"
-            class="error"
-          >
-            Email should be at least 5 characters!
-          </p>
-          <p
-            *ngIf="agencyRegisterForm.controls['email'].errors?.['maxlength'] && errHandler(agencyRegisterForm,'email')"
-            class="error"
-          >
-            Email should be max 30 characters!
-          </p>
+          <p *ngIf="email.errors?.['email']" class="error">Invalid email!</p>
         </ng-container>
       </div>
       <div class="agency-name">
         <input
           [ngClass]="{
-            'input-error': errHandler(agencyRegisterForm, 'agencyName')
+            'input-error': agencyName.touched && agencyName.errors
           }"
-          formControlName="agencyName"
           type="text"
           name="agencyName"
           placeholder="Agency name"
+          ngModel
+          #agencyName="ngModel"
+          required
+          minlength="4"
         />
-        <ng-container>
-          <p
-            *ngIf="agencyRegisterForm.controls['agencyName'].errors?.['required'] && errHandler(agencyRegisterForm,'agencyName')"
-            class="error"
-          >
+        <ng-container *ngIf="agencyName.touched">
+          <p *ngIf="agencyName.errors?.['required']" class="error">
             Agency name is required!
           </p>
-          <p
-            *ngIf="agencyRegisterForm.controls['agencyName'].errors?.['minlength'] && errHandler(agencyRegisterForm,'agencyName')"
-            class="error"
-          >
+          <p *ngIf="agencyName.errors?.['minlength']" class="error">
             Agency name should be at least 4 characters!
-          </p>
-          <p
-            *ngIf="agencyRegisterForm.controls['agencyName'].errors?.['maxlength'] && errHandler(agencyRegisterForm, 'agencyName')"
-            class="error"
-          >
-            Agency name should be max 25 characters!
           </p>
         </ng-container>
       </div>
-      <ng-container [formGroup]="passwordsGroup">
+      <ng-container>
         <div class="password">
           <input
             [ngClass]="{
-              'input-error': errHandler(passwordsGroup, 'password')
+              'input-error': password.touched && password.errors
             }"
-            formControlName="password"
             type="password"
             name="password"
             placeholder="Password"
+            ngModel
+            #password="ngModel"
+            required
+            minlength="6"
+            appPasswordsValidator="rePassword"
+            reverse="true"
           />
-          <ng-container>
-            <p
-              *ngIf="passwordsGroup.controls['password'].errors?.['required'] && errHandler(passwordsGroup,'password')"
-              class="error"
-            >
+          <ng-container *ngIf="password.touched">
+            <p *ngIf="password.errors?.['required']" class="error">
               Password is required!
             </p>
-            <p
-              *ngIf="passwordsGroup.controls['password'].errors?.['minlength'] && errHandler(passwordsGroup,'password')"
-              class="error"
-            >
+            <p *ngIf="password.errors?.['minlength']" class="error">
               Password should be at least 6 characters!
             </p>
           </ng-container>
@@ -97,24 +79,24 @@
         <div class="re-pass">
           <input
             [ngClass]="{
-              'input-error': errHandler(passwordsGroup, 'rePassword')
+              'input-error': rePassword.touched && rePassword.errors
             }"
-            formControlName="rePassword"
             type="password"
             name="rePassword"
             placeholder="Repeat password"
+            ngModel
+            #rePassword="ngModel"
+            required
+            appPasswordsValidator="password"
           />
-          <ng-container [formGroup]="passwordsGroup">
+          <ng-container *ngIf="rePassword.touched">
             <p
-              *ngIf="passwordsGroup.controls['rePassword'].errors?.['required'] && errHandler(passwordsGroup,'rePassword')"
+              *ngIf="rePassword.errors?.['required'] && !rePassword.errors?.['mismatch']"
               class="error"
             >
               Repeat password is required!
             </p>
-            <p
-              *ngIf="passwordsGroup.controls['rePassword'].errors?.['mismatch'] && errHandler(passwordsGroup,'rePassword')"
-              class="error"
-            >
+            <p *ngIf="rePassword.errors?.['mismatch']" class="error">
               Passwords don't match!
             </p>
           </ng-container>
