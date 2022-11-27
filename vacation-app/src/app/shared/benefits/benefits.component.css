@@ -10,9 +10,10 @@
 
 .sign-up {
   width: 30%;
+  height: 300px;
+  justify-content: space-between;
   display: flex;
   flex-direction: column;
-  gap: 32px;
   font-family: "Balsamiq Sans", cursive;
 }
 

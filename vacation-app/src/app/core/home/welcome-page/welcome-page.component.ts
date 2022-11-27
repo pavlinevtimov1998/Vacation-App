@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { combineLatest, combineLatestAll, Subscription } from 'rxjs';
+import { LoadingService } from 'src/app/loading.service';
 import { ICountry } from 'src/app/shared/interfaces/country.interface';
 import { IOffer } from 'src/app/shared/interfaces/offer.interface';
 import { WelcomeService } from '../../welcome.service';
@@ -15,9 +16,13 @@ export class WelcomePageComponent implements OnInit, OnDestroy {
 
   subscribtion$!: Subscription;
 
-  isLoading: boolean = true;
-
-  constructor(private welcomeService: WelcomeService) {}
+  get isLoading$() {
+    return this.loadingService.isLoading$;
+  }
+  constructor(
+    private welcomeService: WelcomeService,
+    private loadingService: LoadingService
+  ) {}
 
   ngOnInit(): void {
     this.subscribtion$ = combineLatest([
@@ -27,11 +32,9 @@ export class WelcomePageComponent implements OnInit, OnDestroy {
       next: ([carousel, countries]) => {
         this.carouselData = carousel;
         this.topCountries = countries;
-        this.isLoading = false;
       },
       error: (err) => {
         console.log(err);
-        this.isLoading = false;
       },
     });
   }

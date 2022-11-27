@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 import { AuthService } from 'src/app/auth.service';
 
@@ -8,8 +9,15 @@ import { AuthService } from 'src/app/auth.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  currentUser$ = this.authService.currentUser$;
-  isLogged$ = this.authService.islogged$;
+  get currentUser$() {
+    return this.authService.currentUser$;
+  }
+
+  get isLogged$() {
+    return this.authService.isLogged$;
+  }
+
+  subscription!: Subscription;
 
   toggleProfileMobNav = false;
 

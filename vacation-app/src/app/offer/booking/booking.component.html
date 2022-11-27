@@ -1,5 +1,5 @@
-<app-spinner *ngIf="isLoading"></app-spinner>
-<section class="wrapper" *ngIf="!isLoading">
+<!-- <app-spinner *ngIf="isLoading"></app-spinner> -->
+<section class="wrapper" *ngIf="!(isLoading$ | async)">
   <div class="container">
     <div class="destination">
       <h1>{{ offer.title }}</h1>

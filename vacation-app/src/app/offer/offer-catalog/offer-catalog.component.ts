@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { LoadingService } from 'src/app/loading.service';
 import { OfferService } from 'src/app/offer/offer.service';
 import { IOffer } from 'src/app/shared/interfaces/offer.interface';
 
@@ -13,15 +14,19 @@ export class OfferCatalogComponent implements OnInit, OnDestroy {
 
   subscribtion!: Subscription;
 
-  isLoading: boolean = true;
+  get isLoading$() {
+    return this.loadingService.isLoading$;
+  }
 
-  constructor(private offerService: OfferService) {}
+  constructor(
+    private offerService: OfferService,
+    private loadingService: LoadingService
+  ) {}
 
   ngOnInit(): void {
     this.subscribtion = this.offerService.getOffers$().subscribe({
       next: (offers) => {
         this.offers = offers;
-        this.isLoading = false;
       },
       error: (err) => {
         console.log(err);

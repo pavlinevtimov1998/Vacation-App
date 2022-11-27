@@ -12,8 +12,13 @@ import { IOffer } from 'src/app/shared/interfaces/offer.interface';
 export class OfferItemComponent implements OnInit {
   @Input() offer!: IOffer;
 
-  currentUser$ = this.authService.currentUser$;
-  isLogged$ = this.authService.islogged$;
+  get currentUser$() {
+    return this.authService.currentUser$;
+  }
+
+  get isLogged$() {
+    return this.authService.isLogged$;
+  }
 
   constructor(private authService: AuthService, private router: Router) {}
 

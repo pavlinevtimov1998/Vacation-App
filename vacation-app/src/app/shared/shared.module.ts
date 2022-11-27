@@ -5,7 +5,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -14,7 +13,6 @@ import { BenefitsComponent } from './benefits/benefits.component';
 import { ClickOutsideDirective } from './click-outside.directive';
 import { CountryItemComponent } from './country-item/country-item.component';
 import { OfferItemComponent } from './offer-item/offer-item.component';
-import { SpinnerComponent } from './spinner/spinner.component';
 import { OfferImagesCarouselComponent } from './offer-images-carousel/offer-images-carousel.component';
 
 @NgModule({
@@ -23,7 +21,7 @@ import { OfferImagesCarouselComponent } from './offer-images-carousel/offer-imag
     ClickOutsideDirective,
     CountryItemComponent,
     OfferItemComponent,
-    SpinnerComponent,
+    // SpinnerComponent,
     OfferImagesCarouselComponent,
   ],
   imports: [
@@ -32,7 +30,6 @@ import { OfferImagesCarouselComponent } from './offer-images-carousel/offer-imag
     MatIconModule,
     MatButtonModule,
     MatDialogModule,
-    MatProgressSpinnerModule,
     MatFormFieldModule,
     MatSelectModule,
     MatDatepickerModule,
@@ -48,7 +45,7 @@ import { OfferImagesCarouselComponent } from './offer-images-carousel/offer-imag
     MatDialogModule,
     MatFormFieldModule,
     MatSelectModule,
-    SpinnerComponent,
+    // SpinnerComponent,
     MatDatepickerModule,
     OfferImagesCarouselComponent,
   ],

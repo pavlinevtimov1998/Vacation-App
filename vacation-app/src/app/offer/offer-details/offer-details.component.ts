@@ -14,7 +14,7 @@ import { IOffer, IAccount, IReview } from 'src/app/shared/interfaces';
 export class OfferDetailsComponent implements OnInit, OnDestroy {
   offer!: IOffer;
 
-  isLogged$ = this.authService.islogged$;
+  isLogged$ = this.authService.isLogged$;
   currentUser!: IAccount;
   subscription!: Subscription;
 

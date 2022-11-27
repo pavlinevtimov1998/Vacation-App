@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { AgencyService } from 'src/app/agency/agency.service';
+import { LoadingService } from 'src/app/loading.service';
 import { IAgency } from 'src/app/shared/interfaces';
 
 @Component({
@@ -13,19 +14,21 @@ import { IAgency } from 'src/app/shared/interfaces';
 export class TopAgenciesComponent implements OnInit {
   agencies!: IAgency[];
 
-  isLoading: boolean = true;
-
+  get isLoading$() {
+    return this.loadingService.isLoading$;
+  }
   subscription!: Subscription;
 
-  constructor(private agencyService: AgencyService, private router: Router) {}
+  constructor(
+    private agencyService: AgencyService,
+    private router: Router,
+    private loadingService: LoadingService
+  ) {}
 
   ngOnInit(): void {
     this.subscription = this.agencyService.getTopAgencies$().subscribe({
       next: (agencies) => {
-        console.log(agencies);
-        
         this.agencies = agencies;
-        this.isLoading = false;
       },
       error: (err) => {
         console.log(err);

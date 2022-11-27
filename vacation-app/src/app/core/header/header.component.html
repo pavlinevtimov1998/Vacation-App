@@ -37,7 +37,7 @@
     >
       <a routerLink="/offers/favorites">My Favorites</a>
       <div class="underline"></div>
-      <app-account-nav></app-account-nav>
+      <app-account-nav [currentUser$]="currentUser$"></app-account-nav>
     </article>
   </section>
 
@@ -64,5 +64,8 @@
       Hello, {{ (currentUser$ | async)?.username }}
     </h1>
   </div>
-  <app-mobile-nav></app-mobile-nav>
+  <app-mobile-nav
+    [currentUser$]="currentUser$"
+    [isLogged$]="isLogged$"
+  ></app-mobile-nav>
 </aside>

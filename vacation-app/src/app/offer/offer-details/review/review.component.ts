@@ -13,6 +13,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { LoadingService } from 'src/app/loading.service';
 
 import { IReview } from 'src/app/shared/interfaces';
 import { OfferService } from '../../offer.service';
@@ -30,12 +31,16 @@ export class ReviewComponent implements OnInit, OnDestroy {
   @Output() addedReview = new EventEmitter<IReview>();
 
   reviewForm!: FormGroup;
-  isLoading: boolean = false;
   subscription!: Subscription;
+
+  get isLoading$() {
+    return this.loadingService.isLoading$;
+  }
 
   constructor(
     private formBuilder: FormBuilder,
-    private offerService: OfferService
+    private offerService: OfferService,
+    private loadingService: LoadingService
   ) {}
 
   ngOnInit(): void {
@@ -64,15 +69,12 @@ export class ReviewComponent implements OnInit, OnDestroy {
 
     const body = this.reviewForm.value;
 
-    this.isLoading = true;
-
     this.subscription = this.offerService
       .addReview$(body, this.offerId)
       .subscribe({
         next: (review) => {
           this.addedReview.emit(review);
 
-          this.isLoading = false;
           this.reviewForm.reset();
           this.closeReviewContainer();
         },

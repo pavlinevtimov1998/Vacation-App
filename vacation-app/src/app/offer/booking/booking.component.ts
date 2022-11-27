@@ -8,6 +8,7 @@ import {
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { ActivatedRoute, Router } from '@angular/router';
 import { mergeMap, Subscription } from 'rxjs';
+import { LoadingService } from 'src/app/loading.service';
 
 import { IOffer } from 'src/app/shared/interfaces';
 import { OfferService } from '../offer.service';
@@ -37,14 +38,18 @@ export class BookingComponent implements OnInit {
   );
   price: number = 0;
   dateError: boolean = false;
-  isLoading: boolean = true;
   dateForm!: FormGroup;
+
+  get isLoading$() {
+    return this.loadingService.isLoading$;
+  }
 
   constructor(
     private offerService: OfferService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private loadingService: LoadingService
   ) {}
 
   ngOnInit(): void {
@@ -114,7 +119,6 @@ export class BookingComponent implements OnInit {
       .subscribe({
         next: (offer) => {
           this.offer = offer;
-          this.isLoading = false;
         },
         error: (err) => {
           console.log(err);

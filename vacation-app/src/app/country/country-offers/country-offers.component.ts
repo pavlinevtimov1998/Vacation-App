@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { mergeMap, Subscription } from 'rxjs';
+import { LoadingService } from 'src/app/loading.service';
 
 import { ICountry, IOffer } from 'src/app/shared/interfaces';
 import { CountryService } from '../country.service';
@@ -16,12 +17,15 @@ export class CountryOffersComponent implements OnInit {
 
   subscription!: Subscription;
 
-  isLoading: boolean = true;
+  get isLoading$() {
+    return this.loadingService.isLoading$;
+  }
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private countryService: CountryService,
-    private router: Router
+    private router: Router,
+    private loadingService: LoadingService
   ) {}
 
   ngOnInit(): void {
@@ -37,8 +41,6 @@ export class CountryOffersComponent implements OnInit {
         next: (country) => {
           this.country = country;
           this.offers = country.offers as IOffer[];
-
-          this.isLoading = false;
         },
         error: (err) => {
           console.log(err);

@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
-  FormArray,
   FormBuilder,
   FormControl,
   FormGroup,
@@ -8,8 +7,9 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { combineLatest, Subscription } from 'rxjs';
-import { CountryService } from 'src/app/country/country.service';
 
+import { CountryService } from 'src/app/country/country.service';
+import { LoadingService } from 'src/app/loading.service';
 import { OfferService } from 'src/app/offer/offer.service';
 import { ICountry } from 'src/app/shared/interfaces/country.interface';
 import { IFeature } from 'src/app/shared/interfaces/offer.interface';
@@ -27,7 +27,9 @@ export class CreateComponent implements OnInit, OnDestroy {
     return errorHandler;
   }
 
-  isLoading = true;
+  get isLoading$() {
+    return this.loadingService.isLoading$;
+  }
   subscription!: Subscription;
   countries!: ICountry[];
   features!: IFeature[];
@@ -36,7 +38,8 @@ export class CreateComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private countryService: CountryService,
     private offerService: OfferService,
-    private router: Router
+    private router: Router,
+    private loadingService: LoadingService
   ) {}
 
   ngOnInit(): void {
@@ -56,11 +59,9 @@ export class CreateComponent implements OnInit, OnDestroy {
           price: new FormControl(null, [Validators.required]),
           images: new FormControl(null, [Validators.required]),
         });
-        this.isLoading = false;
       },
       error: (err) => {
         console.log(err);
-        this.isLoading = false;
       },
     });
   }
@@ -83,8 +84,6 @@ export class CreateComponent implements OnInit, OnDestroy {
     if (this.createOfferForm.invalid) {
       return this.createOfferForm.markAllAsTouched();
     }
-
-    this.isLoading = true;
 
     const checkedFeatures: string[] = [];
     checkboxes.querySelectorAll('input').forEach((input) => {

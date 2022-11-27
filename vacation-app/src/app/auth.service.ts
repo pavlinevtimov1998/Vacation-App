@@ -1,9 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, EMPTY, map, Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import {
+  BehaviorSubject,
+  EMPTY,
+  map,
+  mergeMap,
+  Observable,
+  Subscription,
+} from 'rxjs';
 
 import { environment } from 'src/environments/environment';
+import { AgencyService } from './agency/agency.service';
 import { IAccount } from './shared/interfaces/account.interface';
+import { UserService } from './user/user.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,10 +23,20 @@ export class AuthService {
 
   private _currentUser = new BehaviorSubject(this.guest);
 
-  currentUser$ = this._currentUser.asObservable();
-  islogged$ = this._currentUser.pipe(map((user) => !!user));
+  get currentUser$() {
+    return this._currentUser.asObservable();
+  }
 
-  constructor(private httpClient: HttpClient) {}
+  get isLogged$() {
+    return this._currentUser.pipe(map((user) => !!user));
+  }
+
+  constructor(
+    private httpClient: HttpClient,
+    private agencyService: AgencyService,
+    private userService: UserService,
+    private router: Router
+  ) {}
 
   handleLogin(account: IAccount) {
     if (account?.agencyName) {
@@ -30,6 +50,32 @@ export class AuthService {
 
   handleLogout() {
     this._currentUser.next(this.guest);
+  }
+
+  logout$(): Subscription {
+    return this.currentUser$
+      .pipe(
+        mergeMap((account) => {
+          if (account?.isAgency) {
+            return this.agencyService.logout$();
+          } else if (!account?.isAgency) {
+            return this.userService.logout$();
+          } else {
+            return EMPTY;
+          }
+        })
+      )
+      .subscribe({
+        next: (response) => {
+          console.log(response);
+          this.handleLogout();
+          this.router.navigate(['/']);
+        },
+        error: (err) => {
+          console.log(err);
+          this.router.navigate(['/']);
+        },
+      });
   }
 
   appInitializer() {

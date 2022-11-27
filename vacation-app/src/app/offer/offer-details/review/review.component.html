@@ -1,5 +1,4 @@
-<app-spinner *ngIf="isLoading"></app-spinner>
-<section class="container" *ngIf="!isLoading">
+<section class="container" *ngIf="!(isLoading$ | async)">
   <h1 class="title">Review Offer</h1>
   <div class="close-btn" (click)="closeReviewContainer()">
     <mat-icon>close</mat-icon>
