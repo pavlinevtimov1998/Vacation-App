@@ -13,8 +13,13 @@ import { IAccount } from 'src/app/shared/interfaces';
   styleUrls: ['./mobile-nav.component.css'],
 })
 export class MobileNavComponent implements OnInit, OnDestroy {
-  @Input() currentUser$!: Observable<IAccount | undefined>;
-  @Input() isLogged$!: Observable<boolean>;
+  get currentUser$() {
+    return this.authService.currentUser$;
+  }
+
+  get isLogged$() {
+    return this.authService.isLogged$;
+  }
 
   isLoggedOut = false;
 
@@ -28,7 +33,7 @@ export class MobileNavComponent implements OnInit, OnDestroy {
     if (this.isLoggedOut) {
       return;
     }
-    
+
     this.subscription = this.authService.logout$();
     this.isLoggedOut = true;
   }
