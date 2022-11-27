@@ -18,7 +18,7 @@ countryController.get(
     const countryId = req.params.countryId;
 
     const country = await countryService.getCountryOffers(countryId);
-    console.log(country);
+
     res.status(200).json(country);
   })
 );
