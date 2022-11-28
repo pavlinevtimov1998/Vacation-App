@@ -1,0 +1,39 @@
+.agency-contacts {
+  width: 100%;
+  padding: 5% 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.agency-contacts h3,
+.basic-info h5,
+.send-message h3 {
+  font-size: 1.1rem;
+  color: #c7c7c7;
+  letter-spacing: 0.5px;
+}
+
+.detail {
+  padding: 5px 0;
+  display: flex;
+  gap: 10px;
+}
+
+.details span:nth-child(1),
+.basic-info span:nth-child(1) {
+  letter-spacing: 0.5px;
+  font-weight: 800;
+  color: #6f6363;
+}
+
+.basic-info h5 {
+  padding-bottom: 5px;
+  font-size: 1rem;
+}
+
+.info {
+  color: #008dfe;
+  letter-spacing: 0.5px;
+  font-weight: 900;
+}
