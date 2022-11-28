@@ -1,0 +1,11 @@
+<div class="container">
+  <article class="more-offers-title">
+    <h1>More Offers From {{ agencyName }}</h1>
+  </article>
+  <div class="similar-offers">
+    <ng-container *ngFor="let offer of moreOffersFromAgency">
+      <app-offer-item [offer]="offer"></app-offer-item>
+    </ng-container>
+    <h1 *ngIf="moreOffersFromAgency.length == 0">No similar offers...</h1>
+  </div>
+</div>

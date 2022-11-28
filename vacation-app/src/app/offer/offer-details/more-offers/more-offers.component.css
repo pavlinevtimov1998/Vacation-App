@@ -1,0 +1,27 @@
+.container {
+  width: 90%;
+  margin: auto;
+}
+
+.more-offers-title {
+  padding-bottom: 15px;
+  width: 100%;
+  border-bottom: 2px solid #333;
+}
+
+.more-offers-title h1 {
+  font-size: 32px;
+  padding-left: 5%;
+}
+
+.similar-offers {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  width: 90%;
+  padding-top: 3%;
+}
+
+app-offer-item {
+  width: 30%;
+}
