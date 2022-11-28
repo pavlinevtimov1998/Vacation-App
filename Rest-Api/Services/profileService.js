@@ -26,3 +26,6 @@ exports.getUserProfile = async (_id) =>
       .sort({ createdAt: -1 })
       .limit(3),
   ]);
+
+exports.getAgencyProfile = (agencyId) =>
+  Agency.findById(agencyId).select("-password -__v");
