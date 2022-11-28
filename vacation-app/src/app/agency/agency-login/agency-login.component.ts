@@ -29,6 +29,9 @@ export class AgencyLoginComponent {
       error: (err) => {
         console.log(err);
       },
+      complete: () => {
+        loginForm.reset()
+      }
     });
   }
 }

@@ -29,6 +29,9 @@ export class UserLoginComponent {
       error: (err) => {
         console.log(err);
       },
+      complete: () => {
+        loginForm.reset();
+      },
     });
   }
 }

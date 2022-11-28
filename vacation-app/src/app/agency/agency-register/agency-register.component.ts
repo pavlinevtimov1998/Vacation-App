@@ -32,6 +32,9 @@ export class AgencyRegisterComponent {
       error: (err) => {
         console.log(err);
       },
+      complete: () => {
+        registerForm.reset();
+      },
     });
   }
 }

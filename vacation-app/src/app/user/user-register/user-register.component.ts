@@ -30,6 +30,9 @@ export class UserRegisterComponent {
       error: (err) => {
         console.log(err);
       },
+      complete: () => {
+        registerForm.reset();
+      },
     });
   }
 }
