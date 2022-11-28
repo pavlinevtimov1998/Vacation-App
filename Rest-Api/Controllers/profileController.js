@@ -28,4 +28,15 @@ profileController.get(
   })
 );
 
+profileController.get(
+  "/agency/:agencyId",
+  catchAsyncError(async (req, res) => {
+    const agencyId = req.params.agencyId;
+
+    const agencyData = await profileService.getAgencyProfile(agencyId);
+    console.log(agencyData);
+    res.status(200).json(agencyData);
+  })
+);
+
 module.exports = profileController;
