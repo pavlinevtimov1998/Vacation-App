@@ -37,7 +37,7 @@ app-aside {
   width: 65%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .info-header {
@@ -138,9 +138,9 @@ app-aside {
 }
 
 app-message-form {
-  display: none;
+  /* display: none; */
 }
 
 app-contacts {
-  /* display: none; */
+  display: none;
 }

@@ -1,17 +1,20 @@
-<section class="wrapper">
+<section class="wrapper" *ngIf="!(isLoading$ | async)">
   <div class="container">
     <div class="content-container">
-      <app-aside></app-aside>
+      <app-aside [image]="agencyData.image"></app-aside>
       <div class="vertical-line"></div>
       <div class="agency-info">
         <div class="info-header">
-          <h1>Agency Name</h1>
-          <p><mat-icon>location_on</mat-icon><span>agency country</span></p>
+          <h1>{{ agencyData.agencyName }}</h1>
+          <p>
+            <mat-icon>location_on</mat-icon
+            ><span>{{ agencyData.country }}, {{ agencyData.town }}</span>
+          </p>
         </div>
         <div class="rating-container">
           <h4>Rating</h4>
           <div class="rating">
-            <h1>5</h1>
+            <h1>{{ agencyData.rating }}</h1>
             <div class="stars">
               <mat-icon>star</mat-icon>
               <mat-icon>star</mat-icon>
@@ -37,7 +40,7 @@
         </div>
         <div class="info-container">
           <app-message-form></app-message-form>
-          <app-contacts></app-contacts>
+          <app-contacts [agencyData]="agencyData"></app-contacts>
         </div>
       </div>
     </div>

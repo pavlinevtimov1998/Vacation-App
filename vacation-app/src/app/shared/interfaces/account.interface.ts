@@ -8,7 +8,9 @@ export interface IAgency {
   offers: IOffer[];
   phone: string;
   createdAt: string;
-  adress: string;
+  address: string;
+  country: string;
+  town: string;
   image: string;
   rating: number;
   description: string;

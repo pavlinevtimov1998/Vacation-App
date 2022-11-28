@@ -3,12 +3,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  padding: 3% 0;
+  padding-top: 5%;
 }
 
-.send-massage h3 {
+.send-message h3 {
   font-size: 1.1rem;
-  color: #c7c7c7;
+  color: #555555;
   letter-spacing: 0.5px;
 }
 
