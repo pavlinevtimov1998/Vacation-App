@@ -1,15 +1,19 @@
 .review-list {
   padding-top: 5%;
+  width: 100%;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+  max-width: 1600px;
   display: flex;
   justify-content: space-evenly;
-  width: 100%;
 }
 
 .start {
   justify-content: start;
   margin: auto;
-  max-width: 1600px;
-  width: 100%;
   gap: 5%;
 }
 

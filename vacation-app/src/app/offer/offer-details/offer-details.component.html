@@ -91,14 +91,9 @@
   </section>
   <app-offer-reviews [reviews]="offer.reviews"></app-offer-reviews>
   <section class="more-offers" *ngIf="!currentUser?.isAgency">
-    <article class="more-offers-title">
-      <h1>More Offers From {{ offer.agency.agencyName }}</h1>
-    </article>
-    <article class="similar-offers">
-      <ng-container *ngFor="let offer of moreOffersFromAgency()">
-        <app-offer-item [offer]="offer"></app-offer-item>
-      </ng-container>
-      <h1 *ngIf="moreOffersFromAgency().length == 0">No similar offers...</h1>
-    </article>
+    <app-more-offers
+      [moreOffersFromAgency]="moreOffersFromAgency()"
+      [agencyName]="agencyName"
+    ></app-more-offers>
   </section>
 </div>

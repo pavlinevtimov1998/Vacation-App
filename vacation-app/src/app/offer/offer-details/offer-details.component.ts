@@ -20,6 +20,8 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
   subscription!: Subscription;
 
   offerId!: string;
+  agencyName!: string;
+
   selectedIndex = 0;
 
   get isLoading$() {
@@ -53,6 +55,7 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
         next: ([offer, reviews]) => {
           this.offer = offer;
           this.offer.reviews = reviews;
+          this.agencyName = offer.agency.agencyName;
         },
         error: (err) => {
           console.error(err);

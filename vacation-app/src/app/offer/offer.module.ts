@@ -10,6 +10,7 @@ import { offerRoutingModule } from './offer-routing.module';
 import { OfferReviewsComponent } from './offer-details/offer-reviews/offer-reviews.component';
 import { ReviewComponent } from './offer-details/review/review.component';
 import { BookingComponent } from './booking/booking.component';
+import { MoreOffersComponent } from './offer-details/more-offers/more-offers.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { BookingComponent } from './booking/booking.component';
     OfferReviewsComponent,
     ReviewComponent,
     BookingComponent,
+    MoreOffersComponent,
   ],
   imports: [
     CommonModule,
