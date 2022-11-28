@@ -40,9 +40,9 @@ export class AgencyService {
     );
   }
 
-  getAgencyProfileData$(): Observable<{ agency: IAgency; bookings: IBooking }> {
-    return this.httpClient.get<{ agency: IAgency; bookings: IBooking }>(
-      `${environment.api}/profile/agency/:agencyId`,
+  getAgencyProfileData$(agencyId: string): Observable<IAgency> {
+    return this.httpClient.get<IAgency>(
+      `${environment.api}/profile/agency/${agencyId}`,
       { withCredentials: true }
     );
   }
