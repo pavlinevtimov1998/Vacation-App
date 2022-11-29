@@ -12,9 +12,9 @@ import {
 } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
-import { AgencyService } from './agency/agency.service';
-import { IAccount } from './shared/interfaces/account.interface';
-import { UserService } from './user/user.service';
+import { AgencyService } from '../agency/agency.service';
+import { IAccount } from '../shared/interfaces/account.interface';
+import { UserService } from '../user/user.service';
 
 @Injectable({
   providedIn: 'root',
@@ -56,7 +56,6 @@ export class AuthService {
       )
       .subscribe({
         next: (response) => {
-          console.log(response);
           this.router.navigate(['/']);
         },
         error: (err) => {

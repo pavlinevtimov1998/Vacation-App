@@ -7,7 +7,7 @@ import {
   HttpResponse,
 } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
-import { AuthService } from './auth.service';
+import { AuthService } from './auth/auth.service';
 import { IAccount } from './shared/interfaces';
 
 @Injectable()

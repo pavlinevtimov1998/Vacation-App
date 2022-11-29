@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { AuthService } from './auth.service';
+import { AuthService } from './auth/auth.service';
 import { LoadingInterceptor } from './loading.interceptor';
 import { AuthInterceptor } from './auth.interceptor';
 

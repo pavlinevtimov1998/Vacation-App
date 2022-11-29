@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { passwordsMismatch } from '../../util/form-errors';
-import { AgencyService } from '../agency.service';
+import { AgencyService } from '../../agency/agency.service';
 
 @Component({
   selector: 'app-agency-register',

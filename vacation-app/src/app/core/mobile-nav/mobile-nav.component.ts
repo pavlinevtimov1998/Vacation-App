@@ -2,7 +2,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EMPTY, mergeMap, Observable, Subscription } from 'rxjs';
 
-import { AuthService } from 'src/app/auth.service';
+import { AuthService } from 'src/app/auth/auth.service';
 import { AgencyService } from 'src/app/agency/agency.service';
 import { UserService } from 'src/app/user/user.service';
 import { IAccount } from 'src/app/shared/interfaces';
