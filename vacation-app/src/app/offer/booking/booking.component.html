@@ -13,51 +13,8 @@
           ></app-offer-images-carousel>
         </div>
       </article>
-      <div class="form-date">
-        <div class="date">
-          <mat-form-field [formGroup]="dateForm" appearance="fill">
-            <mat-label>Enter a date range</mat-label>
-            <mat-date-range-input [rangePicker]="picker">
-              <input
-                matStartDate
-                formControlName="startDate"
-                placeholder="Start date"
-                #startDate
-              />
-              <input
-                matEndDate
-                formControlName="endDate"
-                placeholder="End date"
-                #endDate
-                (dateInput)="dateChangeHandler($event)"
-              />
-            </mat-date-range-input>
-            <mat-datepicker-toggle
-              matSuffix
-              [disabled]="false"
-              [for]="picker"
-            ></mat-datepicker-toggle>
-            <mat-date-range-picker
-              [disabled]="false"
-              [touchUi]="true"
-              #picker
-            ></mat-date-range-picker>
-          </mat-form-field>
-          <mat-error *ngIf="dateError"
-            >Invalid date! Your vacation cannot start before
-            {{ minDate | date: "shortDate" }}</mat-error
-          >
-        </div>
-        <div class="cost">
-          <h3>
-            <span>{{ price.toFixed(2) }} </span>
-            <span>$</span>
-          </h3>
-          <button (click)="dateFormHandler()" class="pay-btn">
-            <mat-icon>credit_card</mat-icon>
-            <span>Checkout</span>
-          </button>
-        </div>
+      <div class="form-container">
+        <app-booking-form></app-booking-form>
       </div>
     </div>
   </div>

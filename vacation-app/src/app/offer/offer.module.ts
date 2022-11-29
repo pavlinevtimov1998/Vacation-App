@@ -11,6 +11,7 @@ import { OfferReviewsComponent } from './offer-details/offer-reviews/offer-revie
 import { ReviewComponent } from './offer-details/review/review.component';
 import { BookingComponent } from './booking/booking.component';
 import { MoreOffersComponent } from './offer-details/more-offers/more-offers.component';
+import { BookingFormComponent } from './booking/booking-form/booking-form.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { MoreOffersComponent } from './offer-details/more-offers/more-offers.com
     ReviewComponent,
     BookingComponent,
     MoreOffersComponent,
+    BookingFormComponent,
   ],
   imports: [
     CommonModule,

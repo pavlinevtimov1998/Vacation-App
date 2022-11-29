@@ -1,0 +1,85 @@
+<form class="form" (ngSubmit)="formHandler()">
+  <div class="date-price-container">
+    <div class="date">
+      <mat-form-field [formGroup]="dateForm" appearance="fill">
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input
+            matStartDate
+            formControlName="startDate"
+            placeholder="Start date"
+          />
+          <input
+            matEndDate
+            formControlName="endDate"
+            placeholder="End date"
+            (dateInput)="dateChangeHandler()"
+          />
+        </mat-date-range-input>
+        <mat-datepicker-toggle
+          matSuffix
+          [disabled]="false"
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-date-range-picker
+          [disabled]="false"
+          [touchUi]="true"
+          #picker
+        ></mat-date-range-picker>
+      </mat-form-field>
+      <mat-error *ngIf="dateError"
+        >Invalid date!
+        {{ errorMessage || "Your vacation cannot start before" }}
+        {{ errorMessage ? "" : (minDate | date: "shortDate") }}</mat-error
+      >
+    </div>
+
+    <h3>
+      <span>{{ price.toFixed(2) }} </span>
+      <span>$</span>
+    </h3>
+  </div>
+  <div class="card-holder flex">
+    <label for="holder">Card Holder</label>
+    <input class="input" type="text" id="holder" name="cardHolder" />
+  </div>
+  <div class="card-number-container flex">
+    <label for="number">Card Number</label>
+    <div class="card-number">
+      <i class="fa-brands fa-cc-visa"></i>
+      <input
+        maxlength="16"
+        class="input"
+        id="number"
+        type="number"
+        name="cardNumber"
+      />
+    </div>
+  </div>
+  <div class="cvv-expiry">
+    <div class="cvv-number flex">
+      <label for="cvv">CVV Number</label>
+      <input class="input" type="number" name="cvv" id="cvv" />
+    </div>
+    <div class="expiry-date flex">
+      <label for="expiry">Expiry Date</label>
+      <div>
+        <input
+          class="input"
+          type="number"
+          name="expiryDate"
+          id="expiry-month"
+        />
+        <span>/</span>
+        <input class="input" type="number" name="expiryDate" id="expiry-year" />
+      </div>
+    </div>
+  </div>
+
+  <div class="cost">
+    <button type="submit" class="pay-btn">
+      <mat-icon>credit_card</mat-icon>
+      <span>Pay Now</span>
+    </button>
+  </div>
+</form>

@@ -1,0 +1,128 @@
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.date-price-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.date {
+  width: 65%;
+}
+
+.flex {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input {
+  padding: 14px;
+  background-color: #f6fcff;
+  box-shadow: rgb(0 0 0 / 5%) 0px 0px 0px 1px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+label {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #414a62;
+}
+
+.card-number {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.card-number i {
+  font-size: 3rem;
+  color: #0d47a1;
+}
+
+.card-number input {
+  flex: 1;
+}
+
+.cvv-expiry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cvv-number {
+  display: flex;
+  width: 35%;
+}
+.cvv-number input {
+  width: 100%;
+}
+.expiry-date {
+  width: 40%;
+}
+
+.expiry-date div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.expiry-date div input {
+  width: 45%;
+}
+
+.expiry-date div span {
+  font-weight: 900;
+  font-size: 1.4rem;
+  color: #414a62;
+}
+
+.cost {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.pay-btn {
+  background-color: #0d47a1;
+  padding: 10px 18px;
+  border: 3px solid #0d47a1;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  transition: all 0.3s ease;
+}
+
+.pay-btn:hover {
+  background-color: #fff;
+  color: #0d47a1;
+}
+
+.pay-btn span {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.pay-btn mat-icon {
+  width: 25px;
+  height: 25px;
+  font-size: 26px;
+}
+
+mat-error {
+  margin-left: 5%;
+}

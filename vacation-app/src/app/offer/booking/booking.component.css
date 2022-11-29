@@ -12,7 +12,7 @@
   flex-direction: column;
   align-items: center;
   background-color: #fff;
-  box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   border-radius: 25px;
   padding: 3%;
 }
@@ -31,8 +31,6 @@
   display: flex;
   align-items: center;
   width: 100%;
-  margin-top: 3%;
-  height: 40vh;
 }
 
 .destination {
@@ -42,57 +40,16 @@
   align-items: center;
 }
 
-.date {
-  max-width: 50%;
-}
-
-.form-date {
+.form-container {
   width: 50%;
   height: 100%;
   display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
+  padding: 5%;
 }
 
-.cost {
+app-booking-form {
   width: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.pay-btn {
-  background-color: #0d47a1;
-  padding: 6px 18px;
-  border: 3px solid #0d47a1;
-  border-radius: 5px;
-  color: #fff;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 3px;
-  transition: all 0.3s ease;
-}
-
-.pay-btn:hover {
-  background-color: #fff;
-  color: #0d47a1;
-}
-
-.pay-btn span {
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.pay-btn mat-icon {
-  width: 25px;
-  height: 25px;
-  font-size: 26px;
-}
-
-mat-error {
-  margin-left: 5%;
 }
 
 app-offer-images-carousel {
