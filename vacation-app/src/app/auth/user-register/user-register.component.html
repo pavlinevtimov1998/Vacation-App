@@ -1,11 +1,7 @@
 <section class="register">
   <article class="header-container">
     <h1>Sign up</h1>
-    <p>You already have account? <a routerLink="/user/login">Sign In</a></p>
-    <p class="agency-sign-up">
-      If you are Agency and you want to grow exponentialy
-      <a routerLink="/agency/register">Sign Up</a>
-    </p>
+    <p>You already have account? <a routerLink="/auth/user/login">Sign In</a></p>
   </article>
   <div class="form-container">
     <form #registerForm="ngForm" (ngSubmit)="handleUserRegister(registerForm)">
