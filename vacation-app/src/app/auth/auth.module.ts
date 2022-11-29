@@ -8,6 +8,7 @@ import { UserLoginComponent } from './user-login/user-login.component';
 import { UserRegisterComponent } from './user-register/user-register.component';
 import { authRoutingModule } from './app-auth-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { AccountChoicesComponent } from './account-choices/account-choices.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { SharedModule } from '../shared/shared.module';
     AgencyRegisterComponent,
     UserLoginComponent,
     UserRegisterComponent,
+    AccountChoicesComponent,
   ],
   imports: [CommonModule, authRoutingModule, SharedModule, FormsModule],
 })

@@ -1,0 +1,17 @@
+.wrapper {
+  padding: 5% 0;
+  width: 100%;
+  max-width: 1600px;
+  margin: auto;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  background-color: #fff;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  border-radius: 30px;
+  box-shadow: rgb(0 0 0 / 16%) 0px 1px 4px;
+}

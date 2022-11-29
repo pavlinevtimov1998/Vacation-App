@@ -1,4 +1,4 @@
-import { Attribute, Directive, forwardRef } from '@angular/core';
+import { Attribute, Directive } from '@angular/core';
 import { AbstractControl, NG_VALIDATORS, Validator } from '@angular/forms';
 
 @Directive({
@@ -6,7 +6,7 @@ import { AbstractControl, NG_VALIDATORS, Validator } from '@angular/forms';
   providers: [
     {
       provide: NG_VALIDATORS,
-      useExisting: forwardRef(() => PasswordsValidatorDirective),
+      useExisting: PasswordsValidatorDirective,
       multi: true,
     },
   ],

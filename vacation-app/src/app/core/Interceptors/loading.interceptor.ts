@@ -6,7 +6,8 @@ import {
   HttpInterceptor,
 } from '@angular/common/http';
 import { finalize, Observable } from 'rxjs';
-import { LoadingService } from './loading.service';
+
+import { LoadingService } from '../../loading.service';
 
 @Injectable({
   providedIn: 'root',

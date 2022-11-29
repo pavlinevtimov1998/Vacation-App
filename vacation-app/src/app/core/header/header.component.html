@@ -14,7 +14,7 @@
 
   <section *ngIf="!(isLogged$ | async)" class="sign-up">
     <article class="absolute">
-      <a routerLink="/user/register" class="btn">
+      <a routerLink="/auth" class="btn">
         <span>Sign up</span>
         <mat-icon class="login-icon">login</mat-icon>
       </a>
@@ -64,7 +64,5 @@
       Hello, {{ (currentUser$ | async)?.username }}
     </h1>
   </div>
-  <app-mobile-nav
-   
-  ></app-mobile-nav>
+  <app-mobile-nav></app-mobile-nav>
 </aside>
