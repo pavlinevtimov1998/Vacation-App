@@ -6,6 +6,8 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { LoadingService } from 'src/app/loading.service';
 import { IAccount, IAgency } from 'src/app/shared/interfaces';
 import { AgencyService } from '../agency.service';
+import { ContactsComponent } from './contacts/contacts.component';
+import { MessageFormComponent } from './message-form/message-form.component';
 
 @Component({
   selector: 'app-profile',
@@ -52,6 +54,11 @@ export class AgencyProfileComponent implements OnInit, OnDestroy {
           this.router.navigate(['/']);
         },
       });
+  }
+
+  changeActionHandler(show: HTMLDivElement, hide: HTMLDivElement) {
+    show.style.display = 'block';
+    hide.style.display = 'none';
   }
 
   ngOnDestroy(): void {

@@ -13,7 +13,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { LoadingService } from 'src/app/loading.service';
 
 import { IReview } from 'src/app/shared/interfaces';
 import { OfferService } from '../../offer.service';

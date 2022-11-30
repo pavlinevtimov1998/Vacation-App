@@ -2,7 +2,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 40px;
 }
 
 .date-price-container {
@@ -54,7 +54,7 @@ label {
 
 .cvv-expiry {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
 }
 
@@ -118,11 +118,17 @@ label {
 }
 
 .pay-btn mat-icon {
-  width: 25px;
-  height: 25px;
-  font-size: 26px;
+  width: 30px;
+  height: 30px;
+  font-size: 28px;
 }
 
-mat-error {
-  margin-left: 5%;
+.input-error {
+  border: 1px solid red;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  font-weight: 700;
 }

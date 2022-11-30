@@ -11,25 +11,18 @@
             ><span>{{ agencyData.country }}, {{ agencyData.town }}</span>
           </p>
         </div>
-        <div class="rating-container">
-          <h4>Rating</h4>
-          <div class="rating">
-            <h1>{{ agencyData.rating }}</h1>
-            <div class="stars">
-              <mat-icon>star</mat-icon>
-              <mat-icon>star</mat-icon>
-              <mat-icon>star</mat-icon>
-              <mat-icon>star</mat-icon>
-              <mat-icon>star</mat-icon>
-            </div>
-          </div>
-        </div>
         <div class="btns">
-          <button class="message-btn">
+          <button
+            (click)="changeActionHandler(messageForm, contacts)"
+            class="message-btn"
+          >
             <mat-icon>message</mat-icon>
             <span>Message</span>
           </button>
-          <button class="contacts">
+          <button
+            (click)="changeActionHandler(contacts, messageForm)"
+            class="contacts-btn"
+          >
             <mat-icon>contacts</mat-icon>
             <span>Contacts</span>
           </button>
@@ -39,8 +32,12 @@
           </button>
         </div>
         <div class="info-container">
-          <app-message-form></app-message-form>
-          <app-contacts [agencyData]="agencyData"></app-contacts>
+          <div #messageForm class="message">
+            <app-message-form></app-message-form>
+          </div>
+          <div #contacts class="contacts">
+            <app-contacts [agencyData]="agencyData"></app-contacts>
+          </div>
         </div>
       </div>
     </div>

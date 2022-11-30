@@ -1,21 +1,11 @@
 <section class="wrapper" *ngIf="!(isLoading$ | async)">
   <div class="container">
-    <div class="destination">
-      <h1>{{ offer.title }}</h1>
-      <h3>{{ offer.town }}, {{ offer.country.name }}</h3>
-    </div>
-    <div class="carousel-form-container">
-      <article class="offer">
-        <div class="carousel">
-          <app-offer-images-carousel
-            [offer]="offer"
-            [isBooking]="true"
-          ></app-offer-images-carousel>
-        </div>
-      </article>
-      <div class="form-container">
-        <app-booking-form></app-booking-form>
+      <div class="title">
+        <h1>{{ offer.title }}</h1>
+        <h3>{{ offer.town }}, {{ offer.country.name }}</h3>
       </div>
-    </div>
+      <div class="form-container">
+        <app-booking-form [offer]="offer"></app-booking-form>
+      </div>
   </div>
 </section>

@@ -36,7 +36,7 @@ import { PasswordsValidatorDirective } from './directives/passwords-validator.di
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ],
   exports: [
     BenefitsComponent,
@@ -51,7 +51,7 @@ import { PasswordsValidatorDirective } from './directives/passwords-validator.di
     MatDatepickerModule,
     OfferImagesCarouselComponent,
     PasswordsValidatorDirective,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ],
 })
 export class SharedModule {}

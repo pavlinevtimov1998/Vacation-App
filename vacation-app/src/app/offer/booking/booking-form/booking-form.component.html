@@ -1,7 +1,7 @@
-<form class="form" (ngSubmit)="formHandler()">
+<form class="form" [formGroup]="bookingForm" (ngSubmit)="formHandler()">
   <div class="date-price-container">
     <div class="date">
-      <mat-form-field [formGroup]="dateForm" appearance="fill">
+      <mat-form-field appearance="fill">
         <mat-label>Enter a date range</mat-label>
         <mat-date-range-input [rangePicker]="picker">
           <input
@@ -27,13 +27,12 @@
           #picker
         ></mat-date-range-picker>
       </mat-form-field>
-      <mat-error *ngIf="dateError"
-        >Invalid date!
+      <p class="error" *ngIf="dateError">
+        Invalid date!
         {{ errorMessage || "Your vacation cannot start before" }}
-        {{ errorMessage ? "" : (minDate | date: "shortDate") }}</mat-error
-      >
+        {{ errorMessage ? "" : (minDate | date: "shortDate") }}
+      </p>
     </div>
-
     <h3>
       <span>{{ price.toFixed(2) }} </span>
       <span>$</span>
@@ -41,45 +40,135 @@
   </div>
   <div class="card-holder flex">
     <label for="holder">Card Holder</label>
-    <input class="input" type="text" id="holder" name="cardHolder" />
+    <input
+      [ngClass]="{
+        'input-error':
+          controls['cardHolder'].touched && controls['cardHolder'].errors
+      }"
+      formControlName="cardHolder"
+      class="input"
+      type="text"
+      id="holder"
+      name="cardHolder"
+    />
+    <ng-container *ngIf="controls['cardHolder'].touched">
+      <p class="error" *ngIf="controls['cardHolder'].errors?.['required']">
+        Card holder is required!
+      </p>
+    </ng-container>
   </div>
   <div class="card-number-container flex">
     <label for="number">Card Number</label>
     <div class="card-number">
       <i class="fa-brands fa-cc-visa"></i>
       <input
-        maxlength="16"
+        [ngClass]="{
+          'input-error':
+            controls['cardNumber'].touched && controls['cardNumber'].errors
+        }"
+        formControlName="cardNumber"
         class="input"
         id="number"
         type="number"
         name="cardNumber"
       />
     </div>
+    <ng-container *ngIf="controls['cardNumber'].touched">
+      <p class="error" *ngIf="controls['cardNumber'].errors?.['required']">
+        Card number is required!
+      </p>
+      <p
+        class="error"
+        *ngIf="controls['cardNumber'].errors?.['length'] && !controls['cardNumber'].errors?.['required']"
+      >
+        Card number should be 16 numbers!
+      </p>
+    </ng-container>
   </div>
   <div class="cvv-expiry">
     <div class="cvv-number flex">
       <label for="cvv">CVV Number</label>
-      <input class="input" type="number" name="cvv" id="cvv" />
+      <input
+        [ngClass]="{
+          'input-error':
+            controls['cvvNumber'].touched && controls['cvvNumber'].errors
+        }"
+        formControlName="cvvNumber"
+        class="input"
+        type="number"
+        name="cvvNumber"
+        id="cvv"
+      />
+      <ng-container *ngIf="controls['cvvNumber'].touched">
+        <p class="error" *ngIf="controls['cvvNumber'].errors?.['required']">
+          CVV number is required!
+        </p>
+        <p
+          class="error"
+          *ngIf="(controls['cvvNumber'].errors?.['length'] || controls['cvvNumber'].errors?.['length']) && !controls['cvvNumber'].errors?.['required']"
+        >
+          CVV number should be 3 numbers!
+        </p>
+      </ng-container>
     </div>
     <div class="expiry-date flex">
       <label for="expiry">Expiry Date</label>
       <div>
         <input
+          [ngClass]="{
+            'input-error':
+              controls['expiryMonth'].touched && controls['expiryMonth'].errors
+          }"
+          formControlName="expiryMonth"
           class="input"
           type="number"
-          name="expiryDate"
+          name="expiryMonth"
           id="expiry-month"
         />
         <span>/</span>
-        <input class="input" type="number" name="expiryDate" id="expiry-year" />
+        <input
+          [ngClass]="{
+            'input-error':
+              controls['expiryYear'].touched && controls['expiryMonth'].errors
+          }"
+          formControlName="expiryYear"
+          class="input"
+          type="number"
+          name="expiryYear"
+          id="expiry-year"
+        />
       </div>
+      <ng-container
+        *ngIf="
+          controls['expiryMonth'].touched || controls['expiryYear'].touched
+        "
+      >
+        <p
+          class="error"
+          *ngIf="controls['expiryMonth'].errors?.['required'] || controls['expiryYear'].errors?.['required']"
+        >
+          Expiry date is required!
+        </p>
+        <p
+          class="error"
+          *ngIf="controls['expiryMonth'].errors?.['max'] || controls['expiryMonth'].errors?.['min']"
+        >
+          Invalid expiry month!
+        </p>
+        <p
+          class="error"
+          *ngIf="controls['expiryYear'].errors?.['max'] || controls['expiryYear'].errors?.['min']"
+        >
+          Invalid expiry year!
+        </p>
+      </ng-container>
     </div>
   </div>
 
   <div class="cost">
     <button type="submit" class="pay-btn">
       <mat-icon>credit_card</mat-icon>
-      <span>Pay Now</span>
+      <span>Book Now</span>
     </button>
   </div>
 </form>
