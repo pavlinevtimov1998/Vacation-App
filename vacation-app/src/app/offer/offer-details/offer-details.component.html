@@ -1,5 +1,7 @@
 <div class="wrapper" *ngIf="!(isLoading$ | async)">
-  <app-offer-images-carousel [offer]="offer"></app-offer-images-carousel>
+  <div class="carousel-container">
+    <app-offer-images-carousel [offer]="offer"></app-offer-images-carousel>
+  </div>
   <section class="offer-data">
     <div class="info-container">
       <div class="info-left">

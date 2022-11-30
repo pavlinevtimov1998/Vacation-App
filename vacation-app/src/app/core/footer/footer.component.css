@@ -1,5 +1,5 @@
 .footer {
-  height: 200px;
+  min-height: 200px;
   padding-block: 20px;
   display: flex;
   justify-content: space-around;
@@ -78,4 +78,38 @@
   color: #3f51b5;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+@media screen and (max-width: 700px) {
+  .footer {
+    flex-direction: column-reverse;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .btns-container,
+  .top-countries,
+  .social,
+  .platform {
+    width: 100%;
+  }
+
+  .btn {
+    width: 60%;
+    align-self: center;
+  }
+
+  .top-countries ul,
+  .platform ul {
+    align-items: center;
+  }
+
+  .top-countries h5 {
+    text-align: center;
+  }
+
+  .networks {
+    justify-content: center;
+    gap: 10px;
+  }
 }
