@@ -15,7 +15,10 @@ import { IOffer, IAccount, IReview } from 'src/app/shared/interfaces';
 export class OfferDetailsComponent implements OnInit, OnDestroy {
   offer!: IOffer;
 
-  isLogged$ = this.authService.isLogged$;
+  get isLogged$() {
+    return this.authService.isLogged$;
+  }
+
   currentUser!: IAccount | undefined;
   subscription!: Subscription;
 
@@ -23,6 +26,7 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
   agencyName!: string;
 
   selectedIndex = 0;
+  isOpenReviewContainer = false;
 
   get isLoading$() {
     return this.loadingService.isLoading$;
@@ -63,8 +67,12 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
       });
   }
 
-  openReviewWindow(reviewContainer: HTMLElement) {
-    reviewContainer.style.display = 'block';
+  openReviewWindow() {
+    this.isOpenReviewContainer = true;
+  }
+
+  closeReviewContainer() {
+    this.isOpenReviewContainer = false;
   }
 
   addedReviewHandler(review: IReview) {
