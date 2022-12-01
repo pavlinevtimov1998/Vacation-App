@@ -18,10 +18,6 @@ exports.getUserProfile = async (_id) =>
         path: "offer",
         select:
           "-rating -ratingQuantity -createdAt -updatedAt -__v -description",
-        populate: {
-          path: "country",
-          select: "name",
-        },
       })
       .sort({ createdAt: -1 })
       .limit(3),
