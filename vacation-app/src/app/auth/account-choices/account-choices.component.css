@@ -9,9 +9,15 @@
   width: 80%;
   margin: 0 auto;
   background-color: #fff;
-  height: 500px;
+  min-height: 500px;
   display: flex;
   align-items: center;
   border-radius: 30px;
   box-shadow: rgb(0 0 0 / 16%) 0px 1px 4px;
+}
+
+@media screen and (max-width: 700px) {
+  .container {
+    width: 100%;
+  }
 }

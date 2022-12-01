@@ -64,6 +64,26 @@ const offerSchema = new mongoose.Schema(
   { timestamps: { createdAt: "createdAt" } }
 );
 
+offerSchema.pre(/^find/, function () {
+  this.populate({
+    path: "country",
+    select: "name",
+  });
+});
+
+offerSchema.pre("findOne", function () {
+  this.populate({
+    path: "agency",
+    select: "agencyName offers",
+    populate: {
+      path: "offers",
+      select:
+        "-description -__v -ratingsQuantity -rating -peopleBooked -createdAt",
+    },
+    options: { limit: 3, sort: { createdAt: -1 } },
+  });
+});
+
 const Offer = mongoose.model("Offer", offerSchema);
 
 module.exports = Offer;

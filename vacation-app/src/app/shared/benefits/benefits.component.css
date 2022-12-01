@@ -5,7 +5,7 @@
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  margin-block: 100px;
+  margin-block: 10%;
 }
 
 .sign-up {
@@ -62,7 +62,7 @@
 
 @media screen and (max-width: 1100px) {
   .sign-up {
-    width: 60%;
+    width: 80%;
   }
   .banner {
     gap: 55px;
@@ -71,13 +71,7 @@
 
 @media screen and (max-width: 600px) {
   .sign-up {
-    width: 70%;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .sign-up {
-    width: 85%;
+    width: 90%;
   }
 }
 

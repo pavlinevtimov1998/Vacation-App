@@ -73,10 +73,15 @@ mat-spinner {
 
 @media screen and (max-width: 900px) {
   .wrapper {
-    flex-flow: column-reverse;
     align-items: center;
     padding-top: 50px;
     gap: 35px;
+  }
+
+  .container {
+    flex-direction: column-reverse;
+    gap: 30px;
+    align-items: center;
   }
   .user-profile {
     width: 90%;
@@ -88,5 +93,9 @@ mat-spinner {
 
   .reserved {
     width: 100%;
+  }
+
+  app-booked-vacations {
+    width: 90%;
   }
 }

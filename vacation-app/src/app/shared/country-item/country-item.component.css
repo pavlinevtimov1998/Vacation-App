@@ -31,9 +31,3 @@
   color: white;
   letter-spacing: 1px;
 }
-
-@media screen and (max-width: 700px) {
-  .country {
-    height: 30vw;
-  }
-}

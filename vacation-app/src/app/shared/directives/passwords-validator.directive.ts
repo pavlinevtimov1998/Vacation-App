@@ -23,9 +23,9 @@ export class PasswordsValidatorDirective implements Validator {
   ) {}
 
   validate(control: AbstractControl): { [key: string]: any } | null {
-    let rePassword = control;
+    const rePassword = control;
 
-    let password = control.root.get(this.password);
+    const password = control.root.get(this.password);
 
     if (password && rePassword.value !== password.value && !this.isReverse) {
       return {

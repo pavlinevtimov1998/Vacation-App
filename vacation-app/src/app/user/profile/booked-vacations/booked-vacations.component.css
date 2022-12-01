@@ -141,13 +141,18 @@ app-offer-images-carousel {
 }
 
 @media screen and (max-width: 700px) {
-  .offer {
-    height: 75vw;
+  .booking {
+    width: 80%;
+    height: 50vh;
   }
 }
 
 @media screen and (max-width: 500px) {
-  .offer {
-    height: 100vw;
+  .booking {
+    width: 100%;
+  }
+
+  .vacations h1 {
+    text-align: center;
   }
 }

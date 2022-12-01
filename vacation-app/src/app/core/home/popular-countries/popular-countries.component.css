@@ -48,5 +48,32 @@ app-country-item {
   .countries-container {
     width: 90%;
   }
-
 }
+
+@media screen and (max-width: 900px) {
+  .countries-container {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  app-country-item {
+    width: 80%;
+    height: 60vh;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  app-country-item {
+    width: 90%;
+    height: 50vh;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  app-country-item {
+    height: 35vh;
+  }
+}
+

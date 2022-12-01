@@ -7,36 +7,12 @@ const Country = require("../Models/Country");
 const { uploadToCloudinary } = require("../Util/imageUpload");
 
 const getOffers = () =>
-  Offer.find()
-    .select(
-      "-description -ratingsQuantity -rating -peopleBooked -createdAt -__v -updatedAt"
-    )
-    .populate({
-      path: "country",
-      select: "name",
-    });
+  Offer.find().select(
+    "-description -ratingsQuantity -rating -peopleBooked -createdAt -__v -updatedAt"
+  );
 
 const getOne = (offerId) =>
-  Offer.findById(offerId)
-    .select("-__v  -updatedAt")
-    .populate({
-      path: "agency",
-      select: "agencyName offers",
-      populate: {
-        path: "offers",
-        select:
-          "-description -__v -ratingsQuantity -rating -peopleBooked -createdAt",
-        options: { limit: 3, sort: { createdAt: -1 } },
-        populate: {
-          path: "country",
-          select: "name",
-        },
-      },
-    })
-    .populate({
-      path: "country",
-      select: "name",
-    });
+  Offer.findOne({ _id: offerId }).select("-__v  -updatedAt");
 
 const createOffer = async (body, files) => {
   const [country, images] = await Promise.all([

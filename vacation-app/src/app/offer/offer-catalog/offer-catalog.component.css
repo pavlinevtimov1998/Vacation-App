@@ -54,26 +54,36 @@
 
 app-offer-item {
   width: 30%;
-  height: 28vw;
+  height: 60vh;
   padding-bottom: 4%;
-}
-
-@media screen and (min-width: 1600px) {
-  app-offer-item {
-    height: 450px;
-  }
 }
 
 @media screen and (max-width: 1000px) {
   app-offer-item {
-    width: 45%;
+    width: 48%;
+    height: 60vh;
+  }
+
+  .header form {
+    width: 40%;
   }
 }
 
 @media screen and (max-width: 700px) {
   app-offer-item {
-    width: 90%;
+    width: 95%;
+    height: 70vh;
     padding-bottom: 7%;
+  }
+
+  .header {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .header form {
+    width: 95%;
   }
 
   .offers-container {
@@ -84,5 +94,6 @@ app-offer-item {
 @media screen and (max-width: 500px) {
   app-offer-item {
     width: 100%;
+    height: 60vh;
   }
 }
