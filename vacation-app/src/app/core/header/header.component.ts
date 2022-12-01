@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { AuthService } from 'src/app/auth/auth.service';
@@ -21,20 +21,20 @@ export class HeaderComponent implements OnInit {
 
   toggleProfileMobNav = false;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private renderer: Renderer2) {}
 
   ngOnInit(): void {}
 
   openMobileNav(aside: HTMLElement) {
-    aside.style.right = '0px';
+    this.renderer.setStyle(aside, 'right', '0px');
   }
 
   closeMobileNav(aside: HTMLElement) {
-    aside.style.right = '-300px';
+    this.renderer.setStyle(aside, 'right', '-300px');
   }
 
   clickedOutside(aside: HTMLElement): void {
-    aside.style.right = '-300px';
+    this.renderer.setStyle(aside, 'right', '-300px');
   }
 
   profileMobileLinks() {
