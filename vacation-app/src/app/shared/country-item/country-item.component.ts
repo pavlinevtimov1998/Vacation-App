@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
 import { ICountry } from '../interfaces/country.interface';
 
 @Component({
@@ -6,10 +7,8 @@ import { ICountry } from '../interfaces/country.interface';
   templateUrl: './country-item.component.html',
   styleUrls: ['./country-item.component.css'],
 })
-export class CountryItemComponent implements OnInit {
+export class CountryItemComponent {
   @Input() country!: ICountry;
 
   constructor() {}
-
-  ngOnInit(): void {}
 }

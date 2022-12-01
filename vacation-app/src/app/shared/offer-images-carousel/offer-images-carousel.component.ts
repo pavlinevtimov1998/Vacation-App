@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { IOffer } from 'src/app/shared/interfaces/offer.interface';
 
@@ -7,7 +7,7 @@ import { IOffer } from 'src/app/shared/interfaces/offer.interface';
   templateUrl: './offer-images-carousel.component.html',
   styleUrls: ['./offer-images-carousel.component.css'],
 })
-export class OfferImagesCarouselComponent implements OnInit {
+export class OfferImagesCarouselComponent {
   @Input() isBooking: boolean = false;
   @Input() isCatalog: boolean = false;
   @Input() offer!: IOffer;
@@ -15,8 +15,6 @@ export class OfferImagesCarouselComponent implements OnInit {
   selectedIndex: number = 0;
 
   constructor() {}
-
-  ngOnInit(): void {}
 
   leftArrowHandler(): void {
     if (this.selectedIndex > 0) {

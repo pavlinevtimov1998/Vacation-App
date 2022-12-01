@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoadingService } from 'src/app/loading.service';
+import { Subscription } from 'rxjs';
 
+import { LoadingService } from 'src/app/loading.service';
 import { IUser } from 'src/app/shared/interfaces';
 import { IBooking } from 'src/app/shared/interfaces/booking.interface';
 import { UserService } from '../user.service';
@@ -11,13 +12,16 @@ import { UserService } from '../user.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css'],
 })
-export class UserProfileComponent implements OnInit {
+export class UserProfileComponent implements OnInit, OnDestroy {
   profileData!: IUser;
   bookings!: IBooking[];
 
   get isLoading$() {
     return this.loadingService.isLoading$;
   }
+
+  subscription!: Subscription;
+
   constructor(
     private userService: UserService,
     private router: Router,
@@ -35,5 +39,9 @@ export class UserProfileComponent implements OnInit {
         this.router.navigate(['/']);
       },
     });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
   }
 }

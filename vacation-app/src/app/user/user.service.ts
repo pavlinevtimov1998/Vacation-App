@@ -39,7 +39,10 @@ export class UserService {
     );
   }
 
-  getUserProfileData$(): Observable<{ profileData: IUser; bookings: IBooking[] }> {
+  getUserProfileData$(): Observable<{
+    profileData: IUser;
+    bookings: IBooking[];
+  }> {
     return this.httpClient.get<{ profileData: IUser; bookings: IBooking[] }>(
       `${environment.api}/profile/user`,
       { withCredentials: true }

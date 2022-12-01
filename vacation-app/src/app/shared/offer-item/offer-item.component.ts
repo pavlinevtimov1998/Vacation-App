@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthService } from 'src/app/auth/auth.service';
@@ -9,7 +9,7 @@ import { IOffer } from 'src/app/shared/interfaces/offer.interface';
   templateUrl: './offer-item.component.html',
   styleUrls: ['./offer-item.component.css'],
 })
-export class OfferItemComponent implements OnInit {
+export class OfferItemComponent {
   @Input() offer!: IOffer;
 
   get currentUser$() {
@@ -21,8 +21,6 @@ export class OfferItemComponent implements OnInit {
   }
 
   constructor(private authService: AuthService, private router: Router) {}
-
-  ngOnInit(): void {}
 
   routeHandler(event: Event) {
     if (

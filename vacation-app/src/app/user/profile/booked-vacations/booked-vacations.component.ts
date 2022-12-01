@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
 import { IUser } from 'src/app/shared/interfaces';
 import { IBooking } from 'src/app/shared/interfaces/booking.interface';
 
@@ -7,11 +8,9 @@ import { IBooking } from 'src/app/shared/interfaces/booking.interface';
   templateUrl: './booked-vacations.component.html',
   styleUrls: ['./booked-vacations.component.css'],
 })
-export class BookedVacationsComponent implements OnInit {
+export class BookedVacationsComponent {
   @Input() profileData!: IUser;
   @Input() bookings!: IBooking[];
-  
-  constructor() {}
 
-  ngOnInit(): void {}
+  constructor() {}
 }
