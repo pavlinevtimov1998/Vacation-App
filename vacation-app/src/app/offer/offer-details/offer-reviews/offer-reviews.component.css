@@ -69,6 +69,10 @@
   font-size: 18px;
 }
 
+.no-reviews {
+  text-align: center;
+}
+
 @media screen and (max-width: 1100px) {
   .container {
     width: 90%;
