@@ -1,5 +1,5 @@
 <ng-container *ngIf="!(isLoading$ | async)">
   <app-carousel [carouselData]="carouselData"></app-carousel>
   <app-popular-countries [topCountries]="topCountries"></app-popular-countries>
-  <app-benefits></app-benefits>
+  <app-benefits *ngIf="isLogged$ | async"></app-benefits>
 </ng-container>

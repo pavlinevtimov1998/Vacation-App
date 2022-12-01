@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
@@ -11,12 +11,13 @@ import { IAgency } from 'src/app/shared/interfaces';
   templateUrl: './top-agencies.component.html',
   styleUrls: ['./top-agencies.component.css'],
 })
-export class TopAgenciesComponent implements OnInit {
+export class TopAgenciesComponent implements OnInit, OnDestroy {
   agencies!: IAgency[];
 
   get isLoading$() {
     return this.loadingService.isLoading$;
   }
+
   subscription!: Subscription;
 
   constructor(
@@ -35,5 +36,9 @@ export class TopAgenciesComponent implements OnInit {
         this.router.navigate(['/']);
       },
     });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
   }
 }

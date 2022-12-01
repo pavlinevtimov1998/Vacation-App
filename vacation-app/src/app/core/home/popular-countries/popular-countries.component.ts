@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+
 import { ICountry } from 'src/app/shared/interfaces/country.interface';
 
 @Component({
@@ -6,10 +7,8 @@ import { ICountry } from 'src/app/shared/interfaces/country.interface';
   templateUrl: './popular-countries.component.html',
   styleUrls: ['./popular-countries.component.css'],
 })
-export class PopularCountriesComponent implements OnInit {
+export class PopularCountriesComponent {
   @Input() topCountries!: ICountry[];
 
   constructor() {}
-
-  ngOnInit(): void {}
 }

@@ -1,8 +1,7 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Component, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 import { AuthService } from 'src/app/auth/auth.service';
-import { IAccount } from 'src/app/shared/interfaces';
 
 @Component({
   selector: 'app-account-nav',

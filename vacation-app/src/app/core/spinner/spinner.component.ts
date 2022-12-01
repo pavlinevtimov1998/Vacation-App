@@ -1,5 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component } from '@angular/core';
 
 import { LoadingService } from 'src/app/loading.service';
 
@@ -9,7 +8,9 @@ import { LoadingService } from 'src/app/loading.service';
   styleUrls: ['./spinner.component.css'],
 })
 export class SpinnerComponent {
-  isLoading$ = this.loadingService.isLoading$;
+  get isLoading$() {
+    return this.loadingService.isLoading$;
+  }
 
   constructor(private loadingService: LoadingService) {}
 }

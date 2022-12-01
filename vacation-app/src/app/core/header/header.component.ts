@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { AuthService } from 'src/app/auth/auth.service';
@@ -8,7 +8,7 @@ import { AuthService } from 'src/app/auth/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   get currentUser$() {
     return this.authService.currentUser$;
   }
@@ -22,8 +22,6 @@ export class HeaderComponent implements OnInit {
   toggleProfileMobNav = false;
 
   constructor(private authService: AuthService, private renderer: Renderer2) {}
-
-  ngOnInit(): void {}
 
   openMobileNav(aside: HTMLElement) {
     this.renderer.setStyle(aside, 'right', '0px');

@@ -1,5 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { combineLatest, combineLatestAll, Subscription } from 'rxjs';
+import { combineLatest, Subscription } from 'rxjs';
+
+import { AuthService } from 'src/app/auth/auth.service';
 import { LoadingService } from 'src/app/loading.service';
 import { ICountry } from 'src/app/shared/interfaces/country.interface';
 import { IOffer } from 'src/app/shared/interfaces/offer.interface';
@@ -16,12 +18,17 @@ export class WelcomePageComponent implements OnInit, OnDestroy {
 
   subscribtion$!: Subscription;
 
+  get isLogged$() {
+    return this.authService.isLogged$;
+  }
+
   get isLoading$() {
     return this.loadingService.isLoading$;
   }
   constructor(
     private welcomeService: WelcomeService,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
