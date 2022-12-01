@@ -1,7 +1,7 @@
 const { unlink } = require("fs");
 const { promisify } = require("util");
-const Booking = require("../Models/Booking");
 
+const Booking = require("../Models/Booking");
 const Offer = require("../Models/Offer");
 
 const { uploadToCloudinary } = require("../Util/imageUpload");

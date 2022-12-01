@@ -7,10 +7,6 @@ const getCountryOffers = (countryId) =>
     path: "offers",
     select:
       "-description -__v -ratingsQuantity -rating -peopleBooked -createdAt -updatedAt",
-    populate: {
-      path: "country",
-      select: "name",
-    },
   });
 
 module.exports = {
