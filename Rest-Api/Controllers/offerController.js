@@ -1,7 +1,7 @@
 const offerController = require("express").Router();
 
-const { isAgency } = require("../Middlewares/guards");
 const offerService = require("../Services/offerService");
+const { isAgency, isUser } = require("../Middlewares/guards");
 const { catchAsyncError } = require("../Util/errorParser");
 const { upload } = require("../Util/imageUpload");
 
@@ -9,7 +9,6 @@ offerController.get(
   "/",
   catchAsyncError(async (req, res) => {
     const offers = await offerService.getOffers();
-    console.log(offers);
 
     res.status(200).json(offers);
   })
@@ -42,9 +41,24 @@ offerController.get(
     const offerId = req.params.offerId;
 
     const offer = await offerService.getOne(offerId);
-    console.log(offer);
 
     res.status(200).json(offer);
+  })
+);
+
+offerController.post(
+  "/booking/:offerId",
+  isUser(),
+  catchAsyncError(async (req, res) => {
+    const body = req.body;
+    body.offer = req.params.offerId;
+    body.user = req.user._id;
+
+    console.log(body);
+
+    const bookingData = await offerService.booking(body);
+
+    res.json(bookingData);
   })
 );
 
