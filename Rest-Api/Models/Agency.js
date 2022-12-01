@@ -8,7 +8,7 @@ const agencySchema = new mongoose.Schema(
       trim: true,
       required: [true, "Agency name is required!"],
       minLength: [4, "Agency name should be at least 2 characters!"],
-      maxLength: [25, "Agency name should be max 25 characters!"],
+      maxLength: [50, "Agency name should be max 50 characters!"],
     },
     email: {
       type: String,
