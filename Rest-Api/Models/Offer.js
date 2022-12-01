@@ -89,11 +89,9 @@ offerSchema.pre("findOne", function (next) {
 });
 
 offerSchema.post("save", async function () {
-  const country = await Country.findByIdAndUpdate(this.country, {
+  await Country.findByIdAndUpdate(this.country, {
     $push: { offers: this._id },
   });
-
-  console.log(country);
 });
 
 const Offer = mongoose.model("Offer", offerSchema);
