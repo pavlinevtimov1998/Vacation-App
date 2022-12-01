@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+const Country = require("./Country");
+
 const offerSchema = new mongoose.Schema(
   {
     title: {
@@ -7,7 +9,7 @@ const offerSchema = new mongoose.Schema(
       trim: true,
       required: [true, "Title is required!"],
       minLength: [6, "Title should be at least 6 characters!"],
-      maxLength: [35, "Title should be max 35 characters!"],
+      maxLength: [50, "Title should be max 50 characters!"],
     },
     town: {
       type: String,
@@ -64,14 +66,15 @@ const offerSchema = new mongoose.Schema(
   { timestamps: { createdAt: "createdAt" } }
 );
 
-offerSchema.pre(/^find/, function () {
-  this.populate({
+offerSchema.pre(/^find/, function (next) {
+  this.select("-__v  -updatedAt").populate({
     path: "country",
     select: "name",
   });
+  next();
 });
 
-offerSchema.pre("findOne", function () {
+offerSchema.pre("findOne", function (next) {
   this.populate({
     path: "agency",
     select: "agencyName offers",
@@ -82,6 +85,15 @@ offerSchema.pre("findOne", function () {
     },
     options: { limit: 3, sort: { createdAt: -1 } },
   });
+  next();
+});
+
+offerSchema.post("save", async function () {
+  const country = await Country.findByIdAndUpdate(this.country, {
+    $push: { offers: this._id },
+  });
+
+  console.log(country);
 });
 
 const Offer = mongoose.model("Offer", offerSchema);
