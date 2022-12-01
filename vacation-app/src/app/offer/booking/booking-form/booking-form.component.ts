@@ -90,7 +90,7 @@ export class BookingFormComponent implements OnInit {
 
     this.offerService.booking$(body, this.offer._id).subscribe({
       next: () => {
-        this.router.navigate(['/']);
+        this.router.navigate(['/user/profile']);
       },
       error: (err) => {
         console.log(err);
