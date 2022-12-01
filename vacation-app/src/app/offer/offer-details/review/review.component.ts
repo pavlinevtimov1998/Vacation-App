@@ -25,9 +25,9 @@ import { OfferService } from '../../offer.service';
 export class ReviewComponent implements OnInit, OnDestroy {
   readonly rates = [1, 2, 3, 4, 5];
 
-  @Input() reviewContainer!: HTMLElement;
   @Input() offerId!: string;
   @Output() addedReview = new EventEmitter<IReview>();
+  @Output() close = new EventEmitter();
 
   reviewForm!: FormGroup;
 
@@ -56,16 +56,12 @@ export class ReviewComponent implements OnInit, OnDestroy {
   }
 
   reviewHandler() {
-    if (this.reviewContainer.style.display == 'none') {
-      return;
-    }
-
     if (this.reviewForm.invalid) {
       return this.reviewForm.markAllAsTouched();
     }
 
     const body = this.reviewForm.value;
-    
+
     this.isLoading = true;
 
     this.subscription = this.offerService
@@ -75,11 +71,11 @@ export class ReviewComponent implements OnInit, OnDestroy {
           this.addedReview.emit(review);
 
           this.reviewForm.reset();
-          this.closeReviewContainer();
+          this.close.emit();
         },
         error: (err) => {
           console.log(err);
-          this.closeReviewContainer();
+          this.close.emit();
         },
       });
   }
@@ -97,7 +93,7 @@ export class ReviewComponent implements OnInit, OnDestroy {
   }
 
   closeReviewContainer() {
-    this.reviewContainer.style.display = 'none';
+    this.close.emit();
   }
 
   ngOnDestroy(): void {
