@@ -99,9 +99,18 @@ export class CreateComponent implements OnInit, OnDestroy {
           formData.append(key, image, image.name);
         });
       } else {
-        formData.append(key, value as string);
+        if (key == 'country') {
+          const countryId = this.countries.find((c) => c.name == value)?._id;
+          if (countryId) {
+            formData.append(key, countryId as string);
+          }
+        } else {
+          formData.append(key, value as string);
+        }
       }
     });
+
+    console.log(formData);
 
     this.offerService.createOffer(formData).subscribe({
       next: (offer) => {
