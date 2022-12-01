@@ -25,6 +25,7 @@ export class WelcomePageComponent implements OnInit, OnDestroy {
   get isLoading$() {
     return this.loadingService.isLoading$;
   }
+  
   constructor(
     private welcomeService: WelcomeService,
     private loadingService: LoadingService,
