@@ -74,7 +74,7 @@ export class OfferService {
     offerId: string
   ): Observable<IBooking> {
     return this.httpClient.post<IBooking>(
-      `${environment.api}/booking/${offerId}`,
+      `${environment.api}/offers/booking/${offerId}`,
       body,
       { withCredentials: true }
     );
