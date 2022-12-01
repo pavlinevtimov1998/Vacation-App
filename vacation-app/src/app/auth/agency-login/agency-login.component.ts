@@ -30,8 +30,8 @@ export class AgencyLoginComponent {
         console.log(err);
       },
       complete: () => {
-        loginForm.reset()
-      }
+        loginForm.reset();
+      },
     });
   }
 }
