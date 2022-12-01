@@ -130,7 +130,12 @@ button[type="submit"]:hover {
   text-align: center;
 }
 
+.input-error {
+  border-color: red;
+}
+
 .error {
+  color: red;
   align-self: flex-start;
 }
 
