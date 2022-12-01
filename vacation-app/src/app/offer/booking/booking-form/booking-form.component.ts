@@ -64,8 +64,8 @@ export class BookingFormComponent implements OnInit {
       ]),
       expiryYear: new FormControl<number | null>(null, [
         Validators.required,
-        Validators.min(2022),
-        Validators.max(2035),
+        Validators.min(22),
+        Validators.max(35),
       ]),
     });
   }
@@ -119,7 +119,6 @@ export class BookingFormComponent implements OnInit {
       }
 
       this.price = +this.offer.price * days;
-      console.log(this.price);
     } else {
       this.errorMessage = '';
       this.dateError = true;
