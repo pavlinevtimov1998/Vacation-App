@@ -37,8 +37,6 @@ export class BookingComponent implements OnInit {
       )
       .subscribe({
         next: (offer) => {
-          console.log(offer);
-
           this.offer = offer;
         },
         error: (err) => {
