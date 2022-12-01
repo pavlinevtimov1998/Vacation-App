@@ -7,7 +7,7 @@
           <h1>{{ review.user.username }}</h1>
           <div class="stars">
             <mat-icon *ngFor="let rate of rates; let i = index"
-              >star{{ i <= review.rating ? "" : "_border" }}</mat-icon
+              >star{{ i < review.rating ? "" : "_border" }}</mat-icon
             >
           </div>
         </div>
