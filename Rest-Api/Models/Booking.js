@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Offer = require("./Offer");
 
 const bookinkSchema = new mongoose.Schema(
   {
@@ -36,6 +37,14 @@ const bookinkSchema = new mongoose.Schema(
     },
   }
 );
+
+bookinkSchema.post("save", async function () {
+  const offer = await Offer.findById(this.offer, {
+    $push: { peopleBooked: this.user },
+  });
+
+  console.log(offer);
+});
 
 const Booking = mongoose.model("Booking", bookinkSchema);
 
