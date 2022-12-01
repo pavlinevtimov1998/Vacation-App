@@ -21,7 +21,7 @@ export class LoadingInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    if (!request.url.includes('review')) {
+    if (!request.url.includes('review') && !request.url.includes('limit')) {
       if (this.requests === 0) {
         this.loadingService.startLoading();
       }

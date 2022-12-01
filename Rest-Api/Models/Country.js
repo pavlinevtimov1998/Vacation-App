@@ -10,7 +10,7 @@ const countrySchema = new mongoose.Schema({
   description: {
     type: String,
   },
-  ratingsQuantity: {
+  ratingQuantity: {
     type: Number,
     default: 0,
   },

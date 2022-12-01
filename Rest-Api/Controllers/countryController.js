@@ -17,9 +17,25 @@ countryController.get(
   catchAsyncError(async (req, res) => {
     const countryId = req.params.countryId;
 
-    const country = await countryService.getCountryOffers(countryId);
+    const [country, offersCount] = await countryService.getCountry(countryId);
 
-    res.status(200).json(country);
+    res.status(200).json({ country, offersCount });
+  })
+);
+
+countryController.get(
+  "/offers/:countryId",
+  catchAsyncError(async (req, res) => {
+    const countryId = req.params.countryId;
+    const { skip, limit } = req.query;
+
+    const countryOffers = await countryService.getCountryOffers(
+      countryId,
+      skip,
+      limit
+    );
+
+    res.status(200).json(countryOffers);
   })
 );
 

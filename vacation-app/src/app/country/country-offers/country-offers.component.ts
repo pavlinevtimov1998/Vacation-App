@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { mergeMap, Subscription } from 'rxjs';
 import { LoadingService } from 'src/app/loading.service';
@@ -11,15 +11,28 @@ import { CountryService } from '../country.service';
   templateUrl: './country-offers.component.html',
   styleUrls: ['./country-offers.component.css'],
 })
-export class CountryOffersComponent implements OnInit {
+export class CountryOffersComponent implements OnInit, OnDestroy {
   country!: ICountry;
   offers!: IOffer[];
+  offersCount!: number;
+  countryId!: string;
 
-  subscription!: Subscription;
+  pages = 1;
+
+  currentPage = 1;
+  limit = 3;
+
+  get skip() {
+    return (this.currentPage - 1) * this.limit;
+  }
+
+  subscription = new Subscription();
 
   get isLoading$() {
     return this.loadingService.isLoading$;
   }
+
+  paginationLoading = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -29,23 +42,70 @@ export class CountryOffersComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.subscription = this.activatedRoute.params
-      .pipe(
-        mergeMap((params) => {
-          const countryId = params['countryId'];
+    this.getCountry();
+  }
 
-          return this.countryService.getCountryWithOffers$(countryId);
+  previousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.getCountryOffers();
+    }
+  }
+
+  nextPage() {
+    if (this.currentPage < this.pages) {
+      this.currentPage++;
+      this.getCountryOffers();
+    }
+  }
+
+  rowClickHandler(page: number) {
+    this.currentPage = page;
+    this.getCountryOffers();
+  }
+
+  private getCountryOffers(): void {
+    this.paginationLoading = true;
+    this.subscription.add(
+      this.countryService
+        .getCountryOffers$(this.countryId, this.skip, this.limit)
+        .subscribe({
+          next: (offers) => {
+            this.offers = offers;
+            this.paginationLoading = false;
+          },
+          error: (err) => {
+            console.log(err);
+          },
         })
-      )
-      .subscribe({
-        next: (country) => {
-          this.country = country;
-          this.offers = country.offers as IOffer[];
-        },
-        error: (err) => {
-          console.log(err);
-          this.router.navigate(['/']);
-        },
-      });
+    );
+  }
+
+  private getCountry() {
+    this.subscription.add(
+      this.activatedRoute.params
+        .pipe(
+          mergeMap((params) => {
+            this.countryId = params['countryId'];
+
+            return this.countryService.getCountry$(this.countryId);
+          })
+        )
+        .subscribe({
+          next: ({ country, offersCount }) => {
+            this.pages = Math.ceil(offersCount / this.limit);
+            this.country = country;
+            this.getCountryOffers();
+          },
+          error: (err) => {
+            console.log(err);
+            this.router.navigate(['/']);
+          },
+        })
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
   }
 }
