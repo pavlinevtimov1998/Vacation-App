@@ -1,62 +1,55 @@
 const { unlink } = require("fs");
-const mongoose = require("mongoose");
+const { promisify } = require("util");
+const Booking = require("../Models/Booking");
 
 const Offer = require("../Models/Offer");
-const Country = require("../Models/Country");
 
 const { uploadToCloudinary } = require("../Util/imageUpload");
 
 const getOffers = () =>
-  Offer.find().select(
-    "-description -ratingsQuantity -rating -peopleBooked -createdAt -__v -updatedAt"
-  );
+  Offer.find()
+    .select(
+      "-description -ratingsQuantity -rating -peopleBooked -createdAt -__v -updatedAt"
+    )
+    .sort({ createdAt: -1 });
 
-const getOne = (offerId) =>
-  Offer.findOne({ _id: offerId }).select("-__v  -updatedAt");
+const getOne = (offerId) => Offer.findOne({ _id: offerId });
 
 const createOffer = async (body, files) => {
-  const [country, images] = await Promise.all([
-    Country.findOne({ name: body.country }),
-    getImagesUrl(files),
-  ]);
-
+  const [images, localImages] = await getImagesUrl(files);
   body.images = images;
-  body.country = country._id;
-  body._id = new mongoose.Types.ObjectId();
   body.features = body.features.split(",");
 
-  const offer = new Offer(body);
-
-  return Promise.all([
-    offer.save(),
-    Country.findByIdAndUpdate(country._id, {
-      $push: { offers: offer._id },
-    }),
-  ]);
+  return Promise.all([Offer.create(body), asyncUnlink(localImages)]);
 };
+
+const booking = (body) => Booking.create(body);
 
 const getImagesUrl = async (files) => {
   const imagesUrl = [];
+  const localUrls = [];
 
   for (let i = 0; i < files.length; i++) {
     const localFilePath = files[i].path;
+    localUrls.push(localFilePath);
 
     await uploadToCloudinary(localFilePath).then((result) => {
-      unlink(localFilePath, (err) => {
-        if (err) {
-          throw { message: "Unsuccessful img deleting!" };
-        }
-      });
-
       imagesUrl.push(result.url);
     });
   }
 
-  return imagesUrl;
+  return [imagesUrl, localUrls];
+};
+
+const asyncUnlink = (arr) => {
+  const func = promisify(unlink);
+
+  return arr.map((i) => func(i));
 };
 
 module.exports = {
   createOffer,
   getOffers,
   getOne,
+  booking,
 };
