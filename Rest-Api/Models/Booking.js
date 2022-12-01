@@ -39,11 +39,9 @@ const bookinkSchema = new mongoose.Schema(
 );
 
 bookinkSchema.post("save", async function () {
-  const offer = await Offer.findById(this.offer, {
+  await Offer.findByIdAndUpdate(this.offer, {
     $push: { peopleBooked: this.user },
   });
-
-  console.log(offer);
 });
 
 const Booking = mongoose.model("Booking", bookinkSchema);
