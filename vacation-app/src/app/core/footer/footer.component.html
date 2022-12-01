@@ -44,7 +44,7 @@
       </li>
     </ul>
   </article>
-  <article class="btns-container">
+  <article class="btns-container" *ngIf="isLogged$ | async">
     <a class="sign-up btn" routerLink="/user/register">
       <span>Sign Up</span>
       <mat-icon>login</mat-icon>
