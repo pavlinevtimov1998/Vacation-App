@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
 import { IAccount, IAgency } from '../shared/interfaces/account.interface';
-import { IBooking } from '../shared/interfaces/booking.interface';
 
 @Injectable({
   providedIn: 'root',

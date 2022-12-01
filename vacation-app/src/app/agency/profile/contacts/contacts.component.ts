@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { IAgency } from 'src/app/shared/interfaces';
 
@@ -7,12 +7,10 @@ import { IAgency } from 'src/app/shared/interfaces';
   templateUrl: './contacts.component.html',
   styleUrls: ['./contacts.component.css'],
 })
-export class ContactsComponent implements OnInit {
+export class ContactsComponent {
   @Input() agencyData!: IAgency;
 
-  default = 'Not Added...'
+  default = 'Not Added...';
 
   constructor() {}
-
-  ngOnInit(): void {}
 }

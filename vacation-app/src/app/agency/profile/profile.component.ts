@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { combineLatest, mergeMap, Subscription } from 'rxjs';
 
@@ -29,7 +29,8 @@ export class AgencyProfileComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private authService: AuthService,
     private router: Router,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private renderer: Renderer2
   ) {}
 
   ngOnInit(): void {
@@ -56,9 +57,12 @@ export class AgencyProfileComponent implements OnInit, OnDestroy {
       });
   }
 
-  changeActionHandler(show: HTMLDivElement, hide: HTMLDivElement) {
-    show.style.display = 'block';
-    hide.style.display = 'none';
+  changeActionHandler(
+    showElement: HTMLDivElement,
+    hideElement: HTMLDivElement
+  ) {
+    this.renderer.setStyle(showElement, 'display', 'block');
+    this.renderer.setStyle(hideElement, 'display', 'none');
   }
 
   ngOnDestroy(): void {
