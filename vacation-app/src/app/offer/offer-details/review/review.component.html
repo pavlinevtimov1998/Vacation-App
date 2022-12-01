@@ -18,7 +18,7 @@
   >
     <p class="error rating-err">Rating is required!</p>
   </ng-container>
-  <form class="form" [formGroup]="reviewForm" (submit)="reviewHandler()">
+  <form class="form" [formGroup]="reviewForm" (ngSubmit)="reviewHandler()">
     <div>
       <textarea
         name="review"
