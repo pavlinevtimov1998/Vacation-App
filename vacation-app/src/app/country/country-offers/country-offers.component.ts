@@ -22,6 +22,8 @@ export class CountryOffersComponent implements OnInit, OnDestroy {
   currentPage = 1;
   limit = 3;
 
+  canClick = true;
+
   get skip() {
     return (this.currentPage - 1) * this.limit;
   }
@@ -46,26 +48,29 @@ export class CountryOffersComponent implements OnInit, OnDestroy {
   }
 
   previousPage() {
-    if (this.currentPage > 1) {
+    if (this.currentPage > 1 && this.canClick) {
       this.currentPage--;
       this.getCountryOffers();
     }
   }
 
   nextPage() {
-    if (this.currentPage < this.pages) {
+    if (this.currentPage < this.pages && this.canClick) {
       this.currentPage++;
       this.getCountryOffers();
     }
   }
 
   rowClickHandler(page: number) {
-    this.currentPage = page;
-    this.getCountryOffers();
+    if (this.canClick) {
+      this.currentPage = page;
+      this.getCountryOffers();
+    }
   }
 
   private getCountryOffers(): void {
     this.paginationLoading = true;
+    this.canClick = false;
     this.subscription.add(
       this.countryService
         .getCountryOffers$(this.countryId, this.skip, this.limit)
@@ -73,6 +78,7 @@ export class CountryOffersComponent implements OnInit, OnDestroy {
           next: (offers) => {
             this.offers = offers;
             this.paginationLoading = false;
+            this.canClick = true;
           },
           error: (err) => {
             console.log(err);

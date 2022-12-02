@@ -22,8 +22,7 @@
     <div
       class="offers-container"
       *ngIf="!paginationLoading"
-      [ngClass]="{ justify: offers.length > 3 }"
-    >
+      >
       <ng-container *ngFor="let offer of offers">
         <app-offer-item [offer]="offer"></app-offer-item>
       </ng-container>
@@ -35,13 +34,13 @@
       </button>
       <div class="rows">
         <button
-          (click)="rowClickHandler(page)"
-          class="row"
-          *ngFor="let page of pages | paginationHelper"
+        (click)="rowClickHandler(page)"
+        class="row"
+        *ngFor="let page of pages | paginationHelper"
         >
-          <span>{{ page }}</span>
-        </button>
-      </div>
+        <span>{{ page }}</span>
+      </button>
+    </div>
       <button class="previous" (click)="nextPage()">
         <span>Next</span>
         <mat-icon>arrow_forward</mat-icon>
@@ -49,3 +48,5 @@
     </div>
   </div>
 </section>
+
+<!-- [ngClass]="{ justify: offers.length > 3 }" -->
