@@ -11,21 +11,27 @@ export class PaginationHelperPipe implements PipeTransform {
   ): number[] {
     const arr = [];
 
-    let minRows = currentPage - Math.floor(displayedBtns / 2);
-    let maxRows = currentPage + Math.floor(displayedBtns / 2);
+    if (pages > 5) {
+      let minRows = currentPage - Math.floor(displayedBtns / 2);
+      let maxRows = currentPage + Math.floor(displayedBtns / 2);
 
-    if (minRows < 1) {
-      minRows = 1;
-      maxRows = displayedBtns;
-    }
+      if (minRows < 1) {
+        minRows = 1;
+        maxRows = displayedBtns;
+      }
 
-    if (maxRows > pages) {
-      maxRows = pages;
-      minRows = pages - (displayedBtns - 1);
-    }
+      if (maxRows > pages) {
+        maxRows = pages;
+        minRows = pages - (displayedBtns - 1);
+      }
 
-    for (let i = minRows; i <= maxRows; i++) {
-      arr.push(i);
+      for (let i = minRows; i <= maxRows; i++) {
+        arr.push(i);
+      }
+    } else {
+      for (let i = 1; i <= pages; i++) {
+        arr.push(i);
+      }
     }
 
     return arr;
