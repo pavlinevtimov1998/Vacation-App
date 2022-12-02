@@ -58,3 +58,8 @@
   gap: 5px;
   align-items: center;
 }
+
+.selected-btn {
+  background-color: #fff;
+  color: #0d47a1;
+}

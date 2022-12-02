@@ -1,27 +1,18 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-pagination',
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.css'],
 })
-export class PaginationComponent implements OnInit {
+export class PaginationComponent {
   @Input() pages: number = 1;
 
   @Output() sendCurrentPage = new EventEmitter<number>();
 
-  displayedBtns!: number;
   currentPage = 1;
 
   constructor() {}
-
-  ngOnInit(): void {
-    if (this.pages >= 5) {
-      this.displayedBtns = 5;
-    } else {
-      this.displayedBtns = this.pages;
-    }
-  }
 
   previousPage() {
     if (this.currentPage > 1) {

@@ -4,14 +4,12 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'paginationHelper',
 })
 export class PaginationHelperPipe implements PipeTransform {
-  transform(
-    pages: number,
-    displayedBtns: number,
-    currentPage: number
-  ): number[] {
+  transform(pages: number, currentPage: number): number[] {
     const arr = [];
 
-    if (pages > 5) {
+    let displayedBtns = 5
+
+    if (pages > displayedBtns) {
       let minRows = currentPage - Math.floor(displayedBtns / 2);
       let maxRows = currentPage + Math.floor(displayedBtns / 2);
 
