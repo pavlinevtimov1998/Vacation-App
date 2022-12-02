@@ -6,16 +6,20 @@ const Offer = require("../Models/Offer");
 
 const { uploadToCloudinary } = require("../Util/imageUpload");
 
-const getOffers = (skip, limit) =>
+const getOffers = (skip, limit, search = "") =>
   Promise.all([
-    Offer.find()
+    Offer.find({
+      title: { $regex: `${search}`, $options: "i" },
+    })
       .select(
         "-description -ratingsQuantity -rating -peopleBooked -createdAt -__v -updatedAt"
       )
       .sort({ createdAt: -1 })
       .skip(skip)
       .limit(limit),
-    Offer.find().count(),
+    Offer.find({
+      title: { $regex: `${search}`, $options: "i" },
+    }).count(),
   ]);
 
 const getOne = (offerId) => Offer.findOne({ _id: offerId });
