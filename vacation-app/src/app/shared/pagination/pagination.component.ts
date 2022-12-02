@@ -10,34 +10,35 @@ export class PaginationComponent implements OnInit {
 
   @Output() sendCurrentPage = new EventEmitter<number>();
 
-  displayedBtns = 3;
-
-  canClick = true;
-
+  displayedBtns!: number;
   currentPage = 1;
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.pages >= 5) {
+      this.displayedBtns = 5;
+    } else {
+      this.displayedBtns = this.pages;
+    }
+  }
 
   previousPage() {
-    if (this.currentPage > 1 && this.canClick) {
+    if (this.currentPage > 1) {
       this.currentPage--;
       this.sendCurrentPage.emit(this.currentPage);
     }
   }
 
   nextPage() {
-    if (this.currentPage < this.pages && this.canClick) {
+    if (this.currentPage < this.pages) {
       this.currentPage++;
       this.sendCurrentPage.emit(this.currentPage);
     }
   }
 
   rowClickHandler(page: number) {
-    if (this.canClick) {
-      this.currentPage = page;
-      this.sendCurrentPage.emit(this.currentPage);
-    }
+    this.currentPage = page;
+    this.sendCurrentPage.emit(this.currentPage);
   }
 }
