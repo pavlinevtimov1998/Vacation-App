@@ -8,9 +8,11 @@ const { upload } = require("../Util/imageUpload");
 offerController.get(
   "/",
   catchAsyncError(async (req, res) => {
-    const offers = await offerService.getOffers();
+    const { skip, limit } = req.query;
 
-    res.status(200).json(offers);
+    const [offers, offersCount] = await offerService.getOffers(skip, limit);
+
+    res.status(200).json({ offers, offersCount });
   })
 );
 
