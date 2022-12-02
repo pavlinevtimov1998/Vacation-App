@@ -6,12 +6,17 @@ const Offer = require("../Models/Offer");
 
 const { uploadToCloudinary } = require("../Util/imageUpload");
 
-const getOffers = () =>
-  Offer.find()
-    .select(
-      "-description -ratingsQuantity -rating -peopleBooked -createdAt -__v -updatedAt"
-    )
-    .sort({ createdAt: -1 });
+const getOffers = (skip, limit) =>
+  Promise.all([
+    Offer.find()
+      .select(
+        "-description -ratingsQuantity -rating -peopleBooked -createdAt -__v -updatedAt"
+      )
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit),
+    Offer.find().count(),
+  ]);
 
 const getOne = (offerId) => Offer.findOne({ _id: offerId });
 
