@@ -1,9 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { FormControl, FormGroup } from '@angular/forms';
+import { debounceTime, mergeMap, startWith, Subscription } from 'rxjs';
 
-import { LoadingService } from 'src/app/loading.service';
 import { OfferService } from 'src/app/offer/offer.service';
 import { IOffer } from 'src/app/shared/interfaces/offer.interface';
+import { PaginationComponent } from 'src/app/shared/pagination/pagination.component';
 
 @Component({
   selector: 'app-offer-catalog',
@@ -17,11 +18,17 @@ export class OfferCatalogComponent implements OnInit, OnDestroy {
   currentPage = 1;
   limit = 6;
 
+  searchGroup!: FormGroup;
+
+  get searchValue() {
+    return this.searchGroup.controls['search'].value as string;
+  }
+
   get skip() {
     return (this.currentPage - 1) * this.limit;
   }
 
-  subscribtion = new Subscription();
+  subscription!: Subscription;
 
   isLoading = true;
   paginationLoading = false;
@@ -29,6 +36,10 @@ export class OfferCatalogComponent implements OnInit, OnDestroy {
   constructor(private offerService: OfferService) {}
 
   ngOnInit(): void {
+    this.searchGroup = new FormGroup({
+      search: new FormControl(''),
+    });
+
     this.getOffers();
   }
 
@@ -39,9 +50,10 @@ export class OfferCatalogComponent implements OnInit, OnDestroy {
 
   private getOffers() {
     this.paginationLoading = true;
+    this.subscription = this.offerService
+      .getOffers$(this.skip, this.limit, this.searchValue)
 
-    this.subscribtion.add(
-      this.offerService.getOffers$(this.skip, this.limit).subscribe({
+      .subscribe({
         next: ({ offers, offersCount }) => {
           this.pages = Math.ceil(offersCount / this.limit);
 
@@ -52,11 +64,16 @@ export class OfferCatalogComponent implements OnInit, OnDestroy {
         error: (err) => {
           console.log(err);
         },
-      })
-    );
+      });
+  }
+
+  searchHandler(pagination: PaginationComponent) {
+    this.currentPage = 1;
+    pagination.currentPage = 1;
+    this.getOffers();
   }
 
   ngOnDestroy(): void {
-    this.subscribtion?.unsubscribe();
+    this.subscription?.unsubscribe();
   }
 }

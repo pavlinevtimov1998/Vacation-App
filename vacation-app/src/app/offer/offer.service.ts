@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Params } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
@@ -18,13 +19,12 @@ export class OfferService {
 
   getOffers$(
     skip: number,
-    limit: number
+    limit: number,
+    search: string
   ): Observable<{ offers: IOffer[]; offersCount: number }> {
     return this.httpClient.get<{ offers: IOffer[]; offersCount: number }>(
-      `${environment.api}/offers?skip=${skip}&limit=${limit}`,
-      {
-        withCredentials: true,
-      }
+      `${environment.api}/offers`,
+      { withCredentials: true, params: { skip, limit, search } }
     );
   }
 
