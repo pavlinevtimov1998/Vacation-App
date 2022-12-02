@@ -17,6 +17,7 @@ import { OfferItemComponent } from './offer-item/offer-item.component';
 import { OfferImagesCarouselComponent } from './offer-images-carousel/offer-images-carousel.component';
 import { PasswordsValidatorDirective } from './directives/passwords-validator.directive';
 import { PaginationHelperPipe } from '../pagination-helper.pipe';
+import { PaginationComponent } from './pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { PaginationHelperPipe } from '../pagination-helper.pipe';
     OfferImagesCarouselComponent,
     PasswordsValidatorDirective,
     PaginationHelperPipe,
+    PaginationComponent,
   ],
   imports: [
     CommonModule,
@@ -55,6 +57,7 @@ import { PaginationHelperPipe } from '../pagination-helper.pipe';
     PasswordsValidatorDirective,
     MatProgressSpinnerModule,
     PaginationHelperPipe,
+    PaginationComponent
   ],
 })
 export class SharedModule {}

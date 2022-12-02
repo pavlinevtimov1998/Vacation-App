@@ -1,0 +1,19 @@
+<div class="pagination-container">
+  <button class="previous" (click)="previousPage()">
+    <mat-icon>arrow_back</mat-icon>
+    <span>Previous</span>
+  </button>
+  <div class="rows">
+    <button
+      (click)="rowClickHandler(page)"
+      class="row"
+      *ngFor="let page of pages | paginationHelper: displayedBtns:currentPage"
+    >
+      <span>{{ page }}</span>
+    </button>
+  </div>
+  <button class="previous" (click)="nextPage()">
+    <span>Next</span>
+    <mat-icon>arrow_forward</mat-icon>
+  </button>
+</div>

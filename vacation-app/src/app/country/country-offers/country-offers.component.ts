@@ -18,23 +18,21 @@ export class CountryOffersComponent implements OnInit, OnDestroy {
   countryId!: string;
 
   pages = 1;
-
   currentPage = 1;
   limit = 3;
 
   canClick = true;
+  paginationLoading = false;
 
   get skip() {
     return (this.currentPage - 1) * this.limit;
   }
 
-  subscription = new Subscription();
-
   get isLoading$() {
     return this.loadingService.isLoading$;
   }
 
-  paginationLoading = false;
+  subscription = new Subscription();
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -47,30 +45,15 @@ export class CountryOffersComponent implements OnInit, OnDestroy {
     this.getCountry();
   }
 
-  previousPage() {
-    if (this.currentPage > 1 && this.canClick) {
-      this.currentPage--;
-      this.getCountryOffers();
-    }
+  setCurrentPage(currentPage: number) {
+    this.currentPage = currentPage;
+    this.getCountryOffers();
   }
 
-  nextPage() {
-    if (this.currentPage < this.pages && this.canClick) {
-      this.currentPage++;
-      this.getCountryOffers();
-    }
-  }
-
-  rowClickHandler(page: number) {
-    if (this.canClick) {
-      this.currentPage = page;
-      this.getCountryOffers();
-    }
-  }
-
-  private getCountryOffers(): void {
+  getCountryOffers(): void {
     this.paginationLoading = true;
     this.canClick = false;
+
     this.subscription.add(
       this.countryService
         .getCountryOffers$(this.countryId, this.skip, this.limit)
@@ -87,7 +70,7 @@ export class CountryOffersComponent implements OnInit, OnDestroy {
     );
   }
 
-  private getCountry() {
+  private getCountry(): void {
     this.subscription.add(
       this.activatedRoute.params
         .pipe(

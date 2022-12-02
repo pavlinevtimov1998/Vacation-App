@@ -19,33 +19,15 @@
     <div class="pagination-spinner" *ngIf="paginationLoading">
       <mat-spinner></mat-spinner>
     </div>
-    <div
-      class="offers-container"
-      *ngIf="!paginationLoading"
-      >
+    <div class="offers-container" *ngIf="!paginationLoading">
       <ng-container *ngFor="let offer of offers">
         <app-offer-item [offer]="offer"></app-offer-item>
       </ng-container>
     </div>
-    <div class="pagination-container">
-      <button class="previous" (click)="previousPage()">
-        <mat-icon>arrow_back</mat-icon>
-        <span>Previous</span>
-      </button>
-      <div class="rows">
-        <button
-        (click)="rowClickHandler(page)"
-        class="row"
-        *ngFor="let page of pages | paginationHelper"
-        >
-        <span>{{ page }}</span>
-      </button>
-    </div>
-      <button class="previous" (click)="nextPage()">
-        <span>Next</span>
-        <mat-icon>arrow_forward</mat-icon>
-      </button>
-    </div>
+    <app-pagination
+      [pages]="pages"
+      (sendCurrentPage)="setCurrentPage($event)"
+    ></app-pagination>
   </div>
 </section>
 
