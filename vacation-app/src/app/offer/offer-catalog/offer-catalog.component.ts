@@ -13,26 +13,47 @@ import { IOffer } from 'src/app/shared/interfaces/offer.interface';
 export class OfferCatalogComponent implements OnInit, OnDestroy {
   offers!: IOffer[];
 
-  subscribtion!: Subscription;
+  pages = 1;
+  currentPage = 1;
+  limit = 6;
 
-  get isLoading$() {
-    return this.loadingService.isLoading$;
+  get skip() {
+    return (this.currentPage - 1) * this.limit;
   }
 
-  constructor(
-    private offerService: OfferService,
-    private loadingService: LoadingService
-  ) {}
+  subscribtion = new Subscription();
+
+  isLoading = true;
+  paginationLoading = false;
+
+  constructor(private offerService: OfferService) {}
 
   ngOnInit(): void {
-    this.subscribtion = this.offerService.getOffers$().subscribe({
-      next: (offers) => {
-        this.offers = offers;
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
+    this.getOffers();
+  }
+
+  setCurrentPage(currentPage: number) {
+    this.currentPage = currentPage;
+    this.getOffers();
+  }
+
+  private getOffers() {
+    this.paginationLoading = true;
+
+    this.subscribtion.add(
+      this.offerService.getOffers$(this.skip, this.limit).subscribe({
+        next: ({ offers, offersCount }) => {
+          this.pages = Math.ceil(offersCount / this.limit);
+
+          this.offers = offers;
+          this.isLoading = false;
+          this.paginationLoading = false;
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      })
+    );
   }
 
   ngOnDestroy(): void {

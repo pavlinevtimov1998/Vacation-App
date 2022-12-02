@@ -14,14 +14,12 @@ import { CountryService } from '../country.service';
 export class CountryOffersComponent implements OnInit, OnDestroy {
   country!: ICountry;
   offers!: IOffer[];
-  offersCount!: number;
   countryId!: string;
 
   pages = 1;
   currentPage = 1;
   limit = 3;
 
-  canClick = true;
   paginationLoading = false;
 
   get skip() {
@@ -50,9 +48,8 @@ export class CountryOffersComponent implements OnInit, OnDestroy {
     this.getCountryOffers();
   }
 
-  getCountryOffers(): void {
+  private getCountryOffers(): void {
     this.paginationLoading = true;
-    this.canClick = false;
 
     this.subscription.add(
       this.countryService
@@ -61,7 +58,6 @@ export class CountryOffersComponent implements OnInit, OnDestroy {
           next: (offers) => {
             this.offers = offers;
             this.paginationLoading = false;
-            this.canClick = true;
           },
           error: (err) => {
             console.log(err);
@@ -83,6 +79,7 @@ export class CountryOffersComponent implements OnInit, OnDestroy {
         .subscribe({
           next: ({ country, offersCount }) => {
             this.pages = Math.ceil(offersCount / this.limit);
+
             this.country = country;
             this.getCountryOffers();
           },

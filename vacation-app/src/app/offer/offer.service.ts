@@ -16,10 +16,16 @@ import {
 export class OfferService {
   constructor(private httpClient: HttpClient) {}
 
-  getOffers$(): Observable<IOffer[]> {
-    return this.httpClient.get<IOffer[]>(environment.api + '/offers', {
-      withCredentials: true,
-    });
+  getOffers$(
+    skip: number,
+    limit: number
+  ): Observable<{ offers: IOffer[]; offersCount: number }> {
+    return this.httpClient.get<{ offers: IOffer[]; offersCount: number }>(
+      `${environment.api}/offers?skip=${skip}&limit=${limit}`,
+      {
+        withCredentials: true,
+      }
+    );
   }
 
   getOne$(offerId: string): Observable<IOffer> {
