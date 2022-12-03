@@ -9,6 +9,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatInputModule } from '@angular/material/input';
 
 import { BenefitsComponent } from './benefits/benefits.component';
 import { ClickOutsideDirective } from './directives/click-outside.directive';
@@ -41,6 +42,7 @@ import { PaginationComponent } from './pagination/pagination.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatProgressSpinnerModule,
+    MatInputModule,
   ],
   exports: [
     BenefitsComponent,
@@ -57,7 +59,8 @@ import { PaginationComponent } from './pagination/pagination.component';
     PasswordsValidatorDirective,
     MatProgressSpinnerModule,
     PaginationHelperPipe,
-    PaginationComponent
+    PaginationComponent,
+    MatInputModule,
   ],
 })
 export class SharedModule {}

@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { debounceTime, mergeMap, startWith, Subscription } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { debounceTime, map, mergeMap, startWith, Subscription } from 'rxjs';
 
 import { OfferService } from 'src/app/offer/offer.service';
 import { IOffer } from 'src/app/shared/interfaces/offer.interface';
@@ -28,12 +29,16 @@ export class OfferCatalogComponent implements OnInit, OnDestroy {
     return (this.currentPage - 1) * this.limit;
   }
 
-  subscription!: Subscription;
+  subscription = new Subscription();
 
   isLoading = true;
   paginationLoading = false;
 
-  constructor(private offerService: OfferService) {}
+  constructor(
+    private offerService: OfferService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.searchGroup = new FormGroup({
@@ -44,33 +49,51 @@ export class OfferCatalogComponent implements OnInit, OnDestroy {
   }
 
   setCurrentPage(currentPage: number) {
-    this.currentPage = currentPage;
+    if (this.currentPage !== currentPage) {
+      this.currentPage = currentPage;
+    }
+
     this.getOffers();
-  }
-
-  private getOffers() {
-    this.paginationLoading = true;
-    this.subscription = this.offerService
-      .getOffers$(this.skip, this.limit, this.searchValue)
-
-      .subscribe({
-        next: ({ offers, offersCount }) => {
-          this.pages = Math.ceil(offersCount / this.limit);
-
-          this.offers = offers;
-          this.isLoading = false;
-          this.paginationLoading = false;
-        },
-        error: (err) => {
-          console.log(err);
-        },
-      });
   }
 
   searchHandler(pagination: PaginationComponent) {
     this.currentPage = 1;
     pagination.currentPage = 1;
-    this.getOffers();
+
+    this.router.navigate(['/offers'], {
+      queryParams: { search: this.searchValue },
+    });
+  }
+
+  private getOffers() {
+    this.paginationLoading = true;
+    this.subscription.add(
+      this.activatedRoute.queryParamMap
+        .pipe(
+          mergeMap((query) => {
+            const search = query.get('search');
+            this.searchGroup.controls['search'].patchValue(search);
+
+            return this.offerService.getOffers$(
+              this.skip,
+              this.limit,
+              search || ''
+            );
+          })
+        )
+        .subscribe({
+          next: ({ offers, offersCount }) => {
+            this.pages = Math.ceil(offersCount / this.limit);
+
+            this.offers = offers;
+            this.isLoading = false;
+            this.paginationLoading = false;
+          },
+          error: (err) => {
+            console.log(err);
+          },
+        })
+    );
   }
 
   ngOnDestroy(): void {

@@ -5,8 +5,18 @@
   <h2 class="subtitle">Find your wanted destination</h2>
 </div>
 <div class="form-container">
-  <form class="search-form">
-    <input type="search" placeholder="Barcelona, Paris etc." name="search" />
+  <form
+    #searchForm="ngForm"
+    class="search-form"
+    (ngSubmit)="searchHandler(searchForm)"
+  >
+    <input
+      ngModel
+      #search="ngModel"
+      type="search"
+      placeholder="Barcelona, Paris etc."
+      name="search"
+    />
     <button class="btn-search">
       <mat-icon>search</mat-icon>
     </button>

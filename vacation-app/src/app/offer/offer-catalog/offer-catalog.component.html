@@ -3,13 +3,13 @@
 </div>
 <section class="wrapper" *ngIf="!isLoading">
   <article class="header">
-    <h1>All Offers</h1>
+    <h1>Offers Catalog</h1>
     <form [formGroup]="searchGroup" (ngSubmit)="searchHandler(pagination)">
       <input
         formControlName="search"
         type="search"
         name="search"
-        placeholder="Search offer"
+        placeholder="Search Offers"
       />
       <button type="submit">
         <mat-icon>search</mat-icon>

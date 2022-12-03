@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { HeaderComponent } from './header/header.component';
 import { CarouselComponent } from './home/carousel/carousel.component';
@@ -27,7 +28,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
     TopAgenciesComponent,
     SpinnerComponent,
   ],
-  imports: [CommonModule, RouterModule, SharedModule],
+  imports: [CommonModule, RouterModule, SharedModule, FormsModule],
   exports: [HeaderComponent, FooterComponent, SpinnerComponent],
 })
 export class CoreModule {}
