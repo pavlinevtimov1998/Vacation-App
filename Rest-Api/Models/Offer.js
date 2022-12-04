@@ -58,6 +58,13 @@ const offerSchema = new mongoose.Schema(
         default: [],
       },
     ],
+    peopleFavourite: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "User",
+        default: [],
+      },
+    ],
     agency: {
       type: mongoose.Types.ObjectId,
       ref: "Agency",
