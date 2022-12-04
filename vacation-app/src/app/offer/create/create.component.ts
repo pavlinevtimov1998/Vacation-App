@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 import { combineLatest, Subscription } from 'rxjs';
 
 import { CountryService } from 'src/app/country/country.service';
-import { LoadingService } from 'src/app/loading.service';
 import { OfferService } from 'src/app/offer/offer.service';
 import { ICountry } from 'src/app/shared/interfaces/country.interface';
 import { IFeature } from 'src/app/shared/interfaces/offer.interface';
@@ -37,7 +36,6 @@ export class CreateComponent implements OnInit, OnDestroy {
     private countryService: CountryService,
     private offerService: OfferService,
     private router: Router,
-    private loadingService: LoadingService
   ) {}
 
   ngOnInit(): void {

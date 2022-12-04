@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { mergeMap, Subscription } from 'rxjs';
 
-import { LoadingService } from 'src/app/loading.service';
 import { IOffer } from 'src/app/shared/interfaces';
 import { OfferService } from '../offer.service';
 
@@ -21,7 +20,6 @@ export class BookingComponent implements OnInit {
   constructor(
     private offerService: OfferService,
     private activatedRoute: ActivatedRoute,
-    private loadingService: LoadingService
   ) {}
 
   ngOnInit(): void {

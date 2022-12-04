@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { mergeMap, Subscription } from 'rxjs';
-import { LoadingService } from 'src/app/loading.service';
 
 import { ICountry, IOffer } from 'src/app/shared/interfaces';
 import { CountryService } from '../country.service';

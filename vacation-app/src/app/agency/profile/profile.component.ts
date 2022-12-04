@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { combineLatest, mergeMap, Subscription } from 'rxjs';
 
 import { AuthService } from 'src/app/auth/auth.service';
-import { LoadingService } from 'src/app/loading.service';
 import { IAccount, IAgency } from 'src/app/shared/interfaces';
 import { AgencyService } from '../agency.service';
 
@@ -25,7 +24,6 @@ export class AgencyProfileComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private authService: AuthService,
     private router: Router,
-    private loadingService: LoadingService,
     private renderer: Renderer2
   ) {}
 

@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { AgencyService } from 'src/app/agency/agency.service';
-import { LoadingService } from 'src/app/loading.service';
 import { IAgency } from 'src/app/shared/interfaces';
 
 @Component({
@@ -18,11 +17,7 @@ export class TopAgenciesComponent implements OnInit, OnDestroy {
 
   subscription!: Subscription;
 
-  constructor(
-    private agencyService: AgencyService,
-    private router: Router,
-    private loadingService: LoadingService
-  ) {}
+  constructor(private agencyService: AgencyService, private router: Router) {}
 
   ngOnInit(): void {
     this.subscription = this.agencyService.getTopAgencies$().subscribe({
