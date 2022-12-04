@@ -16,7 +16,7 @@
     <div class="card-footer">
       <h4 class="price">{{ offer.price }}$</h4>
       <button
-        (click)="addToFavourites()"
+        (click)="addToFavorites()"
         *ngIf="(canLike() | async) && !isLoading"
         title="Save to favorites"
         class="save-btn"
@@ -25,7 +25,7 @@
         <mat-icon>favorite_border</mat-icon>
       </button>
       <button
-        (click)="removeFromFavourites()"
+        (click)="removeFromFavorites()"
         *ngIf="!(canLike() | async) && !isLoading"
         title="Save to favorites"
         class="save-btn"

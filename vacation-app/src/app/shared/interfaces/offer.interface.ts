@@ -14,7 +14,7 @@ export interface IOffer {
   peopleBooked: number;
   features: string[];
   reviews: IReview[];
-  peopleFavourite: string[];
+  peopleFavorite: string[];
   agency: IAgency;
   createdAt: string;
 }

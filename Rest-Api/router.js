@@ -8,7 +8,7 @@ const agencyController = require("./Controllers/agencyController");
 const profileController = require("./Controllers/profileController");
 const featureController = require("./Controllers/featureController");
 const reviewController = require("./Controllers/reviewController");
-const favouritesController = require("./Controllers/favouritesController");
+const favoritesController = require("./Controllers/favoritesController");
 
 const { globalErrorHandler } = require("./Middlewares/globallErrHandler");
 
@@ -20,7 +20,7 @@ router.use("/countries", countryController);
 router.use("/offers", offerController);
 router.use("/reviews", reviewController);
 router.use("/features", featureController);
-router.use("/favourites", favouritesController);
+router.use("/favorites", favoritesController);
 
 router.use("*", (req, res) => {
   res.status(404).json({ message: "Not Found!" });

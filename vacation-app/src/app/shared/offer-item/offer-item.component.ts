@@ -40,11 +40,11 @@ export class OfferItemComponent {
     }
   }
 
-  addToFavourites() {
+  addToFavorites() {
     this.isLoading = true;
-    this.offerService.addToFavourites$(this.offer._id).subscribe({
+    this.offerService.addToFavorites$(this.offer._id).subscribe({
       next: ({ message, userId }) => {
-        this.offer.peopleFavourite.push(userId);
+        this.offer.peopleFavorite.push(userId);
         this.isLoading = false;
       },
       error: (err) => {
@@ -54,11 +54,11 @@ export class OfferItemComponent {
   }
 
   //TODO
-  removeFromFavourites() {
+  removeFromFavorites() {
     this.isLoading = true;
-    this.offerService.removeFromFavourites$(this.offer._id).subscribe({
+    this.offerService.removeFromFavorites$(this.offer._id).subscribe({
       next: ({ message, userId }) => {
-        this.offer.peopleFavourite = this.offer.peopleFavourite.filter(
+        this.offer.peopleFavorite = this.offer.peopleFavorite.filter(
           (id) => id !== userId
         );
         this.isLoading = false;
@@ -75,7 +75,7 @@ export class OfferItemComponent {
         ([user, isLogged]) =>
           isLogged &&
           !user?.isAgency &&
-          !this.offer.peopleFavourite.find((id) => id == user?._id)
+          !this.offer.peopleFavorite.find((id) => id == user?._id)
       )
     );
   }

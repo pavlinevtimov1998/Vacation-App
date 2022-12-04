@@ -85,21 +85,21 @@ export class OfferService {
     );
   }
 
-  addToFavourites$(
+  addToFavorites$(
     offerId: string
   ): Observable<{ message: string; userId: string }> {
     return this.httpClient.post<{ message: string; userId: string }>(
-      `${environment.api}/favourites/${offerId}`,
+      `${environment.api}/favorites/${offerId}`,
       {},
       { withCredentials: true }
     );
   }
 
-  removeFromFavourites$(
+  removeFromFavorites$(
     offerId: string
   ): Observable<{ message: string; userId: string }> {
     return this.httpClient.delete<{ message: string; userId: string }>(
-      `${environment.api}/favourites/remove/${offerId}`,
+      `${environment.api}/favorites/remove/${offerId}`,
       { withCredentials: true }
     );
   }
