@@ -26,17 +26,14 @@ export class CountryOffersComponent implements OnInit, OnDestroy {
     return (this.currentPage - 1) * this.limit;
   }
 
-  get isLoading$() {
-    return this.loadingService.isLoading$;
-  }
+  isLoading = true;
 
   subscription = new Subscription();
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private countryService: CountryService,
-    private router: Router,
-    private loadingService: LoadingService
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -58,6 +55,7 @@ export class CountryOffersComponent implements OnInit, OnDestroy {
           next: (offers) => {
             this.offers = offers;
             this.paginationLoading = false;
+            this.isLoading = false;
           },
           error: (err) => {
             console.log(err);

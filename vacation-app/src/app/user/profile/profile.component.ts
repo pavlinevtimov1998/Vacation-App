@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
-import { LoadingService } from 'src/app/loading.service';
 import { IUser } from 'src/app/shared/interfaces';
 import { IBooking } from 'src/app/shared/interfaces/booking.interface';
 import { UserService } from '../user.service';
@@ -16,23 +15,18 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   profileData!: IUser;
   bookings!: IBooking[];
 
-  get isLoading$() {
-    return this.loadingService.isLoading$;
-  }
+  isLoading = true;
 
   subscription!: Subscription;
 
-  constructor(
-    private userService: UserService,
-    private router: Router,
-    private loadingService: LoadingService
-  ) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {
     this.userService.getUserProfileData$().subscribe({
       next: ({ profileData, bookings }) => {
         this.profileData = profileData;
         this.bookings = bookings;
+        this.isLoading = false;
       },
       error: (err) => {
         console.log(err);

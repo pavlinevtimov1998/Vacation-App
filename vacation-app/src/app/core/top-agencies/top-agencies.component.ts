@@ -14,9 +14,7 @@ import { IAgency } from 'src/app/shared/interfaces';
 export class TopAgenciesComponent implements OnInit, OnDestroy {
   agencies!: IAgency[];
 
-  get isLoading$() {
-    return this.loadingService.isLoading$;
-  }
+  isLoading = true;
 
   subscription!: Subscription;
 
@@ -30,6 +28,7 @@ export class TopAgenciesComponent implements OnInit, OnDestroy {
     this.subscription = this.agencyService.getTopAgencies$().subscribe({
       next: (agencies) => {
         this.agencies = agencies;
+        this.isLoading = false;
       },
       error: (err) => {
         console.log(err);

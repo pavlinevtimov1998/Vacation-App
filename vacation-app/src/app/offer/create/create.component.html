@@ -1,4 +1,5 @@
-<section class="wrapper" *ngIf="!(isLoading$ | async)">
+<app-spinner *ngIf="isLoading"></app-spinner>
+<section class="wrapper" *ngIf="!isLoading">
   <div class="form-container">
     <h1>Add Offer</h1>
     <form

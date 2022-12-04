@@ -1,4 +1,5 @@
-<section class="wrapper" *ngIf="!(isLoading$ | async)">
+<app-spinner *ngIf="isLoading"></app-spinner>
+<section class="wrapper" *ngIf="!isLoading">
   <div class="country-details">
     <article class="country-image">
       <img [src]="country.image" [alt]="country.name" />

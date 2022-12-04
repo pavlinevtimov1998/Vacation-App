@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { AuthService } from './auth/auth.service';
-import { LoadingInterceptor } from './core/Interceptors/loading.interceptor';
 import { AuthInterceptor } from './core/Interceptors/auth.interceptor';
 
 @NgModule({
@@ -26,11 +25,6 @@ import { AuthInterceptor } from './core/Interceptors/auth.interceptor';
         return () => authService.appInitializer();
       },
       deps: [AuthService],
-      multi: true,
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: LoadingInterceptor,
       multi: true,
     },
     {

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { debounceTime, map, mergeMap, startWith, Subscription } from 'rxjs';
+import { mergeMap, Subscription } from 'rxjs';
 
 import { OfferService } from 'src/app/offer/offer.service';
 import { IOffer } from 'src/app/shared/interfaces/offer.interface';
@@ -46,6 +46,7 @@ export class OfferCatalogComponent implements OnInit, OnDestroy {
     });
 
     this.getOffers();
+    this.isLoading = false;
   }
 
   setCurrentPage(currentPage: number) {

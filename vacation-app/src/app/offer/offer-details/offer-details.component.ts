@@ -28,15 +28,12 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
   selectedIndex = 0;
   isOpenReviewContainer = false;
 
-  get isLoading$() {
-    return this.loadingService.isLoading$;
-  }
+  isLoading = true;
 
   constructor(
     private authService: AuthService,
     private offerService: OfferService,
     private activatedRoute: ActivatedRoute,
-    private loadingService: LoadingService
   ) {}
 
   ngOnInit(): void {
@@ -60,6 +57,7 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
           this.offer = offer;
           this.offer.reviews = reviews;
           this.agencyName = offer.agency.agencyName;
+          this.isLoading = false;
         },
         error: (err) => {
           console.error(err);

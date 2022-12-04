@@ -27,9 +27,7 @@ export class CreateComponent implements OnInit, OnDestroy {
     return errorHandler;
   }
 
-  get isLoading$() {
-    return this.loadingService.isLoading$;
-  }
+  isLoading = true;
   subscription!: Subscription;
   countries!: ICountry[];
   features!: IFeature[];

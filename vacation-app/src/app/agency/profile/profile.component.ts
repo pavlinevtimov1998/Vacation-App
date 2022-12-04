@@ -6,8 +6,6 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { LoadingService } from 'src/app/loading.service';
 import { IAccount, IAgency } from 'src/app/shared/interfaces';
 import { AgencyService } from '../agency.service';
-import { ContactsComponent } from './contacts/contacts.component';
-import { MessageFormComponent } from './message-form/message-form.component';
 
 @Component({
   selector: 'app-profile',
@@ -18,9 +16,7 @@ export class AgencyProfileComponent implements OnInit, OnDestroy {
   currentUser!: IAccount | undefined;
   agencyData!: IAgency;
 
-  get isLoading$() {
-    return this.loadingService.isLoading$;
-  }
+  isLoading = true;
 
   subscription!: Subscription;
 
@@ -49,6 +45,7 @@ export class AgencyProfileComponent implements OnInit, OnDestroy {
       .subscribe({
         next: (agencyData) => {
           this.agencyData = agencyData;
+          this.isLoading = false;
         },
         error: (err) => {
           console.log(err);

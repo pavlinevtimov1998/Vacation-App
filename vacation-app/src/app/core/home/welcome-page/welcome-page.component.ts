@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { combineLatest, Subscription } from 'rxjs';
 
 import { AuthService } from 'src/app/auth/auth.service';
-import { LoadingService } from 'src/app/loading.service';
 import { ICountry } from 'src/app/shared/interfaces/country.interface';
 import { IOffer } from 'src/app/shared/interfaces/offer.interface';
 import { WelcomeService } from '../../welcome.service';
@@ -22,13 +21,10 @@ export class WelcomePageComponent implements OnInit, OnDestroy {
     return this.authService.isLogged$;
   }
 
-  get isLoading$() {
-    return this.loadingService.isLoading$;
-  }
-  
+  isLoading = true;
+
   constructor(
     private welcomeService: WelcomeService,
-    private loadingService: LoadingService,
     private authService: AuthService
   ) {}
 
@@ -40,6 +36,7 @@ export class WelcomePageComponent implements OnInit, OnDestroy {
       next: ([carousel, countries]) => {
         this.carouselData = carousel;
         this.topCountries = countries;
+        this.isLoading = false;
       },
       error: (err) => {
         console.log(err);

@@ -16,9 +16,7 @@ export class BookingComponent implements OnInit {
 
   subscription!: Subscription;
 
-  get isLoading$() {
-    return this.loadingService.isLoading$;
-  }
+  isLoading = true;
 
   constructor(
     private offerService: OfferService,

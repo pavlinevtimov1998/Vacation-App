@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { LoadingService } from 'src/app/loading.service';
 import { ICountry } from 'src/app/shared/interfaces/country.interface';
 import { CountryService } from '../country.service';
 
@@ -13,21 +12,19 @@ import { CountryService } from '../country.service';
 export class CountriesCatalogComponent implements OnInit, OnDestroy {
   countries!: ICountry[];
 
-  get isLoading$() {
-    return this.loadingService.isLoading$;
-  }
+  isLoading = true;
 
   subscription$!: Subscription;
 
   constructor(
     private countryService: CountryService,
-    private loadingService: LoadingService
   ) {}
 
   ngOnInit(): void {
     this.subscription$ = this.countryService.getAllCountries$().subscribe({
       next: (countries) => {
         this.countries = countries;
+        this.isLoading = false;
       },
       error: (err) => {
         console.log(err);

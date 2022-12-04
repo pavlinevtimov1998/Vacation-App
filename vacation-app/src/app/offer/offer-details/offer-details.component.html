@@ -1,4 +1,5 @@
-<div class="wrapper" *ngIf="!(isLoading$ | async)">
+<app-spinner *ngIf="isLoading"></app-spinner>
+<div class="wrapper" *ngIf="!isLoading">
   <div class="carousel-container">
     <app-offer-images-carousel [offer]="offer"></app-offer-images-carousel>
   </div>

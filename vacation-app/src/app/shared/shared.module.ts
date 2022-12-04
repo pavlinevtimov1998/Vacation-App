@@ -13,9 +13,11 @@ import { PasswordsValidatorDirective } from './directives/passwords-validator.di
 import { PaginationHelperPipe } from '../pagination-helper.pipe';
 import { PaginationComponent } from './pagination/pagination.component';
 import { MatButtonModule } from '@angular/material/button';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
+    SpinnerComponent,
     BenefitsComponent,
     ClickOutsideDirective,
     CountryItemComponent,
@@ -33,6 +35,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatProgressSpinnerModule,
   ],
   exports: [
+    SpinnerComponent,
     BenefitsComponent,
     ClickOutsideDirective,
     CountryItemComponent,
