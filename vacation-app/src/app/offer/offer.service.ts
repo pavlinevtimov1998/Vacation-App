@@ -84,4 +84,23 @@ export class OfferService {
       { withCredentials: true }
     );
   }
+
+  addToFavourites$(
+    offerId: string
+  ): Observable<{ message: string; userId: string }> {
+    return this.httpClient.post<{ message: string; userId: string }>(
+      `${environment.api}/favourites/${offerId}`,
+      {},
+      { withCredentials: true }
+    );
+  }
+
+  removeFromFavourites$(
+    offerId: string
+  ): Observable<{ message: string; userId: string }> {
+    return this.httpClient.delete<{ message: string; userId: string }>(
+      `${environment.api}/favourites/remove/${offerId}`,
+      { withCredentials: true }
+    );
+  }
 }

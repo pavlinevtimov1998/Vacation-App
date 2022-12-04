@@ -1,6 +1,9 @@
 <div class="offer" (click)="routeHandler($event)">
   <div class="img-container">
-    <app-offer-images-carousel [offer]="offer" [isCatalog]="true"></app-offer-images-carousel>
+    <app-offer-images-carousel
+      [offer]="offer"
+      [isCatalog]="true"
+    ></app-offer-images-carousel>
   </div>
   <div class="info">
     <div class="card-title">
@@ -13,14 +16,28 @@
     <div class="card-footer">
       <h4 class="price">{{ offer.price }}$</h4>
       <button
-        (click)="addToFavorite()"
-        *ngIf="!(currentUser$ | async)?.isAgency && (isLogged$ | async)"
+        (click)="addToFavourites()"
+        *ngIf="(canLike() | async) && !isLoading"
         title="Save to favorites"
         class="save-btn"
         mat-icon-button
       >
         <mat-icon>favorite_border</mat-icon>
       </button>
+      <button
+        (click)="removeFromFavourites()"
+        *ngIf="!(canLike() | async) && !isLoading"
+        title="Save to favorites"
+        class="save-btn"
+        mat-icon-button
+      >
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <mat-spinner
+        *ngIf="isLoading"
+        class="like-spinner"
+        [diameter]="30"
+      ></mat-spinner>
     </div>
   </div>
 </div>

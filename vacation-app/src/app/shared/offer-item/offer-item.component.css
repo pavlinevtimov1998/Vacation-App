@@ -71,6 +71,12 @@
   bottom: -5px;
 }
 
+.like-spinner {
+  position: absolute;
+  right: 3px;
+  bottom: 3px;
+}
+
 .save-btn mat-icon {
   color: rgb(237, 51, 51);
   width: 30px;
