@@ -16,7 +16,7 @@
   flex-wrap: wrap;
   justify-content: space-around;
   padding-top: 3%;
-  width: 100%;
+  width: 80%;
 }
 
 /* Booking item */
@@ -137,6 +137,14 @@ app-offer-images-carousel {
 @media screen and (max-width: 1000px) {
   .offer {
     height: 45vw;
+  }
+
+  .reserved {
+    width: 100%;
+  }
+
+  .booking {
+    height: 40vh;
   }
 }
 

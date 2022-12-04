@@ -84,20 +84,11 @@
 }
 
 app-booked-vacations {
-  width: 80%;
+  width: 100%;
 }
 
 mat-spinner {
   margin: auto;
-}
-/* 
-@media screen and (max-width: 1200px) {
-  .user-profile {
-    width: 30%;
-  }
-  .vacations {
-    width: 55%;
-  }
 }
 
 @media screen and (max-width: 900px) {
@@ -107,13 +98,9 @@ mat-spinner {
     gap: 35px;
   }
 
-  .container {
-    flex-direction: column-reverse;
-    gap: 30px;
-    align-items: center;
-  }
-  .user-profile {
-    width: 90%;
+  .img-container {
+    width: 200px;
+    height: 200px;
   }
 
   .vacations {
@@ -123,8 +110,32 @@ mat-spinner {
   .reserved {
     width: 100%;
   }
+}
 
-  app-booked-vacations {
-    width: 90%;
+@media screen and (max-width: 600px) {
+  .user-profile {
+    width: 95%;
+    flex-direction: column-reverse;
+    align-items: center;
   }
-} */
+
+  .info {
+    height: 35vh;
+    width: 100%;
+  }
+
+  .info h1 {
+    font-size: 1rem;
+  }
+
+  .username {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .img-container {
+    width: 150px;
+    height: 150px;
+  }
+}
