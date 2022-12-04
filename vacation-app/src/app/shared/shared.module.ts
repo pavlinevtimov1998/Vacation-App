@@ -1,15 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
-import { MatSelectModule } from '@angular/material/select';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatInputModule } from '@angular/material/input';
 
 import { BenefitsComponent } from './benefits/benefits.component';
 import { ClickOutsideDirective } from './directives/click-outside.directive';
@@ -19,6 +12,7 @@ import { OfferImagesCarouselComponent } from './offer-images-carousel/offer-imag
 import { PasswordsValidatorDirective } from './directives/passwords-validator.directive';
 import { PaginationHelperPipe } from '../pagination-helper.pipe';
 import { PaginationComponent } from './pagination/pagination.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -36,31 +30,20 @@ import { PaginationComponent } from './pagination/pagination.component';
     RouterModule,
     MatIconModule,
     MatButtonModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
     MatProgressSpinnerModule,
-    MatInputModule,
   ],
   exports: [
     BenefitsComponent,
     ClickOutsideDirective,
     CountryItemComponent,
     OfferItemComponent,
-    MatIconModule,
-    MatButtonModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatDatepickerModule,
     OfferImagesCarouselComponent,
     PasswordsValidatorDirective,
-    MatProgressSpinnerModule,
     PaginationHelperPipe,
     PaginationComponent,
-    MatInputModule,
+    MatIconModule,
+    MatButtonModule,
+    MatProgressSpinnerModule,
   ],
 })
 export class SharedModule {}
