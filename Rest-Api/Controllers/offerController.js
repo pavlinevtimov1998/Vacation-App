@@ -9,7 +9,6 @@ offerController.get(
   "/",
   catchAsyncError(async (req, res) => {
     const { skip, limit, search } = req.query;
-    console.log(search);
 
     const [offers, offersCount] = await offerService.getOffers(
       skip,
