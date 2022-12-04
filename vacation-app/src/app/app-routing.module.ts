@@ -1,5 +1,7 @@
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
+import { AuthGuard } from './auth/guards/auth.guard';
+import { UserAuthGuard } from './auth/guards/user-auth.guard';
 import { WelcomePageComponent } from './core/home/welcome-page/welcome-page.component';
 import { TopAgenciesComponent } from './core/top-agencies/top-agencies.component';
 
@@ -16,10 +18,12 @@ const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'user',
     loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
+    canActivate: [UserAuthGuard],
   },
   {
     path: 'agency',
