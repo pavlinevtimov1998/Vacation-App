@@ -52,12 +52,14 @@ export class CreateComponent implements OnInit, OnDestroy {
         this.countries = countries;
 
         this.createOfferForm = this.formBuilder.group({
-          title: new FormControl(null, [Validators.required]),
-          description: new FormControl(null, [Validators.required]),
-          country: new FormControl(null, [Validators.required]),
-          town: new FormControl(null, [Validators.required]),
-          price: new FormControl(null, [Validators.required]),
-          images: new FormControl(null, [Validators.required]),
+          title: new FormControl<string | null>(null, [Validators.required]),
+          description: new FormControl<string | null>(null, [
+            Validators.required,
+          ]),
+          country: new FormControl<string | null>(null, [Validators.required]),
+          town: new FormControl<string | null>(null, [Validators.required]),
+          price: new FormControl<number | null>(null, [Validators.required]),
+          images: new FormControl<File[] | null>(null, [Validators.required]),
         });
       },
       error: (err) => {
@@ -109,8 +111,6 @@ export class CreateComponent implements OnInit, OnDestroy {
         }
       }
     });
-
-    console.log(formData);
 
     this.offerService.createOffer(formData).subscribe({
       next: (offer) => {
