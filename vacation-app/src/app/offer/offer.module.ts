@@ -12,6 +12,11 @@ import { ReviewComponent } from './offer-details/review/review.component';
 import { BookingComponent } from './booking/booking.component';
 import { MoreOffersComponent } from './offer-details/more-offers/more-offers.component';
 import { BookingFormComponent } from './booking/booking-form/booking-form.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatButtonModule } from '@angular/material/button';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -29,6 +34,10 @@ import { BookingFormComponent } from './booking/booking-form/booking-form.compon
     offerRoutingModule,
     ReactiveFormsModule,
     SharedModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
 })
 export class OfferModule {}
