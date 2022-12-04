@@ -1,33 +1,39 @@
 <app-spinner *ngIf="isLoading"></app-spinner>
 <section class="wrapper" *ngIf="!isLoading">
   <div class="container">
+    <article class="user-profile">
+      <div class="info">
+        <h1>
+          <span class="username">Username: </span
+          ><span>{{ profileData.username }}</span>
+        </h1>
+        <a class="edit" routerLink="/auth/edit-profile">Edit profile</a>
+
+        <div class="user-info">
+          <h1>Contacts</h1>
+          <div class="details">
+            <div class="detail">
+              <h4>Phone:</h4>
+              <p>{{ profileData.phone || "(Not added...)" }}</p>
+            </div>
+            <div class="detail">
+              <h4>Email:</h4>
+              <p>{{ profileData.email || "(Not added...)" }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="sign-up-date">
+          <p>Sign up date:</p>
+          <span>{{ profileData.createdAt | date: "longDate" }}</span>
+        </div>
+      </div>
+      <div class="img-container">
+        <img src="/assets/img/default-user.png" [alt]="profileData.username" />
+      </div>
+    </article>
     <app-booked-vacations
       [bookings]="bookings"
       [profileData]="profileData"
     ></app-booked-vacations>
-    <article class="user-profile">
-      <h1>{{ profileData.username }}</h1>
-      <ng-container>
-        <a class="edit" routerLink="/auth/edit-profile">Edit profile</a>
-      </ng-container>
-
-      <div class="user-info">
-        <h1>Contacts</h1>
-        <div class="details">
-          <div class="detail">
-            <h4>Phone:</h4>
-            <p>{{ profileData.phone || "(Not added...)" }}</p>
-          </div>
-          <div class="detail">
-            <h4>Email:</h4>
-            <p>{{ profileData.email || "(Not added...)" }}</p>
-          </div>
-        </div>
-      </div>
-      <div class="sign-up-date">
-        <p>Sign up date:</p>
-        <span>{{ profileData.createdAt | date: "longDate" }}</span>
-      </div>
-    </article>
   </div>
 </section>

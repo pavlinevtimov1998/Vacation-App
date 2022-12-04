@@ -6,7 +6,7 @@
 }
 
 .vacations h1 {
-  font-size: 28px;
+  font-size: 2rem;
   font-weight: 900;
 }
 
@@ -22,7 +22,7 @@
 /* Booking item */
 
 .booking {
-  width: 45%;
+  width: 30%;
   height: 30vw;
   margin: 2% 0;
   display: flex;
