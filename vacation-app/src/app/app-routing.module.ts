@@ -1,4 +1,4 @@
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 import { WelcomePageComponent } from './core/home/welcome-page/welcome-page.component';
 import { TopAgenciesComponent } from './core/top-agencies/top-agencies.component';
@@ -39,5 +39,6 @@ const routes: Routes = [
 ];
 
 export const AppRoutingModule = RouterModule.forRoot(routes, {
+  preloadingStrategy: PreloadAllModules,
   scrollPositionRestoration: 'enabled',
 });
