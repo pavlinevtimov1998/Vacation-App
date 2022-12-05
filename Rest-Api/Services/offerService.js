@@ -34,6 +34,9 @@ const createOffer = async (body, files) => {
 
 const booking = (body) => Booking.create(body);
 
+const deleteOffer = (agencyId, offerId) =>
+  Offer.findOneAndDelete({ _id: offerId, agency: agencyId });
+
 const getImagesUrl = async (files) => {
   const imagesUrl = [];
   const localUrls = [];
@@ -61,4 +64,5 @@ module.exports = {
   getOffers,
   getOne,
   booking,
+  deleteOffer,
 };

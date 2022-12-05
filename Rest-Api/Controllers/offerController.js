@@ -52,6 +52,19 @@ offerController.get(
   })
 );
 
+offerController.delete(
+  "/:offerId",
+  isAgency(),
+  catchAsyncError(async (req, res) => {
+    const agencyId = req.agency._id;
+    const offerId = req.params.offerId;
+
+    await offerService.deleteOffer(agencyId, offerId);
+
+    res.status(204).json({ message: "Successfully deleted offer!" });
+  })
+);
+
 offerController.post(
   "/booking/:offerId",
   isUser(),
