@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input,  Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { OfferService } from 'src/app/offer/offer.service';
@@ -11,12 +11,12 @@ import { OfferService } from 'src/app/offer/offer.service';
 export class EditDeleteBtnsComponent {
   @Input() offerId!: string;
 
-  @Output() loading = new EventEmitter<boolean>();
+  @Output() loading = new EventEmitter();
 
   constructor(private offerService: OfferService, private router: Router) {}
 
   deleteHandler(): void {
-    this.loading.emit(true);
+    this.loading.emit();
     this.offerService.deleteOffer$(this.offerId).subscribe({
       next: () => {
         this.router.navigate(['/']);

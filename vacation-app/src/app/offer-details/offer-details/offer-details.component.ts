@@ -59,7 +59,7 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
           this.isBooked = !!offer.peopleBooked.find(
             (id) => id == this.currentUser?._id
           );
-          
+
           this.isLoading = false;
         },
         error: (err) => {
@@ -80,8 +80,15 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
     return this.offer.agency.offers as IOffer[];
   }
 
-  loadingHandler(event: boolean): void {
-    this.isLoading = event;
+  cancelBooking(): void {
+    this.offer.peopleBooked = this.offer.peopleBooked.filter(
+      (id) => id !== this.currentUser?._id
+    );
+    this.isBooked = false;
+  }
+
+  loadingHandler(): void {
+    this.isLoading = !this.isLoading;
   }
 
   ngOnDestroy(): void {

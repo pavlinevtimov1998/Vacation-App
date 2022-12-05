@@ -29,7 +29,7 @@
                 currentUser?._id == offer.agency._id
               "
               [offerId]="offer._id"
-              (loading)="loadingHandler($event)"
+              (loading)="loadingHandler()"
             ></app-edit-delete-btns>
           </div>
           <div></div>
@@ -42,6 +42,8 @@
               [isBooked]="isBooked"
               *ngIf="(isLogged$ | async) && !currentUser?.isAgency"
               [offerId]="offer._id"
+              (loading)="loadingHandler()"
+              (canceledBooking)="cancelBooking()"
             ></app-booking-btn>
           </div>
         </div>

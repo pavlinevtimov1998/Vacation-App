@@ -1,8 +1,18 @@
-<a *ngIf="!isBooked" class="book-btn" [routerLink]="['/offers/book/', offerId]">
+<a
+  *ngIf="!isBooked && !isLoading"
+  class="book-btn"
+  [routerLink]="['/offers/book/', offerId]"
+>
   <span>Book</span>
   <mat-icon>airplane_ticket</mat-icon>
 </a>
-<a *ngIf="isBooked" href="javascript:void(0)" class="cancel-book-btn">
+<a
+  *ngIf="isBooked && !isLoading"
+  (click)="cancelBooking()"
+  href="javascript:void(0)"
+  class="cancel-book-btn"
+>
   <span>Cancel Booking</span>
   <mat-icon>airplane_ticket</mat-icon>
 </a>
+<mat-spinner [diameter]="40" *ngIf="isLoading"></mat-spinner>

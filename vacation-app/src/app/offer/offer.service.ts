@@ -92,6 +92,13 @@ export class OfferService {
     );
   }
 
+  cancelBooking$(offerId: string): Observable<{}> {
+    return this.httpClient.delete<{}>(
+      `${environment.api}/offers/cancel-booking/${offerId}`,
+      { withCredentials: true }
+    );
+  }
+
   addToFavorites$(
     offerId: string
   ): Observable<{ message: string; userId: string }> {
