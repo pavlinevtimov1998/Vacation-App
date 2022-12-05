@@ -29,10 +29,14 @@
 
 .actions p {
   padding-block: 8px;
-  padding-left: 12px;
+  text-align: center;
   background-color: #fff;
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
+}
+
+.name {
+  font-weight: 900;
 }
 
 .profile-links {

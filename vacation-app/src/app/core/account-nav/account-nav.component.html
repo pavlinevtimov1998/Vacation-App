@@ -7,10 +7,10 @@
   />
   <div class="actions" *ngIf="isMenuOpened">
     <p *ngIf="(currentUser$ | async)?.isAgency">
-      Hello, <span>{{ (currentUser$ | async)?.agencyName }}</span>
+      Hello, <span class="name">{{ (currentUser$ | async)?.agencyName }}</span>
     </p>
     <p *ngIf="!(currentUser$ | async)?.isAgency">
-      Hello, <span>{{ (currentUser$ | async)?.username }}</span>
+      Hello, <span class="name">{{ (currentUser$ | async)?.username }}</span>
     </p>
     <ul class="profile-links">
       <li *ngIf="(currentUser$ | async)?.isAgency">
