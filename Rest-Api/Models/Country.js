@@ -10,16 +10,6 @@ const countrySchema = new mongoose.Schema({
   description: {
     type: String,
   },
-  ratingQuantity: {
-    type: Number,
-    default: 0,
-  },
-  rating: {
-    type: Number,
-    default: 3.5,
-    min: 1,
-    max: 5,
-  },
   info: {
     type: String,
     required: true,
