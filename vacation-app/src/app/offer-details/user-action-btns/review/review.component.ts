@@ -13,9 +13,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { OfferService } from 'src/app/offer/offer.service';
 
 import { IReview } from 'src/app/shared/interfaces';
-import { OfferService } from '../../offer.service';
 
 @Component({
   selector: 'app-review',

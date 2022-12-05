@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
-import { IOffer, IReview } from 'src/app/shared/interfaces';
+import { IReview } from 'src/app/shared/interfaces';
 
 @Component({
   selector: 'app-user-action-btns',

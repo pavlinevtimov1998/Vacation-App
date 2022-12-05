@@ -36,7 +36,7 @@ export class OfferItemComponent {
       (event.target as HTMLElement).tagName !== 'BUTTON' &&
       (event.target as HTMLElement).tagName !== 'MAT-ICON'
     ) {
-      this.router.navigate([`/offers/${this.offer._id}`]);
+      this.router.navigate([`/details/${this.offer._id}`]);
     }
   }
 

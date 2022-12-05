@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input,  Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { OfferService } from '../../offer.service';
+
+import { OfferService } from 'src/app/offer/offer.service';
 
 @Component({
   selector: 'app-edit-delete-btns',

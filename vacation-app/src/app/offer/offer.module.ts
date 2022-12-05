@@ -1,39 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 import { SharedModule } from '../shared/shared.module';
 import { CreateComponent } from './create/create.component';
 import { OfferCatalogComponent } from './offer-catalog/offer-catalog.component';
-import { OfferDetailsComponent } from './offer-details/offer-details.component';
 import { offerRoutingModule } from './offer-routing.module';
-import { OfferReviewsComponent } from './offer-details/offer-reviews/offer-reviews.component';
-import { ReviewComponent } from './offer-details/review/review.component';
-import { BookingComponent } from './booking/booking.component';
-import { MoreOffersComponent } from './offer-details/more-offers/more-offers.component';
 import { BookingFormComponent } from './booking/booking-form/booking-form.component';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatButtonModule } from '@angular/material/button';
-import { MatNativeDateModule } from '@angular/material/core';
-import { EditDeleteBtnsComponent } from './offer-details/edit-delete-btns/edit-delete-btns.component';
-import { UserActionBtnsComponent } from './offer-details/user-action-btns/user-action-btns.component';
-import { BookingBtnComponent } from './offer-details/booking-btn/booking-btn.component';
+import { BookingComponent } from './booking/booking.component';
 
 @NgModule({
   declarations: [
     CreateComponent,
     OfferCatalogComponent,
-    OfferDetailsComponent,
-    OfferReviewsComponent,
-    ReviewComponent,
     BookingComponent,
-    MoreOffersComponent,
     BookingFormComponent,
-    EditDeleteBtnsComponent,
-    UserActionBtnsComponent,
-    BookingBtnComponent,
   ],
   imports: [
     CommonModule,
@@ -43,7 +28,7 @@ import { BookingBtnComponent } from './offer-details/booking-btn/booking-btn.com
     MatFormFieldModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
   ],
 })
 export class OfferModule {}
