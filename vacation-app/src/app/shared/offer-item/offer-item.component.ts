@@ -55,7 +55,6 @@ export class OfferItemComponent {
     });
   }
 
-  //TODO
   removeFromFavorites() {
     this.isLoading = true;
     this.offerService.removeFromFavorites$(this.offer._id).subscribe({

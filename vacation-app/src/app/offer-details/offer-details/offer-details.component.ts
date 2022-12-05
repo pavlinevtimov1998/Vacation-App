@@ -24,6 +24,7 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
   offerId!: string;
   agencyName!: string;
   isBooked!: boolean;
+  isLiked!: boolean;
 
   selectedIndex = 0;
 
@@ -59,6 +60,9 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
           this.isBooked = !!offer.peopleBooked.find(
             (id) => id == this.currentUser?._id
           );
+          this.isLiked = !!this.offer.peopleFavourite.find(
+            (id) => id == this.currentUser?._id
+          );
 
           this.isLoading = false;
         },
@@ -78,17 +82,6 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
 
   moreOffersFromAgency(): IOffer[] {
     return this.offer.agency.offers as IOffer[];
-  }
-
-  cancelBooking(): void {
-    this.offer.peopleBooked = this.offer.peopleBooked.filter(
-      (id) => id !== this.currentUser?._id
-    );
-    this.isBooked = false;
-  }
-
-  loadingHandler(): void {
-    this.isLoading = !this.isLoading;
   }
 
   ngOnDestroy(): void {

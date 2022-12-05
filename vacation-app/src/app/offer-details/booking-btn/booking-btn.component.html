@@ -1,7 +1,7 @@
 <a
   *ngIf="!isBooked && !isLoading"
   class="book-btn"
-  [routerLink]="['/offers/book/', offerId]"
+  [routerLink]="['/offers/book/', offer._id]"
 >
   <span>Book</span>
   <mat-icon>airplane_ticket</mat-icon>

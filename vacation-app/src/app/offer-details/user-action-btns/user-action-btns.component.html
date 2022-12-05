@@ -7,24 +7,37 @@
     <app-review
       (addedReview)="addedReviewHandler($event)"
       (close)="closeReviewContainer()"
-      [offerId]="offerId"
+      [offerId]="offer._id"
     ></app-review>
   </section>
   <button
     class="rate"
     mat-icon-button
-    title="Rate this offer"
+    title="Rate this Offer"
     type="button"
     (click)="openReviewWindow()"
   >
     <mat-icon>rate_review</mat-icon>
   </button>
   <button
+    *ngIf="!isLiked && !isLoading"
+    (click)="addToFavorites()"
     class="favorites"
-    title="Add to favorites"
+    title="Add to favourites"
     mat-icon-button
     type="button"
   >
     <mat-icon>favorite_border</mat-icon>
   </button>
+  <button
+    *ngIf="isLiked && !isLoading"
+    (click)="removeFromFavorites()"
+    class="favorites"
+    title=" Remove from favourites"
+    mat-icon-button
+    type="button"
+  >
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <mat-spinner *ngIf="isLoading" [diameter]="40"></mat-spinner>
 </div>

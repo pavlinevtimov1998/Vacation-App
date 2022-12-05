@@ -19,7 +19,8 @@
             <app-user-action-btns
               *ngIf="(isLogged$ | async) && !currentUser?.isAgency"
               (addedReview)="addedReviewHandler($event)"
-              [offerId]="offer._id"
+              [offer]="offer"
+              [isLiked]="isLiked"
             >
             </app-user-action-btns>
             <app-edit-delete-btns
@@ -29,7 +30,6 @@
                 currentUser?._id == offer.agency._id
               "
               [offerId]="offer._id"
-              (loading)="loadingHandler()"
             ></app-edit-delete-btns>
           </div>
           <div></div>
@@ -39,11 +39,9 @@
           <div class="booking">
             <h1>Price: {{ offer.price }}$</h1>
             <app-booking-btn
-              [isBooked]="isBooked"
               *ngIf="(isLogged$ | async) && !currentUser?.isAgency"
-              [offerId]="offer._id"
-              (loading)="loadingHandler()"
-              (canceledBooking)="cancelBooking()"
+              [offer]="offer"
+              [isBooked]="isBooked"
             ></app-booking-btn>
           </div>
         </div>
