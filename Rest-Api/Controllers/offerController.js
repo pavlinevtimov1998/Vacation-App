@@ -73,11 +73,22 @@ offerController.post(
     body.offer = req.params.offerId;
     body.user = req.user._id;
 
-    console.log(body);
-
     const bookingData = await offerService.booking(body);
 
     res.json(bookingData);
+  })
+);
+
+offerController.delete(
+  "/cancel-booking/:offerId",
+  isUser(),
+  catchAsyncError(async (req, res) => {
+    const offerId = req.params.offerId;
+    const userId = req.user._id;
+
+    await offerService.cancelBooking(offerId, userId);
+
+    res.status(204).json();
   })
 );
 
