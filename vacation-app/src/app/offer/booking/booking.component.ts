@@ -19,7 +19,7 @@ export class BookingComponent implements OnInit {
 
   constructor(
     private offerService: OfferService,
-    private activatedRoute: ActivatedRoute,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -34,6 +34,7 @@ export class BookingComponent implements OnInit {
       .subscribe({
         next: (offer) => {
           this.offer = offer;
+          this.isLoading = false;
         },
         error: (err) => {
           console.log(err);
