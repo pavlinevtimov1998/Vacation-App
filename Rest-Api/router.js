@@ -20,7 +20,7 @@ router.use("/countries", countryController);
 router.use("/offers", offerController);
 router.use("/reviews", reviewController);
 router.use("/features", featureController);
-router.use("/favorites", favoritesController);
+router.use("/favourites", favoritesController);
 
 router.use("*", (req, res) => {
   res.status(404).json({ message: "Not Found!" });

@@ -1,0 +1,29 @@
+.wrapper {
+  padding-top: 5%;
+  max-width: 1600px;
+  width: 100%;
+  margin: auto;
+}
+
+.container {
+  width: 90%;
+  text-align: center;
+  margin: auto;
+}
+
+.title h1 {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.liked-offers {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5%;
+}
+
+app-offer-item {
+  width: 35%;
+  height: 40vw;
+}

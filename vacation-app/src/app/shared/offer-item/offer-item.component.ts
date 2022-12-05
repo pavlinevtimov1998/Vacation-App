@@ -45,6 +45,8 @@ export class OfferItemComponent {
     this.offerService.addToFavorites$(this.offer._id).subscribe({
       next: ({ message, userId }) => {
         this.offer.peopleFavourite.push(userId);
+        console.log(message);
+        
         this.isLoading = false;
       },
       error: (err) => {

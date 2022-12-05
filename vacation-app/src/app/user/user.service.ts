@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
+import { IOffer } from '../shared/interfaces';
 import { IAccount, IUser } from '../shared/interfaces/account.interface';
 import { IBooking } from '../shared/interfaces/booking.interface';
 
@@ -47,6 +48,12 @@ export class UserService {
       `${environment.api}/profile/user`,
       { withCredentials: true }
     );
+  }
+
+  getUserFavouritesOffers$(): Observable<IOffer[]> {
+    return this.httpClient.get<IOffer[]>(`${environment.api}/favourites`, {
+      withCredentials: true,
+    });
   }
 
   logout$(): Observable<{ message: string }> {

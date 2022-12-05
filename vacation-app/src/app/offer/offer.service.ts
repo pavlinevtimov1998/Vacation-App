@@ -89,7 +89,7 @@ export class OfferService {
     offerId: string
   ): Observable<{ message: string; userId: string }> {
     return this.httpClient.post<{ message: string; userId: string }>(
-      `${environment.api}/favorites/${offerId}`,
+      `${environment.api}/favourites/${offerId}`,
       {},
       { withCredentials: true }
     );
@@ -99,7 +99,7 @@ export class OfferService {
     offerId: string
   ): Observable<{ message: string; userId: string }> {
     return this.httpClient.delete<{ message: string; userId: string }>(
-      `${environment.api}/favorites/remove/${offerId}`,
+      `${environment.api}/favourites/remove/${offerId}`,
       { withCredentials: true }
     );
   }

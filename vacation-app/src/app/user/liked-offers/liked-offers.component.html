@@ -1,10 +1,17 @@
-<section class="wrapper">
+<app-spinner *ngIf="isLoading"></app-spinner>
+<section class="wrapper" *ngIf="!isLoading">
   <div class="container">
     <article class="title">
-      <h1>Your Favourites Offers</h1>
+      <h1>Your Favourite Offers</h1>
     </article>
-    <div>
-      <!-- <app-offer-item></app-offer-item> -->
+    <div class="liked-offers">
+      <ng-container *ngFor="let offer of offers">
+        <app-offer-item [offer]="offer"></app-offer-item>
+      </ng-container>
+      <div class="no-offers" *ngIf="offers.length == 0">
+        <h3>Don't have favourite offers...</h3>
+        <a routerLink="/offers">Go and find some!</a>
+      </div>
     </div>
   </div>
 </section>
