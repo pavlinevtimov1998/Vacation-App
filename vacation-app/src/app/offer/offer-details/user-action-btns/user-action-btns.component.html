@@ -1,0 +1,30 @@
+<div class="actions">
+  <section
+    #reviewContainer
+    class="review-container"
+    *ngIf="isOpenReviewContainer"
+  >
+    <app-review
+      (addedReview)="addedReviewHandler($event)"
+      (close)="closeReviewContainer()"
+      [offerId]="offerId"
+    ></app-review>
+  </section>
+  <button
+    class="rate"
+    mat-icon-button
+    title="Rate this offer"
+    type="button"
+    (click)="openReviewWindow()"
+  >
+    <mat-icon>rate_review</mat-icon>
+  </button>
+  <button
+    class="favorites"
+    title="Add to favorites"
+    mat-icon-button
+    type="button"
+  >
+    <mat-icon>favorite_border</mat-icon>
+  </button>
+</div>

@@ -25,14 +25,13 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
   agencyName!: string;
 
   selectedIndex = 0;
-  isOpenReviewContainer = false;
 
   isLoading = true;
 
   constructor(
     private authService: AuthService,
     private offerService: OfferService,
-    private activatedRoute: ActivatedRoute,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -64,15 +63,7 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
       });
   }
 
-  openReviewWindow() {
-    this.isOpenReviewContainer = true;
-  }
-
-  closeReviewContainer() {
-    this.isOpenReviewContainer = false;
-  }
-
-  addedReviewHandler(review: IReview) {
+  addedReviewHandler(review: IReview): void {
     this.offer.reviews = this.offer.reviews.filter(
       (r) => r.user._id != review.user._id
     );
@@ -80,8 +71,16 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
     this.offer.reviews.push(review);
   }
 
-  moreOffersFromAgency() {
+  moreOffersFromAgency(): IOffer[] {
     return this.offer.agency.offers as IOffer[];
+  }
+
+  isBooked(): boolean {
+    return !!this.offer.peopleBooked.find((id) => this.currentUser?._id == id);
+  }
+
+  loadingHandler(event: boolean): void {
+    this.isLoading = event;
   }
 
   ngOnDestroy(): void {

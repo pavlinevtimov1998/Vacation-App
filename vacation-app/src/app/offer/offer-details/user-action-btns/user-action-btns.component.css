@@ -1,0 +1,15 @@
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.favorites {
+  color: red;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.rate {
+  color: #0400ff;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
