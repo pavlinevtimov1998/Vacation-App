@@ -1,0 +1,8 @@
+<a *ngIf="!isBooked" class="book-btn" [routerLink]="['/offers/book/', offerId]">
+  <span>Book</span>
+  <mat-icon>airplane_ticket</mat-icon>
+</a>
+<a *ngIf="isBooked" href="javascript:void(0)" class="cancel-book-btn">
+  <span>Cancel Booking</span>
+  <mat-icon>airplane_ticket</mat-icon>
+</a>
