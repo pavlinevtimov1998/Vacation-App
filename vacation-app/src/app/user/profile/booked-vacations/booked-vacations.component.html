@@ -27,13 +27,13 @@
               <p>
                 <span>From:</span
                 ><span class="date">{{
-                  booking.startDate | date: "mediumDate"
+                  booking.startDate | date : "mediumDate"
                 }}</span>
               </p>
               <p>
                 <span>To:</span
                 ><span class="date">{{
-                  booking.endDate | date: "mediumDate"
+                  booking.endDate | date : "mediumDate"
                 }}</span>
               </p>
             </div>
@@ -41,8 +41,11 @@
         </div>
       </div>
     </ng-container>
-    <ng-container *ngIf="bookings.length == 0">
-      <h1>No Results</h1>
-    </ng-container>
+    <div class="no-bookings" *ngIf="bookings.length == 0">
+      <h1>No Bookinks yet...</h1>
+      <a class="find-vacation" routerLink="/offers"
+        >Go and find your dreamed vacation!</a
+      >
+    </div>
   </div>
 </div>

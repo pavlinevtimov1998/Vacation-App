@@ -75,6 +75,7 @@
   position: relative;
   border-top-right-radius: inherit;
   border-top-left-radius: inherit;
+  background-color: #01245a;
 }
 
 .img-container img {

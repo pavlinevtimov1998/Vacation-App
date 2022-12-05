@@ -44,7 +44,7 @@ export class OfferItemComponent {
     this.isLoading = true;
     this.offerService.addToFavorites$(this.offer._id).subscribe({
       next: ({ message, userId }) => {
-        this.offer.peopleFavorite.push(userId);
+        this.offer.peopleFavourite.push(userId);
         this.isLoading = false;
       },
       error: (err) => {
@@ -58,7 +58,7 @@ export class OfferItemComponent {
     this.isLoading = true;
     this.offerService.removeFromFavorites$(this.offer._id).subscribe({
       next: ({ message, userId }) => {
-        this.offer.peopleFavorite = this.offer.peopleFavorite.filter(
+        this.offer.peopleFavourite = this.offer.peopleFavourite.filter(
           (id) => id !== userId
         );
         this.isLoading = false;
@@ -75,7 +75,7 @@ export class OfferItemComponent {
         ([user, isLogged]) =>
           isLogged &&
           !user?.isAgency &&
-          !this.offer.peopleFavorite.find((id) => id == user?._id)
+          !this.offer.peopleFavourite.find((id) => id == user?._id)
       )
     );
   }
