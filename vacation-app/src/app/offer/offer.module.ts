@@ -17,6 +17,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
+import { EditDeleteBtnsComponent } from './offer-details/edit-delete-btns/edit-delete-btns.component';
+import { UserActionBtnsComponent } from './offer-details/user-action-btns/user-action-btns.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     BookingComponent,
     MoreOffersComponent,
     BookingFormComponent,
+    EditDeleteBtnsComponent,
+    UserActionBtnsComponent,
   ],
   imports: [
     CommonModule,

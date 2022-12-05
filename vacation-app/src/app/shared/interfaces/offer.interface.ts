@@ -11,7 +11,7 @@ export interface IOffer {
   images: string[];
   ratingsQuantity: string;
   rating: string;
-  peopleBooked: number;
+  peopleBooked: string[];
   features: string[];
   reviews: IReview[];
   peopleFavourite: string[];

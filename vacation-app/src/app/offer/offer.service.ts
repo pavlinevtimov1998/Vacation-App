@@ -55,6 +55,13 @@ export class OfferService {
     );
   }
 
+  deleteOffer$(offerId: string): Observable<{ message: string }> {
+    return this.httpClient.delete<{ message: string }>(
+      `${environment.api}/offers/${offerId}`,
+      { withCredentials: true }
+    );
+  }
+
   addReview$(
     body: {
       rating: number;
