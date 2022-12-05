@@ -23,6 +23,7 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
 
   offerId!: string;
   agencyName!: string;
+  isBooked!: boolean;
 
   selectedIndex = 0;
 
@@ -55,6 +56,10 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
           this.offer = offer;
           this.offer.reviews = reviews;
           this.agencyName = offer.agency.agencyName;
+          this.isBooked = !!offer.peopleBooked.find(
+            (id) => id == this.currentUser?._id
+          );
+          
           this.isLoading = false;
         },
         error: (err) => {
@@ -73,10 +78,6 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
 
   moreOffersFromAgency(): IOffer[] {
     return this.offer.agency.offers as IOffer[];
-  }
-
-  isBooked(): boolean {
-    return !!this.offer.peopleBooked.find((id) => this.currentUser?._id == id);
   }
 
   loadingHandler(event: boolean): void {

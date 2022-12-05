@@ -15,7 +15,7 @@
         </div>
         <div class="info">
           <div class="subtitle">
-            <h3>From: {{ offer.agency.agencyName }}</h3>
+            <h3>From: {{ agencyName }}</h3>
             <app-user-action-btns
               *ngIf="(isLogged$ | async) && !currentUser?.isAgency"
               (addedReview)="addedReviewHandler($event)"
@@ -38,16 +38,11 @@
           </div>
           <div class="booking">
             <h1>Price: {{ offer.price }}$</h1>
-            <a
-              class="book-btn"
-              [routerLink]="['/offers/book/', offer._id]"
-              *ngIf="
-                (isLogged$ | async) && !currentUser?.isAgency && isBooked()
-              "
-            >
-              <span>Book</span>
-              <mat-icon>airplane_ticket</mat-icon>
-            </a>
+            <app-booking-btn
+              [isBooked]="isBooked"
+              *ngIf="(isLogged$ | async) && !currentUser?.isAgency"
+              [offerId]="offer._id"
+            ></app-booking-btn>
           </div>
         </div>
       </div>

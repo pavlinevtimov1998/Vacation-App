@@ -19,6 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
 import { EditDeleteBtnsComponent } from './offer-details/edit-delete-btns/edit-delete-btns.component';
 import { UserActionBtnsComponent } from './offer-details/user-action-btns/user-action-btns.component';
+import { BookingBtnComponent } from './offer-details/booking-btn/booking-btn.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { UserActionBtnsComponent } from './offer-details/user-action-btns/user-a
     BookingFormComponent,
     EditDeleteBtnsComponent,
     UserActionBtnsComponent,
+    BookingBtnComponent,
   ],
   imports: [
     CommonModule,
