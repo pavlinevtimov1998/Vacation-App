@@ -35,7 +35,7 @@ export class CreateComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private countryService: CountryService,
     private offerService: OfferService,
-    private router: Router,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -57,6 +57,8 @@ export class CreateComponent implements OnInit, OnDestroy {
           price: new FormControl<number | null>(null, [Validators.required]),
           images: new FormControl<File[] | null>(null, [Validators.required]),
         });
+
+        this.isLoading = false;
       },
       error: (err) => {
         console.log(err);
@@ -108,6 +110,7 @@ export class CreateComponent implements OnInit, OnDestroy {
       }
     });
 
+    this.isLoading = true;
     this.offerService.createOffer(formData).subscribe({
       next: (offer) => {
         this.router.navigate(['/offers/', offer._id]);
