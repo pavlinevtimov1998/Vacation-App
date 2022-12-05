@@ -15,24 +15,29 @@
     </div>
     <div class="card-footer">
       <h4 class="price">{{ offer.price }}$</h4>
-      <button
-        (click)="addToFavorites()"
-        *ngIf="(canLike() | async) && !isLoading"
-        title="Save to favorites"
-        class="save-btn"
-        mat-icon-button
+      <ng-container
+        *ngIf="(isLogged$ | async) && !(currentUser$ | async)?.isAgency"
       >
-        <mat-icon>favorite_border</mat-icon>
-      </button>
-      <button
-        (click)="removeFromFavorites()"
-        *ngIf="!(canLike() | async) && !isLoading"
-        title="Save to favorites"
-        class="save-btn"
-        mat-icon-button
-      >
-        <mat-icon>favorite</mat-icon>
-      </button>
+        <button
+          (click)="addToFavorites()"
+          *ngIf="!(isLiked() | async) && !isLoading"
+          title="Save to favorites"
+          class="save-btn"
+          mat-icon-button
+        >
+          <mat-icon>favorite_border</mat-icon>
+        </button>
+        <button
+          (click)="removeFromFavorites()"
+          *ngIf="(isLiked() | async) && !isLoading"
+          title="Save to favorites"
+          class="save-btn"
+          mat-icon-button
+        >
+          <mat-icon>favorite</mat-icon>
+        </button>
+      </ng-container>
+
       <mat-spinner
         *ngIf="isLoading"
         class="like-spinner"

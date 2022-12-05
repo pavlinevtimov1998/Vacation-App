@@ -46,7 +46,7 @@ export class OfferItemComponent {
       next: ({ message, userId }) => {
         this.offer.peopleFavourite.push(userId);
         console.log(message);
-        
+
         this.isLoading = false;
       },
       error: (err) => {
@@ -70,14 +70,9 @@ export class OfferItemComponent {
     });
   }
 
-  canLike() {
-    return combineLatest([this.currentUser$, this.isLogged$]).pipe(
-      map(
-        ([user, isLogged]) =>
-          isLogged &&
-          !user?.isAgency &&
-          !this.offer.peopleFavourite.find((id) => id == user?._id)
-      )
+  isLiked(): Observable<boolean> {
+    return this.currentUser$.pipe(
+      map((user) => !!this.offer.peopleFavourite.find((id) => id == user?._id))
     );
   }
 }
