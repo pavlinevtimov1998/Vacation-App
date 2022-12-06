@@ -14,8 +14,9 @@ const storage = multer.diskStorage({
 
 exports.upload = multer({ storage: storage });
 
-const uploadToCloudinary = async (filePath) =>
-  cloudinary.uploader.upload(filePath);
+const uploadToCloudinary = (filePath) => cloudinary.uploader.upload(filePath);
+
+exports.deleteCloudinaryImage = (id) => cloudinary.uploader.destroy(id);
 
 exports.getImagesUrl = async (files) => {
   const imagesUrl = [];
