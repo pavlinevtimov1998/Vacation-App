@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
+
 const Offer = require("./Offer");
 
-const bookinkSchema = new mongoose.Schema(
+const bookingSchema = new mongoose.Schema(
   {
     user: {
       type: mongoose.Types.ObjectId,
@@ -38,12 +39,18 @@ const bookinkSchema = new mongoose.Schema(
   }
 );
 
-bookinkSchema.post("save", async function () {
+bookingSchema.post("save", async function () {
   await Offer.findByIdAndUpdate(this.offer, {
     $push: { peopleBooked: this.user },
   });
 });
 
-const Booking = mongoose.model("Booking", bookinkSchema);
+bookingSchema.post("deleteOne", async function () {
+  await Offer.findByIdAndUpdate(this.offer, {
+    $pull: { peopleBooked: this.user },
+  });
+});
+
+const Booking = mongoose.model("Booking", bookingSchema);
 
 module.exports = Booking;
