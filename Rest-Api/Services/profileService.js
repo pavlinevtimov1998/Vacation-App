@@ -2,6 +2,8 @@ const User = require("../models/User");
 const Agency = require("../Models/Agency");
 const Booking = require("../Models/Booking");
 
+const { getImagesUrl, asyncUnlink } = require("../Util/imageUpload");
+
 exports.getAccountData = async (agency, user) => {
   if (agency) {
     return Agency.findById(agency._id).select("-password -__v -updatedAt");
@@ -25,3 +27,17 @@ exports.getUserProfile = async (_id) =>
 
 exports.getAgencyProfile = (agencyId) =>
   Agency.findById(agencyId).select("-password -__v");
+
+exports.editAgencyData = async (agencyId, files, body) => {
+  if (files) {
+    const [image, localImage] = await getImagesUrl(files);
+    body.image = image[0];
+
+    return Promise.all([
+      Agency.findByIdAndUpdate(agencyId, body),
+      asyncUnlink(localImage),
+    ]);
+  } else {
+    return Agency.findByIdAndUpdate(agencyId, body);
+  }
+};
