@@ -46,6 +46,14 @@ export class AgencyService {
     );
   }
 
+  editAgencyProfileData$(body: FormData): Observable<IAgency> {
+    return this.httpClient.patch<IAgency>(
+      `${environment.api}/profile/agency/edit`,
+      body,
+      { withCredentials: true }
+    );
+  }
+
   getTopAgencies$(): Observable<IAgency[]> {
     return this.httpClient.get<IAgency[]>(
       `${environment.api}/agency/top-agencies`,
