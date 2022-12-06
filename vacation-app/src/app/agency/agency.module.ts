@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { SharedModule } from '../shared/shared.module';
 import { agencyRoutingModule } from './app-agency-routing.module';
@@ -7,6 +8,7 @@ import { AgencyProfileComponent } from './profile/profile.component';
 import { AsideComponent } from './profile/aside/aside.component';
 import { MessageFormComponent } from './profile/message-form/message-form.component';
 import { ContactsComponent } from './profile/contacts/contacts.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,8 @@ import { ContactsComponent } from './profile/contacts/contacts.component';
     AsideComponent,
     MessageFormComponent,
     ContactsComponent,
+    EditProfileComponent,
   ],
-  imports: [CommonModule, SharedModule, agencyRoutingModule],
+  imports: [CommonModule, SharedModule, agencyRoutingModule, FormsModule],
 })
 export class AgencyModule {}
