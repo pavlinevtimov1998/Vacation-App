@@ -1,0 +1,117 @@
+.edit {
+  width: 100%;
+  max-width: 1600px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5%;
+  padding-bottom: 7%;
+}
+
+.form-container {
+  padding: 50px 0;
+  width: 60%;
+  background-color: #fff;
+  border: 1px solid darkgrey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+}
+
+.form-container form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.email,
+.agency-name,
+.phone,
+.address,
+.description,
+.website,
+.country,
+.town {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding-block: 5px;
+  gap: 5px;
+}
+
+.email input,
+.agency-name input,
+.phone input,
+.address input,
+.description textarea,
+.website input,
+.country input,
+.town input {
+  border: 1px solid darkgrey;
+  border-radius: 6px;
+  padding: 12px;
+}
+
+.description textarea {
+  height: 100px;
+}
+
+.country-town-container {
+  width: 70%;
+  display: flex;
+  gap: 20px;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.agency-image {
+  width: 80%;
+  border: 2px dashed #3f51b5;
+  padding-block: 25px;
+  padding-inline: 25px;
+  background-color: #f0f8ff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.edit-btn {
+  width: 25%;
+  color: #fff;
+  background-color: #3f51b5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px;
+  border: 2px solid #3f51b5;
+  border-radius: 4px;
+  margin-top: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.edit-btn:hover {
+  cursor: pointer;
+  background-color: #fff;
+  color: #3f51b5;
+}
+
+.input-error {
+  border-color: red !important;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  font-weight: 700;
+  padding-top: 4px;
+  padding-left: 5px;
+}

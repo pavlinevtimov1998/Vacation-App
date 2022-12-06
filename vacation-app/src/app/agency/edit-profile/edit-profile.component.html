@@ -1,0 +1,158 @@
+<app-spinner *ngIf="isLoading"></app-spinner>
+<section *ngIf="!isLoading" class="edit">
+  <div class="form-container">
+    <form
+      #editProfileForm="ngForm"
+      (ngSubmit)="editAgencyHandler(editProfileForm)"
+    >
+      <div class="email">
+        <label for="email">Email</label>
+        <input
+          [ngClass]="{ 'input-error': email.touched && email.errors }"
+          type="text"
+          id="email"
+          name="email"
+          placeholder="Email"
+          [(ngModel)]="agencyData.email"
+          #email="ngModel"
+          required
+        />
+        <ng-container *ngIf="email.touched">
+          <p *ngIf="email.errors?.['required']" class="error">
+            Email is required!
+          </p>
+          <p *ngIf="email.errors?.['email']" class="error">Invalid email!</p>
+        </ng-container>
+      </div>
+      <div class="agency-name">
+        <label for="agencyName">Agency Name</label>
+        <input
+          [ngClass]="{
+            'input-error': agencyName.touched && agencyName.errors
+          }"
+          type="text"
+          name="agencyName"
+          id="agencyName"
+          placeholder="Agency name"
+          [(ngModel)]="agencyData.agencyName"
+          #agencyName="ngModel"
+          required
+          minlength="4"
+        />
+        <ng-container *ngIf="agencyName.touched">
+          <p *ngIf="agencyName.errors?.['required']" class="error">
+            Agency name is required!
+          </p>
+          <p *ngIf="agencyName.errors?.['minlength']" class="error">
+            Agency name should be at least 4 characters!
+          </p>
+        </ng-container>
+      </div>
+      <div class="phone">
+        <label for="phone">Phone</label>
+        <input
+          [ngClass]="{
+            'input-error': phone.touched && phone.errors
+          }"
+          type="text"
+          name="phone"
+          id="phone"
+          placeholder="089...."
+          [(ngModel)]="agencyData.phone"
+          #phone="ngModel"
+        />
+      </div>
+      <div class="address">
+        <label for="address">Address</label>
+        <input
+          [ngClass]="{
+            'input-error': address.touched && address.errors
+          }"
+          type="text"
+          name="address"
+          id="address"
+          placeholder="Address"
+          [(ngModel)]="agencyData.address"
+          #address="ngModel"
+        />
+      </div>
+      <div class="website">
+        <label for="website">Website</label>
+        <input
+          [ngClass]="{
+            'input-error': website.touched && website.errors
+          }"
+          type="text"
+          name="website"
+          id="website"
+          placeholder="Website"
+          [(ngModel)]="agencyData.website"
+          #website="ngModel"
+        />
+      </div>
+      <div class="country-town-container">
+        <div class="country">
+          <label for="country">Country</label>
+          <input
+            [ngClass]="{
+              'input-error': country.touched && country.errors
+            }"
+            type="text"
+            name="country"
+            id="country"
+            placeholder="Country"
+            [(ngModel)]="agencyData.country"
+            #country="ngModel"
+          />
+        </div>
+        <div class="town">
+          <label for="town">Town</label>
+          <input
+            [ngClass]="{
+              'input-error': town.touched && town.errors
+            }"
+            type="text"
+            name="town"
+            id="town"
+            placeholder="Town"
+            [(ngModel)]="agencyData.town"
+            #town="ngModel"
+          />
+        </div>
+      </div>
+      <div class="agency-image" (click)="imagesUpload.click()">
+        <span>Click here to add Agency Image!</span>
+        <input
+          #imagesUpload
+          type="file"
+          name="image"
+          accept="image/png, image/jpeg"
+          (change)="imageUpload($event)"
+        />
+        <span *ngIf="imageName">{{ imageName }}</span>
+        <span class="error" *ngIf="isImageError"
+          >Image should be of type image/jpg or image/png!</span
+        >
+      </div>
+      <div class="description">
+        <label for="description">Agency Description</label>
+        <textarea
+          [ngClass]="{
+            'input-error': phone.touched && phone.errors
+          }"
+          type="text"
+          name="description"
+          id="description"
+          placeholder="We are..."
+          [(ngModel)]="agencyData.description"
+          #phone="ngModel"
+        ></textarea>
+      </div>
+
+      <button class="edit-btn" type="submit">
+        <span>Edit</span>
+        <mat-icon>edit</mat-icon>
+      </button>
+    </form>
+  </div>
+</section>

@@ -12,28 +12,28 @@
           </p>
         </div>
         <div class="btns" [ngClass]="{ 'not-owner': !isOwner }">
-          <!-- <ng-container *ngIf="!isOwner"> -->
-          <button
-            (click)="changeActionHandler(messageForm, contacts)"
-            class="message-btn"
-          >
-            <mat-icon>message</mat-icon>
-            <span>Message</span>
-          </button>
-          <button
-            (click)="changeActionHandler(contacts, messageForm)"
-            class="contacts-btn"
-          >
-            <mat-icon>contacts</mat-icon>
-            <span>Contacts</span>
-          </button>
-          <!-- </ng-container> -->
-          <!-- <ng-container *ngIf="isOwner">
-            <button class="edit-btn">
+          <ng-container *ngIf="!isOwner">
+            <button
+              (click)="changeActionHandler(messageForm, contacts)"
+              class="message-btn"
+            >
+              <mat-icon>message</mat-icon>
+              <span>Message</span>
+            </button>
+            <button
+              (click)="changeActionHandler(contacts, messageForm)"
+              class="contacts-btn"
+            >
+              <mat-icon>contacts</mat-icon>
+              <span>Contacts</span>
+            </button>
+          </ng-container>
+          <ng-container *ngIf="isOwner">
+            <button (click)="openEditPage()" class="edit-btn">
               <mat-icon>edit</mat-icon>
               <span>Edit</span>
             </button>
-          </ng-container> -->
+          </ng-container>
           <button class="offers">
             <mat-icon>storefront</mat-icon>
             <span>Added Offers</span>

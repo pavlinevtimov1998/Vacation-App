@@ -55,6 +55,10 @@ export class AgencyProfileComponent implements OnInit, OnDestroy {
       });
   }
 
+  openEditPage(): void {
+    this.router.navigate(['/agency/edit/profile', this.agencyData._id]);
+  }
+
   changeActionHandler(
     showElement: HTMLDivElement,
     hideElement: HTMLDivElement
