@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+const Agency = require("./Agency");
 const Country = require("./Country");
 
 const offerSchema = new mongoose.Schema(
@@ -96,9 +97,12 @@ offerSchema.pre("findOne", function (next) {
 });
 
 offerSchema.post("save", async function () {
-  await Country.findByIdAndUpdate(this.country, {
-    $push: { offers: this._id },
-  });
+  await Promise.all([
+    Country.findByIdAndUpdate(this.country, {
+      $push: { offers: this._id },
+    }),
+    Agency.findByIdAndUpdate(this.agency, { $push: { offers: this._id } }),
+  ]);
 });
 
 const Offer = mongoose.model("Offer", offerSchema);
