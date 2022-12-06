@@ -53,7 +53,7 @@ profileController.patch(
       req.files,
       body
     );
-    console.log(agencyData);
+
     res.status(200).json(agencyData);
   })
 );
