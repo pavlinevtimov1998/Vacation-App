@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 
 const Agency = require("./Agency");
+const Booking = require("./Booking");
+const Review = require("./Review");
 const Country = require("./Country");
 
 const offerSchema = new mongoose.Schema(
@@ -102,6 +104,15 @@ offerSchema.post("save", async function () {
       $push: { offers: this._id },
     }),
     Agency.findByIdAndUpdate(this.agency, { $push: { offers: this._id } }),
+  ]);
+});
+
+offerSchema.post("deleteOne", async function () {
+  await Promise.all([
+    Review.deleteMany({ offer: this._id }),
+    Booking.deleteMany({ offer: this._id }),
+    Agency.findByIdAndUpdate(this.agency, { $pull: { offer: this._id } }),
+    Country.findByIdAndUpdate(this.country, { $pull: { offer: this._id } }),
   ]);
 });
 
