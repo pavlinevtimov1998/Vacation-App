@@ -48,14 +48,10 @@ const deleteOffer = async (agencyId, offerId) => {
 
   offer.images.forEach((img) => {
     const id = img.substring(img.lastIndexOf("/") + 1, img.lastIndexOf("."));
-    console.log(id);
     images.push(id);
   });
 
-  images.map(
-    async (id) =>
-      await deleteCloudinaryImage(id).then((result) => console.log(result))
-  );
+  images.map(async (id) => await deleteCloudinaryImage(id));
 
   return offer.delete();
 };

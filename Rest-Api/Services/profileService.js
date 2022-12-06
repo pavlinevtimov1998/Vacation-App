@@ -2,7 +2,11 @@ const User = require("../models/User");
 const Agency = require("../Models/Agency");
 const Booking = require("../Models/Booking");
 
-const { getImagesUrl, asyncUnlink } = require("../Util/imageUpload");
+const {
+  getImagesUrl,
+  asyncUnlink,
+  deleteCloudinaryImage,
+} = require("../Util/imageUpload");
 
 exports.getAccountData = async (agency, user) => {
   if (agency) {
@@ -30,12 +34,26 @@ exports.getAgencyProfile = (agencyId) =>
 
 exports.editAgencyData = async (agencyId, files, body) => {
   if (files) {
-    const [image, localImage] = await getImagesUrl(files);
+    const [[image, localImage], agency] = await Promise.all([
+      getImagesUrl(files),
+      Agency.findById(agencyId),
+    ]);
+
+    let id;
+
+    if (agency.image) {
+      id = agency.image.substring(
+        agency.image.lastIndexOf("/") + 1,
+        agency.image.lastIndexOf(".")
+      );
+    }
+
     body.image = image[0];
 
     return Promise.all([
       Agency.findByIdAndUpdate(agencyId, body),
       asyncUnlink(localImage),
+      deleteCloudinaryImage(id),
     ]);
   } else {
     return Agency.findByIdAndUpdate(agencyId, body);
