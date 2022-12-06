@@ -17,16 +17,25 @@ const agencySchema = new mongoose.Schema(
       minLength: [10, "Email should be at least 10 characters!"],
       maxLength: [30, "Email should be max 30 characters!"],
     },
+    image: {
+      type: String,
+    },
     phone: {
       type: Number,
       trim: true,
     },
-    adress: {
+    address: {
       trim: true,
       type: String,
     },
     description: {
       trim: true,
+      type: String,
+    },
+    country: {
+      type: String,
+    },
+    town: {
       type: String,
     },
     website: {
