@@ -1,7 +1,11 @@
 const Booking = require("../Models/Booking");
 const Offer = require("../Models/Offer");
 
-const { getImagesUrl, asyncUnlink } = require("../Util/imageUpload");
+const {
+  getImagesUrl,
+  asyncUnlink,
+  deleteCloudinaryImage,
+} = require("../Util/imageUpload");
 
 const getOffers = (skip, limit, search = "") =>
   Promise.all([
@@ -37,8 +41,24 @@ const cancelBooking = (offer, user) =>
     Offer.findByIdAndUpdate(offer, { $pull: { peopleBooked: user } }),
   ]);
 
-const deleteOffer = (agencyId, offerId) =>
-  Offer.findOneAndDelete({ _id: offerId, agency: agencyId });
+const deleteOffer = async (agencyId, offerId) => {
+  const offer = await Offer.findOne({ _id: offerId, agency: agencyId });
+
+  const images = [];
+
+  offer.images.forEach((img) => {
+    const id = img.substring(img.lastIndexOf("/") + 1, img.lastIndexOf("."));
+    console.log(id);
+    images.push(id);
+  });
+
+  images.map(
+    async (id) =>
+      await deleteCloudinaryImage(id).then((result) => console.log(result))
+  );
+
+  return offer.delete();
+};
 
 module.exports = {
   createOffer,
