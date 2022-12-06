@@ -1,10 +1,7 @@
-const { unlink } = require("fs");
-const { promisify } = require("util");
-
 const Booking = require("../Models/Booking");
 const Offer = require("../Models/Offer");
 
-const { uploadToCloudinary } = require("../Util/imageUpload");
+const { getImagesUrl, asyncUnlink } = require("../Util/imageUpload");
 
 const getOffers = (skip, limit, search = "") =>
   Promise.all([
@@ -42,28 +39,6 @@ const cancelBooking = (offer, user) =>
 
 const deleteOffer = (agencyId, offerId) =>
   Offer.findOneAndDelete({ _id: offerId, agency: agencyId });
-
-const getImagesUrl = async (files) => {
-  const imagesUrl = [];
-  const localUrls = [];
-
-  for (let i = 0; i < files.length; i++) {
-    const localFilePath = files[i].path;
-    localUrls.push(localFilePath);
-
-    await uploadToCloudinary(localFilePath).then((result) => {
-      imagesUrl.push(result.url);
-    });
-  }
-
-  return [imagesUrl, localUrls];
-};
-
-const asyncUnlink = (arr) => {
-  const func = promisify(unlink);
-
-  return arr.map((i) => func(i));
-};
 
 module.exports = {
   createOffer,
