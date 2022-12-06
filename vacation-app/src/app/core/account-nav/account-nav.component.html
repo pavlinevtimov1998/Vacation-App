@@ -13,17 +13,24 @@
       Hello, <span class="name">{{ (currentUser$ | async)?.username }}</span>
     </p>
     <ul class="profile-links">
-      <li *ngIf="(currentUser$ | async)?.isAgency">
-        <a [routerLink]="['/agency/profile', (currentUser$ | async)?._id]"
-          >Profile</a
-        >
-      </li>
-      <li *ngIf="!(currentUser$ | async)?.isAgency">
-        <a routerLink="/user/profile">Profile</a>
-      </li>
-      <li>
-        <a routerLink="/auth/profile/edit">Edit Profile</a>
-      </li>
+      <ng-container *ngIf="(currentUser$ | async)?.isAgency">
+        <li>
+          <a [routerLink]="['/agency/profile', (currentUser$ | async)?._id]"
+            >Profile</a
+          >
+        </li>
+        <li>
+          <a [routerLink]="['edit/profile', (currentUser$ | async)?._id]"
+            >Edit Profile</a
+          >
+        </li>
+      </ng-container>
+      <ng-container *ngIf="!(currentUser$ | async)?.isAgency">
+        <li>
+          <a routerLink="/user/profile">Profile</a>
+        </li>
+      </ng-container>
+
       <li>
         <a class="logout" href="javascript:void(0)" (click)="logoutHandler()"
           >Logout</a
