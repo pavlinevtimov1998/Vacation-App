@@ -113,7 +113,7 @@ export class CreateComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     this.offerService.createOffer(formData).subscribe({
       next: (offer) => {
-        this.router.navigate(['/offers/', offer._id]);
+        this.router.navigate(['/details', offer._id]);
       },
       error: (err) => {
         console.error(err);

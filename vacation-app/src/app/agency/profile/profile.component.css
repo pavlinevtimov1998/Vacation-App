@@ -15,22 +15,13 @@
 .container {
   margin: auto;
   width: 80%;
-  height: 700px;
   padding: 3%;
   background-color: #fff;
   box-shadow: rgb(0 0 0 / 16%) 0px 1px 4px;
 }
 
-/* Aside */
 app-aside {
   width: 30%;
-}
-/* Details */
-
-.vertical-line {
-  width: 1.2px;
-  height: 100%;
-  background-color: darkgray;
 }
 
 .agency-info {
@@ -78,8 +69,9 @@ app-aside {
   align-items: center;
   justify-content: center;
   gap: 7px;
-  width: 25%;
+  padding-inline: 14px;
   height: 100%;
+  max-height: 50px;
   background-color: #fff;
   color: #008dfe;
   border: 2px solid #008dfe;
@@ -102,6 +94,7 @@ app-aside {
 .info-container {
   width: 100%;
   border-top: 1.2px solid darkgray;
+  margin-top: 30px;
 }
 
 .message {
@@ -112,4 +105,62 @@ app-aside {
 .contacts {
   display: block;
   min-height: 360px;
+}
+
+@media screen and (max-width: 1200px) {
+  .container {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .content-container {
+    flex-direction: column;
+  }
+
+  app-aside {
+    width: 100%;
+  }
+
+  .agency-info {
+    width: 100%;
+    align-items: center;
+  }
+
+  .info-container {
+    width: 80%;
+  }
+
+  .btns {
+    flex-wrap: wrap;
+    min-height: 125px;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    width: 100%;
+  }
+
+  .info-container {
+    width: 100%;
+  }
+
+  .btns {
+    flex-wrap: wrap;
+    min-height: 125px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .info-header {
+    text-align: center;
+  }
+
+  .not-owner {
+    min-height: 175px !important;
+    justify-content: flex-start;
+  }
 }

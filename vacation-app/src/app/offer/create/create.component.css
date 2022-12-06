@@ -163,20 +163,20 @@ button[type="submit"]:hover {
   }
 
   .offer-title input {
-    width: 90%;
+    width: 100%;
   }
 
   .offer-description textarea {
-    width: 90%;
+    width: 100%;
     height: 150px;
   }
 
   .offer-destination input {
-    width: 90%;
+    width: 100%;
   }
 
   .offer-images {
-    width: 90%;
+    width: 100%;
   }
 
   .offer-price {
@@ -184,14 +184,30 @@ button[type="submit"]:hover {
   }
 
   .offer-price input {
-    width: 90%;
+    width: 100%;
     margin: unset;
   }
 }
 
 @media screen and (max-width: 480px) {
   input {
-    width: 90%;
+    width: 100%;
     padding: 10px;
   }
+
+.offer-destination {
+  flex-direction: column;
+  padding-left: 10%;
+}
+
+.offer-destination div {
+  width: 60%;
+}
+
+.features {
+  width: 100%;
+  align-items: baseline;
+}
+
+
 }

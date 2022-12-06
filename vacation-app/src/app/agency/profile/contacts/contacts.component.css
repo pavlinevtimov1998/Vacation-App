@@ -37,3 +37,9 @@
   letter-spacing: 0.5px;
   font-weight: 900;
 }
+
+@media screen and (max-width: 380px) {
+  .detail {
+    font-size: 0.8rem;
+  }
+}

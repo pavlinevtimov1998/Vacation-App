@@ -3,16 +3,16 @@
   <div class="container">
     <div class="content-container">
       <app-aside [image]="agencyData.image"></app-aside>
-      <div class="vertical-line"></div>
       <div class="agency-info">
         <div class="info-header">
           <h1>{{ agencyData.agencyName }}</h1>
-          <p>
+          <p *ngIf="agencyData.country">
             <mat-icon>location_on</mat-icon
             ><span>{{ agencyData.country }}, {{ agencyData.town }}</span>
           </p>
         </div>
-        <div class="btns">
+        <div class="btns" [ngClass]="{ 'not-owner': !isOwner }">
+          <!-- <ng-container *ngIf="!isOwner"> -->
           <button
             (click)="changeActionHandler(messageForm, contacts)"
             class="message-btn"
@@ -27,9 +27,16 @@
             <mat-icon>contacts</mat-icon>
             <span>Contacts</span>
           </button>
+          <!-- </ng-container> -->
+          <!-- <ng-container *ngIf="isOwner">
+            <button class="edit-btn">
+              <mat-icon>edit</mat-icon>
+              <span>Edit</span>
+            </button>
+          </ng-container> -->
           <button class="offers">
             <mat-icon>storefront</mat-icon>
-            <span>Offers</span>
+            <span>Added Offers</span>
           </button>
         </div>
         <div class="info-container">

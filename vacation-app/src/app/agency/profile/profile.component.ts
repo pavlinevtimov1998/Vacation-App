@@ -15,6 +15,8 @@ export class AgencyProfileComponent implements OnInit, OnDestroy {
   currentUser!: IAccount | undefined;
   agencyData!: IAgency;
 
+  isOwner!: boolean;
+
   isLoading = true;
 
   subscription!: Subscription;
@@ -43,6 +45,7 @@ export class AgencyProfileComponent implements OnInit, OnDestroy {
       .subscribe({
         next: (agencyData) => {
           this.agencyData = agencyData;
+          this.isOwner = this.agencyData._id == this.currentUser?._id;
           this.isLoading = false;
         },
         error: (err) => {
