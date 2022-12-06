@@ -73,14 +73,16 @@ export class EditProfileComponent implements OnInit {
         formData.append(key, value as string);
       }
     });
+
     if (this.image) {
       formData.append('image', this.image, this.image.name);
     }
 
+    this.isLoading = true;
     this.agencyService.editAgencyProfileData$(formData).subscribe({
       next: (response) => {
         console.log(response);
-        // this.router.navigate(['/profile', this.agencyData._id]);
+        this.router.navigate(['/agency/profile', this.agencyData._id]);
       },
       error: (err) => {
         console.log(err);
