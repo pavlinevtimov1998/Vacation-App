@@ -1,8 +1,9 @@
 const profileController = require("express").Router();
 
 const profileService = require("../Services/profileService");
-const { isAccount, isUser } = require("../Middlewares/guards");
+const { isAccount, isUser, isAgency } = require("../Middlewares/guards");
 const { catchAsyncError } = require("../Util/errorParser");
+const { upload } = require("../Util/imageUpload");
 
 profileController.get(
   "/",
@@ -34,6 +35,24 @@ profileController.get(
     const agencyId = req.params.agencyId;
 
     const agencyData = await profileService.getAgencyProfile(agencyId);
+
+    res.status(200).json(agencyData);
+  })
+);
+
+profileController.patch(
+  "/agency/edit",
+  isAgency(),
+  upload.array("image", 1),
+  catchAsyncError(async (req, res) => {
+    const agencyId = req.agency._id;
+    const body = req.body;
+
+    const [agencyData, _] = await profileService.editAgencyData(
+      agencyId,
+      req.files,
+      body
+    );
     console.log(agencyData);
     res.status(200).json(agencyData);
   })
