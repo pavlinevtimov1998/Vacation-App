@@ -36,10 +36,7 @@ const createOffer = async (body, files) => {
 const booking = (body) => Booking.create(body);
 
 const cancelBooking = (offer, user) =>
-  Promise.all([
-    Booking.findOneAndDelete({ offer, user }),
-    Offer.findByIdAndUpdate(offer, { $pull: { peopleBooked: user } }),
-  ]);
+  Booking.findOneAndDelete({ offer, user });
 
 const deleteOffer = async (agencyId, offerId) => {
   const offer = await Offer.findOne({ _id: offerId, agency: agencyId });
