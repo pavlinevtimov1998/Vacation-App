@@ -1,6 +1,11 @@
 <aside class="aside">
   <div class="img-container">
-    <img [src]="image" />
+    <img *ngIf="image" [src]="image" />
+    <img
+      *ngIf="!image"
+      src="/assets/img/default-user.png"
+      alt="default account image"
+    />
   </div>
   <div class="line"></div>
 </aside>
