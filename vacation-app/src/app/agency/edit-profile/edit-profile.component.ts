@@ -39,8 +39,6 @@ export class EditProfileComponent implements OnInit {
       )
       .subscribe({
         next: (agency) => {
-          console.log(agency);
-
           this.agencyData = agency;
           this.isLoading = false;
         },
@@ -80,8 +78,7 @@ export class EditProfileComponent implements OnInit {
 
     this.isLoading = true;
     this.agencyService.editAgencyProfileData$(formData).subscribe({
-      next: (response) => {
-        console.log(response);
+      next: () => {
         this.router.navigate(['/agency/profile', this.agencyData._id]);
       },
       error: (err) => {
