@@ -1,10 +1,11 @@
 .wrapper {
   width: 100%;
-  display: flex;
-  justify-content: center;
+  max-width: 1600px;
+  margin: auto;
 }
 
 .form-container {
+  margin: auto;
   background-color: #fff;
   border-radius: 40px;
   display: flex;
@@ -13,7 +14,7 @@
   align-items: center;
   padding: 35px 30px 70px 30px;
   gap: 40px;
-  width: 80%;
+  width: 70%;
   box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
 }
 
@@ -44,6 +45,8 @@ select {
   padding: 20px;
   border: 1px solid #d3d3d3;
   border-radius: 10px;
+  font-size: 1.1rem;
+  letter-spacing: 0.8px;
 }
 
 .features {
@@ -100,10 +103,20 @@ input::-webkit-inner-spin-button {
   background-color: #f0f8ff;
   border-radius: 10px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
 }
 
-.offer-images:hover {
-  cursor: pointer;
+.offer-images span {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.offer-images .error {
+  padding: unset;
+  align-self: unset;
 }
 
 button[type="submit"] {
@@ -137,6 +150,8 @@ button[type="submit"]:hover {
 .error {
   color: red;
   align-self: flex-start;
+  padding-left: 2%;
+  font-weight: 700;
 }
 
 @media screen and (max-width: 900px) {
@@ -195,19 +210,17 @@ button[type="submit"]:hover {
     padding: 10px;
   }
 
-.offer-destination {
-  flex-direction: column;
-  padding-left: 10%;
-}
+  .offer-destination {
+    flex-direction: column;
+    padding-left: 10%;
+  }
 
-.offer-destination div {
-  width: 60%;
-}
+  .offer-destination div {
+    width: 60%;
+  }
 
-.features {
-  width: 100%;
-  align-items: baseline;
-}
-
-
+  .features {
+    width: 100%;
+    align-items: baseline;
+  }
 }

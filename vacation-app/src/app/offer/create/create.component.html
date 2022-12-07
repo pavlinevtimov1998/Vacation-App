@@ -9,6 +9,7 @@
       <div class="offer-title input-container">
         <div class="flex">
           <input
+            [ngClass]="{ 'input-error': errHandler(createOfferForm, 'title') }"
             formControlName="title"
             type="text"
             placeholder="Title of your Offer"
@@ -21,12 +22,27 @@
             >
               Title is required!
             </p>
+            <p
+              class="error"
+              *ngIf="createOfferForm.controls['title'].errors?.['minlength'] && !createOfferForm.controls['title'].errors?.['required']"
+            >
+              Title should be minimum of 6 characters!
+            </p>
+            <p
+              class="error"
+              *ngIf="createOfferForm.controls['title'].errors?.['maxlength'] && !createOfferForm.controls['title'].errors?.['required']"
+            >
+              Title should be maximum of 50 characters!
+            </p>
           </ng-container>
         </div>
       </div>
       <div class="offer-description input-container">
         <div class="flex">
           <textarea
+            [ngClass]="{
+              'input-error': errHandler(createOfferForm, 'description')
+            }"
             formControlName="description"
             name="description"
             placeholder="Detail Description"
@@ -39,6 +55,12 @@
               *ngIf="createOfferForm.controls['description'].errors?.['required']"
             >
               Description is required!
+            </p>
+            <p
+              class="error"
+              *ngIf="createOfferForm.controls['description'].errors?.['minlength'] && !createOfferForm.controls['description'].errors?.['required']"
+            >
+              Description should be minimum of 20 characters!
             </p>
           </ng-container>
         </div>
@@ -58,7 +80,12 @@
           </mat-form-field>
         </div>
         <div>
-          <input formControlName="town" type="text" placeholder="Town" />
+          <input
+            [ngClass]="{ 'input-error': errHandler(createOfferForm, 'town') }"
+            formControlName="town"
+            type="text"
+            placeholder="Town"
+          />
           <ng-container *ngIf="errHandler(createOfferForm, 'town')">
             <p
               class="error"
@@ -89,6 +116,20 @@
           accept="image/png, image/jpeg"
           (change)="onImageUpload($event)"
         />
+        <ng-container *ngIf="errHandler(createOfferForm, 'images')">
+          <p
+            class="error"
+            *ngIf="createOfferForm.controls['images'].errors?.['required']"
+          >
+            Images are required!
+          </p>
+          <p
+            class="error"
+            *ngIf="createOfferForm.controls['images'].errors?.['imagesType'] && !createOfferForm.controls['images'].errors?.['required']"
+          >
+            Images should be of type image/png or image/jpeg!
+          </p>
+        </ng-container>
       </div>
       <div class="offer-price input-container">
         <div class="flex">

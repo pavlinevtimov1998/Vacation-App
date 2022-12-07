@@ -12,7 +12,7 @@ import { CountryService } from 'src/app/country/country.service';
 import { OfferService } from 'src/app/offer/offer.service';
 import { ICountry } from 'src/app/shared/interfaces/country.interface';
 import { IFeature } from 'src/app/shared/interfaces/offer.interface';
-import { errorHandler } from 'src/app/util/form-errors';
+import { errorHandler, imageTypeValidator } from 'src/app/util/form-errors';
 
 @Component({
   selector: 'app-create',
@@ -27,6 +27,7 @@ export class CreateComponent implements OnInit, OnDestroy {
   }
 
   isLoading = true;
+
   subscription!: Subscription;
   countries!: ICountry[];
   features!: IFeature[];
@@ -39,30 +40,25 @@ export class CreateComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.subscription = combineLatest([
-      this.countryService.getAllCountries$(),
-      this.offerService.getAllFeatures$(),
-    ]).subscribe({
-      next: ([countries, features]) => {
-        this.features = features;
-        this.countries = countries;
+    this.loadData();
 
-        this.createOfferForm = this.formBuilder.group({
-          title: new FormControl<string | null>(null, [Validators.required]),
-          description: new FormControl<string | null>(null, [
-            Validators.required,
-          ]),
-          country: new FormControl<string | null>(null, [Validators.required]),
-          town: new FormControl<string | null>(null, [Validators.required]),
-          price: new FormControl<number | null>(null, [Validators.required]),
-          images: new FormControl<File[] | null>(null, [Validators.required]),
-        });
-
-        this.isLoading = false;
-      },
-      error: (err) => {
-        console.log(err);
-      },
+    this.createOfferForm = this.formBuilder.group({
+      title: new FormControl<string | null>(null, [
+        Validators.required,
+        Validators.minLength(6),
+        Validators.maxLength(50),
+      ]),
+      description: new FormControl<string | null>(null, [
+        Validators.required,
+        Validators.minLength(20),
+      ]),
+      country: new FormControl<string | null>(null, [Validators.required]),
+      town: new FormControl<string | null>(null, [Validators.required]),
+      price: new FormControl<number | null>(null, [Validators.required]),
+      images: new FormControl<File[] | null>(null, [
+        Validators.required,
+        imageTypeValidator,
+      ]),
     });
   }
 
@@ -72,8 +68,9 @@ export class CreateComponent implements OnInit, OnDestroy {
 
     if (files) {
       for (let i = 0; i < files.length; i++) {
-        images.push(files.item(i) as File);
+        images.push(files[i]);
       }
+
       this.createOfferForm.patchValue({
         images: images,
       });
@@ -91,7 +88,7 @@ export class CreateComponent implements OnInit, OnDestroy {
     });
 
     const formData = new FormData();
-    formData.append('features', checkedFeatures as any);
+    formData.append('features', checkedFeatures.join(','));
 
     Object.entries(this.createOfferForm.value).forEach(([key, value]) => {
       if (key == 'images') {
@@ -118,6 +115,23 @@ export class CreateComponent implements OnInit, OnDestroy {
       error: (err) => {
         console.error(err);
         this.router.navigate(['/']);
+      },
+    });
+  }
+
+  loadData(): void {
+    this.subscription = combineLatest([
+      this.countryService.getAllCountries$(),
+      this.offerService.getAllFeatures$(),
+    ]).subscribe({
+      next: ([countries, features]) => {
+        this.features = features;
+        this.countries = countries;
+
+        this.isLoading = false;
+      },
+      error: (err) => {
+        console.log(err);
       },
     });
   }
