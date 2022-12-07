@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
 
 import { IOffer } from 'src/app/shared/interfaces';
 import {
-  dateValidator,
+  startDateValidator,
+  endDateValidator,
   numbersLengthValidator,
 } from 'src/app/util/form-errors';
 import { OfferService } from '../../offer.service';
@@ -21,6 +22,8 @@ import { OfferService } from '../../offer.service';
 })
 export class BookingFormComponent implements OnInit {
   @Input() offer!: IOffer;
+
+  startDate = new FormControl<Date | null>(null, [Validators.required]);
 
   get controls() {
     return this.bookingForm.controls;
@@ -46,15 +49,13 @@ export class BookingFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const startDate = new FormControl<Date | null>(null, []);
-    const endDate = new FormControl<Date | null>(null, [
-      dateValidator(startDate),
-    ]);
-
     this.bookingForm = this.formBuilder.group({
       dates: new FormGroup({
-        startDate,
-        endDate,
+        startDate: this.startDate,
+        endDate: new FormControl<Date | null>(null, [
+          Validators.required,
+          endDateValidator(this.startDate),
+        ]),
       }),
       cardHolder: new FormControl<string | null>(null, [Validators.required]),
       cardNumber: new FormControl(null, [
@@ -83,8 +84,6 @@ export class BookingFormComponent implements OnInit {
       return this.bookingForm.markAllAsTouched();
     }
 
-    // TODO: ADD PRICE FUNCTIONALITY!!!
-
     const { startDate, endDate } = this.bookingForm.controls['dates'].value;
     const body = {
       startDate,
@@ -101,5 +100,31 @@ export class BookingFormComponent implements OnInit {
         console.log(err);
       },
     });
+  }
+
+  dateChange() {
+    this.datesGroup.controls['startDate'].addValidators(
+      startDateValidator(this.datesGroup.controls['endDate'])
+    );
+
+    this.datesGroup.controls['startDate'].updateValueAndValidity();
+    this.datesGroup.controls['endDate'].updateValueAndValidity();
+
+    if (
+      this.datesGroup.controls['startDate'].valid &&
+      this.datesGroup.controls['endDate'].value
+    ) {
+      this.datesGroup.controls['endDate'].setErrors(null);
+
+      const differenceInTime =
+        this.datesGroup.controls['endDate'].value.getTime() -
+        this.datesGroup.controls['startDate'].value.getTime();
+
+      const days = differenceInTime / (1000 * 3600 * 24);
+
+      this.price = this.offer.price * days;
+    } else {
+      this.price = 0;
+    }
   }
 }

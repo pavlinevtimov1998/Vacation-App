@@ -45,39 +45,57 @@ export function imageTypeValidator(
   return null;
 }
 
-export function dateValidator(
+export function endDateValidator(
   startDate: AbstractControl<Date | null>
 ): ValidatorFn {
   return (endDate: AbstractControl<Date | null>): ValidationErrors | null => {
-    const minDate = new Date(
-      new Date().getFullYear(),
-      new Date().getMonth(),
-      new Date().getDate()
-    );
-
     if (startDate.value && endDate.value) {
-      console.log(minDate, startDate.value);
-
-      if (minDate > startDate.value) {
-        return {
-          invalidStartDate: true,
-        };
-      }
       const differenceInTime =
         endDate.value.getTime() - startDate.value.getTime();
 
       const days = differenceInTime / (1000 * 3600 * 24);
+
       if (days == 0) {
+        return {
+          sameDayError: true,
+        };
+      } else if (days < 0) {
         return {
           sameDayError: true,
         };
       } else {
         return null;
       }
-    } else {
-      return {
-        required: true,
-      };
     }
+
+    return null;
+  };
+}
+
+export function startDateValidator(
+  endDate: AbstractControl<Date | null>
+): ValidatorFn {
+  return (startDate: AbstractControl<Date | null>): ValidationErrors | null => {
+    if (startDate.value && endDate.value) {
+      const differenceInTime =
+        endDate.value.getTime() - startDate.value.getTime();
+
+      const days = differenceInTime / (1000 * 3600 * 24);
+      console.log(endDate.value > startDate.value);
+
+      if (days == 0) {
+        return {
+          sameDayError: true,
+        };
+      } else if (days < 0) {
+        return {
+          invalidDate: true,
+        };
+      } else {
+        return null;
+      }
+    }
+
+    return null;
   };
 }
