@@ -30,7 +30,7 @@
             </p>
             <p
               class="error"
-              *ngIf="createOfferForm.controls['title'].errors?.['maxlength'] && !createOfferForm.controls['title'].errors?.['required']"
+              *ngIf="createOfferForm.controls['title'].errors?.['maxlength']"
             >
               Title should be maximum of 50 characters!
             </p>
@@ -93,6 +93,12 @@
             >
               Town is required!
             </p>
+            <p
+              class="error"
+              *ngIf="createOfferForm.controls['town'].errors?.['maxlength']"
+            >
+              Town can't be more than 25 characters!
+            </p>
           </ng-container>
         </div>
       </div>
@@ -108,7 +114,7 @@
       </div>
 
       <div class="offer-images input-container" (click)="imagesUpload.click()">
-        <span>Click here to add one or multiple images for your offer!</span>
+        <span>Click here to add up to 5 images!</span>
         <input
           #imagesUpload
           type="file"
