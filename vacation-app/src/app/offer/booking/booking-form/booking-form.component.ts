@@ -8,7 +8,10 @@ import {
 import { Router } from '@angular/router';
 
 import { IOffer } from 'src/app/shared/interfaces';
-import { numbersLengthValidator } from 'src/app/util/form-errors';
+import {
+  dateValidator,
+  numbersLengthValidator,
+} from 'src/app/util/form-errors';
 import { OfferService } from '../../offer.service';
 
 @Component({
@@ -23,14 +26,16 @@ export class BookingFormComponent implements OnInit {
     return this.bookingForm.controls;
   }
 
+  get datesGroup() {
+    return this.bookingForm.controls['dates'] as FormGroup;
+  }
+
   minDate = new Date(
     new Date().getFullYear(),
     new Date().getMonth(),
     new Date().getDate() + 1
   );
   price: number = 0;
-  dateError: boolean = false;
-  errorMessage = '';
 
   bookingForm!: FormGroup;
 
@@ -41,13 +46,16 @@ export class BookingFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    const startDate = new FormControl<Date | null>(null, []);
+    const endDate = new FormControl<Date | null>(null, [
+      dateValidator(startDate),
+    ]);
+
     this.bookingForm = this.formBuilder.group({
-      startDate: new FormControl<Date | null>({ value: null, disabled: true }, [
-        Validators.required,
-      ]),
-      endDate: new FormControl<Date | null>({ value: null, disabled: true }, [
-        Validators.required,
-      ]),
+      dates: new FormGroup({
+        startDate,
+        endDate,
+      }),
       cardHolder: new FormControl<string | null>(null, [Validators.required]),
       cardNumber: new FormControl(null, [
         Validators.required,
@@ -71,22 +79,19 @@ export class BookingFormComponent implements OnInit {
   }
 
   formHandler() {
-    if (
-      !this.bookingForm.controls['startDate'].value ||
-      !this.bookingForm.controls['endDate'].value ||
-      this.bookingForm.controls['startDate'].value < this.minDate ||
-      this.bookingForm.invalid
-    ) {
-      this.bookingForm.markAllAsTouched();
-      this.dateError = true;
-      return;
+    if (this.bookingForm.invalid) {
+      return this.bookingForm.markAllAsTouched();
     }
 
-    const body = this.bookingForm.value;
-    body.startDate = this.bookingForm.controls['startDate'].value;
-    body.endDate = this.bookingForm.controls['endDate'].value;
-    body.agency = this.offer.agency._id;
-    body.price = +this.price.toFixed(2);
+    // TODO: ADD PRICE FUNCTIONALITY!!!
+
+    const { startDate, endDate } = this.bookingForm.controls['dates'].value;
+    const body = {
+      startDate,
+      endDate,
+      agency: this.offer.agency._id,
+      price: +this.price.toFixed(2),
+    };
 
     this.offerService.booking$(body, this.offer._id).subscribe({
       next: () => {
@@ -96,33 +101,5 @@ export class BookingFormComponent implements OnInit {
         console.log(err);
       },
     });
-  }
-
-  dateChangeHandler() {
-    if (
-      this.bookingForm.controls['startDate'].value &&
-      this.bookingForm.controls['endDate'].value &&
-      this.bookingForm.controls['startDate'].value >= this.minDate
-    ) {
-      this.dateError = false;
-      const differenceInTime =
-        this.bookingForm.controls['endDate'].value.getTime() -
-        this.bookingForm.controls['startDate'].value.getTime();
-
-      const days = differenceInTime / (1000 * 3600 * 24);
-
-      if (days == 0) {
-        this.dateError = true;
-        this.errorMessage = 'Your vacation should be for more than one day!';
-        this.price = 0;
-        return;
-      }
-
-      this.price = +this.offer.price * days;
-    } else {
-      this.errorMessage = '';
-      this.dateError = true;
-      this.price = 0;
-    }
   }
 }

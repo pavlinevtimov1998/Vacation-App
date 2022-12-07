@@ -1,7 +1,7 @@
 <form class="form" [formGroup]="bookingForm" (ngSubmit)="formHandler()">
   <div class="date-price-container">
     <div class="date">
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="fill" [formGroup]="datesGroup">
         <mat-label>Enter a date range</mat-label>
         <mat-date-range-input [rangePicker]="picker">
           <input
@@ -9,12 +9,7 @@
             formControlName="startDate"
             placeholder="Start date"
           />
-          <input
-            matEndDate
-            formControlName="endDate"
-            placeholder="End date"
-            (dateInput)="dateChangeHandler()"
-          />
+          <input matEndDate formControlName="endDate" placeholder="End date" />
         </mat-date-range-input>
         <mat-datepicker-toggle
           matSuffix
@@ -27,10 +22,8 @@
           #picker
         ></mat-date-range-picker>
       </mat-form-field>
-      <p class="error" *ngIf="dateError">
-        Invalid date!
-        {{ errorMessage || "Your vacation cannot start before" }}
-        {{ errorMessage ? "" : (minDate | date: "shortDate") }}
+      <p class="error" *ngIf="">
+       
       </p>
     </div>
     <h3>
@@ -38,6 +31,7 @@
       <span>$</span>
     </h3>
   </div>
+  {{ datesGroup.controls["endDate"].errors | json }}
   <div class="card-holder flex">
     <label for="holder">Card Holder</label>
     <input

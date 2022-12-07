@@ -29,7 +29,9 @@ export class PaginationComponent {
   }
 
   rowClickHandler(page: number) {
-    this.currentPage = page;
-    this.sendCurrentPage.emit(this.currentPage);
+    if (this.currentPage != page) {
+      this.currentPage = page;
+      this.sendCurrentPage.emit(this.currentPage);
+    }
   }
 }
