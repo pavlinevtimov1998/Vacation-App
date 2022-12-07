@@ -1,5 +1,5 @@
 .pagination-container {
-  margin-top: 3%;
+  margin-top: 5%;
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -62,4 +62,11 @@
 .selected-btn {
   background-color: #fff;
   color: #0d47a1;
+}
+
+
+@media screen and (max-width: 750px) {
+  .row {
+    display: none;
+  }
 }
