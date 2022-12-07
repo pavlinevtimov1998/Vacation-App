@@ -20,7 +20,8 @@
           >
         </li>
         <li>
-          <a [routerLink]="['edit/profile', (currentUser$ | async)?._id]"
+          <a
+            [routerLink]="['/agency/edit/profile', (currentUser$ | async)?._id]"
             >Edit Profile</a
           >
         </li>
@@ -28,6 +29,9 @@
       <ng-container *ngIf="!(currentUser$ | async)?.isAgency">
         <li>
           <a routerLink="/user/profile">Profile</a>
+        </li>
+        <li>
+          <a routerLink="/user/edit/profile">Edit Profile</a>
         </li>
       </ng-container>
 
