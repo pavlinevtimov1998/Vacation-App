@@ -53,7 +53,10 @@ export class CreateComponent implements OnInit, OnDestroy {
         Validators.minLength(20),
       ]),
       country: new FormControl<string | null>(null, [Validators.required]),
-      town: new FormControl<string | null>(null, [Validators.required]),
+      town: new FormControl<string | null>(null, [
+        Validators.required,
+        Validators.maxLength(25),
+      ]),
       price: new FormControl<number | null>(null, [Validators.required]),
       images: new FormControl<File[] | null>(null, [
         Validators.required,
@@ -68,8 +71,13 @@ export class CreateComponent implements OnInit, OnDestroy {
 
     if (files) {
       for (let i = 0; i < files.length; i++) {
+        if (i > 4) {
+          break;
+        }
         images.push(files[i]);
       }
+
+      console.log(images);
 
       this.createOfferForm.patchValue({
         images: images,
