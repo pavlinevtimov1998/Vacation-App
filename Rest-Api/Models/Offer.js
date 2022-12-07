@@ -32,7 +32,6 @@ const offerSchema = new mongoose.Schema(
     },
     price: {
       type: Number,
-      trim: true,
       required: [true, "Price per person is required!"],
     },
     images: {

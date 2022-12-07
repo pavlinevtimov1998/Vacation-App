@@ -46,15 +46,20 @@ exports.editAgencyData = async (agencyId, files, body) => {
         agency.image.lastIndexOf("/") + 1,
         agency.image.lastIndexOf(".")
       );
+
+      body.image = image[0];
+
+      return Promise.all([
+        Agency.findByIdAndUpdate(agencyId, body),
+        asyncUnlink(localImage),
+        deleteCloudinaryImage(id),
+      ]);
+    } else {
+      return Promise.all([
+        Agency.findByIdAndUpdate(agencyId, body),
+        asyncUnlink(localImage),
+      ]);
     }
-
-    body.image = image[0];
-
-    return Promise.all([
-      Agency.findByIdAndUpdate(agencyId, body),
-      asyncUnlink(localImage),
-      deleteCloudinaryImage(id),
-    ]);
   } else {
     return Agency.findByIdAndUpdate(agencyId, body);
   }
