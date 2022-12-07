@@ -86,6 +86,7 @@
 app-offer-item {
   width: 30%;
   height: 32vw;
+  max-height: 500px;
   margin-top: 3%;
 }
 
