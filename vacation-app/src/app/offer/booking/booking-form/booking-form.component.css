@@ -5,14 +5,18 @@
   gap: 40px;
 }
 
-.date-price-container {
+.date-container {
+  width: 100%;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
   align-items: center;
 }
 
-.date {
-  width: 65%;
+.dates {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
 }
 
 .flex {
@@ -89,7 +93,7 @@ label {
 .cost {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   margin-top: 15px;
 }
@@ -134,13 +138,8 @@ label {
 }
 
 @media screen and (max-width: 650px) {
-  .date-price-container {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .date-price-container h3 {
-    align-self: center;
+  .dates {
+    flex-wrap: wrap;
   }
   .cvv-expiry {
     flex-direction: column;
@@ -153,6 +152,15 @@ label {
 
   .cvv-number {
     width: 50%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .cost {
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
   }
 }
 

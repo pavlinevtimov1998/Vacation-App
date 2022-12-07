@@ -1,37 +1,64 @@
 <form class="form" [formGroup]="bookingForm" (ngSubmit)="formHandler()">
-  <div class="date-price-container">
-    <div class="date">
-      <mat-form-field appearance="fill" [formGroup]="datesGroup">
-        <mat-label>Enter a date range</mat-label>
-        <mat-date-range-input [rangePicker]="picker">
-          <input
-            matStartDate
-            formControlName="startDate"
-            placeholder="Start date"
-          />
-          <input matEndDate formControlName="endDate" placeholder="End date" />
-        </mat-date-range-input>
+  <div class="date-container">
+    <div class="dates" [formGroup]="datesGroup">
+      <mat-form-field appearance="fill">
+        <mat-label>Start Date</mat-label>
+        <input
+          matInput
+          formControlName="startDate"
+          [min]="minDate"
+          [matDatepicker]="picker"
+          (dateInput)="dateChange()"
+        />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>End Date</mat-label>
+        <input
+          matInput
+          (dateInput)="dateChange()"
+          [min]="minDate"
+          formControlName="endDate"
+          [matDatepicker]="endPicker"
+        />
+        <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle
           matSuffix
-          [disabled]="false"
-          [for]="picker"
+          [for]="endPicker"
         ></mat-datepicker-toggle>
-        <mat-date-range-picker
-          [disabled]="false"
-          [touchUi]="true"
-          #picker
-        ></mat-date-range-picker>
+        <mat-datepicker #endPicker></mat-datepicker>
       </mat-form-field>
-      <p class="error" *ngIf="">
-       
-      </p>
     </div>
-    <h3>
-      <span>{{ price.toFixed(2) }} </span>
-      <span>$</span>
-    </h3>
+    <ng-container *ngIf="datesGroup.touched && datesGroup.invalid">
+      <p
+        *ngIf="
+          datesGroup.controls['startDate'].errors?.['required'] && datesGroup.controls['endDate'].errors?.['required']
+        "
+        class="error"
+      >
+        Dates are required
+      </p>
+      <p
+        *ngIf="
+          (datesGroup.controls['startDate'].errors?.['sameDayError'] || datesGroup.controls['endDate'].errors?.['sameDayError'])
+         && !(datesGroup.controls['startDate'].errors?.['invalidDate'] || datesGroup.controls['endDate'].errors?.['invalidDate'])
+        "
+        class="error"
+      >
+        Your vacation cannot be lower than 2 days!
+      </p>
+      <p
+        *ngIf="
+          datesGroup.controls['startDate'].errors?.['invalidDate'] || datesGroup.controls['endDate'].errors?.['invalidDate']
+        "
+        class="error"
+      >
+        Invalid dates!
+      </p>
+    </ng-container>
   </div>
-  {{ datesGroup.controls["endDate"].errors | json }}
   <div class="card-holder flex">
     <label for="holder">Card Holder</label>
     <input
@@ -160,6 +187,7 @@
   </div>
 
   <div class="cost">
+    <h1 class="price">{{ price.toFixed(2) }}$</h1>
     <button type="submit" class="pay-btn">
       <mat-icon>credit_card</mat-icon>
       <span>Book Now</span>
