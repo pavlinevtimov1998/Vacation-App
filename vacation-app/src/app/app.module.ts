@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { AuthService } from './auth/auth.service';
 import { AuthInterceptor } from './core/Interceptors/auth.interceptor';
+import { ErrorHandlerInterceptor } from './core/Interceptors/error-handler.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,6 +31,11 @@ import { AuthInterceptor } from './core/Interceptors/auth.interceptor';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorHandlerInterceptor,
       multi: true,
     },
   ],
