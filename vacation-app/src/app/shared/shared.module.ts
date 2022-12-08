@@ -10,7 +10,7 @@ import { CountryItemComponent } from './country-item/country-item.component';
 import { OfferItemComponent } from './offer-item/offer-item.component';
 import { OfferImagesCarouselComponent } from './offer-images-carousel/offer-images-carousel.component';
 import { PasswordsValidatorDirective } from './directives/passwords-validator.directive';
-import { PaginationHelperPipe } from '../pagination-helper.pipe';
+import { PaginationHelperPipe } from './pagination/pagination-pipe/pagination-helper.pipe';
 import { PaginationComponent } from './pagination/pagination.component';
 import { MatButtonModule } from '@angular/material/button';
 import { SpinnerComponent } from './spinner/spinner.component';
