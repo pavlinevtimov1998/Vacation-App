@@ -25,6 +25,9 @@ export class TopAgenciesComponent implements OnInit, OnDestroy {
         this.agencies = agencies;
         this.isLoading = false;
       },
+      error: (err) => {
+        this.router.navigate(['/']);
+      },
     });
   }
 

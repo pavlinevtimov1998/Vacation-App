@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { combineLatest, Subscription } from 'rxjs';
 
 import { AuthService } from 'src/app/auth/auth.service';
@@ -25,7 +26,8 @@ export class WelcomePageComponent implements OnInit, OnDestroy {
 
   constructor(
     private welcomeService: WelcomeService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -37,6 +39,9 @@ export class WelcomePageComponent implements OnInit, OnDestroy {
         this.carouselData = carousel;
         this.topCountries = countries;
         this.isLoading = false;
+      },
+      error: (err) => {
+        this.router.navigate(['/404']);
       },
     });
   }
