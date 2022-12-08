@@ -84,7 +84,7 @@ export class EditProfileComponent implements OnInit {
     this.agencyService.editAgencyProfileData$(formData).subscribe({
       next: () => {
         this.messageBus.addMessage({
-          message: 'Successful register!',
+          message: 'Successfully editing!',
           type: MessageType.Success,
         });
         this.router.navigate(['/agency/profile', this.agencyData._id]);

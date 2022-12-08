@@ -17,7 +17,8 @@ import { MessageType } from 'src/app/shared/interfaces/message.interface';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  @ViewChild('messageContainer') messageContainer!: ElementRef;
+  @ViewChild('messageContainer', { static: true })
+  messageContainer!: ElementRef<HTMLDivElement>;
 
   get currentUser$() {
     return this.authService.currentUser$;
@@ -53,7 +54,6 @@ export class HeaderComponent implements OnInit {
           'right',
           '60px'
         );
-        console.log(this.message, this.isError);
 
         this.interval = setTimeout(() => {
           this.messageBus.clearMessage();
