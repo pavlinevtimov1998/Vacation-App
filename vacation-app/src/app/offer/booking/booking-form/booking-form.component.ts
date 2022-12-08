@@ -44,6 +44,7 @@ export class BookingFormComponent implements OnInit {
   price: number = 0;
 
   bookingForm!: FormGroup;
+  isSubmited = false;
 
   constructor(
     private offerService: OfferService,
@@ -96,6 +97,7 @@ export class BookingFormComponent implements OnInit {
       price: +this.price.toFixed(2),
     };
 
+    this.isSubmited = true;
     this.offerService.booking$(body, this.offer._id).subscribe({
       next: () => {
         this.messageBus.addMessage({
@@ -103,10 +105,11 @@ export class BookingFormComponent implements OnInit {
           type: MessageType.Success,
         });
 
+        this.bookingForm.reset();
         this.router.navigate(['/user/profile']);
       },
-      complete: () => {
-        this.bookingForm.reset();
+      error: (err) => {
+        this.isSubmited = false;
       },
     });
   }

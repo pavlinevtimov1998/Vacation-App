@@ -188,9 +188,10 @@
 
   <div class="cost">
     <h1 class="price">{{ price.toFixed(2) }}$</h1>
-    <button type="submit" class="pay-btn">
+    <button *ngIf="!isSubmited" type="submit" class="pay-btn">
       <mat-icon>credit_card</mat-icon>
       <span>Book Now</span>
     </button>
+    <mat-spinner [diameter]="50" *ngIf="isSubmited"></mat-spinner>
   </div>
 </form>
