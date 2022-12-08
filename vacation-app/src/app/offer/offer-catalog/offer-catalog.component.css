@@ -75,8 +75,7 @@ app-pagination {
   width: 100%;
 }
 
-.pagination-spinner-container,
-.spinner-container {
+.pagination-spinner-container {
   width: 100%;
   display: flex;
   align-items: center;

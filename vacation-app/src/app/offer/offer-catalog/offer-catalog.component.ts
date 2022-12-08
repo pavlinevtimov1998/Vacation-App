@@ -29,7 +29,7 @@ export class OfferCatalogComponent implements OnInit, OnDestroy {
     return (this.currentPage - 1) * this.limit;
   }
 
-  subscription = new Subscription();
+  subscription!: Subscription;
 
   isLoading = true;
   paginationLoading = false;
@@ -46,20 +46,19 @@ export class OfferCatalogComponent implements OnInit, OnDestroy {
     });
 
     this.getOffers();
-    this.isLoading = false;
   }
 
   setCurrentPage(currentPage: number) {
     if (this.currentPage !== currentPage) {
       this.currentPage = currentPage;
     }
-
+    this.subscription?.unsubscribe();
     this.getOffers();
   }
 
-  searchHandler(pagination: PaginationComponent) {
+  searchHandler(paginationComponent: PaginationComponent) {
     this.currentPage = 1;
-    pagination.currentPage = 1;
+    paginationComponent.currentPage = 1;
 
     this.router.navigate(['/offers'], {
       queryParams: { search: this.searchValue },
@@ -68,33 +67,31 @@ export class OfferCatalogComponent implements OnInit, OnDestroy {
 
   private getOffers() {
     this.paginationLoading = true;
-    this.subscription.add(
-      this.activatedRoute.queryParamMap
-        .pipe(
-          mergeMap((query) => {
-            const search = query.get('search');
-            this.searchGroup.controls['search'].patchValue(search);
+    this.subscription = this.activatedRoute.queryParamMap
+      .pipe(
+        mergeMap((query) => {
+          const search = query.get('search');
+          this.searchGroup.controls['search'].patchValue(search);
 
-            return this.offerService.getOffers$(
-              this.skip,
-              this.limit,
-              search || ''
-            );
-          })
-        )
-        .subscribe({
-          next: ({ offers, offersCount }) => {
-            this.pages = Math.ceil(offersCount / this.limit);
-
-            this.offers = offers;
-            this.isLoading = false;
-            this.paginationLoading = false;
-          },
-          error: (err) => {
-            console.log(err);
-          },
+          return this.offerService.getOffers$(
+            this.skip,
+            this.limit,
+            search || ''
+          );
         })
-    );
+      )
+      .subscribe({
+        next: ({ offers, offersCount }) => {
+          this.pages = Math.ceil(offersCount / this.limit);
+
+          this.offers = offers;
+          this.isLoading = false;
+          this.paginationLoading = false;
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
   }
 
   ngOnDestroy(): void {
