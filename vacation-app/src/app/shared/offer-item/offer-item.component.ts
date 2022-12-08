@@ -56,7 +56,10 @@ export class OfferItemComponent {
         });
 
         this.isLoading = false;
-      }
+      },
+      error: (err) => {
+        this.router.navigate(['/']);
+      },
     });
   }
 
@@ -73,6 +76,9 @@ export class OfferItemComponent {
           type: MessageType.Success,
         });
         this.isLoading = false;
+      },
+      error: (err) => {
+        this.router.navigate(['/']);
       },
     });
   }

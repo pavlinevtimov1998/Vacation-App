@@ -32,6 +32,9 @@ export class EditDeleteBtnsComponent {
 
         this.router.navigate(['/']);
       },
+      error: (err) => {
+        this.router.navigate(['/']);
+      },
     });
   }
 

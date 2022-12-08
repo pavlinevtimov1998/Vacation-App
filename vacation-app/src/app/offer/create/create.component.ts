@@ -29,6 +29,7 @@ export class CreateComponent implements OnInit, OnDestroy {
   }
 
   isLoading = true;
+  isSubmited = false;
 
   subscription!: Subscription;
   countries!: ICountry[];
@@ -118,17 +119,20 @@ export class CreateComponent implements OnInit, OnDestroy {
       }
     });
 
-    this.isLoading = true;
+    this.isSubmited = true;
+
     this.offerService.createOffer(formData).subscribe({
       next: (offer) => {
         this.messageBus.addMessage({
           message: 'Successfully created!',
           type: MessageType.Success,
         });
+
+        this.createOfferForm.reset();
         this.router.navigate(['/details', offer._id]);
       },
-      complete: () => {
-        this.createOfferForm.reset();
+      error: (err) => {
+        this.router.navigate(['/']);
       },
     });
   }

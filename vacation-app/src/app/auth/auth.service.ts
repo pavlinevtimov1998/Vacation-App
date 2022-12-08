@@ -66,6 +66,9 @@ export class AuthService {
 
           this.router.navigate(['/']);
         },
+        error: (err) => {
+          this.router.navigate(['/']);
+        },
       });
   }
 

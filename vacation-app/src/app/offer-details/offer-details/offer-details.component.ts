@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { combineLatest, mergeMap, Subscription } from 'rxjs';
 
 import { AuthService } from 'src/app/auth/auth.service';
@@ -33,7 +33,8 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
   constructor(
     private authService: AuthService,
     private offerService: OfferService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -65,6 +66,9 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
           );
 
           this.isLoading = false;
+        },
+        error: (err) => {
+          this.router.navigate(['/']);
         },
       });
   }

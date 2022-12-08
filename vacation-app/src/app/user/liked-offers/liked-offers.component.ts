@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { IOffer } from 'src/app/shared/interfaces';
@@ -25,7 +26,7 @@ export class LikedOffersComponent implements OnInit, OnDestroy {
 
   subscription!: Subscription;
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {
     this.getOffers();
@@ -50,7 +51,10 @@ export class LikedOffersComponent implements OnInit, OnDestroy {
 
           this.isLoading = false;
           this.paginationLoading = false;
-        }
+        },
+        error: (err) => {
+          this.router.navigate(['/']);
+        },
       });
   }
 

@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { MessageBusService } from 'src/app/message-bus.service';
 
 import { OfferService } from 'src/app/offer/offer.service';
@@ -21,45 +23,58 @@ export class UserActionBtnsComponent {
 
   isOpenReviewContainer = false;
 
+  subscription!: Subscription;
+
   constructor(
     private offerService: OfferService,
-    private messageBus: MessageBusService
+    private messageBus: MessageBusService,
+    private router: Router
   ) {}
 
   addToFavourites() {
     this.isLoading = true;
-    this.offerService.addToFavourites$(this.offer._id).subscribe({
-      next: ({ message, userId }) => {
-        this.offer.peopleFavourite.push(userId);
+    this.subscription = this.offerService
+      .addToFavourites$(this.offer._id)
+      .subscribe({
+        next: ({ message, userId }) => {
+          this.offer.peopleFavourite.push(userId);
 
-        this.messageBus.addMessage({
-          message: 'Successfully added to favourites!',
-          type: MessageType.Success,
-        });
+          this.messageBus.addMessage({
+            message: 'Successfully added to favourites!',
+            type: MessageType.Success,
+          });
 
-        this.isLiked = true;
-        this.isLoading = false;
-      }
-    });
+          this.isLiked = true;
+          this.isLoading = false;
+        },
+        error: (err) => {
+          this.router.navigate(['/']);
+        },
+      });
   }
 
   removeFromFavourites() {
     this.isLoading = true;
-    this.offerService.removeFromFavourites$(this.offer._id).subscribe({
-      next: ({ message, userId }) => {
-        this.offer.peopleFavourite = this.offer.peopleFavourite.filter(
-          (id) => id !== userId
-        );
+    this.subscription = this.offerService
+      .removeFromFavourites$(this.offer._id)
+      .subscribe({
+        next: ({ message, userId }) => {
+          this.offer.peopleFavourite = this.offer.peopleFavourite.filter(
+            (id) => id !== userId
+          );
 
-        this.messageBus.addMessage({
-          message: 'Successfully removed from favourites!',
-          type: MessageType.Success,
-        });
+          this.messageBus.addMessage({
+            message: 'Successfully removed from favourites!',
+            type: MessageType.Success,
+          });
 
-        this.isLiked = false;
-        this.isLoading = false;
-      }
-    });
+          this.isLiked = false;
+          this.isLoading = false;
+        },
+        error: (err) => {
+          this.router.navigate(['/']);
+        },
+      });
   }
 
   addedReviewHandler(review: IReview): void {

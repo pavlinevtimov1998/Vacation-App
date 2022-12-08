@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { mergeMap, Subscription } from 'rxjs';
 
 import { IOffer } from 'src/app/shared/interfaces';
@@ -19,7 +19,8 @@ export class BookingComponent implements OnInit {
 
   constructor(
     private offerService: OfferService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -35,6 +36,9 @@ export class BookingComponent implements OnInit {
         next: (offer) => {
           this.offer = offer;
           this.isLoading = false;
+        },
+        error: (err) => {
+          this.router.navigate(['/']);
         },
       });
   }

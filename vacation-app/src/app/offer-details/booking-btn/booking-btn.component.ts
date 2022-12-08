@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { MessageBusService } from 'src/app/message-bus.service';
 import { OfferService } from 'src/app/offer/offer.service';
@@ -21,7 +22,8 @@ export class BookingBtnComponent {
 
   constructor(
     private offerService: OfferService,
-    private messageBus: MessageBusService
+    private messageBus: MessageBusService,
+    private router: Router
   ) {}
 
   cancelBooking(): void {
@@ -39,6 +41,9 @@ export class BookingBtnComponent {
 
         this.isBooked = false;
         this.isLoading = false;
+      },
+      error: (err) => {
+        this.router.navigate(['/']);
       },
     });
   }

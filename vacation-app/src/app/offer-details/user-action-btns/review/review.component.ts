@@ -12,6 +12,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { MessageBusService } from 'src/app/message-bus.service';
 import { OfferService } from 'src/app/offer/offer.service';
@@ -40,7 +41,8 @@ export class ReviewComponent implements OnInit, OnDestroy {
   constructor(
     private formBuilder: FormBuilder,
     private offerService: OfferService,
-    private messageBus: MessageBusService
+    private messageBus: MessageBusService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -81,8 +83,7 @@ export class ReviewComponent implements OnInit, OnDestroy {
           this.close.emit();
         },
         error: (err) => {
-          console.log(err);
-          this.close.emit();
+          this.router.navigate(['/']);
         },
       });
   }
