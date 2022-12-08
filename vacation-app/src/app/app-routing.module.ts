@@ -38,7 +38,9 @@ const routes: Routes = [
   {
     path: 'details',
     loadChildren: () =>
-      import('./offer-details/offer-details.module').then((m) => m.OfferDetailsModule),
+      import('./offer-details/offer-details.module').then(
+        (m) => m.OfferDetailsModule
+      ),
   },
   {
     path: 'countries',
@@ -49,5 +51,5 @@ const routes: Routes = [
 
 export const AppRoutingModule = RouterModule.forRoot(routes, {
   preloadingStrategy: PreloadAllModules,
-  scrollPositionRestoration: 'enabled',
+  scrollPositionRestoration: 'top',
 });
