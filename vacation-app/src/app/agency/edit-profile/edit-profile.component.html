@@ -149,10 +149,11 @@
         ></textarea>
       </div>
 
-      <button class="edit-btn" type="submit">
+      <button *ngIf="!isSubmited" class="edit-btn" type="submit">
         <span>Edit</span>
         <mat-icon>edit</mat-icon>
       </button>
+      <mat-spinner [diameter]="50" *ngIf="isSubmited"></mat-spinner>
     </form>
   </div>
 </section>

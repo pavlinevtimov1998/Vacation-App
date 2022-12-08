@@ -21,6 +21,7 @@ export class EditProfileComponent implements OnInit {
   isImageError = false;
 
   isLoading = true;
+  isSubmited = false;
 
   subscription!: Subscription;
 
@@ -80,14 +81,19 @@ export class EditProfileComponent implements OnInit {
       formData.append('image', this.image, this.image.name);
     }
 
-    this.isLoading = true;
+    this.isSubmited = true;
     this.agencyService.editAgencyProfileData$(formData).subscribe({
       next: () => {
         this.messageBus.addMessage({
           message: 'Successfully editing!',
           type: MessageType.Success,
         });
+
+        form.reset();
         this.router.navigate(['/agency/profile', this.agencyData._id]);
+      },
+      error: (err) => {
+        this.isSubmited = false;
       },
     });
   }
