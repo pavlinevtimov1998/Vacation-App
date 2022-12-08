@@ -8,11 +8,16 @@ favoritesController.get(
   "/",
   isUser(),
   catchAsyncError(async (req, res) => {
+    const { skip, limit } = req.query;
     const userId = req.user._id;
 
-    const offers = await favoritesService.getUserFavourites(userId);
+    const [offers, offersCount] = await favoritesService.getUserFavourites(
+      userId,
+      skip,
+      limit
+    );
 
-    res.status(200).json(offers);
+    res.status(200).json({ offers, offersCount });
   })
 );
 

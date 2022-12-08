@@ -50,10 +50,17 @@ export class UserService {
     );
   }
 
-  getUserFavouritesOffers$(): Observable<IOffer[]> {
-    return this.httpClient.get<IOffer[]>(`${environment.api}/favourites`, {
-      withCredentials: true,
-    });
+  getUserFavouritesOffers$(
+    skip: number,
+    limit: number
+  ): Observable<{ offers: IOffer[]; offersCount: number }> {
+    return this.httpClient.get<{ offers: IOffer[]; offersCount: number }>(
+      `${environment.api}/favourites`,
+      {
+        withCredentials: true,
+        params: { skip, limit },
+      }
+    );
   }
 
   logout$(): Observable<{ message: string }> {

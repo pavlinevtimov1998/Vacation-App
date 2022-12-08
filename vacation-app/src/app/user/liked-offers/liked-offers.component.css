@@ -20,11 +20,20 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
   gap: 3%;
-  padding: 5%;
 }
 
 app-offer-item {
-  width: 35%;
+  width: 31%;
   height: 40vw;
+  max-height: 500px;
+  margin-top: 25px;
+}
+.pagination-spinner-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
 }

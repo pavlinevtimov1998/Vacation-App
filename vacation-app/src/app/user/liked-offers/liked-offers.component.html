@@ -4,7 +4,10 @@
     <article class="title">
       <h1>Your Favourite Offers</h1>
     </article>
-    <div class="liked-offers">
+    <div class="pagination-spinner-container" *ngIf="paginationLoading">
+      <mat-spinner></mat-spinner>
+    </div>
+    <div class="liked-offers" *ngIf="!paginationLoading">
       <ng-container *ngFor="let offer of offers">
         <app-offer-item [offer]="offer"></app-offer-item>
       </ng-container>
@@ -13,5 +16,10 @@
         <a routerLink="/offers">Go and find some!</a>
       </div>
     </div>
+    <app-pagination
+      #pagination
+      (sendCurrentPage)="setCurrentPage($event)"
+      [pages]="pages"
+    ></app-pagination>
   </div>
 </section>
