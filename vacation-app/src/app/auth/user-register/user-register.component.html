@@ -1,7 +1,9 @@
 <section class="register">
   <article class="header-container">
     <h1>Sign up</h1>
-    <p>You already have account? <a routerLink="/auth/user/login">Sign In</a></p>
+    <p>
+      You already have account? <a routerLink="/auth/user/login">Sign In</a>
+    </p>
   </article>
   <div class="form-container">
     <form #registerForm="ngForm" (ngSubmit)="handleUserRegister(registerForm)">
@@ -17,6 +19,7 @@
           #username="ngModel"
           required
           minlength="5"
+          maxlength="35"
         />
         <ng-container *ngIf="username.touched">
           <p *ngIf="username.errors?.['required']" class="error">
@@ -24,6 +27,9 @@
           </p>
           <p *ngIf="username.errors?.['minlength']" class="error">
             Username should be at least 5 characters!
+          </p>
+          <p *ngIf="username.errors?.['maxlength']" class="error">
+            Username should be maximum of 35 characters!
           </p>
         </ng-container>
       </div>
@@ -68,7 +74,10 @@
           <p *ngIf="rePassword.errors?.['required']" class="error">
             Repeat password is required!
           </p>
-          <p *ngIf="rePassword.errors?.['mismatch']" class="error">
+          <p
+            *ngIf="rePassword.errors?.['mismatch'] && !rePassword.errors?.['required']"
+            class="error"
+          >
             Passwords don't match!
           </p>
         </ng-container>
