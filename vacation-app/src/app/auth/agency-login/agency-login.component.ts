@@ -12,6 +12,8 @@ import { AgencyService } from '../../agency/agency.service';
   styleUrls: ['./agency-login.component.css'],
 })
 export class AgencyLoginComponent {
+  isLoading = false;
+
   constructor(
     private agencyService: AgencyService,
     private router: Router,
@@ -28,6 +30,8 @@ export class AgencyLoginComponent {
       password: loginForm.value['password'],
     };
 
+    this.isLoading = true;
+
     this.agencyService.agencyLogin$(body).subscribe({
       next: () => {
         this.messageBus.addMessage({
@@ -35,10 +39,11 @@ export class AgencyLoginComponent {
           type: MessageType.Success,
         });
 
+        loginForm.reset();
         this.router.navigate(['/']);
       },
-      complete: () => {
-        loginForm.reset();
+      error: (err) => {
+        this.isLoading = false;
       },
     });
   }

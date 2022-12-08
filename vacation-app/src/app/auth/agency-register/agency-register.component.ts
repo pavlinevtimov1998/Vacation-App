@@ -12,6 +12,8 @@ import { AgencyService } from '../../agency/agency.service';
   styleUrls: ['./agency-register.component.css'],
 })
 export class AgencyRegisterComponent {
+  isLoading = false;
+  
   constructor(
     private agencyService: AgencyService,
     private router: Router,
@@ -30,16 +32,20 @@ export class AgencyRegisterComponent {
       rePassword: registerForm.value['rePassword'],
     };
 
+    this.isLoading = true;
+
     this.agencyService.agencyRegister$(body).subscribe({
       next: () => {
         this.messageBus.addMessage({
           message: 'Successful register!',
           type: MessageType.Success,
         });
+
+        registerForm.reset();
         this.router.navigate(['/']);
       },
-      complete: () => {
-        registerForm.reset();
+      error: (err) => {
+        this.isLoading = false;
       },
     });
   }

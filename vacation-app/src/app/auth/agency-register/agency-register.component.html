@@ -102,10 +102,11 @@
           </ng-container>
         </div>
       </ng-container>
-      <button class="sign-in-btn" type="submit">
+      <button *ngIf="!isLoading" class="sign-in-btn" type="submit">
         <span>Sign up</span>
         <mat-icon>login</mat-icon>
       </button>
+      <mat-spinner [diameter]="50" *ngIf="isLoading"></mat-spinner>
     </form>
   </div>
 </section>

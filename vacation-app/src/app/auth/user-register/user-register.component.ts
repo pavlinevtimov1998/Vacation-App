@@ -12,6 +12,8 @@ import { UserService } from '../../user/user.service';
   styleUrls: ['./user-register.component.css'],
 })
 export class UserRegisterComponent {
+  isLoading = false;
+
   constructor(
     private userService: UserService,
     private router: Router,
@@ -29,16 +31,20 @@ export class UserRegisterComponent {
       rePassword: registerForm.value['rePassword'],
     };
 
+    this.isLoading = true;
+
     this.userService.userRegister$(body).subscribe({
       next: () => {
         this.messageBus.addMessage({
           message: 'Successful register!',
           type: MessageType.Success,
         });
+
+        registerForm.reset();
         this.router.navigate(['/']);
       },
-      complete: () => {
-        registerForm.reset();
+      error: (err) => {
+        this.isLoading = false;
       },
     });
   }

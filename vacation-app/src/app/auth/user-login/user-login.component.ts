@@ -12,6 +12,8 @@ import { UserService } from '../../user/user.service';
   styleUrls: ['./user-login.component.css'],
 })
 export class UserLoginComponent {
+  isLoading = false;
+
   constructor(
     private userService: UserService,
     private router: Router,
@@ -28,16 +30,20 @@ export class UserLoginComponent {
       password: loginForm.value['password'],
     };
 
+    this.isLoading = true;
+
     this.userService.userLogin$(body).subscribe({
       next: () => {
         this.messageBus.addMessage({
           message: 'Successful login!',
           type: MessageType.Success,
         });
+
+        loginForm.reset();
         this.router.navigate(['/']);
       },
-      complete: () => {
-        loginForm.reset();
+      error: (err) => {
+        this.isLoading = false;
       },
     });
   }
