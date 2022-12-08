@@ -33,7 +33,13 @@ const createOffer = async (body, files) => {
   return Promise.all([Offer.create(body), asyncUnlink(localImages)]);
 };
 
-const booking = (body) => Booking.create(body);
+const booking = (body) =>
+  Promise.all([
+    Booking.create(body),
+    Offer.findByIdAndUpdate(body.offer, {
+      $push: { peopleBooked: body.user },
+    }),
+  ]);
 
 const cancelBooking = (offer, user) =>
   Booking.findOneAndDelete({ offer, user });
