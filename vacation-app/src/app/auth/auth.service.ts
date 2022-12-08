@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   BehaviorSubject,
+  catchError,
   EMPTY,
   map,
   mergeMap,
@@ -65,12 +66,12 @@ export class AuthService {
   }
 
   appInitializer() {
-    this.httpClient
+    return this.httpClient
       .get<IAccount>(`${environment.api}/profile`, {
         withCredentials: true,
       })
-      .subscribe({
-        next: (account) => {
+      .pipe(
+        tap((account) => {
           if (account.agencyName) {
             account.isAgency = true;
           } else {
@@ -78,10 +79,8 @@ export class AuthService {
           }
 
           this.handleLogin(account);
-        },
-        error: (err) => {
-          console.log(err);
-        },
-      });
+        }),
+        catchError((err) => EMPTY)
+      );
   }
 }
