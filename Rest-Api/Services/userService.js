@@ -44,6 +44,3 @@ exports.login = async (body) => {
     return [token, user];
   });
 };
-
-
-

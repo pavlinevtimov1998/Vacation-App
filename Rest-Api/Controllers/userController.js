@@ -19,16 +19,20 @@ userController.post(
   })
 );
 
-userController.post("/login", isGuest(), async (req, res) => {
-  const [token, user] = await userService.login(req.body);
+userController.post(
+  "/login",
+  isGuest(),
+  catchAsyncError(async (req, res) => {
+    const [token, user] = await userService.login(req.body);
 
-  res.cookie(process.env.COOKIE_NAME, token, { httpOnly: true });
+    res.cookie(process.env.COOKIE_NAME, token, { httpOnly: true });
 
-  res.status(200).json({
-    _id: user._id,
-    username: user.username,
-  });
-});
+    res.status(200).json({
+      _id: user._id,
+      username: user.username,
+    });
+  })
+);
 
 userController.get("/logout", isUser(), (req, res) => {
   res.clearCookie(process.env.COOKIE_NAME);
