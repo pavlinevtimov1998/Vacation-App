@@ -39,12 +39,6 @@ const bookingSchema = new mongoose.Schema(
   }
 );
 
-bookingSchema.post("save", async function () {
-  await Offer.findByIdAndUpdate(this.offer, {
-    $push: { peopleBooked: this.user },
-  });
-});
-
 bookingSchema.post("deleteOne", async function () {
   await Offer.findByIdAndUpdate(this.offer, {
     $pull: { peopleBooked: this.user },
