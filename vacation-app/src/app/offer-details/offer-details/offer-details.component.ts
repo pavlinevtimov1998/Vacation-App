@@ -66,9 +66,6 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
 
           this.isLoading = false;
         },
-        error: (err) => {
-          console.error(err);
-        },
       });
   }
 

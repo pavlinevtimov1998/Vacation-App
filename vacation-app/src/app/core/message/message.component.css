@@ -1,0 +1,51 @@
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+}
+
+.success {
+  border-left: 10px solid #4ac161;
+}
+
+.error {
+  border-left: 10px solid #fc5a5c;
+}
+
+.message-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.status {
+  letter-spacing: 0.5px;
+}
+
+.message-container p {
+  color: #9eacad;
+  font-size: 1.1rem;
+}
+
+.icon-container,
+.error-icon-container {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  color: #4ac161;
+}
+
+.error-icon-container {
+  color: #fc5a5c;
+}
+
+.icon-container mat-icon,
+.error-icon-container mat-icon {
+  width: 30px;
+  height: 30px;
+  font-size: 30px;
+}

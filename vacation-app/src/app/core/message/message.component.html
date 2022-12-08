@@ -1,0 +1,19 @@
+<article class="container success" *ngIf="!isError">
+  <div class="icon-container">
+    <mat-icon>check_circle</mat-icon>
+  </div>
+  <div class="message-container">
+    <h1 class="status">Success</h1>
+    <p>{{ message }}</p>
+  </div>
+</article>
+
+<article class="container error" *ngIf="isError">
+  <div class="error-icon-container">
+    <mat-icon>cancel</mat-icon>
+  </div>
+  <div class="message-container">
+    <h1 class="status">Error</h1>
+    <p>{{ message }}</p>
+  </div>
+</article>

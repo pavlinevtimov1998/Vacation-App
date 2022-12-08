@@ -38,9 +38,6 @@ export class WelcomePageComponent implements OnInit, OnDestroy {
         this.topCountries = countries;
         this.isLoading = false;
       },
-      error: (err) => {
-        console.log(err);
-      },
     });
   }
 

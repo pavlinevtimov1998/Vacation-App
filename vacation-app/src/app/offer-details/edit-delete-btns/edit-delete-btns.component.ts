@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { MessageBusService } from 'src/app/message-bus.service';
 
 import { OfferService } from 'src/app/offer/offer.service';
+import { MessageType } from 'src/app/shared/interfaces/message.interface';
 
 @Component({
   selector: 'app-edit-delete-btns',
@@ -13,16 +15,22 @@ export class EditDeleteBtnsComponent {
 
   @Output() loading = new EventEmitter();
 
-  constructor(private offerService: OfferService, private router: Router) {}
+  constructor(
+    private offerService: OfferService,
+    private router: Router,
+    private messageBus: MessageBusService
+  ) {}
 
   deleteHandler(): void {
     this.loading.emit();
     this.offerService.deleteOffer$(this.offerId).subscribe({
       next: () => {
+        this.messageBus.addMessage({
+          message: 'Successfully deleted!',
+          type: MessageType.Success,
+        });
+
         this.router.navigate(['/']);
-      },
-      error: (err) => {
-        console.log(err);
       },
     });
   }

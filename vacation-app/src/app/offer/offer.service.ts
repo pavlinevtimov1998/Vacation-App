@@ -99,7 +99,7 @@ export class OfferService {
     );
   }
 
-  addToFavorites$(
+  addToFavourites$(
     offerId: string
   ): Observable<{ message: string; userId: string }> {
     return this.httpClient.post<{ message: string; userId: string }>(
@@ -109,7 +109,7 @@ export class OfferService {
     );
   }
 
-  removeFromFavorites$(
+  removeFromFavourites$(
     offerId: string
   ): Observable<{ message: string; userId: string }> {
     return this.httpClient.delete<{ message: string; userId: string }>(

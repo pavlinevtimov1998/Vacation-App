@@ -3,9 +3,11 @@ import { Router } from '@angular/router';
 import { combineLatest, map, Observable } from 'rxjs';
 
 import { AuthService } from 'src/app/auth/auth.service';
+import { MessageBusService } from 'src/app/message-bus.service';
 import { OfferService } from 'src/app/offer/offer.service';
 import { IOffer } from 'src/app/shared/interfaces/offer.interface';
 import { IUser } from '../interfaces';
+import { MessageType } from '../interfaces/message.interface';
 
 @Component({
   selector: 'app-offer-item',
@@ -28,7 +30,8 @@ export class OfferItemComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private offerService: OfferService
+    private offerService: OfferService,
+    private messageBus: MessageBusService
   ) {}
 
   routeHandler(event: Event) {
@@ -42,30 +45,34 @@ export class OfferItemComponent {
 
   addToFavorites() {
     this.isLoading = true;
-    this.offerService.addToFavorites$(this.offer._id).subscribe({
+    this.offerService.addToFavourites$(this.offer._id).subscribe({
       next: ({ message, userId }) => {
         this.offer.peopleFavourite.push(userId);
         console.log(message);
 
+        this.messageBus.addMessage({
+          message: 'Successfully added to favourites!',
+          type: MessageType.Success,
+        });
+
         this.isLoading = false;
-      },
-      error: (err) => {
-        console.log(err);
-      },
+      }
     });
   }
 
   removeFromFavorites() {
     this.isLoading = true;
-    this.offerService.removeFromFavorites$(this.offer._id).subscribe({
+    this.offerService.removeFromFavourites$(this.offer._id).subscribe({
       next: ({ message, userId }) => {
         this.offer.peopleFavourite = this.offer.peopleFavourite.filter(
           (id) => id !== userId
         );
+
+        this.messageBus.addMessage({
+          message: 'Successfully removed from favourites!',
+          type: MessageType.Success,
+        });
         this.isLoading = false;
-      },
-      error: (err) => {
-        console.log(err);
       },
     });
   }

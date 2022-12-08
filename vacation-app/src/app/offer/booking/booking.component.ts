@@ -36,9 +36,6 @@ export class BookingComponent implements OnInit {
           this.offer = offer;
           this.isLoading = false;
         },
-        error: (err) => {
-          console.log(err);
-        },
       });
   }
 }

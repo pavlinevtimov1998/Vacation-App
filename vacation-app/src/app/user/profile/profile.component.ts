@@ -28,10 +28,6 @@ export class UserProfileComponent implements OnInit, OnDestroy {
         this.bookings = bookings;
         this.isLoading = false;
       },
-      error: (err) => {
-        console.log(err);
-        this.router.navigate(['/']);
-      },
     });
   }
 

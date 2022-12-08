@@ -1,14 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {
-  AbstractControl,
   FormBuilder,
   FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MessageBusService } from 'src/app/message-bus.service';
 
 import { IOffer } from 'src/app/shared/interfaces';
+import { MessageType } from 'src/app/shared/interfaces/message.interface';
 import {
   startDateValidator,
   endDateValidator,
@@ -47,7 +48,8 @@ export class BookingFormComponent implements OnInit {
   constructor(
     private offerService: OfferService,
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private messageBus: MessageBusService
   ) {}
 
   ngOnInit(): void {
@@ -96,10 +98,15 @@ export class BookingFormComponent implements OnInit {
 
     this.offerService.booking$(body, this.offer._id).subscribe({
       next: () => {
+        this.messageBus.addMessage({
+          message: 'Successful booking!',
+          type: MessageType.Success,
+        });
+
         this.router.navigate(['/user/profile']);
       },
-      error: (err) => {
-        console.log(err);
+      complete: () => {
+        this.bookingForm.reset();
       },
     });
   }

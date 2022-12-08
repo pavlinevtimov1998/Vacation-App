@@ -13,9 +13,11 @@ import {
   Validators,
 } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { MessageBusService } from 'src/app/message-bus.service';
 import { OfferService } from 'src/app/offer/offer.service';
 
 import { IReview } from 'src/app/shared/interfaces';
+import { MessageType } from 'src/app/shared/interfaces/message.interface';
 
 @Component({
   selector: 'app-review',
@@ -37,7 +39,8 @@ export class ReviewComponent implements OnInit, OnDestroy {
 
   constructor(
     private formBuilder: FormBuilder,
-    private offerService: OfferService
+    private offerService: OfferService,
+    private messageBus: MessageBusService
   ) {}
 
   ngOnInit(): void {
@@ -61,7 +64,6 @@ export class ReviewComponent implements OnInit, OnDestroy {
     }
 
     const body = this.reviewForm.value;
-
     this.isLoading = true;
 
     this.subscription = this.offerService
@@ -71,6 +73,11 @@ export class ReviewComponent implements OnInit, OnDestroy {
           this.addedReview.emit(review);
 
           this.reviewForm.reset();
+
+          this.messageBus.addMessage({
+            message: 'Successfully added review!',
+            type: MessageType.Success,
+          });
           this.close.emit();
         },
         error: (err) => {

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { MessageBusService } from 'src/app/message-bus.service';
+import { MessageType } from 'src/app/shared/interfaces/message.interface';
 import { UserService } from '../../user/user.service';
 
 @Component({
@@ -10,7 +12,11 @@ import { UserService } from '../../user/user.service';
   styleUrls: ['./user-register.component.css'],
 })
 export class UserRegisterComponent {
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private messageBus: MessageBusService
+  ) {}
 
   handleUserRegister(registerForm: NgForm) {
     if (registerForm.invalid) {
@@ -25,10 +31,11 @@ export class UserRegisterComponent {
 
     this.userService.userRegister$(body).subscribe({
       next: () => {
+        this.messageBus.addMessage({
+          message: 'Successful register!',
+          type: MessageType.Success,
+        });
         this.router.navigate(['/']);
-      },
-      error: (err) => {
-        console.log(err);
       },
       complete: () => {
         registerForm.reset();

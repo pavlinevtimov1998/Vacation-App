@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { MessageBusService } from 'src/app/message-bus.service';
+import { MessageType } from 'src/app/shared/interfaces/message.interface';
 import { AgencyService } from '../../agency/agency.service';
 
 @Component({
@@ -10,7 +12,11 @@ import { AgencyService } from '../../agency/agency.service';
   styleUrls: ['./agency-login.component.css'],
 })
 export class AgencyLoginComponent {
-  constructor(private agencyService: AgencyService, private router: Router) {}
+  constructor(
+    private agencyService: AgencyService,
+    private router: Router,
+    private messageBus: MessageBusService
+  ) {}
 
   handleAgencyLogin(loginForm: NgForm) {
     if (loginForm.invalid) {
@@ -24,10 +30,12 @@ export class AgencyLoginComponent {
 
     this.agencyService.agencyLogin$(body).subscribe({
       next: () => {
+        this.messageBus.addMessage({
+          message: 'Successful login!',
+          type: MessageType.Success,
+        });
+
         this.router.navigate(['/']);
-      },
-      error: (err) => {
-        console.log(err);
       },
       complete: () => {
         loginForm.reset();

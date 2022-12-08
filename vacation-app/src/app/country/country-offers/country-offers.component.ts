@@ -56,9 +56,6 @@ export class CountryOffersComponent implements OnInit, OnDestroy {
             this.paginationLoading = false;
             this.isLoading = false;
           },
-          error: (err) => {
-            console.log(err);
-          },
         })
     );
   }

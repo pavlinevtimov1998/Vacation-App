@@ -26,9 +26,6 @@ export class CountriesCatalogComponent implements OnInit, OnDestroy {
         this.countries = countries;
         this.isLoading = false;
       },
-      error: (err) => {
-        console.log(err);
-      },
     });
   }
 

@@ -13,7 +13,9 @@ import {
 
 import { environment } from 'src/environments/environment';
 import { AgencyService } from '../agency/agency.service';
+import { MessageBusService } from '../message-bus.service';
 import { IAccount } from '../shared/interfaces/account.interface';
+import { MessageType } from '../shared/interfaces/message.interface';
 import { UserService } from '../user/user.service';
 
 @Injectable({
@@ -29,7 +31,8 @@ export class AuthService {
     private httpClient: HttpClient,
     private agencyService: AgencyService,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private messageBus: MessageBusService
   ) {}
 
   handleLogin(account: IAccount) {
@@ -56,10 +59,11 @@ export class AuthService {
       )
       .subscribe({
         next: (response) => {
-          this.router.navigate(['/']);
-        },
-        error: (err) => {
-          console.log(err);
+          this.messageBus.addMessage({
+            message: 'Successful logout!',
+            type: MessageType.Success,
+          });
+
           this.router.navigate(['/']);
         },
       });

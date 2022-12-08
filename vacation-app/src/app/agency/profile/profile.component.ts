@@ -47,11 +47,7 @@ export class AgencyProfileComponent implements OnInit, OnDestroy {
           this.agencyData = agencyData;
           this.isOwner = this.agencyData._id == this.currentUser?._id;
           this.isLoading = false;
-        },
-        error: (err) => {
-          console.log(err);
-          this.router.navigate(['/']);
-        },
+        }
       });
   }
 

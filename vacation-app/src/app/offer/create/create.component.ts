@@ -9,8 +9,10 @@ import { Router } from '@angular/router';
 import { combineLatest, Subscription } from 'rxjs';
 
 import { CountryService } from 'src/app/country/country.service';
+import { MessageBusService } from 'src/app/message-bus.service';
 import { OfferService } from 'src/app/offer/offer.service';
 import { ICountry } from 'src/app/shared/interfaces/country.interface';
+import { MessageType } from 'src/app/shared/interfaces/message.interface';
 import { IFeature } from 'src/app/shared/interfaces/offer.interface';
 import { errorHandler, imageTypeValidator } from 'src/app/util/form-errors';
 
@@ -36,7 +38,8 @@ export class CreateComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private countryService: CountryService,
     private offerService: OfferService,
-    private router: Router
+    private router: Router,
+    private messageBus: MessageBusService
   ) {}
 
   ngOnInit(): void {
@@ -118,11 +121,14 @@ export class CreateComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     this.offerService.createOffer(formData).subscribe({
       next: (offer) => {
+        this.messageBus.addMessage({
+          message: 'Successfully created!',
+          type: MessageType.Success,
+        });
         this.router.navigate(['/details', offer._id]);
       },
-      error: (err) => {
-        console.error(err);
-        this.router.navigate(['/']);
+      complete: () => {
+        this.createOfferForm.reset();
       },
     });
   }
@@ -137,9 +143,6 @@ export class CreateComponent implements OnInit, OnDestroy {
         this.countries = countries;
 
         this.isLoading = false;
-      },
-      error: (err) => {
-        console.log(err);
       },
     });
   }

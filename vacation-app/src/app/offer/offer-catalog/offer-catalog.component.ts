@@ -88,9 +88,6 @@ export class OfferCatalogComponent implements OnInit, OnDestroy {
           this.isLoading = false;
           this.paginationLoading = false;
         },
-        error: (err) => {
-          console.log(err);
-        },
       });
   }
 

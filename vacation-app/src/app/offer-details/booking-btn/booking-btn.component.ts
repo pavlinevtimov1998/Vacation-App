@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
+
+import { MessageBusService } from 'src/app/message-bus.service';
 import { OfferService } from 'src/app/offer/offer.service';
 import { IOffer, IUser } from 'src/app/shared/interfaces';
+import { MessageType } from 'src/app/shared/interfaces/message.interface';
 
 @Component({
   selector: 'app-booking-btn',
@@ -17,7 +19,10 @@ export class BookingBtnComponent {
 
   isLoading = false;
 
-  constructor(private offerService: OfferService) {}
+  constructor(
+    private offerService: OfferService,
+    private messageBus: MessageBusService
+  ) {}
 
   cancelBooking(): void {
     this.isLoading = true;
@@ -27,11 +32,13 @@ export class BookingBtnComponent {
           (id) => id !== this.currentUser?._id
         );
 
+        this.messageBus.addMessage({
+          message: 'Successful canceled booking!',
+          type: MessageType.Success,
+        });
+
         this.isBooked = false;
         this.isLoading = false;
-      },
-      error: (err) => {
-        console.log(err);
       },
     });
   }

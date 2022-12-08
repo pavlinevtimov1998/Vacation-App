@@ -8,7 +8,7 @@ import { IMessage } from './shared/interfaces/message.interface';
 export class MessageBusService {
   private messageContainer$$ = new Subject<IMessage | undefined>();
 
-  newMessage$ = this.messageContainer$$.asObservable();
+  onNewMessage$ = this.messageContainer$$.asObservable();
 
   constructor() {}
 

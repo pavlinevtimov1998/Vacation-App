@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { mergeMap, Subscription } from 'rxjs';
+import { MessageBusService } from 'src/app/message-bus.service';
 import { IAgency } from 'src/app/shared/interfaces';
+import { MessageType } from 'src/app/shared/interfaces/message.interface';
 import { AgencyService } from '../agency.service';
 
 @Component({
@@ -25,7 +27,8 @@ export class EditProfileComponent implements OnInit {
   constructor(
     private agencyService: AgencyService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private messageBus: MessageBusService
   ) {}
 
   ngOnInit(): void {
@@ -37,6 +40,7 @@ export class EditProfileComponent implements OnInit {
           return this.agencyService.getAgencyProfileData$(this.agencyId);
         })
       )
+
       .subscribe({
         next: (agency) => {
           this.agencyData = agency;
@@ -79,10 +83,11 @@ export class EditProfileComponent implements OnInit {
     this.isLoading = true;
     this.agencyService.editAgencyProfileData$(formData).subscribe({
       next: () => {
+        this.messageBus.addMessage({
+          message: 'Successful register!',
+          type: MessageType.Success,
+        });
         this.router.navigate(['/agency/profile', this.agencyData._id]);
-      },
-      error: (err) => {
-        console.log(err);
       },
     });
   }
