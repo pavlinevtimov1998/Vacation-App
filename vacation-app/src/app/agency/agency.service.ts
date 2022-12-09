@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
+import { IOffer } from '../shared/interfaces';
 import { IAccount, IAgency } from '../shared/interfaces/account.interface';
 
 @Injectable({
@@ -59,6 +60,20 @@ export class AgencyService {
       `${environment.api}/agency/top-agencies`,
       { withCredentials: true }
     );
+  }
+
+  getAgencyOffers$(
+    agencyId: string,
+    skip: number,
+    limit: number
+  ): Observable<{ offers: IOffer[]; agencyName: string; offersCount: number }> {
+    return this.httpClient.get<{
+      offers: IOffer[];
+      agencyName: string;
+      offersCount: number;
+    }>(`${environment.api}/profile/agency/offers/${agencyId}`, {
+      params: { skip, limit },
+    });
   }
 
   logout$(): Observable<{ message: string }> {
