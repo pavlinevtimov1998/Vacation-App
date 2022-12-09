@@ -10,10 +10,17 @@
         </button>
       </form>
     </article>
-    <article class="countries-container">
+    <div class="pagination-spinner-container" *ngIf="paginationLoading">
+      <mat-spinner></mat-spinner>
+    </div>
+    <div class="countries-container" *ngIf="!paginationLoading">
       <ng-container *ngFor="let country of countries">
         <app-country-item [country]="country"></app-country-item>
       </ng-container>
-    </article>
+    </div>
+    <app-pagination
+      [pages]="pages"
+      (sendCurrentPage)="setCurrentPage($event)"
+    ></app-pagination>
   </div>
 </section>

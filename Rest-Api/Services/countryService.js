@@ -1,7 +1,17 @@
 const Country = require("../Models/Country");
 const Offer = require("../Models/Offer");
 
-const getAll = () => Country.find().sort({ name: 1 });
+const getCountries = (skip, limit) =>
+  Promise.all([
+    Country.find()
+      .select("name image")
+      .sort({ name: 1 })
+      .skip(skip)
+      .limit(limit),
+    Country.find().count(),
+  ]);
+
+const getAll = () => Country.find().select("name");
 
 const getCountry = (countryId) =>
   Promise.all([
@@ -16,4 +26,5 @@ module.exports = {
   getCountry,
   getCountryOffers,
   getAll,
+  getCountries,
 };

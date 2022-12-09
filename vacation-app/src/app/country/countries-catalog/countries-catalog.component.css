@@ -6,7 +6,6 @@
   justify-content: center;
   align-items: center;
   padding-top: 5%;
-  padding-bottom: 7%;
 }
 
 .container {
@@ -62,7 +61,15 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  min-height: 65vh;
+}
+
+.pagination-spinner-container {
+  width: 100%;
+  display: flex;
   align-items: center;
+  justify-content: center;
+  min-height: 65vh;
 }
 
 app-country-item {
@@ -70,6 +77,10 @@ app-country-item {
   width: 30%;
   height: 20vw;
   max-height: 420px;
+}
+
+app-pagination {
+  width: 100%;
 }
 
 @media screen and (max-width: 1100px) {
