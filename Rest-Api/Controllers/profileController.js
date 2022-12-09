@@ -60,4 +60,22 @@ profileController.patch(
   })
 );
 
+profileController.get(
+  "/agency/offers/:agencyId",
+  catchAsyncError(async (req, res) => {
+    const agencyId = req.params.agencyId;
+    const { skip, limit } = req.query;
+
+    const [offers, agency, offersCount] = await profileService.getAgencyOffers(
+      agencyId,
+      skip,
+      limit
+    );
+
+    res
+      .status(200)
+      .json({ offers, agencyName: agency.agencyName, offersCount });
+  })
+);
+
 module.exports = profileController;

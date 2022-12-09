@@ -7,6 +7,7 @@ const {
   asyncUnlink,
   deleteCloudinaryImage,
 } = require("../Util/imageUpload");
+const Offer = require("../Models/Offer");
 
 exports.getAccountData = async (agency, user) => {
   if (agency) {
@@ -66,3 +67,13 @@ exports.editAgencyData = async (agencyId, files, body) => {
     return Agency.findByIdAndUpdate(agencyId, body);
   }
 };
+
+exports.getAgencyOffers = (agencyId, skip, limit) =>
+  Promise.all([
+    Offer.find({ agency: agencyId })
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit),
+    Agency.findById(agencyId).select("agencyName"),
+    Offer.find({ agency: agencyId }).count(),
+  ]);

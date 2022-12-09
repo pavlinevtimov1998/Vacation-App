@@ -1,0 +1,23 @@
+<app-spinner *ngIf="isLoading"></app-spinner>
+<section class="wrapper" *ngIf="!isLoading">
+  <div class="container">
+    <article class="title">
+      <h1>Offers from {{ agencyName }}</h1>
+    </article>
+    <div class="agency-offers">
+      <div class="pagination-spinner-container" *ngIf="paginationLoading">
+        <mat-spinner></mat-spinner>
+      </div>
+      <ng-container *ngIf="!paginationLoading">
+        <app-offer-item *ngFor="let offer of offers" [offer]="offer">
+        </app-offer-item>
+      </ng-container>
+      <div></div>
+    </div>
+    <app-pagination
+      *ngIf="offers.length > 0 && pages > 1"
+      [pages]="pages"
+      (sendCurrentPage)="setCurrentPage($event)"
+    ></app-pagination>
+  </div>
+</section>
