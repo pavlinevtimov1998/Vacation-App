@@ -19,11 +19,7 @@
 
 .message-container {
   display: flex;
-  flex-direction: column;
-}
-
-.status {
-  letter-spacing: 0.5px;
+  text-align: center;
 }
 
 .message-container p {

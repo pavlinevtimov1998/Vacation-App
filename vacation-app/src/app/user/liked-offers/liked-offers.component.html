@@ -1,7 +1,7 @@
 <app-spinner *ngIf="isLoading"></app-spinner>
 <section class="wrapper" *ngIf="!isLoading">
   <div class="container">
-    <article class="title">
+    <article class="title" *ngIf="offers.length > 0">
       <h1>Your Favourite Offers</h1>
     </article>
     <div class="pagination-spinner-container" *ngIf="paginationLoading">
@@ -17,7 +17,7 @@
       </div>
     </div>
     <app-pagination
-      #pagination
+      *ngIf="offers.length > 0"
       (sendCurrentPage)="setCurrentPage($event)"
       [pages]="pages"
     ></app-pagination>

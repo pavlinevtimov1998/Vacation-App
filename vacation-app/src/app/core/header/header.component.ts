@@ -52,7 +52,7 @@ export class HeaderComponent implements OnInit {
         this.renderer.setStyle(
           this.messageContainer.nativeElement,
           'right',
-          '60px'
+          '2%'
         );
 
         this.interval = setTimeout(() => {

@@ -190,15 +190,12 @@
 }
 
 .message {
-  width: 25%;
-  max-width: 400px;
-  min-width: 300px;
-  height: 7vh;
-  min-height: 90px;
+  max-width: 280px;
+  min-width: 250px;
   position: fixed;
   z-index: 1000;
-  top: 120px;
-  right: -400px;
+  top: 15%;
+  right: -300px;
   transition: all 1s ease;
 }
 
