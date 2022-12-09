@@ -14,6 +14,7 @@ import { PaginationHelperPipe } from './pagination/pagination-pipe/pagination-he
 import { PaginationComponent } from './pagination/pagination.component';
 import { MatButtonModule } from '@angular/material/button';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { SubstringPipe } from './substring.pipe';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
     PasswordsValidatorDirective,
     PaginationHelperPipe,
     PaginationComponent,
+    SubstringPipe,
   ],
   imports: [
     CommonModule,
@@ -47,6 +49,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
     MatIconModule,
     MatButtonModule,
     MatProgressSpinnerModule,
+    SubstringPipe,
   ],
 })
 export class SharedModule {}
