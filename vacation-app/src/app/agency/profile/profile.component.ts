@@ -66,6 +66,10 @@ export class AgencyProfileComponent implements OnInit, OnDestroy {
     this.renderer.setStyle(hideElement, 'display', 'none');
   }
 
+  goToOffers(): void {
+    this.router.navigate(['/agency/offers', this.agencyData._id]);
+  }
+
   ngOnDestroy(): void {
     this.subscription?.unsubscribe();
   }
