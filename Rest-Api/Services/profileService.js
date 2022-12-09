@@ -16,17 +16,19 @@ exports.getAccountData = async (agency, user) => {
   }
 };
 
-exports.getUserProfile = async (_id) =>
+exports.getUserProfile = async (_id, skip, limit) =>
   Promise.all([
     User.findOne({ _id }).select("-password -__v -updatedAt"),
     Booking.find({ user: _id })
+      .skip(skip)
+      .limit(limit)
       .populate({
         path: "offer",
         select:
           "-rating -ratingQuantity -createdAt -updatedAt -__v -description",
       })
-      .sort({ createdAt: -1 })
-      .limit(3),
+      .sort({ createdAt: -1 }),
+    Booking.find({ user: _id }).count(),
   ]);
 
 exports.getAgencyProfile = (agencyId) =>

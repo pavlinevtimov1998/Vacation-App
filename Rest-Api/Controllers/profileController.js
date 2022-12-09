@@ -22,10 +22,12 @@ profileController.get(
   isUser(),
   catchAsyncError(async (req, res) => {
     const userId = req.user._id;
+    const { skip, limit } = req.query;
 
-    const [profileData, bookings] = await profileService.getUserProfile(userId);
+    const [profileData, bookings, bookingsCount] =
+      await profileService.getUserProfile(userId, skip, limit);
 
-    res.status(200).json({ profileData, bookings });
+    res.status(200).json({ profileData, bookings, bookingsCount });
   })
 );
 

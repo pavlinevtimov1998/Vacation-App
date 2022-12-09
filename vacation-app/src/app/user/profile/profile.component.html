@@ -24,16 +24,26 @@
         </div>
         <div class="sign-up-date">
           <p>Sign up date:</p>
-          <span>{{ profileData.createdAt | date: "longDate" }}</span>
+          <span>{{ profileData.createdAt | date : "longDate" }}</span>
         </div>
       </div>
       <div class="img-container">
         <img src="/assets/img/default-user.png" [alt]="profileData.username" />
       </div>
     </article>
+    <div class="pagination-spinner-container" *ngIf="paginationLoading">
+      <mat-spinner></mat-spinner>
+    </div>
     <app-booked-vacations
+      *ngIf="!paginationLoading"
       [bookings]="bookings"
       [profileData]="profileData"
     ></app-booked-vacations>
+    <div></div>
+    <app-pagination
+      *ngIf="bookings.length > 0"
+      (sendCurrentPage)="setCurrentPage($event)"
+      [pages]="pages"
+    ></app-pagination>
   </div>
 </section>

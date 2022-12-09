@@ -40,14 +40,22 @@ export class UserService {
     );
   }
 
-  getUserProfileData$(): Observable<{
+  getUserProfileData$(
+    skip: number,
+    limit: number
+  ): Observable<{
     profileData: IUser;
     bookings: IBooking[];
+    bookingsCount: number;
   }> {
-    return this.httpClient.get<{ profileData: IUser; bookings: IBooking[] }>(
-      `${environment.api}/profile/user`,
-      { withCredentials: true }
-    );
+    return this.httpClient.get<{
+      profileData: IUser;
+      bookings: IBooking[];
+      bookingsCount: number;
+    }>(`${environment.api}/profile/user`, {
+      withCredentials: true,
+      params: { skip, limit },
+    });
   }
 
   getUserFavouritesOffers$(
