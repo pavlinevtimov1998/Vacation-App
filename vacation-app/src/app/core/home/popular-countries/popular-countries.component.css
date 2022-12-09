@@ -60,20 +60,19 @@ app-country-item {
 
   app-country-item {
     width: 80%;
-    height: 60vh;
+    height: 70vw;
   }
 }
 
 @media screen and (max-width: 700px) {
   app-country-item {
     width: 90%;
-    height: 50vh;
+    height: 75vw;
   }
 }
 
 @media screen and (max-width: 500px) {
   app-country-item {
-    height: 35vh;
+    height: 80vw;
   }
 }
-

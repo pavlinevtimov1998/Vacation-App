@@ -33,6 +33,7 @@
   color: #fff;
   display: flex;
   align-items: center;
+  justify-content: center;
   transition: all 0.3s ease;
 }
 
@@ -42,9 +43,9 @@
 }
 
 .btn-search mat-icon {
-  overflow: unset;
-  font-size: 32px;
-  margin: 0 0 10% 22%;
+  width: 30px;
+  height: 30px;
+  font-size: 30px;
 }
 
 .flex {
@@ -54,5 +55,11 @@
 @media screen and (max-width: 900px) {
   .title {
     font-size: 2.3em;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .btn-search {
+    width: 25%;
   }
 }
