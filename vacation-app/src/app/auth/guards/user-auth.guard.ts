@@ -25,8 +25,8 @@ export class UserAuthGuard implements CanActivate {
     | boolean
     | UrlTree {
     return this.authService.currentUser$.pipe(
-      map((user) => {
-        if (user && !user?.isAgency) {
+      map((account) => {
+        if (account && !account?.isAgency) {
           return true;
         }
 

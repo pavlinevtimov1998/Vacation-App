@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { MessageBusService } from 'src/app/message-bus.service';
 
 import { OfferService } from 'src/app/offer/offer.service';
-import { IOffer, IReview, IUser } from 'src/app/shared/interfaces';
+import { IOffer, IComment, IUser } from 'src/app/shared/interfaces';
 import { MessageType } from 'src/app/shared/interfaces/message.interface';
 
 @Component({
@@ -17,11 +17,11 @@ export class UserActionBtnsComponent {
   @Input() currentUser!: IUser;
   @Input() isLiked!: boolean;
 
-  @Output() addedReview = new EventEmitter<IReview>();
+  @Output() addedComment = new EventEmitter<IComment>();
 
   isLoading = false;
 
-  isOpenReviewContainer = false;
+  isOpenCommentContainer = false;
 
   subscription!: Subscription;
 
@@ -77,15 +77,15 @@ export class UserActionBtnsComponent {
       });
   }
 
-  addedReviewHandler(review: IReview): void {
-    this.addedReview.emit(review);
+  addedCommentHandler(comment: IComment): void {
+    this.addedComment.emit(comment);
   }
 
-  openReviewWindow(): void {
-    this.isOpenReviewContainer = true;
+  openCommentWindow(): void {
+    this.isOpenCommentContainer = true;
   }
 
-  closeReviewContainer(): void {
-    this.isOpenReviewContainer = false;
+  closeCommentContainer(): void {
+    this.isOpenCommentContainer = false;
   }
 }

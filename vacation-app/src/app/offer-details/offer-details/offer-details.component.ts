@@ -4,7 +4,7 @@ import { combineLatest, mergeMap, Subscription } from 'rxjs';
 
 import { AuthService } from 'src/app/auth/auth.service';
 import { OfferService } from 'src/app/offer/offer.service';
-import { IOffer, IAccount, IReview } from 'src/app/shared/interfaces';
+import { IOffer, IAccount, IComment, IUser } from 'src/app/shared/interfaces';
 
 @Component({
   selector: 'app-offer-details',
@@ -49,14 +49,14 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
 
           return combineLatest([
             this.offerService.getOne$(this.offerId),
-            this.offerService.getOfferReviews$(this.offerId),
+            this.offerService.getOfferComments$(this.offerId),
           ]);
         })
       )
       .subscribe({
-        next: ([offer, reviews]) => {
+        next: ([offer, comments]) => {
           this.offer = offer;
-          this.offer.reviews = reviews;
+          this.offer.comments = comments;
           this.agencyName = offer.agency.agencyName;
           this.isBooked = !!offer.peopleBooked.find(
             (id) => id == this.currentUser?._id
@@ -73,12 +73,16 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
       });
   }
 
-  addedReviewHandler(review: IReview): void {
-    this.offer.reviews = this.offer.reviews.filter(
-      (r) => r.user._id != review.user._id
+  addedCommentHandler(comment: IComment): void {
+    if (!comment.user?.username) {
+      comment.user = this.currentUser as IUser;
+    }
+
+    this.offer.comments = this.offer.comments.filter(
+      (r) => r.user._id != comment.user._id
     );
 
-    this.offer.reviews.push(review);
+    this.offer.comments.push(comment);
   }
 
   moreOffersFromAgency(): IOffer[] {

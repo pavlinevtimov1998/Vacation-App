@@ -25,7 +25,7 @@ export class AgencyAuthGuard implements CanActivate {
       
     return this.authService.currentUser$.pipe(
       map((account) => {
-        if (account?.isAgency) {
+        if (account && account?.isAgency) {
           return true;
         }
 

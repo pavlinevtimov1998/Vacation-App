@@ -1,23 +1,23 @@
 <div class="actions">
   <section
-    #reviewContainer
-    class="review-container"
-    *ngIf="isOpenReviewContainer"
+    #commentContainer
+    class="comment-container"
+    *ngIf="isOpenCommentContainer"
   >
-    <app-review
-      (addedReview)="addedReviewHandler($event)"
-      (close)="closeReviewContainer()"
+    <app-comment
+      (addedComment)="addedCommentHandler($event)"
+      (close)="closeCommentContainer()"
       [offerId]="offer._id"
-    ></app-review>
+    ></app-comment>
   </section>
   <button
-    class="rate"
+    class="comment"
     mat-icon-button
-    title="Rate this Offer"
+    title="Add comment"
     type="button"
-    (click)="openReviewWindow()"
+    (click)="openCommentWindow()"
   >
-    <mat-icon>rate_review</mat-icon>
+    <mat-icon>comment</mat-icon>
   </button>
   <button
     *ngIf="!isLiked && !isLoading"

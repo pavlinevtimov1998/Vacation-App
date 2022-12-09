@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Agency = require("./Agency");
 const Booking = require("./Booking");
-const Review = require("./Review");
+const Review = require("./Comment");
 const Country = require("./Country");
 
 const offerSchema = new mongoose.Schema(
@@ -37,16 +37,6 @@ const offerSchema = new mongoose.Schema(
     images: {
       type: [String],
       required: [true, "At least one image is required!"],
-    },
-    ratingsQuantity: {
-      type: Number,
-      default: 0,
-    },
-    rating: {
-      type: Number,
-      default: 3.5,
-      min: 1,
-      max: 5,
     },
     features: [
       {

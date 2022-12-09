@@ -1,0 +1,15 @@
+<section class="comment-list">
+  <h1 class="no-comments" *ngIf="comments.length == 0">No comments yet...</h1>
+  <div class="container" [ngClass]="{ start: comments.length < 3 }">
+    <article class="comment" *ngFor="let comment of comments">
+      <div class="comment-header">
+        <div class="user-rating">
+          <h1>{{ comment.user.username }}</h1>
+          <p>{{ comment.createdAt | date : "shortDate" }}</p>
+        </div>
+        <div class="line"></div>
+      </div>
+      <p>{{ comment.content }}</p>
+    </article>
+  </div>
+</section>

@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
 
-const Offer = require("./Offer");
-
 const bookingSchema = new mongoose.Schema(
   {
     user: {
@@ -38,12 +36,6 @@ const bookingSchema = new mongoose.Schema(
     },
   }
 );
-
-bookingSchema.post("deleteOne", async function () {
-  await Offer.findByIdAndUpdate(this.offer, {
-    $pull: { peopleBooked: this.user },
-  });
-});
 
 const Booking = mongoose.model("Booking", bookingSchema);
 

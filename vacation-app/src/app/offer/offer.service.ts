@@ -8,7 +8,7 @@ import { IBooking } from '../shared/interfaces/booking.interface';
 import {
   IFeature,
   IOffer,
-  IReview,
+  IComment,
 } from '../shared/interfaces/offer.interface';
 
 @Injectable({
@@ -46,9 +46,9 @@ export class OfferService {
     });
   }
 
-  getOfferReviews$(offerId: string): Observable<IReview[]> {
-    return this.httpClient.get<IReview[]>(
-      `${environment.api}/reviews/${offerId}`,
+  getOfferComments$(offerId: string): Observable<IComment[]> {
+    return this.httpClient.get<IComment[]>(
+      `${environment.api}/comments/${offerId}`,
       {
         withCredentials: true,
       }
@@ -62,15 +62,15 @@ export class OfferService {
     );
   }
 
-  addReview$(
+  addComment$(
     body: {
       rating: number;
       content: string;
     },
     offerId: string
-  ): Observable<IReview> {
-    return this.httpClient.post<IReview>(
-      `${environment.api}/reviews/${offerId}`,
+  ): Observable<IComment> {
+    return this.httpClient.post<IComment>(
+      `${environment.api}/comments/${offerId}`,
       body,
       { withCredentials: true }
     );

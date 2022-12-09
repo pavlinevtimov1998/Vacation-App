@@ -86,7 +86,7 @@ offerController.delete(
     const offerId = req.params.offerId;
     const userId = req.user._id;
 
-    const result = await offerService.cancelBooking(offerId, userId);
+    await offerService.cancelBooking(offerId, userId);
 
     res.status(204).json();
   })

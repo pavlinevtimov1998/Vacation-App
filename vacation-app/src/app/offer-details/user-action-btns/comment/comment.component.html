@@ -1,0 +1,35 @@
+<app-spinner *ngIf="isLoading"></app-spinner>
+<section class="container" *ngIf="!isLoading">
+  <h1 class="title">Add Comment</h1>
+  <div class="close-btn" (click)="closeCommentContainer()">
+    <mat-icon>close</mat-icon>
+  </div>
+  <form class="form" [formGroup]="commentForm" (ngSubmit)="commentHandler()">
+    <div>
+      <textarea
+        name="comment"
+        placeholder="Write you comment here..."
+        cols="30"
+        rows="10"
+        formControlName="content"
+      ></textarea>
+      <ng-container
+        *ngIf="
+          commentForm.controls['content'].touched &&
+          commentForm.controls['content'].invalid
+        "
+      >
+        <p
+          class="error"
+          *ngIf="commentForm.controls['content'].errors?.['required']"
+        >
+          Comment is required!
+        </p>
+      </ng-container>
+    </div>
+    <button type="submit">
+      <mat-icon>send</mat-icon>
+      <span>Send</span>
+    </button>
+  </form>
+</section>

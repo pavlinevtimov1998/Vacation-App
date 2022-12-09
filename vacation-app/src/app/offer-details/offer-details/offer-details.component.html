@@ -18,7 +18,7 @@
             <h3>From: {{ agencyName }}</h3>
             <app-user-action-btns
               *ngIf="(isLogged$ | async) && !currentUser?.isAgency"
-              (addedReview)="addedReviewHandler($event)"
+              (addedComment)="addedCommentHandler($event)"
               [offer]="offer"
               [isLiked]="isLiked"
             >
@@ -59,7 +59,7 @@
       </div>
     </div>
   </section>
-  <app-offer-reviews [reviews]="offer.reviews"></app-offer-reviews>
+  <app-offer-comments [comments]="offer.comments"></app-offer-comments>
   <section class="more-offers" *ngIf="!currentUser?.isAgency">
     <app-more-offers
       [moreOffersFromAgency]="moreOffersFromAgency()"

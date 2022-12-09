@@ -7,7 +7,7 @@ const welcomeController = require("./Controllers/welcomeController");
 const agencyController = require("./Controllers/agencyController");
 const profileController = require("./Controllers/profileController");
 const featureController = require("./Controllers/featureController");
-const reviewController = require("./Controllers/reviewController");
+const commentController = require("./Controllers/commentController");
 const favoritesController = require("./Controllers/favoritesController");
 
 const { globalErrorHandler } = require("./Middlewares/globallErrHandler");
@@ -18,7 +18,7 @@ router.use("/agency", agencyController);
 router.use("/profile", profileController);
 router.use("/countries", countryController);
 router.use("/offers", offerController);
-router.use("/reviews", reviewController);
+router.use("/comments", commentController);
 router.use("/features", featureController);
 router.use("/favourites", favoritesController);
 

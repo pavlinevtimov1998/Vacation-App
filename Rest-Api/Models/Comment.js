@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const reviewSchema = new mongoose.Schema(
+const commentSchema = new mongoose.Schema(
   {
     user: {
       type: mongoose.Types.ObjectId,
@@ -9,12 +9,6 @@ const reviewSchema = new mongoose.Schema(
     offer: {
       type: mongoose.Types.ObjectId,
       ref: "Offer",
-    },
-    rating: {
-      type: Number,
-      required: true,
-      min: 1,
-      max: 5,
     },
     content: {
       type: String,
@@ -26,6 +20,6 @@ const reviewSchema = new mongoose.Schema(
   }
 );
 
-const Review = mongoose.model("Review", reviewSchema);
+const Comment = mongoose.model("Comment", commentSchema);
 
-module.exports = Review;
+module.exports = Comment;

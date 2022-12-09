@@ -13,6 +13,7 @@ const agencySchema = new mongoose.Schema(
     email: {
       type: String,
       trim: true,
+      unique: true,
       required: [true, "Email is required!"],
       minLength: [10, "Email should be at least 10 characters!"],
       maxLength: [30, "Email should be max 30 characters!"],
@@ -48,14 +49,6 @@ const agencySchema = new mongoose.Schema(
       minLength: [4, "Password should be at least 4 characters!"],
       maxLength: [20, "Password should be max 20 characters!"],
       required: [true, "Password is required!"],
-    },
-    ratingQuantity: {
-      type: Number,
-      default: 0,
-    },
-    rating: {
-      type: Number,
-      default: 3.5,
     },
     offers: [
       {

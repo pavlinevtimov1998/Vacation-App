@@ -13,17 +13,17 @@ export interface IOffer {
   rating: string;
   peopleBooked: string[];
   features: string[];
-  reviews: IReview[];
+  comments: IComment[];
   peopleFavourite: string[];
   agency: IAgency;
   createdAt: string;
 }
 
-export interface IReview {
+export interface IComment {
   user: IUser;
   offer: string;
   content: string;
-  rating: number;
+  createdAt: string;
 }
 
 export interface IFeature {
