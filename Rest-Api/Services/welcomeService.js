@@ -1,14 +1,16 @@
 const Country = require("../Models/Country");
 const Offer = require("../Models/Offer");
+const { options } = require("../router");
 
 const topOffers = () =>
   Offer.find()
-    .sort({ rating: -1 })
+    .sort({ peopleBooked: -1 })
     .limit(5)
-    .select(
-      "-town -country -description -ratingsQuantity -updatedAt -createdAt -__v"
-    )
-    .populate("agency", "-password -email -updatedAt -createdAt -__v");
+    .select("agency images -country")
+    .populate({
+      path: "agency",
+      select: "agencyName offers image",
+    });
 
 const TopCountries = () => Country.find().sort({ rating: -1 }).limit(3);
 
