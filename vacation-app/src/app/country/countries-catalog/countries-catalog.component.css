@@ -60,7 +60,7 @@
   width: 90%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   min-height: 65vh;
 }
 
@@ -73,10 +73,10 @@
 }
 
 app-country-item {
-  margin-top: 5%;
   width: 30%;
-  height: 20vw;
+  height: 26vh;
   max-height: 420px;
+  margin-top: 3%;
 }
 
 app-pagination {
@@ -113,6 +113,7 @@ app-pagination {
 
   .countries-container {
     justify-content: center;
+    padding-top: 3%;
   }
 
   app-country-item {
