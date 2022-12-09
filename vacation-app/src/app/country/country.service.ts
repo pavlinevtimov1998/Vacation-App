@@ -12,10 +12,20 @@ import { ICountry } from '../shared/interfaces/country.interface';
 export class CountryService {
   constructor(private httpClient: HttpClient) {}
 
-  getAllCountries$(): Observable<ICountry[]> {
-    return this.httpClient.get<ICountry[]>(`${environment.api}/countries`, {
-      withCredentials: true,
+  getCountries$(
+    skip: number,
+    limit: number
+  ): Observable<{ countries: ICountry[]; countriesCount: number }> {
+    return this.httpClient.get<{
+      countries: ICountry[];
+      countriesCount: number;
+    }>(`${environment.api}/countries`, {
+      params: { skip, limit },
     });
+  }
+
+  getAllCountries$(): Observable<ICountry[]> {
+    return this.httpClient.get<ICountry[]>(`${environment.api}/countries/all`);
   }
 
   getCountry$(
