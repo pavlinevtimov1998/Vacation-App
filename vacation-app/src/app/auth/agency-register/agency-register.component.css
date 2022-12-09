@@ -75,6 +75,8 @@
 
 .sign-in-btn {
   width: 25%;
+  min-width: 150px;
+  max-width: 200px;
   color: #fff;
   background-color: #3f51b5;
   display: flex;
@@ -106,8 +108,11 @@
   padding-left: 5px;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1000px) {
   .header-container {
+    width: 80%;
+  }
+  .form-container {
     width: 80%;
   }
 }
@@ -115,5 +120,25 @@
 @media screen and (max-width: 600px) {
   .header-container {
     width: 95%;
+  }
+
+  .form-container {
+    width: 95%;
+  }
+
+  .email,
+  .agency-name,
+  .password,
+  .re-pass {
+    width: 65%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .email,
+  .agency-name,
+  .password,
+  .re-pass {
+    width: 80%;
   }
 }

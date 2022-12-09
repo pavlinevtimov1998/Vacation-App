@@ -11,7 +11,16 @@
         ><span>Quality assurance and raud protection!</span>
       </p>
     </div>
-    <a class="sign-btn" routerLink="/auth/user/register">
+    <ng-container *ngIf="auth">
+      <div class="btns">
+        <a class="btn" routerLink="/auth/user/login">
+          <span>Sign In</span><mat-icon>login</mat-icon> </a
+        ><a class="btn" routerLink="/auth/user/register">
+          <span>Sign Up</span><mat-icon>login</mat-icon>
+        </a>
+      </div>
+    </ng-container>
+    <a *ngIf="!auth" class="sign-btn" routerLink="/auth">
       <span>Sign Up and find the best offers!</span><mat-icon>login</mat-icon>
     </a>
   </article>
@@ -25,7 +34,16 @@
         <mat-icon>check</mat-icon><span>Thousands of searching people!</span>
       </p>
     </div>
-    <a class="sign-btn" routerLink="/auth/agency/register">
+    <ng-container *ngIf="auth">
+      <div class="btns">
+        <a class="btn" routerLink="/auth/agency/login">
+          <span>Sign In</span><mat-icon>login</mat-icon> </a
+        ><a class="btn" routerLink="/auth/agency/register">
+          <span>Sign Up</span><mat-icon>login</mat-icon>
+        </a>
+      </div>
+    </ng-container>
+    <a *ngIf="!auth" class="sign-btn" routerLink="/auth">
       <span>Sign Up and grow exponentially!</span>
       <mat-icon>login</mat-icon>
     </a>

@@ -11,6 +11,7 @@
 .row {
   width: 12%;
   min-width: 100px;
+  max-width: 150px;
   background-color: #0d47a1;
   padding: 8px 0;
   border-radius: 4px;
