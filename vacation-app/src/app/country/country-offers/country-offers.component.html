@@ -20,12 +20,18 @@
     <div class="pagination-spinner" *ngIf="paginationLoading">
       <mat-spinner></mat-spinner>
     </div>
-    <div class="offers-container" *ngIf="!paginationLoading">
+    <div
+      class="offers-container"
+      [ngClass]="{ 'no-offers': offers.length == 0 }"
+      *ngIf="!paginationLoading"
+    >
+      <h1 *ngIf="offers.length == 0" class="no-results">No Results...</h1>
       <ng-container *ngFor="let offer of offers">
         <app-offer-item [offer]="offer"></app-offer-item>
       </ng-container>
     </div>
     <app-pagination
+      *ngIf="offers.length > 0 && pages > 1"
       [pages]="pages"
       (sendCurrentPage)="setCurrentPage($event)"
     ></app-pagination>
