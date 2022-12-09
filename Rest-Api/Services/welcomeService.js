@@ -1,6 +1,5 @@
 const Country = require("../Models/Country");
 const Offer = require("../Models/Offer");
-const { options } = require("../router");
 
 const topOffers = () =>
   Offer.find()
