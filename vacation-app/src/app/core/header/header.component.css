@@ -184,6 +184,10 @@
   gap: 10px;
 }
 
+.mob-profile h1 {
+  text-align: center;
+}
+
 .mob-profile img {
   width: 80px;
   border-radius: 50%;

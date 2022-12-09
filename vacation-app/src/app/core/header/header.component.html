@@ -58,7 +58,16 @@
     <mat-icon>close</mat-icon>
   </button>
   <div *ngIf="isLogged$ | async" class="mob-profile">
-    <img src="/assets/img/default-user.png" alt="" />
+    <img
+      *ngIf="!(currentUser$ | async)?.image"
+      src="/assets/img/default-user.png"
+      alt="profile-photo"
+    />
+    <img
+      *ngIf="(currentUser$ | async)?.image"
+      [src]="(currentUser$ | async)?.image"
+      alt="profile-photo"
+    />
     <h1 *ngIf="(currentUser$ | async)?.isAgency">
       Hello, {{ (currentUser$ | async)?.agencyName }}
     </h1>

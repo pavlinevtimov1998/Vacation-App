@@ -1,14 +1,17 @@
-<ul class="mobile-links">
+<div class="mobile-links">
   <ul>
-    <ng-container *ngIf="isLogged$ | async">
+    <li *ngIf="!(isLogged$ | async)">
+      <a routerLink="/auth">
+        <span>Sign Up</span>
+        <mat-icon>login</mat-icon>
+      </a>
+    </li>
+    <ng-container
+      *ngIf="(isLogged$ | async) && !(currentUser$ | async)?.isAgency"
+    >
       <li *ngIf="!(currentUser$ | async)?.isAgency">
         <a routerLink="/user/profile"
-          ><span>Profile</span> <mat-icon>person</mat-icon></a
-        >
-      </li>
-      <li *ngIf="(currentUser$ | async)?.isAgency">
-        <a [routerLink]="['/agency/profile', (currentUser$ | async)?._id]"
-          ><span>Profile</span> <mat-icon>person</mat-icon></a
+          ><span>Profile</span> <mat-icon>account_circle</mat-icon></a
         >
       </li>
       <li>
@@ -18,22 +21,35 @@
         </a>
       </li>
     </ng-container>
-    <li *ngIf="(currentUser$ | async)?.isAgency">
-      <a routerLink="/offer/create"
-        ><span>Add new offer</span>
-        <mat-icon>create</mat-icon>
-      </a>
-    </li>
-    <li *ngIf="!(isLogged$ | async)">
-      <a routerLink="'/user/register">
-        <span>Sign Up</span>
-        <mat-icon>login</mat-icon>
-      </a>
-    </li>
+    <ng-container *ngIf="(currentUser$ | async)?.isAgency">
+      <li>
+        <a [routerLink]="['/agency/profile', (currentUser$ | async)?._id]"
+          ><span>Profile</span> <mat-icon>account_circle</mat-icon></a
+        >
+      </li>
+      <li>
+        <a routerLink="/create-offer"
+          ><span>Add New Offer</span>
+          <mat-icon>create</mat-icon>
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/agency/offers', (currentUser$ | async)?._id]"
+          ><span>Added Offers</span>
+          <mat-icon>attractions</mat-icon>
+        </a>
+      </li>
+    </ng-container>
     <li>
       <a routerLink="/countries">
         <span>Countries</span>
         <mat-icon>map</mat-icon>
+      </a>
+    </li>
+    <li>
+      <a routerLink="/offers">
+        <span>All Offers</span>
+        <mat-icon>attractions</mat-icon>
       </a>
     </li>
     <li>
@@ -54,4 +70,4 @@
       >
     </li>
   </ul>
-</ul>
+</div>
