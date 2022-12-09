@@ -18,12 +18,18 @@ export class PaginationComponent {
     if (this.currentPage > 1) {
       this.currentPage--;
       this.sendCurrentPage.emit(this.currentPage);
+    } else {
+      this.currentPage = this.pages;
+      this.sendCurrentPage.emit(this.currentPage);
     }
   }
 
   nextPage() {
     if (this.currentPage < this.pages) {
       this.currentPage++;
+      this.sendCurrentPage.emit(this.currentPage);
+    } else {
+      this.currentPage = 1;
       this.sendCurrentPage.emit(this.currentPage);
     }
   }
