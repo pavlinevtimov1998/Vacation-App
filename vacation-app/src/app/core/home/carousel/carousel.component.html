@@ -8,10 +8,19 @@
       >
         <img [src]="offer.images[0]" [alt]="offer.title" class="fade" />
         <div class="agency">
-          <a href="">
-            <img src="/assets/img/default-user.png" alt="default" />
-            <h3>Agency</h3>
-            <p>5 Offers</p>
+          <a [routerLink]="['/agency/profile', offer.agency._id]">
+            <img
+              *ngIf="offer.agency.image"
+              [src]="offer.agency.image"
+              [alt]="offer.agency.agencyName"
+            />
+            <img
+              *ngIf="!offer.agency.image"
+              src="/assets/img/default-user.png"
+              [alt]="offer.agency.agencyName"
+            />
+            <h3>{{ offer.agency.agencyName | substring : 25 }}</h3>
+            <p>{{ offer.agency.offers.length }} Offers</p>
           </a>
         </div>
       </div>

@@ -11,7 +11,7 @@ export class CarouselComponent implements OnInit, OnDestroy {
   @Input() carouselData!: IOffer[];
 
   selectedIndex = 0;
-  interval: any;
+  interval!: NodeJS.Timer;
 
   constructor() {}
 
