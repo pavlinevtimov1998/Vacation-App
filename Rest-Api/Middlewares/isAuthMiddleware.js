@@ -1,4 +1,3 @@
-const { catchAsyncError } = require("../Util/errorParser");
 const { verifyToken } = require("../util/jwtConfig");
 
 exports.isAuth = async (req, res, next) => {
