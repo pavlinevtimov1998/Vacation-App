@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, switchMap } from 'rxjs';
-import { IOffer } from 'src/app/shared/interfaces';
+import { IAgency, IOffer } from 'src/app/shared/interfaces';
 import { AgencyService } from '../agency.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { AgencyService } from '../agency.service';
 })
 export class AgencyOffersComponent implements OnInit {
   offers!: IOffer[];
-  agencyName!: string;
+  agency!: IAgency;
 
   pages = 1;
   currentPage = 1;
@@ -60,11 +60,10 @@ export class AgencyOffersComponent implements OnInit {
         })
       )
       .subscribe({
-        next: ({ offers, agencyName, offersCount }) => {
+        next: ({ offers, agency, offersCount }) => {
           this.pages = Math.ceil(offersCount / this.limit);
-          console.log(offersCount);
 
-          this.agencyName = agencyName;
+          this.agency = agency;
           this.offers = offers;
 
           this.isLoading = false;
