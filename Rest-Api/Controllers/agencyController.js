@@ -21,6 +21,7 @@ agencyController.post(
   })
 );
 
+
 agencyController.post(
   "/login",
   isGuest(),
@@ -38,7 +39,7 @@ agencyController.post(
   })
 );
 
-agencyController.get("/logout", isAgency(), (req, res) => {
+agencyController.post("/logout", isAgency(), (req, res) => {
   res.clearCookie(process.env.COOKIE_NAME);
   res.status(200).json({ message: "Successfull logout!" });
 });

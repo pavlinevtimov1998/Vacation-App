@@ -34,7 +34,7 @@ userController.post(
   })
 );
 
-userController.get("/logout", isUser(), (req, res) => {
+userController.post("/logout", isUser(), (req, res) => {
   res.clearCookie(process.env.COOKIE_NAME);
   res.status(200).json({ message: "Successfull logout!" });
 });
