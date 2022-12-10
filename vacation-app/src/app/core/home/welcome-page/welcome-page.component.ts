@@ -36,8 +36,6 @@ export class WelcomePageComponent implements OnInit, OnDestroy {
       this.welcomeService.getTopCountries$(),
     ]).subscribe({
       next: ([carouselData, countries]) => {
-        console.log(carouselData);
-                
         this.carouselData = carouselData;
         this.topCountries = countries;
         this.isLoading = false;

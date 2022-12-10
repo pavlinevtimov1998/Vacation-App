@@ -12,7 +12,6 @@ export interface IAgency {
   country: string;
   town: string;
   image: string;
-  rating: number;
   description: string;
 }
 

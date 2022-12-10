@@ -10,15 +10,10 @@
         <div class="agency">
           <a [routerLink]="['/agency/profile', offer.agency._id]">
             <img
-              *ngIf="offer.agency.image"
-              [src]="offer.agency.image"
+              [src]="offer.agency.image || '/assets/img/agency-default.png'"
               [alt]="offer.agency.agencyName"
             />
-            <img
-              *ngIf="!offer.agency.image"
-              src="/assets/img/default-user.png"
-              [alt]="offer.agency.agencyName"
-            />
+
             <h3>{{ offer.agency.agencyName | substring : 25 }}</h3>
             <p>{{ offer.agency.offers.length }} Offers</p>
           </a>

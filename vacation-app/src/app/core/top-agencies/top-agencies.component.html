@@ -11,10 +11,7 @@
           <div class="img-container">
             <img
               class="img"
-              [src]="
-                agency.image ||
-                'https://res.cloudinary.com/dlw7pmlvx/image/upload/v1668376214/cld-sample.jpg'
-              "
+              [src]="agency.image || '/assets/img/agency-default.png'"
               [alt]="agency.agencyName"
             />
           </div>
@@ -31,7 +28,7 @@
               </p>
             </div>
             <p class="description">
-              Company description: {{ agency.description || "Not added..." }}
+              {{ agency.description }}
             </p>
           </div>
         </a>

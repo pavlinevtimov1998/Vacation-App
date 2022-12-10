@@ -119,27 +119,48 @@
     width: 95%;
   }
   .agency-info {
-    height: 35vh;
-    justify-content: start;
+    flex-direction: column;
+    justify-content: unset;
+    height: unset;
+    padding: 20px 0;
+    width: 80%;
   }
 
   .img-container {
-    display: none;
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+  }
+
+  .img {
+    border-radius: inherit;
   }
 
   .contacts {
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .info {
+    padding: unset;
+    align-items: center;
+    text-align: center;
+    width: 100%;
   }
 }
 
 @media screen and (max-width: 700px) {
   .header {
-    width: 60%;
+    width: 80%;
+  }
+
+  .agency-info {
+    width: 88%;
   }
 }
 
 @media screen and (max-width: 500px) {
-  .description {
-    display: none;
+  .agency-info {
+    width: 95%;
   }
 }
