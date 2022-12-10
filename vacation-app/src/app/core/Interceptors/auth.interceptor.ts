@@ -25,12 +25,6 @@ export class AuthInterceptor implements HttpInterceptor {
           if (event.url?.endsWith('login') || event.url?.endsWith('register')) {
             const account = event.body as IAccount;
 
-            if (account?.agencyName) {
-              account.isAgency = true;
-            } else {
-              account.isAgency = false;
-            }
-
             this.authService.handleLogin(account);
           } else if (event.url?.endsWith('logout')) {
             this.authService.handleLogout();
