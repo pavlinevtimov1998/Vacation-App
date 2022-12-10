@@ -2,7 +2,13 @@
 <section class="wrapper" *ngIf="!isLoading">
   <div class="container">
     <article class="title">
-      <h1>Offers from {{ agencyName }}</h1>
+      <h1 *ngIf="offers.length > 0">Offers from {{ agency.agencyName }}</h1>
+      <ng-container *ngIf="offers.length == 0">
+        <h1>No added offers...</h1>
+        <a [routerLink]="['/agency/profile', agency._id]"
+          >Go back to {{ agency.agencyName }} profile</a
+        >
+      </ng-container>
     </article>
     <div class="agency-offers">
       <div class="pagination-spinner-container" *ngIf="paginationLoading">
