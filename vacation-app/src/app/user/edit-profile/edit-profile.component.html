@@ -1,0 +1,118 @@
+<app-spinner *ngIf="isLoading"></app-spinner>
+<section *ngIf="!isLoading" class="edit">
+  <div class="form-container">
+    <form
+      #editProfileForm="ngForm"
+      (ngSubmit)="editUserHandler(editProfileForm)"
+    >
+      <div class="username">
+        <label for="username">Username</label>
+        <input
+          [ngClass]="{
+            'input-error': username.touched && username.errors
+          }"
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Username"
+          [(ngModel)]="userData.username"
+          #username="ngModel"
+          required
+          minlength="4"
+        />
+        <ng-container *ngIf="username.touched">
+          <p *ngIf="username.errors?.['required']" class="error">
+            Username is required!
+          </p>
+          <p *ngIf="username.errors?.['minlength']" class="error">
+            Username should be at least 4 characters!
+          </p>
+        </ng-container>
+      </div>
+      <div class="email">
+        <label for="email">Email</label>
+        <input
+          [ngClass]="{ 'input-error': email.touched && email.errors }"
+          type="text"
+          id="email"
+          name="email"
+          placeholder="Email"
+          [(ngModel)]="userData.email"
+          #email="ngModel"
+          required
+        />
+        <ng-container *ngIf="email.touched">
+          <p *ngIf="email.errors?.['required']" class="error">
+            Email is required!
+          </p>
+          <p *ngIf="email.errors?.['email']" class="error">Invalid email!</p>
+        </ng-container>
+      </div>
+
+      <div class="phone">
+        <label for="phone">Phone</label>
+        <input
+          [ngClass]="{
+            'input-error': phone.touched && phone.errors
+          }"
+          type="text"
+          name="phone"
+          id="phone"
+          placeholder="089...."
+          [(ngModel)]="userData.phone"
+          #phone="ngModel"
+        />
+      </div>
+      <div class="firstName-lastName-container">
+        <div class="firstName">
+          <label for="firstName">First Name</label>
+          <input
+            [ngClass]="{
+              'input-error': firstName.touched && firstName.errors
+            }"
+            type="text"
+            name="firstName"
+            id="firstName"
+            placeholder="First Name"
+            [(ngModel)]="userData.firstName"
+            #firstName="ngModel"
+          />
+        </div>
+        <div class="lastName">
+          <label for="lastName">Last Name</label>
+          <input
+            [ngClass]="{
+              'input-error': lastName.touched && lastName.errors
+            }"
+            type="text"
+            name="lastName"
+            id="lastName"
+            placeholder="Last Name"
+            [(ngModel)]="userData.lastName"
+            #lastName="ngModel"
+          />
+        </div>
+      </div>
+      <div class="user-image" (click)="imagesUpload.click()">
+        <span>Click here to add Image!</span>
+        <input
+          #imagesUpload
+          type="file"
+          name="image"
+          accept="image/png, image/jpeg"
+          (change)="imageUpload($event)"
+        />
+        <span *ngIf="imageName">{{ imageName }}</span>
+        <span class="error" *ngIf="isImageError"
+          >Image should be of type image/jpg or image/png!</span
+        >
+      </div>
+
+      <button *ngIf="!isSubmited" class="edit-btn" type="submit">
+        <span>Edit</span>
+        <mat-icon>edit</mat-icon>
+      </button>
+      <mat-spinner [diameter]="50" *ngIf="isSubmited"></mat-spinner>
+    </form>
+  </div>
+</section>
