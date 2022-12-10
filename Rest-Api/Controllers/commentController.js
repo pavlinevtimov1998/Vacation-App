@@ -25,7 +25,7 @@ commentController.post(
 
     const comment = await commentService.addComment(body);
 
-    res.status(200).json(comment);
+    res.status(201).json(comment);
   })
 );
 

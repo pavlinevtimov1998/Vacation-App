@@ -18,7 +18,7 @@ exports.agencyRegister = async (body) => {
   return getToken({
     _id: agency._id,
     email: agency.email,
-    agencyName: agency.agencyName,
+    isAgency: true,
   }).then((token) => {
     return [token, agency];
   });
@@ -46,7 +46,7 @@ exports.agencyLogin = async (body) => {
   return getToken({
     _id: agency._id,
     email: agency.email,
-    agencyName: agency.agencyName,
+    isAgency: true,
   }).then((token) => {
     return [token, agency];
   });

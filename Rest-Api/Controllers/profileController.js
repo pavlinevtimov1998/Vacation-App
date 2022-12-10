@@ -56,7 +56,7 @@ profileController.patch(
       body
     );
 
-    res.status(200).json(agencyData);
+    res.status(201).json(agencyData);
   })
 );
 

@@ -61,7 +61,7 @@ offerController.delete(
 
     await offerService.deleteOffer(agencyId, offerId);
 
-    res.status(204).json({ message: "Successfully deleted offer!" });
+    res.status(204).json();
   })
 );
 
@@ -75,7 +75,7 @@ offerController.post(
 
     const bookingData = await offerService.booking(body);
 
-    res.json(bookingData);
+    res.status(201).json(bookingData);
   })
 );
 

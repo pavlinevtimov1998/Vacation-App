@@ -12,10 +12,11 @@ agencyController.post(
 
     res.cookie(process.env.COOKIE_NAME, token, { httpOnly: true });
 
-    res.status(200).json({
+    res.status(201).json({
       _id: agency._id,
       email: agency.email,
       agencyName: agency.agencyName,
+      isAgency: true,
     });
   })
 );
@@ -32,6 +33,7 @@ agencyController.post(
       _id: agency._id,
       email: agency.email,
       agencyName: agency.agencyName,
+      isAgency: true,
     });
   })
 );

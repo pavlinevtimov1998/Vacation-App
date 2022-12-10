@@ -2,7 +2,7 @@ const userController = require("express").Router();
 
 const userService = require("../Services/userService");
 const { catchAsyncError } = require("../Util/errorParser");
-const { isGuest, isAccount, isUser } = require("../Middlewares/guards");
+const { isGuest, isUser } = require("../Middlewares/guards");
 
 userController.post(
   "/register",
@@ -12,7 +12,7 @@ userController.post(
 
     res.cookie(process.env.COOKIE_NAME, token, { httpOnly: true });
 
-    res.status(200).json({
+    res.status(201).json({
       _id: user._id,
       username: user.username,
     });

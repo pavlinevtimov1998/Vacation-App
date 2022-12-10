@@ -16,7 +16,11 @@ exports.register = async (body) => {
 
   const user = await User.create(body);
 
-  return getToken({ _id: user._id, username: user.username }).then((token) => {
+  return getToken({
+    _id: user._id,
+    username: user.username,
+    isAgency: false,
+  }).then((token) => {
     return [token, user];
   });
 };
@@ -40,7 +44,11 @@ exports.login = async (body) => {
     };
   }
 
-  return getToken({ _id: user._id, username: user.username }).then((token) => {
+  return getToken({
+    _id: user._id,
+    username: user.username,
+    isAgency: false,
+  }).then((token) => {
     return [token, user];
   });
 };

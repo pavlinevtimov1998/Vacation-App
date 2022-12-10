@@ -15,7 +15,7 @@ exports.isAuth = async (req, res, next) => {
       return next();
     }
 
-    if (payload.agencyName) {
+    if (payload.isAgency) {
       req.agency = payload;
     } else {
       req.user = payload;
