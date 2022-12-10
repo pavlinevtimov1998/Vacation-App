@@ -13,7 +13,7 @@ import { MessageType } from 'src/app/shared/interfaces/message.interface';
 export class EditDeleteBtnsComponent {
   @Input() offerId!: string;
 
-  @Output() loading = new EventEmitter();
+  isLoading = false;
 
   constructor(
     private offerService: OfferService,
@@ -22,7 +22,8 @@ export class EditDeleteBtnsComponent {
   ) {}
 
   deleteHandler(): void {
-    this.loading.emit();
+    this.isLoading = true;
+
     this.offerService.deleteOffer$(this.offerId).subscribe({
       next: () => {
         this.messageBus.addMessage({
