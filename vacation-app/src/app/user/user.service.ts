@@ -1,17 +1,24 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
+import { MessageBusService } from '../message-bus.service';
 import { IOffer } from '../shared/interfaces';
 import { IAccount, IUser } from '../shared/interfaces/account.interface';
 import { IBooking } from '../shared/interfaces/booking.interface';
+import { MessageType } from '../shared/interfaces/message.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(
+    private httpClient: HttpClient,
+    private messageBus: MessageBusService,
+    private router: Router
+  ) {}
 
   userRegister$(body: {
     username: string;
@@ -87,10 +94,16 @@ export class UserService {
     );
   }
 
-  logout$(): Observable<{ message: string }> {
-    return this.httpClient.get<{ message: string }>(
-      `${environment.api}/user/logout`,
-      { withCredentials: true }
-    );
+  logout$(): void {
+    this.httpClient
+      .post<{ message: string }>(
+        `${environment.api}/user/logout`,
+        {},
+        { withCredentials: true }
+      )
+      .subscribe(({ message }) => {
+        this.messageBus.addMessage({ message, type: MessageType.Success });
+        this.router.navigate(['/']);
+      });
   }
 }
