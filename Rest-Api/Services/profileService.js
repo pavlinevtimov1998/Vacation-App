@@ -11,9 +11,16 @@ const Offer = require("../Models/Offer");
 
 exports.getAccountData = async (agency, user) => {
   if (agency) {
-    return Agency.findById(agency._id).select("-password -__v -updatedAt");
+    const agencyData = await Agency.findById(agency._id).select(
+      "agencyName email"
+    );
+
+    const result = JSON.parse(JSON.stringify(agencyData));
+    result.isAgency = true;
+
+    return result;
   } else {
-    return User.findById(user._id).select("-password -__v -updatedAt");
+    return User.findById(user._id).select("username");
   }
 };
 
