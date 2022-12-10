@@ -18,24 +18,23 @@ const uploadToCloudinary = (filePath) => cloudinary.uploader.upload(filePath);
 
 exports.deleteCloudinaryImage = (id) => cloudinary.uploader.destroy(id);
 
+const asyncUnlink = (img) => promisify(unlink)(img);
+
 exports.getImagesUrl = async (files) => {
-  const imagesUrl = [];
-  const localUrls = [];
+  const promises = [];
+  const localImagePromises = [];
 
   for (let i = 0; i < files.length; i++) {
-    const localFilePath = files[i].path;
-    localUrls.push(localFilePath);
-
-    await uploadToCloudinary(localFilePath).then((result) => {
-      imagesUrl.push(result.url);
-    });
+    promises.push(uploadToCloudinary(files[i].path));
   }
 
-  return [imagesUrl, localUrls];
-};
+  const imagesUrl = await Promise.all(promises);
 
-exports.asyncUnlink = (arr) => {
-  const func = promisify(unlink);
+  for (let i = 0; i < files.length; i++) {
+    localImagePromises.push(asyncUnlink(files[i].path));
+  }
 
-  return arr.map((i) => func(i));
+  await Promise.all(localImagePromises);
+
+  return imagesUrl.map((img) => img.url);
 };

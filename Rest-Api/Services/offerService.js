@@ -26,12 +26,41 @@ const getOffers = (skip, limit, search = "") =>
 const getOne = (offerId) => Offer.findOne({ _id: offerId });
 
 const createOffer = async (body, files) => {
-  const [images, localImages] = await getImagesUrl(files);
+  const images = await getImagesUrl(files);
+
   body.images = images;
   body.features = body.features.split(",");
 
-  return Promise.all([Offer.create(body), asyncUnlink(localImages)]);
+  return Offer.create(body);
 };
+
+// const editOffer = async (offerId, body, files) => {
+//   body.features = body.features.split(",");
+
+//   if (files) {
+//     const offer = await Offer.findOne({ _id: offerId, agency: agencyId });
+
+//     const imagesId = [];
+
+//     offer.images.forEach((img) => {
+//       const id = img.substring(img.lastIndexOf("/") + 1, img.lastIndexOf("."));
+//       imagesId.push(id);
+//     });
+
+//     const [[images, localImages], _] = await Promise.all([
+//       getImagesUrl(files),
+//       imagesId.map((id) => deleteCloudinaryImage(id)),
+//     ]);
+//     body.images = images;
+
+//     return Promise.all([
+//       Offer.findByIdAndUpdate(offerId, body),
+//       asyncUnlink(localImages),
+//     ]);
+//   } else {
+//     return Offer.findByIdAndUpdate(offerId, body);
+//   }
+// };
 
 const booking = (body) =>
   Promise.all([
@@ -50,16 +79,23 @@ const cancelBooking = (offer, user) =>
 const deleteOffer = async (agencyId, offerId) => {
   const offer = await Offer.findOne({ _id: offerId, agency: agencyId });
 
-  const images = [];
+  if (!offer) {
+    throw {
+      message: "Not Found!",
+    };
+  }
+
+  const imagesId = [];
 
   offer.images.forEach((img) => {
     const id = img.substring(img.lastIndexOf("/") + 1, img.lastIndexOf("."));
-    images.push(id);
+    imagesId.push(id);
   });
 
-  images.map(async (id) => await deleteCloudinaryImage(id));
-
-  return offer.delete();
+  return Promise.all([
+    offer.delete(),
+    ...imagesId.map((id) => deleteCloudinaryImage(id)),
+  ]);
 };
 
 module.exports = {
