@@ -105,7 +105,7 @@ profileController.get(
 
     res
       .status(200)
-      .json({ offers, agencyName: agency.agencyName, offersCount });
+      .json({ offers, agency, offersCount });
   })
 );
 
