@@ -1,24 +1,38 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { AgencyService } from 'src/app/agency/agency.service';
 
 import { AuthService } from 'src/app/auth/auth.service';
+import { IAccount } from 'src/app/shared/interfaces';
+import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-account-nav',
   templateUrl: './account-nav.component.html',
   styleUrls: ['./account-nav.component.css'],
 })
-export class AccountNavComponent implements OnDestroy {
+export class AccountNavComponent implements OnInit, OnDestroy {
   get currentUser$() {
     return this.authService.currentUser$;
   }
 
-  subscription!: Subscription;
+  currentUser!: IAccount | undefined;
+
+  subscription$!: Subscription;
   isLoggedOut = false;
 
   isMenuOpened: boolean = false;
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private agencyService: AgencyService,
+    private userService: UserService
+  ) {}
+  ngOnInit(): void {
+    this.subscription$ = this.authService.currentUser$.subscribe((account) => {
+      this.currentUser = account;
+    });
+  }
 
   toggleDropDownMenu() {
     this.isMenuOpened = !this.isMenuOpened;
@@ -32,12 +46,16 @@ export class AccountNavComponent implements OnDestroy {
     if (this.isLoggedOut) {
       return;
     }
-
-    this.subscription = this.authService.logout$();
     this.isLoggedOut = true;
+
+    if (this.currentUser?.isAgency) {
+      this.agencyService.logout$();
+    } else {
+      this.userService.logout$();
+    }
   }
 
   ngOnDestroy(): void {
-    this.subscription?.unsubscribe();
+    this.subscription$?.unsubscribe();
   }
 }
