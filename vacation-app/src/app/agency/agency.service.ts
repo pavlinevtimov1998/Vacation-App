@@ -73,10 +73,10 @@ export class AgencyService {
     agencyId: string,
     skip: number,
     limit: number
-  ): Observable<{ offers: IOffer[]; agencyName: string; offersCount: number }> {
+  ): Observable<{ offers: IOffer[]; agency: IAgency; offersCount: number }> {
     return this.httpClient.get<{
       offers: IOffer[];
-      agencyName: string;
+      agency: IAgency;
       offersCount: number;
     }>(`${environment.api}/profile/agency/offers/${agencyId}`, {
       params: { skip, limit },
