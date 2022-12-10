@@ -71,6 +71,22 @@ export class UserService {
     );
   }
 
+  getUserData$(): Observable<IUser> {
+    return this.httpClient.get<IUser>(`${environment.api}/profile/user-data`, {
+      withCredentials: true,
+    });
+  }
+
+  editUserProfileData$(userData: FormData): Observable<IUser> {
+    return this.httpClient.patch<IUser>(
+      `${environment.api}/profile/user/edit`,
+      userData,
+      {
+        withCredentials: true,
+      }
+    );
+  }
+
   logout$(): Observable<{ message: string }> {
     return this.httpClient.get<{ message: string }>(
       `${environment.api}/user/logout`,

@@ -19,6 +19,9 @@ export interface IUser {
   _id: string;
   username: string;
   email: string;
+  firstName: string;
+  lastName: string;
+  image: string;
   phone: string;
   createdAt: string;
 }

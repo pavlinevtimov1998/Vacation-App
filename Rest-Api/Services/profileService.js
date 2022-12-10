@@ -32,8 +32,46 @@ exports.getUserProfile = async (_id, skip, limit) =>
     Booking.find({ user: _id }).count(),
   ]);
 
+exports.getUserData = (userId) =>
+  User.findById(userId).select("-password -createdAt -updatedAt -__v");
+
 exports.getAgencyProfile = (agencyId) =>
   Agency.findById(agencyId).select("-password -__v");
+
+exports.editUserData = async (userId, body, files) => {
+  console.log(userId, body, files);
+  if (files) {
+    const [[image, localImage], user] = await Promise.all([
+      getImagesUrl(files),
+      User.findById(userId),
+    ]);
+    console.log("have image", files);
+
+    let cloudinaryImageId;
+
+    body.image = image[0];
+
+    if (user.image) {
+      cloudinaryImageId = user.image.substring(
+        user.image.lastIndexOf("/") + 1,
+        user.image.lastIndexOf(".")
+      );
+
+      return Promise.all([
+        User.findByIdAndUpdate(userId, body),
+        asyncUnlink(localImage),
+        deleteCloudinaryImage(cloudinaryImageId),
+      ]);
+    } else {
+      return Promise.all([
+        User.findByIdAndUpdate(userId, body),
+        asyncUnlink(localImage),
+      ]);
+    }
+  } else {
+    return User.findByIdAndUpdate(userId, body);
+  }
+};
 
 exports.editAgencyData = async (agencyId, files, body) => {
   if (files) {
@@ -44,13 +82,13 @@ exports.editAgencyData = async (agencyId, files, body) => {
 
     let id;
 
+    body.image = image[0];
+
     if (agency.image) {
       id = agency.image.substring(
         agency.image.lastIndexOf("/") + 1,
         agency.image.lastIndexOf(".")
       );
-
-      body.image = image[0];
 
       return Promise.all([
         Agency.findByIdAndUpdate(agencyId, body),

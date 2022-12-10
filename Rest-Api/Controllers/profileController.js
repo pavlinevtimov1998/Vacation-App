@@ -32,6 +32,37 @@ profileController.get(
 );
 
 profileController.get(
+  "/user-data",
+  isUser(),
+  catchAsyncError(async (req, res) => {
+    const userId = req.user._id;
+
+    const profileData = await profileService.getUserData(userId);
+
+    res.status(200).json(profileData);
+  })
+);
+
+profileController.patch(
+  "/user/edit",
+  isUser(),
+  upload.array("image", 1),
+  catchAsyncError(async (req, res) => {
+    const userId = req.user._id;
+    const body = req.body;
+    console.log(body, req.files);
+
+    const profileData = await profileService.editUserData(
+      userId,
+      body,
+      req.files
+    );
+
+    res.status(201).json(profileData);
+  })
+);
+
+profileController.get(
   "/agency/:agencyId",
   catchAsyncError(async (req, res) => {
     const agencyId = req.params.agencyId;

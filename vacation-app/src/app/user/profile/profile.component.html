@@ -28,7 +28,10 @@
         </div>
       </div>
       <div class="img-container">
-        <img src="/assets/img/default-user.png" [alt]="profileData.username" />
+        <img
+          [src]="profileData.image || '/assets/img/default-user.png'"
+          [alt]="profileData.username"
+        />
       </div>
     </article>
     <div class="pagination-spinner-container" *ngIf="paginationLoading">
