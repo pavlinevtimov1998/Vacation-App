@@ -10,6 +10,7 @@ const offerSchema = new mongoose.Schema(
     title: {
       type: String,
       trim: true,
+      unique: true,
       required: [true, "Title is required!"],
       minLength: [6, "Title should be at least 6 characters!"],
       maxLength: [50, "Title should be max 50 characters!"],
