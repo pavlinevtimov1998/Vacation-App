@@ -1,14 +1,16 @@
 const Country = require("../Models/Country");
 const Offer = require("../Models/Offer");
 
-const getCountries = (skip, limit) =>
+const getCountries = (skip, limit, search) =>
   Promise.all([
-    Country.find()
+    Country.find({
+      name: { $regex: `^${search}`, $options: "i" },
+    })
       .select("name image")
       .sort({ name: 1 })
       .skip(skip)
       .limit(limit),
-    Country.find().count(),
+    Country.find({ name: { $regex: `^${search}`, $options: "i" } }).count(),
   ]);
 
 const getAll = () => Country.find().select("name");
