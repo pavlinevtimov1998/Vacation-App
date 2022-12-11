@@ -3,6 +3,7 @@ const agencyController = require("express").Router();
 const agencyService = require("../Services/agencyService");
 const { isGuest, isAgency } = require("../Middlewares/guards");
 const { catchAsyncError } = require("../Util/errorParser");
+const Agency = require("../Models/Agency");
 
 agencyController.post(
   "/register",
@@ -20,7 +21,6 @@ agencyController.post(
     });
   })
 );
-
 
 agencyController.post(
   "/login",
@@ -50,6 +50,30 @@ agencyController.get(
     const topAgencies = await agencyService.getTopAgencies();
 
     res.status(200).json(topAgencies);
+  })
+);
+
+agencyController.get(
+  "/email",
+  catchAsyncError(async (req, res) => {
+    const { email } = req.query;
+
+    const isExisting = !!(await agencyService.findExistingEmail(email));
+
+    res.status(200).json(isExisting);
+  })
+);
+
+agencyController.get(
+  "/agencyName",
+  catchAsyncError(async (req, res) => {
+    const { agencyName } = req.query;
+
+    const isExisting = !!(await agencyService.findExistingAgencyName(
+      agencyName
+    ));
+
+    res.status(200).json(isExisting);
   })
 );
 

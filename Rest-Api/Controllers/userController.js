@@ -39,4 +39,17 @@ userController.post("/logout", isUser(), (req, res) => {
   res.status(200).json({ message: "Successfull logout!" });
 });
 
+userController.get(
+  "/username",
+  catchAsyncError(async (req, res) => {
+    const { username } = req.query;
+
+    const isExisting = !!(await userService.findExistingUsername(
+      username
+    ));
+
+    res.status(200).json(isExisting);
+  })
+);
+
 module.exports = userController;
