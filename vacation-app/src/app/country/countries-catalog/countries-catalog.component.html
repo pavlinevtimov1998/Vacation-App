@@ -3,8 +3,18 @@
   <div class="container">
     <article class="header">
       <h1>All Countries</h1>
-      <form>
-        <input type="search" name="search" placeholder="Search country" />
+      <form
+        #searchCountryForm="ngForm"
+        (ngSubmit)="countryFormHandler(searchCountryForm)"
+      >
+        <input
+          ngModel
+          #search="ngModel"
+          required
+          type="search"
+          name="search"
+          placeholder="Search country"
+        />
         <button>
           <mat-icon>search</mat-icon>
         </button>

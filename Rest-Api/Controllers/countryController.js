@@ -6,11 +6,12 @@ const { catchAsyncError } = require("../Util/errorParser");
 countryController.get(
   "/",
   catchAsyncError(async (req, res) => {
-    const { skip, limit } = req.query;
+    const { skip, limit, search } = req.query;
 
     const [countries, countriesCount] = await countryService.getCountries(
       skip,
-      limit
+      limit,
+      search
     );
 
     res.status(200).json({ countries, countriesCount });

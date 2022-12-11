@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
@@ -40,11 +41,21 @@ export class CountriesCatalogComponent implements OnInit, OnDestroy {
     this.getCountries();
   }
 
-  getCountries(): void {
+  countryFormHandler(countryForm: NgForm): void {
+    if (countryForm.invalid) {
+      return;
+    }
+
+    const search = countryForm.controls['search'].value;
+    this.currentPage = 1;
+    this.getCountries(search);
+  }
+
+  getCountries(search?: string): void {
     this.paginationLoading = true;
 
     this.subscription$ = this.countryService
-      .getCountries$(this.skip, this.limit)
+      .getCountries$(this.skip, this.limit, search || '')
       .subscribe({
         next: ({ countries, countriesCount }) => {
           this.pages = Math.ceil(countriesCount / this.limit);
