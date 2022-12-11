@@ -1,13 +1,9 @@
 const User = require("../models/User");
 const Agency = require("../Models/Agency");
 const Booking = require("../Models/Booking");
-
-const {
-  getImagesUrl,
-  asyncUnlink,
-  deleteCloudinaryImage,
-} = require("../Util/imageUpload");
 const Offer = require("../Models/Offer");
+
+const { getImagesUrl, deleteCloudinaryImage } = require("../Util/imageUpload");
 
 exports.getAccountData = async (agency, user) => {
   if (agency) {
@@ -46,13 +42,11 @@ exports.getAgencyProfile = (agencyId) =>
   Agency.findById(agencyId).select("-password -__v");
 
 exports.editUserData = async (userId, body, files) => {
-  console.log(userId, body, files);
   if (files) {
-    const [[image, localImage], user] = await Promise.all([
+    const [image, user] = await Promise.all([
       getImagesUrl(files),
       User.findById(userId),
     ]);
-    console.log("have image", files);
 
     let cloudinaryImageId;
 
@@ -66,14 +60,10 @@ exports.editUserData = async (userId, body, files) => {
 
       return Promise.all([
         User.findByIdAndUpdate(userId, body),
-        asyncUnlink(localImage),
         deleteCloudinaryImage(cloudinaryImageId),
       ]);
     } else {
-      return Promise.all([
-        User.findByIdAndUpdate(userId, body),
-        asyncUnlink(localImage),
-      ]);
+      return Promise.all([User.findByIdAndUpdate(userId, body)]);
     }
   } else {
     return User.findByIdAndUpdate(userId, body);
@@ -82,31 +72,27 @@ exports.editUserData = async (userId, body, files) => {
 
 exports.editAgencyData = async (agencyId, files, body) => {
   if (files) {
-    const [[image, localImage], agency] = await Promise.all([
+    const [image, agency] = await Promise.all([
       getImagesUrl(files),
       Agency.findById(agencyId),
     ]);
 
-    let id;
+    let cloudinaryImageId;
 
     body.image = image[0];
 
     if (agency.image) {
-      id = agency.image.substring(
+      cloudinaryImageId = agency.image.substring(
         agency.image.lastIndexOf("/") + 1,
         agency.image.lastIndexOf(".")
       );
 
       return Promise.all([
         Agency.findByIdAndUpdate(agencyId, body),
-        asyncUnlink(localImage),
-        deleteCloudinaryImage(id),
+        deleteCloudinaryImage(cloudinaryImageId),
       ]);
     } else {
-      return Promise.all([
-        Agency.findByIdAndUpdate(agencyId, body),
-        asyncUnlink(localImage),
-      ]);
+      return Promise.all([Agency.findByIdAndUpdate(agencyId, body)]);
     }
   } else {
     return Agency.findByIdAndUpdate(agencyId, body);

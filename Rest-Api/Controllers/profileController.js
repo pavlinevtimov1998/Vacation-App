@@ -50,15 +50,10 @@ profileController.patch(
   catchAsyncError(async (req, res) => {
     const userId = req.user._id;
     const body = req.body;
-    console.log(body, req.files);
 
-    const profileData = await profileService.editUserData(
-      userId,
-      body,
-      req.files
-    );
+    await profileService.editUserData(userId, body, req.files);
 
-    res.status(201).json(profileData);
+    res.status(201).json({ message: "Successful update!" });
   })
 );
 
@@ -81,13 +76,9 @@ profileController.patch(
     const agencyId = req.agency._id;
     const body = req.body;
 
-    const [agencyData, _] = await profileService.editAgencyData(
-      agencyId,
-      req.files,
-      body
-    );
+    await profileService.editAgencyData(agencyId, req.files, body);
 
-    res.status(201).json(agencyData);
+    res.status(201).json({ message: "Successful update!" });
   })
 );
 
@@ -103,9 +94,7 @@ profileController.get(
       limit
     );
 
-    res
-      .status(200)
-      .json({ offers, agency, offersCount });
+    res.status(200).json({ offers, agency, offersCount });
   })
 );
 

@@ -64,6 +64,10 @@
   min-height: 65vh;
 }
 
+.no-results {
+  margin-top: 5%;
+}
+
 .pagination-spinner-container {
   width: 100%;
   display: flex;

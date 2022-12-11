@@ -24,12 +24,13 @@
       <mat-spinner></mat-spinner>
     </div>
     <div class="countries-container" *ngIf="!paginationLoading">
+      <h1 class="no-results" *ngIf="countries.length == 0">No Results...</h1>
       <ng-container *ngFor="let country of countries">
         <app-country-item [country]="country"></app-country-item>
       </ng-container>
     </div>
     <app-pagination
-    #pagination
+      #pagination
       [pages]="pages"
       (sendCurrentPage)="setCurrentPage($event)"
     ></app-pagination>

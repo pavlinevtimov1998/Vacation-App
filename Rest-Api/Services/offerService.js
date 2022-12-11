@@ -62,6 +62,7 @@ const deleteOffer = async (agencyId, offerId) => {
 
   return Promise.all([
     offer.delete(),
+    Booking.deleteMany({ offer: offerId }),
     ...imagesId.map((id) => deleteCloudinaryImage(id)),
   ]);
 };
