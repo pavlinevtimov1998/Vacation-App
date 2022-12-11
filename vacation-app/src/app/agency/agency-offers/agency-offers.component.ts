@@ -40,9 +40,9 @@ export class AgencyOffersComponent implements OnInit {
   setCurrentPage(currentPage: number): void {
     if (this.currentPage !== currentPage) {
       this.currentPage = currentPage;
+      this.subscription?.unsubscribe();
+      this.getAgencyOffers();
     }
-    this.subscription?.unsubscribe();
-    this.getAgencyOffers();
   }
 
   getAgencyOffers(): void {
@@ -62,7 +62,7 @@ export class AgencyOffersComponent implements OnInit {
       )
       .subscribe({
         next: ({ offers, agency, offersCount }) => {
-          this.pages = Math.ceil(offersCount / this.limit);
+          this.pages = Math.ceil(offersCount / this.limit) || 1;
 
           this.agency = agency;
           this.offers = offers;

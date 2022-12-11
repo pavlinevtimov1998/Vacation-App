@@ -1,14 +1,5 @@
 <div class="actions">
   <button
-    (click)="editHandler()"
-    class="edit-btn"
-    mat-icon-button
-    title="Edit"
-    type="button"
-  >
-    <mat-icon>edit</mat-icon>
-  </button>
-  <button
     (click)="deleteHandler()"
     *ngIf="!isLoading"
     class="delete-btn"

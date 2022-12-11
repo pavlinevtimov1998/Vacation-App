@@ -35,9 +35,9 @@ export class LikedOffersComponent implements OnInit, OnDestroy {
   setCurrentPage(currentPage: number) {
     if (this.currentPage !== currentPage) {
       this.currentPage = currentPage;
+      this.subscription?.unsubscribe();
+      this.getOffers();
     }
-    this.subscription?.unsubscribe();
-    this.getOffers();
   }
 
   getOffers() {
@@ -46,7 +46,7 @@ export class LikedOffersComponent implements OnInit, OnDestroy {
       .getUserFavouritesOffers$(this.skip, this.limit)
       .subscribe({
         next: ({ offers, offersCount }) => {
-          this.pages = Math.ceil(offersCount / this.limit);
+          this.pages = Math.ceil(offersCount / this.limit) || 1;
           this.offers = offers;
 
           this.isLoading = false;

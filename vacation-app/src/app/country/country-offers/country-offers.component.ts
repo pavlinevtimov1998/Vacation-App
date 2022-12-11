@@ -42,9 +42,9 @@ export class CountryOffersComponent implements OnInit, OnDestroy {
   setCurrentPage(currentPage: number) {
     if (this.currentPage !== currentPage) {
       this.currentPage = currentPage;
+      this.subscription?.unsubscribe();
+      this.getCountryOffers();
     }
-    this.subscription?.unsubscribe();
-    this.getCountryOffers();
   }
 
   private getCountryOffers(): void {
@@ -72,7 +72,7 @@ export class CountryOffersComponent implements OnInit, OnDestroy {
           return this.countryService.getCountry$(this.countryId);
         }),
         mergeMap(({ country, offersCount }) => {
-          this.pages = Math.ceil(offersCount / this.limit);
+          this.pages = Math.ceil(offersCount / this.limit) || 1;
           this.country = country;
 
           return this.countryService.getCountryOffers$(

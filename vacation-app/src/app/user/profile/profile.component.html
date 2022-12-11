@@ -12,19 +12,30 @@
         <div class="user-info">
           <h1>Contacts</h1>
           <div class="details">
-            <div class="detail">
-              <h4>Phone:</h4>
-              <p>{{ profileData.phone || "(Not added...)" }}</p>
+            <div
+              class="detail"
+              *ngIf="profileData.firstName && profileData.lastName"
+            >
+              <h4>Name:</h4>
+              <p>{{ profileData.firstName }} {{ profileData.lastName }}</p>
             </div>
             <div class="detail">
               <h4>Email:</h4>
               <p>{{ profileData.email || "(Not added...)" }}</p>
             </div>
+            <div class="detail">
+              <h4>Phone:</h4>
+              <p>{{ profileData.phone || "(Not added...)" }}</p>
+            </div>
           </div>
         </div>
         <div class="sign-up-date">
-          <p>Sign up date:</p>
-          <span>{{ profileData.createdAt | date : "longDate" }}</span>
+          <h5>Sign up date:</h5>
+          <span
+            ><strong>{{
+              profileData.createdAt | date : "longDate"
+            }}</strong></span
+          >
         </div>
       </div>
       <div class="img-container">

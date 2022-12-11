@@ -31,7 +31,6 @@
       </ng-container>
     </div>
     <app-pagination
-      *ngIf="offers.length > 0 && pages > 1"
       [pages]="pages"
       (sendCurrentPage)="setCurrentPage($event)"
     ></app-pagination>

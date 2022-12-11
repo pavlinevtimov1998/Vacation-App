@@ -14,13 +14,14 @@ export class CountryService {
 
   getCountries$(
     skip: number,
-    limit: number
+    limit: number,
+    search: string
   ): Observable<{ countries: ICountry[]; countriesCount: number }> {
     return this.httpClient.get<{
       countries: ICountry[];
       countriesCount: number;
     }>(`${environment.api}/countries`, {
-      params: { skip, limit },
+      params: { skip, limit, search },
     });
   }
 

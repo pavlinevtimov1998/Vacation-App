@@ -65,7 +65,7 @@ export class CountriesCatalogComponent implements OnInit, OnDestroy {
       .getCountries$(this.skip, this.limit, search || '')
       .subscribe({
         next: ({ countries, countriesCount }) => {
-          this.pages = Math.ceil(countriesCount / this.limit);
+          this.pages = Math.ceil(countriesCount / this.limit) || 1;
 
           this.countries = countries;
 
