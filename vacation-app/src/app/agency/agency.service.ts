@@ -19,6 +19,12 @@ export class AgencyService {
     private router: Router
   ) {}
 
+  isUnique$(prop: string, value: string): Observable<boolean> {
+    return this.httpClient.get<boolean>(`${environment.api}/agency/${prop}`, {
+      params: { [prop]: value },
+    });
+  }
+
   agencyRegister$(body: {
     email: string;
     agencyName: string;

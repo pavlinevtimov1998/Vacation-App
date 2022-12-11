@@ -35,8 +35,8 @@ export class AsyncValidatorDirective implements AsyncValidator {
 
     const obs$ =
       this.prop == 'username'
-        ? this.userService.isUnique(control.value)
-        : this.agencyService.isUnique(this.prop, control.value);
+        ? this.userService.isUnique$(control.value)
+        : this.agencyService.isUnique$(this.prop, control.value);
 
     return obs$.pipe(
       map((isExisting) => {
