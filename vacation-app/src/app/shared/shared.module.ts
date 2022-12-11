@@ -15,6 +15,7 @@ import { PaginationComponent } from './pagination/pagination.component';
 import { MatButtonModule } from '@angular/material/button';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { SubstringPipe } from './substring.pipe';
+import { AsyncValidatorDirective } from './directives/async-validator.directive';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { SubstringPipe } from './substring.pipe';
     PaginationHelperPipe,
     PaginationComponent,
     SubstringPipe,
+    AsyncValidatorDirective,
   ],
   imports: [
     CommonModule,
@@ -50,6 +52,7 @@ import { SubstringPipe } from './substring.pipe';
     MatButtonModule,
     MatProgressSpinnerModule,
     SubstringPipe,
+    AsyncValidatorDirective,
   ],
 })
 export class SharedModule {}
