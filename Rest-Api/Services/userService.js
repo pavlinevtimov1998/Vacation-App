@@ -52,3 +52,6 @@ exports.login = async (body) => {
     return [token, user];
   });
 };
+
+exports.findExistingUsername = (username) =>
+  User.findOne({ username }).select("username");
