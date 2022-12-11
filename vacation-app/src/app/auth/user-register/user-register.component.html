@@ -20,6 +20,9 @@
           required
           minlength="5"
           maxlength="35"
+          [ngModelOptions]="{ updateOn: 'blur' }"
+          appAsyncValidator
+          prop="username"
         />
         <ng-container *ngIf="username.touched">
           <p *ngIf="username.errors?.['required']" class="error">
@@ -30,6 +33,9 @@
           </p>
           <p *ngIf="username.errors?.['maxlength']" class="error">
             Username should be maximum of 35 characters!
+          </p>
+          <p *ngIf="username.errors?.['isExisting']" class="error">
+            Username should be unique!
           </p>
         </ng-container>
       </div>
