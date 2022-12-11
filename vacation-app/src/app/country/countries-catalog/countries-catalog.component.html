@@ -5,7 +5,7 @@
       <h1>All Countries</h1>
       <form
         #searchCountryForm="ngForm"
-        (ngSubmit)="countryFormHandler(searchCountryForm)"
+        (ngSubmit)="countryFormHandler(searchCountryForm, pagination)"
       >
         <input
           ngModel
@@ -29,6 +29,7 @@
       </ng-container>
     </div>
     <app-pagination
+    #pagination
       [pages]="pages"
       (sendCurrentPage)="setCurrentPage($event)"
     ></app-pagination>

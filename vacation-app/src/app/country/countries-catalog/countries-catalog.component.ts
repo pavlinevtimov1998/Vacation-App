@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { ICountry } from 'src/app/shared/interfaces/country.interface';
+import { PaginationComponent } from 'src/app/shared/pagination/pagination.component';
 import { CountryService } from '../country.service';
 
 @Component({
@@ -36,18 +37,24 @@ export class CountriesCatalogComponent implements OnInit, OnDestroy {
   setCurrentPage(currentPage: number) {
     if (this.currentPage !== currentPage) {
       this.currentPage = currentPage;
+      this.subscription$?.unsubscribe();
+      this.getCountries();
     }
-    this.subscription$?.unsubscribe();
-    this.getCountries();
   }
 
-  countryFormHandler(countryForm: NgForm): void {
+  countryFormHandler(
+    countryForm: NgForm,
+    paginationComponent: PaginationComponent
+  ): void {
     if (countryForm.invalid) {
       return;
     }
 
     const search = countryForm.controls['search'].value;
+
     this.currentPage = 1;
+    paginationComponent.currentPage = 1;
+
     this.getCountries(search);
   }
 

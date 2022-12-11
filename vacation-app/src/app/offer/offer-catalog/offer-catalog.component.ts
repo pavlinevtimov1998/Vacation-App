@@ -51,9 +51,9 @@ export class OfferCatalogComponent implements OnInit, OnDestroy {
   setCurrentPage(currentPage: number) {
     if (this.currentPage !== currentPage) {
       this.currentPage = currentPage;
+      this.subscription?.unsubscribe();
+      this.getOffers();
     }
-    this.subscription?.unsubscribe();
-    this.getOffers();
   }
 
   searchHandler(paginationComponent: PaginationComponent) {

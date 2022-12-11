@@ -6,7 +6,7 @@ const { getImagesUrl, deleteCloudinaryImage } = require("../Util/imageUpload");
 const getOffers = (skip, limit, search = "") =>
   Promise.all([
     Offer.find({
-      title: { $regex: `${search}`, $options: "i" },
+      title: { $regex: `^${search}`, $options: "i" },
     })
       .select(
         "-description -ratingsQuantity -rating -peopleBooked -createdAt -__v -updatedAt"
@@ -15,7 +15,7 @@ const getOffers = (skip, limit, search = "") =>
       .skip(skip)
       .limit(limit),
     Offer.find({
-      title: { $regex: `${search}`, $options: "i" },
+      title: { $regex: `^${search}`, $options: "i" },
     }).count(),
   ]);
 
