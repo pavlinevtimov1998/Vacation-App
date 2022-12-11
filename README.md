@@ -21,4 +21,6 @@
 ### Server:
 * Run npm start
 
+<hr/>
+
 <img src='./mean-logo.png' >
