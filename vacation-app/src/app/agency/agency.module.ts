@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 import { SharedModule } from '../shared/shared.module';
 import { agencyRoutingModule } from './app-agency-routing.module';
@@ -10,6 +12,7 @@ import { MessageFormComponent } from './profile/message-form/message-form.compon
 import { ContactsComponent } from './profile/contacts/contacts.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { AgencyOffersComponent } from './agency-offers/agency-offers.component';
+import { CreateOfferComponent } from './create-offer/create-offer.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,16 @@ import { AgencyOffersComponent } from './agency-offers/agency-offers.component';
     ContactsComponent,
     EditProfileComponent,
     AgencyOffersComponent,
+    CreateOfferComponent,
   ],
-  imports: [CommonModule, SharedModule, agencyRoutingModule, FormsModule],
+  imports: [
+    CommonModule,
+    SharedModule,
+    agencyRoutingModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+  ],
 })
 export class AgencyModule {}

@@ -1,27 +1,26 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
+  FormGroup,
   FormBuilder,
   FormControl,
-  FormGroup,
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { combineLatest, Subscription } from 'rxjs';
+import { Subscription, combineLatest } from 'rxjs';
 
 import { CountryService } from 'src/app/country/country.service';
 import { MessageBusService } from 'src/app/message-bus.service';
 import { OfferService } from 'src/app/offer/offer.service';
-import { ICountry } from 'src/app/shared/interfaces/country.interface';
+import { ICountry, IFeature } from 'src/app/shared/interfaces';
 import { MessageType } from 'src/app/shared/interfaces/message.interface';
-import { IFeature } from 'src/app/shared/interfaces/offer.interface';
 import { errorHandler, imageTypeValidator } from 'src/app/util/form-errors';
 
 @Component({
-  selector: 'app-create',
-  templateUrl: './create.component.html',
-  styleUrls: ['./create.component.css'],
+  selector: 'app-create-offer',
+  templateUrl: './create-offer.component.html',
+  styleUrls: ['./create-offer.component.css'],
 })
-export class CreateComponent implements OnInit, OnDestroy {
+export class CreateOfferComponent implements OnInit {
   createOfferForm!: FormGroup;
 
   get errHandler() {

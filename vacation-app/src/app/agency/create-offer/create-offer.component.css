@@ -212,11 +212,17 @@ button[type="submit"]:hover {
 
   .offer-destination {
     flex-direction: column;
-    padding-left: 10%;
+    align-items: center;
+  }
+
+  .offer-destination input {
+    width: 50%;
   }
 
   .offer-destination div {
-    width: 60%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 
   .features {

@@ -1,11 +1,7 @@
 const Booking = require("../Models/Booking");
 const Offer = require("../Models/Offer");
 
-const {
-  getImagesUrl,
-  asyncUnlink,
-  deleteCloudinaryImage,
-} = require("../Util/imageUpload");
+const { getImagesUrl, deleteCloudinaryImage } = require("../Util/imageUpload");
 
 const getOffers = (skip, limit, search = "") =>
   Promise.all([
@@ -33,34 +29,6 @@ const createOffer = async (body, files) => {
 
   return Offer.create(body);
 };
-
-// const editOffer = async (offerId, body, files) => {
-//   body.features = body.features.split(",");
-
-//   if (files) {
-//     const offer = await Offer.findOne({ _id: offerId, agency: agencyId });
-
-//     const imagesId = [];
-
-//     offer.images.forEach((img) => {
-//       const id = img.substring(img.lastIndexOf("/") + 1, img.lastIndexOf("."));
-//       imagesId.push(id);
-//     });
-
-//     const [[images, localImages], _] = await Promise.all([
-//       getImagesUrl(files),
-//       imagesId.map((id) => deleteCloudinaryImage(id)),
-//     ]);
-//     body.images = images;
-
-//     return Promise.all([
-//       Offer.findByIdAndUpdate(offerId, body),
-//       asyncUnlink(localImages),
-//     ]);
-//   } else {
-//     return Offer.findByIdAndUpdate(offerId, body);
-//   }
-// };
 
 const booking = (body) =>
   Promise.all([
