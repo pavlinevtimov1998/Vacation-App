@@ -20,6 +20,12 @@ export class UserService {
     private router: Router
   ) {}
 
+  isUnique$(username: string): Observable<boolean> {
+    return this.httpClient.get<boolean>(`${environment.api}/user/username`, {
+      params: { username },
+    });
+  }
+
   userRegister$(body: {
     username: string;
     password: string;
