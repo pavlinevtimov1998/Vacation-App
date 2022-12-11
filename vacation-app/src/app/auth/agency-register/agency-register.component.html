@@ -19,14 +19,21 @@
           placeholder="Email"
           ngModel
           #email="ngModel"
+          [ngModelOptions]="{ updateOn: 'blur' }"
           required
           email
+          appAsyncValidator
+          prop="email"
         />
+        {{ email.errors?.['isExisting'] | json }}
         <ng-container *ngIf="email.touched">
           <p *ngIf="email.errors?.['required']" class="error">
             Email is required!
           </p>
           <p *ngIf="email.errors?.['email']" class="error">Invalid email!</p>
+          <p *ngIf="email.errors?.['isExisting']" class="error">
+            Email should be unique!
+          </p>
         </ng-container>
       </div>
       <div class="agency-name">
@@ -41,13 +48,20 @@
           #agencyName="ngModel"
           required
           minlength="4"
+          [ngModelOptions]="{ updateOn: 'blur' }"
+          appAsyncValidator
+          prop="agencyName"
         />
+        {{ agencyName.errors | json }}
         <ng-container *ngIf="agencyName.touched">
           <p *ngIf="agencyName.errors?.['required']" class="error">
             Agency name is required!
           </p>
           <p *ngIf="agencyName.errors?.['minlength']" class="error">
             Agency name should be at least 4 characters!
+          </p>
+          <p *ngIf="agencyName.errors?.['isExisting']" class="error">
+            Agency name should be unique!
           </p>
         </ng-container>
       </div>
