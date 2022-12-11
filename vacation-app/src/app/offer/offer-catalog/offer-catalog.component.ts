@@ -82,7 +82,7 @@ export class OfferCatalogComponent implements OnInit, OnDestroy {
       )
       .subscribe({
         next: ({ offers, offersCount }) => {
-          this.pages = Math.ceil(offersCount / this.limit);
+          this.pages = Math.ceil(offersCount / this.limit) || 1;
 
           this.offers = offers;
           this.isLoading = false;
