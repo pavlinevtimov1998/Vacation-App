@@ -54,3 +54,9 @@ exports.agencyLogin = async (body) => {
 
 exports.getTopAgencies = () =>
   Agency.find().select("-password -__v").sort({ rating: -1 }).limit(3);
+
+exports.findExistingEmail = (email) =>
+  Agency.findOne({ email }).select("email");
+
+exports.findExistingEmail = (agencyName) =>
+  Agency.findOne({ agencyName }).select("agencyName");
