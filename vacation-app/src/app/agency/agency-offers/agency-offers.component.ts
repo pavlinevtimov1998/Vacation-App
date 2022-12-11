@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, switchMap } from 'rxjs';
+
 import { IAgency, IOffer } from 'src/app/shared/interfaces';
 import { AgencyService } from '../agency.service';
 
