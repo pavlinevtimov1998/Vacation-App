@@ -30,6 +30,7 @@ const handleValidationError = (err) => {
 };
 
 const handleDuplicateError = (err) => {
+  console.log(err);
   let matched = err.errmsg.match(/(["'])(?:\\.|[^\\])*?\1/);
   let value;
 

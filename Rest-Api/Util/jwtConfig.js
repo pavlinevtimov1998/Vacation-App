@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
-
 const { promisify } = require("util");
+
+const config = require("../config/config");
 
 exports.getToken = (payload) => {
   const jwtSignPromise = promisify(jwt.sign);
