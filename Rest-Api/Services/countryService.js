@@ -22,7 +22,10 @@ const getCountry = (countryId) =>
   ]);
 
 const getCountryOffers = (countryId, skip = 0, limit = 3) =>
-  Offer.find({ country: countryId }).skip(skip).limit(limit);
+  Offer.find({ country: countryId })
+    .sort({ createdAt: -1 })
+    .skip(skip)
+    .limit(limit);
 
 module.exports = {
   getCountry,
