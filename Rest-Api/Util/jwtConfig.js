@@ -2,12 +2,10 @@ const jwt = require("jsonwebtoken");
 
 const { promisify } = require("util");
 
-const secret = process.env.SECRET || "AKJSHVDGKJHBADS";
-
 exports.getToken = (payload) => {
   const jwtSignPromise = promisify(jwt.sign);
 
-  return jwtSignPromise(payload, secret, {
+  return jwtSignPromise(payload, config.SECRET, {
     expiresIn: "1d",
   });
 };
@@ -15,5 +13,5 @@ exports.getToken = (payload) => {
 exports.verifyToken = (token) => {
   const jwtVerify = promisify(jwt.verify);
 
-  return jwtVerify(token, secret);
+  return jwtVerify(token, config.SECRET);
 };

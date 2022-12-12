@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
+const config = require("../config/config");
+
 const agencySchema = new mongoose.Schema(
   {
     agencyName: {
@@ -65,7 +67,7 @@ const agencySchema = new mongoose.Schema(
 agencySchema.pre("save", async function (next) {
   const hashedPassword = await bcrypt.hash(
     this.password,
-    Number(process.env.SALT)
+    Number(config.SALT)
   );
 
   this.password = hashedPassword;

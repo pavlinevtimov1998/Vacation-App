@@ -1,5 +1,5 @@
-module.exports = () => (req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+module.exports = (origin) => (req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", origin);
   res.setHeader(
     "Access-Control-Allow-Methods",
     "HEAD, OPTIONS, GET, POST, PUT, PATCH, DELETE"

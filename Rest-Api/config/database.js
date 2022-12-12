@@ -10,7 +10,6 @@ exports.initDB = (url) => {
       console.log("DB successfully connected!");
     })
     .catch((err) => {
-      console.log(process.env.PRODUCTION_DB_URL);
       console.log("DATABASE ERROR!");
       console.log(err.message);
       process.exit(1);

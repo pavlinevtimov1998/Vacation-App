@@ -46,7 +46,7 @@ favoritesController.delete(
     await favoritesService.removeFromFavorites(userId, offerId);
 
     res
-      .status(204)
+      .status(200)
       .json({ message: "Successfully removed from favorites!", userId });
   })
 );

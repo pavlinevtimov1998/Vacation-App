@@ -1,5 +1,6 @@
 const userController = require("express").Router();
 
+const config = require("../config/config");
 const userService = require("../Services/userService");
 const { catchAsyncError } = require("../Util/errorParser");
 const { isGuest, isUser } = require("../Middlewares/guards");
@@ -10,7 +11,7 @@ userController.post(
   catchAsyncError(async (req, res) => {
     const [token, user] = await userService.register(req.body);
 
-    res.cookie(process.env.COOKIE_NAME, token, { httpOnly: true });
+    res.cookie(config.COOKIE_NAME, token, { httpOnly: true });
 
     res.status(201).json({
       _id: user._id,
@@ -25,7 +26,7 @@ userController.post(
   catchAsyncError(async (req, res) => {
     const [token, user] = await userService.login(req.body);
 
-    res.cookie(process.env.COOKIE_NAME, token, { httpOnly: true });
+    res.cookie(config.COOKIE_NAME, token, { httpOnly: true });
 
     res.status(200).json({
       _id: user._id,
@@ -35,7 +36,7 @@ userController.post(
 );
 
 userController.post("/logout", isUser(), (req, res) => {
-  res.clearCookie(process.env.COOKIE_NAME);
+  res.clearCookie(config.COOKIE_NAME);
   res.status(200).json({ message: "Successfull logout!" });
 });
 
