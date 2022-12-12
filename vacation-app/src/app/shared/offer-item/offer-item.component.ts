@@ -48,7 +48,6 @@ export class OfferItemComponent {
     this.offerService.addToFavourites$(this.offer._id).subscribe({
       next: ({ message, userId }) => {
         this.offer.peopleFavourite.push(userId);
-        console.log(message);
 
         this.messageBus.addMessage({
           message: 'Successfully added to favourites!',

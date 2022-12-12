@@ -31,8 +31,6 @@ export class AsyncValidatorDirective implements AsyncValidator {
   validate(
     control: AbstractControl<string>
   ): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> {
-    console.log(control.value);
-
     const obs$ =
       this.prop == 'username'
         ? this.userService.isUnique$(control.value)

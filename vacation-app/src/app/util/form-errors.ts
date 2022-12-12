@@ -81,7 +81,6 @@ export function startDateValidator(
         endDate.value.getTime() - startDate.value.getTime();
 
       const days = differenceInTime / (1000 * 3600 * 24);
-      console.log(endDate.value > startDate.value);
 
       if (days == 0) {
         return {

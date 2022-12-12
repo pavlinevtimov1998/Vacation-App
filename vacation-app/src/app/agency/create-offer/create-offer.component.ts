@@ -80,8 +80,6 @@ export class CreateOfferComponent implements OnInit {
         images.push(files[i]);
       }
 
-      console.log(images);
-
       this.createOfferForm.patchValue({
         images: images,
       });

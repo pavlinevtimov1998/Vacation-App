@@ -37,8 +37,6 @@ export class AuthService {
       })
       .pipe(
         tap((account) => {
-          console.log(account);
-
           this.handleLogin(account);
         }),
         catchError((err) => EMPTY)

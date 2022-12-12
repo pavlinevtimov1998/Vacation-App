@@ -25,7 +25,6 @@
           appAsyncValidator
           prop="email"
         />
-        {{ email.errors?.['isExisting'] | json }}
         <ng-container *ngIf="email.touched">
           <p *ngIf="email.errors?.['required']" class="error">
             Email is required!
@@ -52,7 +51,6 @@
           appAsyncValidator
           prop="agencyName"
         />
-        {{ agencyName.errors | json }}
         <ng-container *ngIf="agencyName.touched">
           <p *ngIf="agencyName.errors?.['required']" class="error">
             Agency name is required!
