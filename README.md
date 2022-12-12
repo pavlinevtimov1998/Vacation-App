@@ -9,7 +9,7 @@
 * [Cloudinary](https://cloudinary.com/) for image storage
 
 ## Functionality
-* Guest can see countries, offers in every country, offers catalog, agency profiles
+* Guests can see countries, offers in every country, offers catalog, agency profiles
 ### Two types of authentication:
 * Logged Users can book for offer, cancel booking, add comments to offers, adding offers to favourites, remove from favourites, profile page and edit profile
 * Logged Agency accounts have access to create offers, delete offers, profile page and edit profile
