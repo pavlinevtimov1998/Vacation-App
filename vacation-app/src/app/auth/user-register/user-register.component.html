@@ -35,7 +35,7 @@
             Username should be maximum of 35 characters!
           </p>
           <p *ngIf="username.errors?.['isExisting']" class="error">
-            Username should be unique!
+            Username already exists!
           </p>
         </ng-container>
       </div>

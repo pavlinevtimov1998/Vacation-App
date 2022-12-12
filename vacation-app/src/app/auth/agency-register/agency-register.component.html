@@ -31,7 +31,7 @@
           </p>
           <p *ngIf="email.errors?.['email']" class="error">Invalid email!</p>
           <p *ngIf="email.errors?.['isExisting']" class="error">
-            Email should be unique!
+            Email already exists!
           </p>
         </ng-container>
       </div>
@@ -59,7 +59,7 @@
             Agency name should be at least 4 characters!
           </p>
           <p *ngIf="agencyName.errors?.['isExisting']" class="error">
-            Agency name should be unique!
+            Agency name already exists!
           </p>
         </ng-container>
       </div>

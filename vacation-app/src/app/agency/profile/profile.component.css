@@ -116,6 +116,10 @@ app-aside {
     flex-direction: column;
   }
 
+  .btns {
+    margin: unset;
+  }
+
   app-aside {
     width: 100%;
   }
@@ -164,10 +168,10 @@ app-aside {
     text-align: center;
   }
 
-  .btns {
+  /* .btns {
     min-height: 175px !important;
     justify-content: center;
-  }
+  } */
 
   .btns button {
     width: 100%;

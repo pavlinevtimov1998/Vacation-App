@@ -12,22 +12,6 @@
           </p>
         </div>
         <div class="btns" [ngClass]="{ 'not-owner': !isOwner }">
-          <ng-container *ngIf="!isOwner">
-            <button
-              (click)="changeActionHandler(messageForm, contacts)"
-              class="message-btn"
-            >
-              <mat-icon>message</mat-icon>
-              <span>Message</span>
-            </button>
-            <button
-              (click)="changeActionHandler(contacts, messageForm)"
-              class="contacts-btn"
-            >
-              <mat-icon>contacts</mat-icon>
-              <span>Contacts</span>
-            </button>
-          </ng-container>
           <ng-container *ngIf="isOwner">
             <button (click)="openEditPage()" class="edit-btn">
               <mat-icon>edit</mat-icon>
@@ -40,9 +24,6 @@
           </button>
         </div>
         <div class="info-container">
-          <div #messageForm class="message">
-            <app-message-form></app-message-form>
-          </div>
           <div #contacts class="contacts">
             <app-contacts [agencyData]="agencyData"></app-contacts>
           </div>

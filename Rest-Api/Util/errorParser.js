@@ -38,5 +38,5 @@ const handleDuplicateError = (err) => {
     value = matched[0];
   }
 
-  return `Cannot duplicate this ${value}. Please try with different!`;
+  return `${value} already exists. Please try with different!`;
 };
