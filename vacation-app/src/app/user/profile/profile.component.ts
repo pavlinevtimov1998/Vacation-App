@@ -37,9 +37,9 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   setCurrentPage(currentPage: number) {
     if (this.currentPage !== currentPage) {
       this.currentPage = currentPage;
+      this.subscription?.unsubscribe();
+      this.getBookings();
     }
-    this.subscription?.unsubscribe();
-    this.getBookings();
   }
 
   getBookings(): void {
