@@ -16,10 +16,10 @@
 
 ## Test
 ### Client:
-* Run ng serve for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+* cd vacation-app, ng serve for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
 
 ### Server:
-* Run npm start
+* cd Rest-Api, npm run dev
 
 <hr/>
 
