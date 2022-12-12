@@ -39,7 +39,7 @@
 
 .title h1 {
   letter-spacing: 1.3px;
-  font-size: 34px;
+  font-size: 26px;
 }
 
 .location {
@@ -158,6 +158,10 @@
     gap: 20px;
   }
 
+  .title h1 {
+    font-size: 1.6rem;
+  }
+
   .info-left {
     width: 100%;
   }
@@ -171,8 +175,12 @@
   }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 700px) {
   .info-container {
     width: 100%;
+  }
+
+  .title h1 {
+    font-size: 1.2rem;
   }
 }

@@ -21,16 +21,15 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 1%;
-  width: 25%;
+  padding: 0px 15px;
+  width: 28%;
   min-width: 250px;
-  height: 10vw;
-  min-height: 130px;
+  min-height: 163px;
   background-color: #fff;
   justify-content: space-evenly;
   border: 1px solid #dedede;
   border-radius: 15px;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
 }
 
 .comment-header {

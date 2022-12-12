@@ -25,6 +25,18 @@
         >
           Comment is required!
         </p>
+        <p
+          class="error"
+          *ngIf="commentForm.controls['content'].errors?.['minlength']"
+        >
+          Comment is should be at least 10 characters!
+        </p>
+        <p
+          class="error"
+          *ngIf="commentForm.controls['content'].errors?.['maxlength']"
+        >
+          Comment is should be maximum of 100 characters!
+        </p>
       </ng-container>
     </div>
     <button type="submit">
