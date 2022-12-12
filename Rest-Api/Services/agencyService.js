@@ -1,7 +1,7 @@
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 const Agency = require("../Models/Agency");
-const { getToken } = require("../util/jwtConfig");
+const { getToken } = require("../Util/jwtConfig");
 
 exports.agencyRegister = async (body) => {
   const { password, rePassword } = body;

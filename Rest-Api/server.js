@@ -13,6 +13,10 @@ dotenv.config({
 });
 
 const port = process.env.PORT || 3030;
+const databaseUrl = process.env.PRODUCTION_DB_URL.replace(
+  "<PASSWORD>",
+  process.env.DB_PASS
+);
 
 async function startServer() {
   const app = express();
@@ -23,13 +27,12 @@ async function startServer() {
     api_secret: process.env.API_SECRET,
   });
 
-  await initDB();
+  await initDB(databaseUrl);
 
   app.use(cors());
   app.use(express.json());
   app.use(cookieParser());
   app.use(isAuth);
-
   app.use(router);
 
   app.listen(port, () => console.log(`Server listening on port ${port}...`));

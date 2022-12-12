@@ -1,4 +1,4 @@
-const { verifyToken } = require("../util/jwtConfig");
+const { verifyToken } = require("../Util/jwtConfig");
 
 exports.isAuth = async (req, res, next) => {
   const token = req.cookies[process.env.COOKIE_NAME];
