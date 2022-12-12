@@ -1,0 +1,65 @@
+.wrapper {
+  width: 100%;
+}
+
+.image-container {
+  width: 100%;
+  height: 55vh;
+  position: relative;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.opacity {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #01060e;
+  opacity: 0.6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.opacity h1 {
+  font-size: 3rem;
+  margin-top: 20%;
+}
+
+.title {
+  text-align: center;
+  letter-spacing: 0.2px;
+}
+
+.title h1 {
+  margin-top: 10px;
+  font-size: 1.8rem;
+  font-weight: 900;
+}
+
+.description {
+  margin-block: 10px;
+  text-align: center;
+}
+
+.description p {
+  width: 50%;
+  margin: auto;
+  letter-spacing: 0.4px;
+}
+
+.link {
+  color: #0d47a1;
+  font-weight: 700;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
