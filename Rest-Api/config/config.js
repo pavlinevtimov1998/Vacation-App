@@ -28,7 +28,7 @@ const config = {
       api_secret: process.env.API_SECRET,
     },
     CORS: {
-      origin: "http://localhost:4200",
+      origin: "https://find-vacation.herokuapp.com",
     },
   },
 };

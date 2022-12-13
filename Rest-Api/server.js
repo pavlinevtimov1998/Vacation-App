@@ -21,14 +21,15 @@ async function startServer() {
   await initDB(config.DB_URL);
 
   app.use(cors(config.CORS.origin));
+  app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
   app.use(cookieParser());
-  app.use("/", express.static(__dirname + "/public"));
+  app.use(express.static(__dirname + "/public"));
 
   app.use(isAuth);
   app.use("/api", router);
-  app.use((req, res, next) => {
-    res.sendFile(__dirname + "/public");
+  app.use("*", (req, res) => {
+    res.sendFile(__dirname + "/public/index.html");
   });
 
   app.listen(config.PORT, () =>
