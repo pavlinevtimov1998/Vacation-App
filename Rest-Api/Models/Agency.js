@@ -65,13 +65,15 @@ const agencySchema = new mongoose.Schema(
 );
 
 agencySchema.pre("save", async function (next) {
-  const hashedPassword = await bcrypt.hash(
-    this.password,
-    Number(config.SALT)
-  );
+  const hashedPassword = await bcrypt.hash(this.password, Number(config.SALT));
 
   this.password = hashedPassword;
 
+  next();
+});
+
+agencySchema.pre("update", function (next) {
+  this.setOptions({ runValidators: true });
   next();
 });
 

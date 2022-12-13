@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { mergeMap, Subscription } from 'rxjs';
+import { AuthService } from 'src/app/auth/auth.service';
 
 import { MessageBusService } from 'src/app/message-bus.service';
 import { IAgency } from 'src/app/shared/interfaces';
@@ -27,6 +28,7 @@ export class EditProfileComponent implements OnInit {
   subscription!: Subscription;
 
   constructor(
+    private authService: AuthService,
     private agencyService: AgencyService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -84,7 +86,9 @@ export class EditProfileComponent implements OnInit {
 
     this.isSubmited = true;
     this.agencyService.editAgencyProfileData$(formData).subscribe({
-      next: () => {
+      next: (agency) => {        
+        this.authService.handleLogin(agency);
+
         this.messageBus.addMessage({
           message: 'Successfully editing!',
           type: MessageType.Success,

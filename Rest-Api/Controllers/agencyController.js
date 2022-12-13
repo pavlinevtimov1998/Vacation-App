@@ -17,6 +17,7 @@ agencyController.post(
       _id: agency._id,
       email: agency.email,
       agencyName: agency.agencyName,
+      image: agency.image,
       isAgency: true,
     });
   })
@@ -34,6 +35,7 @@ agencyController.post(
       _id: agency._id,
       email: agency.email,
       agencyName: agency.agencyName,
+      image: agency.image,
       isAgency: true,
     });
   })

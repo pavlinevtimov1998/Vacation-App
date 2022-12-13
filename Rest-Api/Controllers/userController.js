@@ -16,6 +16,7 @@ userController.post(
     res.status(201).json({
       _id: user._id,
       username: user.username,
+      image: user.image,
     });
   })
 );
@@ -31,6 +32,7 @@ userController.post(
     res.status(200).json({
       _id: user._id,
       username: user.username,
+      image: user.image,
     });
   })
 );
@@ -45,9 +47,7 @@ userController.get(
   catchAsyncError(async (req, res) => {
     const { username } = req.query;
 
-    const isExisting = !!(await userService.findExistingUsername(
-      username
-    ));
+    const isExisting = !!(await userService.findExistingUsername(username));
 
     res.status(200).json(isExisting);
   })

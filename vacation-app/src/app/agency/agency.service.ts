@@ -59,8 +59,8 @@ export class AgencyService {
     );
   }
 
-  editAgencyProfileData$(body: FormData): Observable<IAgency> {
-    return this.httpClient.patch<IAgency>(
+  editAgencyProfileData$(body: FormData): Observable<IAccount> {
+    return this.httpClient.patch<IAccount>(
       `${environment.api}/profile/agency/edit`,
       body,
       { withCredentials: true }

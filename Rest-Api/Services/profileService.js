@@ -59,14 +59,20 @@ exports.editUserData = async (userId, body, files) => {
       );
 
       return Promise.all([
-        User.findByIdAndUpdate(userId, body),
+        User.findByIdAndUpdate(userId, body, { new: true }).select(
+          "username image"
+        ),
         deleteCloudinaryImage(cloudinaryImageId),
       ]);
     } else {
-      return Promise.all([User.findByIdAndUpdate(userId, body)]);
+      return User.findByIdAndUpdate(userId, body, { new: true }).select(
+        "username image"
+      );
     }
   } else {
-    return User.findByIdAndUpdate(userId, body);
+    return User.findByIdAndUpdate(userId, body, { new: true }).select(
+      "username image"
+    );
   }
 };
 
@@ -88,14 +94,20 @@ exports.editAgencyData = async (agencyId, files, body) => {
       );
 
       return Promise.all([
-        Agency.findByIdAndUpdate(agencyId, body),
+        Agency.findByIdAndUpdate(agencyId, body, { new: true }).select(
+          "agencyName email image"
+        ),
         deleteCloudinaryImage(cloudinaryImageId),
       ]);
     } else {
-      return Promise.all([Agency.findByIdAndUpdate(agencyId, body)]);
+      return Agency.findByIdAndUpdate(agencyId, body, { new: true }).select(
+        "agencyName email image"
+      );
     }
   } else {
-    return Agency.findByIdAndUpdate(agencyId, body);
+    return Agency.findByIdAndUpdate(agencyId, body, { new: true }).select(
+      "agencyName email image"
+    );
   }
 };
 

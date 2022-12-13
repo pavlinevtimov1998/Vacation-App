@@ -44,13 +44,15 @@ const userSchema = new mongoose.Schema(
 );
 
 userSchema.pre("save", async function (next) {
-  const hashedPassword = await bcrypt.hash(
-    this.password,
-    Number(config.SALT)
-  );
+  const hashedPassword = await bcrypt.hash(this.password, Number(config.SALT));
 
   this.password = hashedPassword;
 
+  next();
+});
+
+userSchema.pre("update", function (next) {
+  this.setOptions({ runValidators: true });
   next();
 });
 

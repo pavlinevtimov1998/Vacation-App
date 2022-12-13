@@ -90,8 +90,8 @@ export class UserService {
     });
   }
 
-  editUserProfileData$(userData: FormData): Observable<IUser> {
-    return this.httpClient.patch<IUser>(
+  editUserProfileData$(userData: FormData): Observable<IAccount> {
+    return this.httpClient.patch<IAccount>(
       `${environment.api}/profile/user/edit`,
       userData,
       {

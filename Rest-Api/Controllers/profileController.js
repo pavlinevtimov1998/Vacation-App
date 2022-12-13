@@ -51,9 +51,13 @@ profileController.patch(
     const userId = req.user._id;
     const body = req.body;
 
-    await profileService.editUserData(userId, body, req.files);
+    const [user, _] = await profileService.editUserData(
+      userId,
+      body,
+      req.files
+    );
 
-    res.status(201).json({ message: "Successful update!" });
+    res.status(201).json(user);
   })
 );
 
@@ -76,9 +80,13 @@ profileController.patch(
     const agencyId = req.agency._id;
     const body = req.body;
 
-    await profileService.editAgencyData(agencyId, req.files, body);
+    const [agency, _] = await profileService.editAgencyData(
+      agencyId,
+      req.files,
+      body
+    );
 
-    res.status(201).json({ message: "Successful update!" });
+    res.status(201).json(agency);
   })
 );
 

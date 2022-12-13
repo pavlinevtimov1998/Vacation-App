@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/auth/auth.service';
 
 import { MessageBusService } from 'src/app/message-bus.service';
 import { IUser } from 'src/app/shared/interfaces';
@@ -26,6 +27,7 @@ export class EditProfileComponent implements OnInit {
   subscription$!: Subscription;
 
   constructor(
+    private authService: AuthService,
     private userService: UserService,
     private router: Router,
     private messageBus: MessageBusService
@@ -73,7 +75,9 @@ export class EditProfileComponent implements OnInit {
 
     this.isSubmited = true;
     this.userService.editUserProfileData$(formData).subscribe({
-      next: () => {
+      next: (user) => {        
+        this.authService.handleLogin(user);
+
         this.messageBus.addMessage({
           message: 'Successfully editing!',
           type: MessageType.Success,
