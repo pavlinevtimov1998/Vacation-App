@@ -129,7 +129,7 @@ export class CreateOfferComponent implements OnInit {
         this.router.navigate(['/details', offer._id]);
       },
       error: (err) => {
-        this.router.navigate(['/']);
+        this.isSubmited = false;
       },
     });
   }

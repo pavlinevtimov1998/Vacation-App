@@ -71,7 +71,7 @@ export class AgencyOffersComponent implements OnInit {
           this.paginationLoading = false;
         },
         error: (err) => {
-          this.router.navigate(['/']);
+          this.router.navigate(['/404']);
         },
       });
   }

@@ -22,7 +22,7 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
       catchError((error) => {
         console.log(error.error.message);
         console.log(error);
-        
+
         this.messageBus.addMessage({
           message: error?.error?.message || 'Something went wrong!',
           type: MessageType.Error,

@@ -68,7 +68,7 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
           this.isLoading = false;
         },
         error: (err) => {
-          this.router.navigate(['/']);
+          this.router.navigate(['/404']);
         },
       });
   }

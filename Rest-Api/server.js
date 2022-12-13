@@ -19,6 +19,7 @@ async function startServer() {
   cloudinary.config(config.CLOUDINARY_CONFIG);
 
   await initDB(config.DB_URL);
+  
   app.use(cors(config.CORS.origin));
   app.use(express.json());
   app.use(cookieParser());
