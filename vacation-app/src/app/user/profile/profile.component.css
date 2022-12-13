@@ -104,7 +104,6 @@ app-pagination {
 @media screen and (max-width: 900px) {
   .wrapper {
     align-items: center;
-    padding-top: 50px;
     gap: 35px;
   }
 
@@ -127,6 +126,8 @@ app-pagination {
     width: 95%;
     flex-direction: column-reverse;
     align-items: center;
+    height: 77vh;
+    padding: 5%;
   }
 
   .info {
@@ -139,13 +140,13 @@ app-pagination {
   }
 
   .username {
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
 }
 
 @media screen and (max-width: 450px) {
   .img-container {
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
   }
 }

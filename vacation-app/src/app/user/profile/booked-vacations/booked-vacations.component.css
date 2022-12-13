@@ -150,15 +150,12 @@ app-offer-images-carousel {
 }
 
 @media screen and (max-width: 1000px) {
-  .offer {
-    height: 45vw;
-  }
-
   .reserved {
     width: 100%;
   }
 
   .booking {
+    width: 35%;
     height: 45vw;
   }
 }
@@ -166,7 +163,7 @@ app-offer-images-carousel {
 @media screen and (max-width: 700px) {
   .booking {
     width: 80%;
-    height: 50vh;
+    height: 100vw;
   }
 }
 
@@ -175,7 +172,7 @@ app-offer-images-carousel {
     width: 95%;
   }
 
-  .vacations h1 {
+  .title {
     text-align: center;
   }
 }

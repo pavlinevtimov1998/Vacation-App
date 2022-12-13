@@ -55,6 +55,8 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
       )
       .subscribe({
         next: ([offer, comments]) => {
+          console.log(offer);
+          
           this.offer = offer;
           this.offer.comments = comments;
           this.agencyName = offer.agency.agencyName;

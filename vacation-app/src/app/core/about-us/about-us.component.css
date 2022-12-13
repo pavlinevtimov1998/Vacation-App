@@ -55,6 +55,7 @@
   width: 50%;
   margin: auto;
   letter-spacing: 0.4px;
+  margin-block: 15px 40px;
 }
 
 .link {
@@ -65,4 +66,10 @@
 
 .link:hover {
   text-decoration: underline;
+}
+
+@media screen and (max-width: 500px) {
+  .description p {
+    width: 80%;
+  }
 }
