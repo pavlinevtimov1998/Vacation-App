@@ -9,7 +9,7 @@ import {
 } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
-import { IAccount } from '../shared/interfaces/account.interface';
+import { IAccount } from '../shared/interfaces';
 
 @Injectable({
   providedIn: 'root',

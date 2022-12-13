@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
 import { MessageBusService } from 'src/app/message-bus.service';
 import { OfferService } from 'src/app/offer/offer.service';
 import { IComment } from 'src/app/shared/interfaces';
-import { MessageType } from 'src/app/shared/interfaces/message.interface';
+import { MessageType } from 'src/app/shared/interfaces';
 
 @Component({
   selector: 'app-comment',

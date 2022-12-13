@@ -1,5 +1,4 @@
 import { RouterModule, Routes } from '@angular/router';
-import { AgencyAuthGuard } from '../auth/guards/agency-auth.guard';
 
 import { UserAuthGuard } from '../auth/guards/user-auth.guard';
 import { OfferCatalogComponent } from '../offer/offer-catalog/offer-catalog.component';

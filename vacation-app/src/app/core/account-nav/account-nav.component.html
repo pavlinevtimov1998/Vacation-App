@@ -1,6 +1,6 @@
 <div class="actions-container" (click)="toggleDropDownMenu()">
   <img
-    src="/assets/img/default-user.png"
+    [src]="(currentUser$ | async)?.image || '/assets/img/default-user.png'"
     alt=""
     appClickOutside
     (clickOutside)="clickedOutside()"

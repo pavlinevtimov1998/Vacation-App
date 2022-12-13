@@ -19,12 +19,17 @@ async function startServer() {
   cloudinary.config(config.CLOUDINARY_CONFIG);
 
   await initDB(config.DB_URL);
-  
+
   app.use(cors(config.CORS.origin));
   app.use(express.json());
   app.use(cookieParser());
+  app.use("/", express.static(__dirname + "/public"));
+
   app.use(isAuth);
-  app.use(router);
+  app.use("/api", router);
+  app.use((req, res, next) => {
+    res.sendFile(__dirname + "/public");
+  });
 
   app.listen(config.PORT, () =>
     console.log(`Server listening on port ${config.PORT}...`)

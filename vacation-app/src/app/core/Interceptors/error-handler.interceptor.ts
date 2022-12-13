@@ -8,7 +8,7 @@ import {
 import { catchError, Observable, throwError } from 'rxjs';
 
 import { MessageBusService } from 'src/app/message-bus.service';
-import { MessageType } from 'src/app/shared/interfaces/message.interface';
+import { MessageType } from 'src/app/shared/interfaces';
 
 @Injectable()
 export class ErrorHandlerInterceptor implements HttpInterceptor {
@@ -20,9 +20,6 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
       catchError((error) => {
-        console.log(error.error.message);
-        console.log(error);
-
         this.messageBus.addMessage({
           message: error?.error?.message || 'Something went wrong!',
           type: MessageType.Error,

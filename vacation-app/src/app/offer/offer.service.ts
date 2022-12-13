@@ -3,12 +3,12 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
-import { IBooking } from '../shared/interfaces/booking.interface';
+import { IBooking } from '../shared/interfaces';
 import {
   IFeature,
   IOffer,
   IComment,
-} from '../shared/interfaces/offer.interface';
+} from '../shared/interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -28,7 +28,7 @@ export class OfferService {
   }
 
   getOne$(offerId: string): Observable<IOffer> {
-    return this.httpClient.get<IOffer>(`${environment.api}/offers/${offerId}`, {
+    return this.httpClient.get<IOffer>(`${environment.api}/offers${offerId}`, {
       withCredentials: true,
     });
   }
@@ -47,7 +47,7 @@ export class OfferService {
 
   getOfferComments$(offerId: string): Observable<IComment[]> {
     return this.httpClient.get<IComment[]>(
-      `${environment.api}/comments/${offerId}`,
+      `${environment.api}/comments${offerId}`,
       {
         withCredentials: true,
       }
@@ -56,7 +56,7 @@ export class OfferService {
 
   deleteOffer$(offerId: string): Observable<{ message: string }> {
     return this.httpClient.delete<{ message: string }>(
-      `${environment.api}/offers/${offerId}`,
+      `${environment.api}/offers${offerId}`,
       { withCredentials: true }
     );
   }
@@ -69,7 +69,7 @@ export class OfferService {
     offerId: string
   ): Observable<IComment> {
     return this.httpClient.post<IComment>(
-      `${environment.api}/comments/${offerId}`,
+      `${environment.api}/comments${offerId}`,
       body,
       { withCredentials: true }
     );
@@ -85,7 +85,7 @@ export class OfferService {
     offerId: string
   ): Observable<IBooking> {
     return this.httpClient.post<IBooking>(
-      `${environment.api}/offers/booking/${offerId}`,
+      `${environment.api}/offersbooking/${offerId}`,
       body,
       { withCredentials: true }
     );
@@ -93,7 +93,7 @@ export class OfferService {
 
   cancelBooking$(offerId: string): Observable<{}> {
     return this.httpClient.delete<{}>(
-      `${environment.api}/offers/cancel-booking/${offerId}`,
+      `${environment.api}/offerscancel-booking/${offerId}`,
       { withCredentials: true }
     );
   }
@@ -102,7 +102,7 @@ export class OfferService {
     offerId: string
   ): Observable<{ message: string; userId: string }> {
     return this.httpClient.post<{ message: string; userId: string }>(
-      `${environment.api}/favourites/${offerId}`,
+      `${environment.api}/favourites${offerId}`,
       {},
       { withCredentials: true }
     );
@@ -112,7 +112,7 @@ export class OfferService {
     offerId: string
   ): Observable<{ message: string; userId: string }> {
     return this.httpClient.delete<{ message: string; userId: string }>(
-      `${environment.api}/favourites/remove/${offerId}`,
+      `${environment.api}/favouritesremove/${offerId}`,
       { withCredentials: true }
     );
   }

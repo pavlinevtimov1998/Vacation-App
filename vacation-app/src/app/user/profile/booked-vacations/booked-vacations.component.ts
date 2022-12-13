@@ -1,7 +1,8 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { IUser } from 'src/app/shared/interfaces';
-import { IBooking } from 'src/app/shared/interfaces/booking.interface';
+import { IBooking } from 'src/app/shared/interfaces';
 
 @Component({
   selector: 'app-booked-vacations',
@@ -12,5 +13,9 @@ export class BookedVacationsComponent {
   @Input() profileData!: IUser;
   @Input() bookings!: IBooking[];
 
-  constructor() {}
+  constructor(private router: Router){}
+
+  goToOffer(offerId: string) {    
+    this.router.navigate(['/details', offerId])
+  }
 }

@@ -8,7 +8,7 @@ const { getImagesUrl, deleteCloudinaryImage } = require("../Util/imageUpload");
 exports.getAccountData = async (agency, user) => {
   if (agency) {
     const agencyData = await Agency.findById(agency._id).select(
-      "agencyName email"
+      "agencyName email image"
     );
 
     const result = JSON.parse(JSON.stringify(agencyData));
@@ -16,7 +16,7 @@ exports.getAccountData = async (agency, user) => {
 
     return result;
   } else {
-    return User.findById(user._id).select("username");
+    return User.findById(user._id).select("username image");
   }
 };
 

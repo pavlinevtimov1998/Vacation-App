@@ -6,9 +6,9 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { MessageBusService } from '../message-bus.service';
 import { IOffer } from '../shared/interfaces';
-import { IAccount, IUser } from '../shared/interfaces/account.interface';
-import { IBooking } from '../shared/interfaces/booking.interface';
-import { MessageType } from '../shared/interfaces/message.interface';
+import { IAccount, IUser } from '../shared/interfaces';
+import { IBooking } from '../shared/interfaces';
+import { MessageType } from '../shared/interfaces';
 
 @Injectable({
   providedIn: 'root',

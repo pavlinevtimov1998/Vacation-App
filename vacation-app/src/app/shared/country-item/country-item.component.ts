@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { ICountry } from '../interfaces/country.interface';
+import { ICountry } from '../interfaces';
 
 @Component({
   selector: 'app-country-item',

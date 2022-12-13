@@ -12,7 +12,7 @@ import { CountryService } from 'src/app/country/country.service';
 import { MessageBusService } from 'src/app/message-bus.service';
 import { OfferService } from 'src/app/offer/offer.service';
 import { ICountry, IFeature } from 'src/app/shared/interfaces';
-import { MessageType } from 'src/app/shared/interfaces/message.interface';
+import { MessageType } from 'src/app/shared/interfaces';
 import { errorHandler, imageTypeValidator } from 'src/app/util/form-errors';
 
 @Component({

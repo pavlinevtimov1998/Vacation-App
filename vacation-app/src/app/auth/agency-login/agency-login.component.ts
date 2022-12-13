@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { MessageBusService } from 'src/app/message-bus.service';
-import { MessageType } from 'src/app/shared/interfaces/message.interface';
+import { MessageType } from 'src/app/shared/interfaces';
 import { AgencyService } from '../../agency/agency.service';
 
 @Component({

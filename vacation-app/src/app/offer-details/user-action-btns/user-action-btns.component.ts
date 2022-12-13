@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { MessageBusService } from 'src/app/message-bus.service';
 
+import { MessageBusService } from 'src/app/message-bus.service';
 import { OfferService } from 'src/app/offer/offer.service';
 import { IOffer, IComment, IUser } from 'src/app/shared/interfaces';
-import { MessageType } from 'src/app/shared/interfaces/message.interface';
+import { MessageType } from 'src/app/shared/interfaces';
 
 @Component({
   selector: 'app-user-action-btns',

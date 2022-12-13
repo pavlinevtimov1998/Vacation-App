@@ -1,4 +1,3 @@
-import { IAgency } from './account.interface';
 import { IOffer } from './offer.interface';
 
 export interface IBooking {

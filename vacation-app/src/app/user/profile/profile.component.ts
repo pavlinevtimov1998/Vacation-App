@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { IUser } from 'src/app/shared/interfaces';
-import { IBooking } from 'src/app/shared/interfaces/booking.interface';
+import { IBooking } from 'src/app/shared/interfaces';
 import { UserService } from '../user.service';
 
 @Component({

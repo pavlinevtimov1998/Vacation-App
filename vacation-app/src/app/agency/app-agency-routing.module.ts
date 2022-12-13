@@ -17,7 +17,7 @@ const routes: Routes = [
     canActivate: [AgencyAuthGuard],
   },
   {
-    path: 'offers/:agencyId',
+    path: 'offers:agencyId',
     component: AgencyOffersComponent,
   },
   {

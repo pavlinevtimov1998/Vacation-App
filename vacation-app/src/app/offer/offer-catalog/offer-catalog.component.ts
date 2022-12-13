@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { mergeMap, Subscription } from 'rxjs';
 
 import { OfferService } from 'src/app/offer/offer.service';
-import { IOffer } from 'src/app/shared/interfaces/offer.interface';
+import { IOffer } from 'src/app/shared/interfaces';
 import { PaginationComponent } from 'src/app/shared/pagination/pagination.component';
 
 @Component({

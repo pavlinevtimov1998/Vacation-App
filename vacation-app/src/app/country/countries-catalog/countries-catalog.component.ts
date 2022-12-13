@@ -73,7 +73,7 @@ export class CountriesCatalogComponent implements OnInit, OnDestroy {
           this.paginationLoading = false;
         },
         error: (err) => {
-          this.router.navigate(['/']);
+          this.router.navigate(['/404']);
         },
       });
   }

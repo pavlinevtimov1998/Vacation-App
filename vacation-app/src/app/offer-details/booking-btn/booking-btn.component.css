@@ -32,3 +32,9 @@
 .cancel-book-btn:hover {
   color: red;
 }
+
+@media screen and (max-width: 450px) {
+  .cancel-book-btn span {
+    font-size: 14px;
+  }
+}

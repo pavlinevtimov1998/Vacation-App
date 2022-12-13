@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { mergeMap, Subscription } from 'rxjs';
+
 import { MessageBusService } from 'src/app/message-bus.service';
 import { IAgency } from 'src/app/shared/interfaces';
-import { MessageType } from 'src/app/shared/interfaces/message.interface';
+import { MessageType } from 'src/app/shared/interfaces';
 import { AgencyService } from '../agency.service';
 
 @Component({

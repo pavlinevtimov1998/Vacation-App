@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { combineLatest, Subscription } from 'rxjs';
 
 import { AuthService } from 'src/app/auth/auth.service';
-import { ICountry } from 'src/app/shared/interfaces/country.interface';
-import { IOffer } from 'src/app/shared/interfaces/offer.interface';
+import { ICountry } from 'src/app/shared/interfaces';
+import { IOffer } from 'src/app/shared/interfaces';
 import { WelcomeService } from '../../welcome.service';
 
 @Component({

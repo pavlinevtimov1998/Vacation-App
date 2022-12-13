@@ -58,7 +58,7 @@ export class CountryOffersComponent implements OnInit, OnDestroy {
           this.paginationLoading = false;
         },
         error: (err) => {
-          this.router.navigate(['/']);
+          this.router.navigate(['/404']);
         },
       });
   }
@@ -88,7 +88,7 @@ export class CountryOffersComponent implements OnInit, OnDestroy {
           this.isLoading = false;
         },
         error: (err) => {
-          this.router.navigate(['/']);
+          this.router.navigate(['/404']);
         },
       });
   }

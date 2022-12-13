@@ -5,9 +5,8 @@ import { combineLatest, map, Observable } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 import { MessageBusService } from 'src/app/message-bus.service';
 import { OfferService } from 'src/app/offer/offer.service';
-import { IOffer } from 'src/app/shared/interfaces/offer.interface';
-import { IUser } from '../interfaces';
-import { MessageType } from '../interfaces/message.interface';
+import { IOffer } from 'src/app/shared/interfaces';
+import { MessageType } from '../interfaces';
 
 @Component({
   selector: 'app-offer-item',
@@ -39,7 +38,7 @@ export class OfferItemComponent {
       (event.target as HTMLElement).tagName !== 'BUTTON' &&
       (event.target as HTMLElement).tagName !== 'MAT-ICON'
     ) {
-      this.router.navigate([`/details/${this.offer._id}`]);
+      this.router.navigate([`/details${this.offer._id}`]);
     }
   }
 

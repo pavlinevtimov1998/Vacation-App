@@ -37,7 +37,7 @@
             <p>{{ offer.description }}</p>
           </div>
           <div class="booking">
-            <h1>Price: {{ offer.price }}$</h1>
+            <h1 class="price">Price: {{ offer.price }}$</h1>
             <app-booking-btn
               *ngIf="(isLogged$ | async) && !currentUser?.isAgency"
               [offer]="offer"

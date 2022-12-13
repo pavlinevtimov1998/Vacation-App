@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
-import { ICountry } from 'src/app/shared/interfaces/country.interface';
+import { ICountry } from 'src/app/shared/interfaces';
 
 @Component({
   selector: 'app-popular-countries',

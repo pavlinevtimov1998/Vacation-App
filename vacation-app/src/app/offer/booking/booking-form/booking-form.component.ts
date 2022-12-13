@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 import { MessageBusService } from 'src/app/message-bus.service';
 
 import { IOffer } from 'src/app/shared/interfaces';
-import { MessageType } from 'src/app/shared/interfaces/message.interface';
+import { MessageType } from 'src/app/shared/interfaces';
 import {
   startDateValidator,
   endDateValidator,

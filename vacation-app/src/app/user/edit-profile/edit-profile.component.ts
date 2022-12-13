@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 
 import { MessageBusService } from 'src/app/message-bus.service';
 import { IUser } from 'src/app/shared/interfaces';
-import { MessageType } from 'src/app/shared/interfaces/message.interface';
+import { MessageType } from 'src/app/shared/interfaces';
 import { UserService } from '../user.service';
 
 @Component({

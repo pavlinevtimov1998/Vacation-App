@@ -3,7 +3,7 @@
 
   <div class="reserved">
     <ng-container *ngFor="let booking of bookings">
-      <div class="booking">
+      <div class="booking" (click)="goToOffer(booking.offer._id)">
         <div class="img-container">
           <app-offer-images-carousel
             [offer]="booking.offer"

@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
 
 import { AuthService } from 'src/app/auth/auth.service';
 import { MessageBusService } from 'src/app/message-bus.service';
-import { MessageType } from 'src/app/shared/interfaces/message.interface';
+import { MessageType } from 'src/app/shared/interfaces';
 
 @Component({
   selector: 'app-header',

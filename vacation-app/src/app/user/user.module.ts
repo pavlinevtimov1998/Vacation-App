@@ -10,7 +10,12 @@ import { LikedOffersComponent } from './liked-offers/liked-offers.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 @NgModule({
-  declarations: [UserProfileComponent, BookedVacationsComponent, LikedOffersComponent, EditProfileComponent],
+  declarations: [
+    UserProfileComponent,
+    BookedVacationsComponent,
+    LikedOffersComponent,
+    EditProfileComponent,
+  ],
   imports: [CommonModule, SharedModule, userRoutingModule, FormsModule],
 })
 export class UserModule {}

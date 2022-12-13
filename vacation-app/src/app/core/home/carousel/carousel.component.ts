@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 
-import { IOffer } from 'src/app/shared/interfaces/offer.interface';
+import { IOffer } from 'src/app/shared/interfaces';
 
 @Component({
   selector: 'app-carousel',
