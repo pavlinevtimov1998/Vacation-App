@@ -6,13 +6,13 @@
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  margin-block: 10%;
+  margin-block: 20%;
 }
 
 .sign-up {
   width: 30%;
   justify-content: space-between;
-  gap: 10px;
+  gap: 25px;
   display: flex;
   flex-direction: column;
   font-family: "Balsamiq Sans", cursive;
