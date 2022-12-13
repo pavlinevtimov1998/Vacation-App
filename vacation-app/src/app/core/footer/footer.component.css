@@ -84,7 +84,10 @@
   .footer {
     flex-direction: column-reverse;
     justify-content: center;
-    gap: 30px;
+  }
+
+  .footer article {
+    margin-top: 35px;
   }
 
   .btns-container,
