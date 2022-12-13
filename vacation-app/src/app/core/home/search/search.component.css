@@ -10,6 +10,7 @@
 }
 
 .search-form {
+  background-color: #fff;
   display: flex;
   box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
   border-radius: 10px;
