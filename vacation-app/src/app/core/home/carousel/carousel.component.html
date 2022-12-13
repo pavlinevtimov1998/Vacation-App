@@ -14,8 +14,11 @@
               [alt]="offer.agency.agencyName"
             />
 
-            <h3>{{ offer.agency.agencyName | substring : 25 }}</h3>
-            <p>{{ offer.agency.offers.length }} Offers</p>
+            <h3>{{ offer.agency.agencyName | substring : 12 }}</h3>
+            <p>
+              {{ offer.agency.offers.length }}
+              {{ offer.agency.offers.length > 1 ? "Offers" : "Offer" }}
+            </p>
           </a>
         </div>
       </div>
