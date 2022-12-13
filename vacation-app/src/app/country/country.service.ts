@@ -26,14 +26,14 @@ export class CountryService {
   }
 
   getAllCountries$(): Observable<ICountry[]> {
-    return this.httpClient.get<ICountry[]>(`${environment.api}/countriesall`);
+    return this.httpClient.get<ICountry[]>(`${environment.api}/countries/all`);
   }
 
   getCountry$(
     countryId: string
   ): Observable<{ country: ICountry; offersCount: number }> {
     return this.httpClient.get<{ country: ICountry; offersCount: number }>(
-      `${environment.api}/countries${countryId}`,
+      `${environment.api}/countries/${countryId}`,
       { withCredentials: true }
     );
   }
@@ -44,7 +44,7 @@ export class CountryService {
     limit: number
   ): Observable<IOffer[]> {
     return this.httpClient.get<IOffer[]>(
-      `${environment.api}/countriesoffers${countryId}?skip=${skip}&limit=${limit}`,
+      `${environment.api}/countries/offers/${countryId}?skip=${skip}&limit=${limit}`,
       { withCredentials: true }
     );
   }
