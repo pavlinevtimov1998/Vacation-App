@@ -20,6 +20,7 @@
 
 .header form {
   display: flex;
+  background-color: #fff;
   width: 30%;
   align-items: center;
   height: 70px;
