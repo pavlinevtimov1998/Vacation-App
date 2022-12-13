@@ -175,3 +175,23 @@
     height: 78vw;
   }
 }
+
+@media screen and (max-width: 500px) {
+  .agency {
+    width: 80px;
+    height: 80px;
+  }
+
+  .agency a h3 {
+    font-size: 10px;
+  }
+
+  .agency p {
+    font-size: 10px;
+  }
+
+  .agency img {
+    width: 30px;
+    height: 30px;
+  }
+}
