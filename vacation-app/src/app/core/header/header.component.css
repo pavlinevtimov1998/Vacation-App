@@ -198,7 +198,7 @@
   max-width: 280px;
   min-width: 250px;
   position: fixed;
-  z-index: 1000;
+  z-index: 1100;
   top: 15%;
   right: -300px;
   transition: all 1s ease;

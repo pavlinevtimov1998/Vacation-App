@@ -20,7 +20,7 @@ export class MobileNavComponent implements OnInit, OnDestroy {
     return this.authService.isLogged$;
   }
 
-  currentUser!: IAccount | undefined;
+  currentUser!: IAccount | null;
   isLoggedOut = false;
 
   subscription$!: Subscription;

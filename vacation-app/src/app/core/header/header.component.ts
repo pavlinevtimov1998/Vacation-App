@@ -1,11 +1,12 @@
 import {
   Component,
   ElementRef,
+  OnDestroy,
   OnInit,
   Renderer2,
   ViewChild,
 } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription, take } from 'rxjs';
 
 import { AuthService } from 'src/app/auth/auth.service';
 import { MessageBusService } from 'src/app/message-bus.service';
@@ -16,7 +17,7 @@ import { MessageType } from 'src/app/shared/interfaces';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   @ViewChild('messageContainer', { static: true })
   messageContainer!: ElementRef<HTMLDivElement>;
 
@@ -33,7 +34,7 @@ export class HeaderComponent implements OnInit {
 
   interval!: NodeJS.Timeout;
 
-  subscription!: Subscription;
+  subscription$!: Subscription;
 
   toggleProfileMobNav = false;
 
@@ -44,7 +45,7 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.subscription = this.messageBus.onNewMessage$.subscribe((message) => {
+    this.subscription$ = this.messageBus.onNewMessage$.subscribe((message) => {
       if (message) {
         this.message = message.message;
         this.isError = message.type === MessageType.Error;
@@ -83,5 +84,9 @@ export class HeaderComponent implements OnInit {
 
   profileMobileLinks() {
     this.toggleProfileMobNav = !this.toggleProfileMobNav;
+  }
+
+  ngOnDestroy(): void {
+    this.subscription$?.unsubscribe();
   }
 }

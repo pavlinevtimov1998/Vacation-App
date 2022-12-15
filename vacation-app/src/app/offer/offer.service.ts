@@ -85,7 +85,7 @@ export class OfferService {
     offerId: string
   ): Observable<IBooking> {
     return this.httpClient.post<IBooking>(
-      `${environment.api}/offersbooking/${offerId}`,
+      `${environment.api}/offers/booking/${offerId}`,
       body,
       { withCredentials: true }
     );
@@ -93,7 +93,7 @@ export class OfferService {
 
   cancelBooking$(offerId: string): Observable<{}> {
     return this.httpClient.delete<{}>(
-      `${environment.api}/offerscancel-booking/${offerId}`,
+      `${environment.api}/offers/cancel-booking/${offerId}`,
       { withCredentials: true }
     );
   }

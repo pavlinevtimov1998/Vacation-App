@@ -86,7 +86,7 @@ export class EditProfileComponent implements OnInit {
 
     this.isSubmited = true;
     this.agencyService.editAgencyProfileData$(formData).subscribe({
-      next: (agency) => {        
+      next: (agency) => {
         this.authService.handleLogin(agency);
 
         this.messageBus.addMessage({

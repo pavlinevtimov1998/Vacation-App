@@ -60,14 +60,45 @@
   align-items: center;
 }
 
+.page {
+  display: none;
+}
+
 .selected-btn {
   background-color: #fff;
   color: #0d47a1;
 }
 
-
 @media screen and (max-width: 750px) {
-  .row {
+  .rows {
     display: none;
+  }
+
+  .page {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    gap: 10px;
+    font-weight: 800;
+    background-color: #0d47a1;
+    padding: 8px 10px;
+    border-radius: 4px;
+    color: #fff;
+  }
+
+  .of-page {
+    font-size: 1.7rem;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .page {
+    font-size: 1rem;
+    gap: 3px;
+    padding: 8px 5px;
+  }
+
+  .of-page {
+    font-size: 1.1rem;
   }
 }

@@ -16,7 +16,7 @@ export class AccountNavComponent implements OnInit, OnDestroy {
     return this.authService.currentUser$;
   }
 
-  currentUser!: IAccount | undefined;
+  currentUser!: IAccount | null;
 
   subscription$!: Subscription;
   isLoggedOut = false;

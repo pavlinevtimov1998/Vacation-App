@@ -1,6 +1,14 @@
 <div class="actions-container" (click)="toggleDropDownMenu()">
   <img
+    *ngIf="!(currentUser$ | async)?.isAgency"
     [src]="(currentUser$ | async)?.image || '/assets/img/default-user.png'"
+    alt=""
+    appClickOutside
+    (clickOutside)="clickedOutside()"
+  />
+  <img
+    *ngIf="(currentUser$ | async)?.isAgency"
+    [src]="(currentUser$ | async)?.image || '/assets/img/agency-default.png'"
     alt=""
     appClickOutside
     (clickOutside)="clickedOutside()"

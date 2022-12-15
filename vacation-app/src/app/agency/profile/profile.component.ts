@@ -12,7 +12,7 @@ import { AgencyService } from '../agency.service';
   styleUrls: ['./profile.component.css'],
 })
 export class AgencyProfileComponent implements OnInit, OnDestroy {
-  currentUser!: IAccount | undefined;
+  currentUser!: IAccount | null;
   agencyData!: IAgency;
 
   isOwner!: boolean;

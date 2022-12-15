@@ -18,7 +18,7 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
     return this.authService.isLogged$;
   }
 
-  currentUser!: IAccount | undefined;
+  currentUser!: IAccount | null;
   subscription!: Subscription;
 
   offerId!: string;
@@ -55,8 +55,6 @@ export class OfferDetailsComponent implements OnInit, OnDestroy {
       )
       .subscribe({
         next: ([offer, comments]) => {
-          console.log(offer);
-          
           this.offer = offer;
           this.offer.comments = comments;
           this.agencyName = offer.agency.agencyName;
