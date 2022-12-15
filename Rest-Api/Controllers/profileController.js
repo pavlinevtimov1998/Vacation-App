@@ -86,7 +86,13 @@ profileController.patch(
       body
     );
 
-    res.status(201).json(agency);
+    res.status(201).json({
+      email: agency.email,
+      agencyName: agency.agencyName,
+      _id: agency._id,
+      image: agency.image,
+      isAgency: true,
+    });
   })
 );
 
