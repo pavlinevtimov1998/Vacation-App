@@ -58,12 +58,6 @@
         <mat-icon>insert_chart</mat-icon>
       </a>
     </li>
-    <li>
-      <a routerLink="/about-us">
-        <span>About Us</span>
-        <mat-icon>support_agent</mat-icon>
-      </a>
-    </li>
     <li *ngIf="isLogged$ | async">
       <a href="javascript:void(0)" (click)="logoutHandler()"
         ><span>Logout</span><mat-icon>logout</mat-icon></a
