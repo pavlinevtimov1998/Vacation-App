@@ -14,7 +14,6 @@ import { AccountNavComponent } from './account-nav/account-nav.component';
 import { SharedModule } from '../shared/shared.module';
 import { TopAgenciesComponent } from './top-agencies/top-agencies.component';
 import { MessageComponent } from './message/message.component';
-import { AboutUsComponent } from './about-us/about-us.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
@@ -29,7 +28,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
     AccountNavComponent,
     TopAgenciesComponent,
     MessageComponent,
-    AboutUsComponent,
     NotFoundComponent,
   ],
   imports: [CommonModule, RouterModule, SharedModule, FormsModule],
