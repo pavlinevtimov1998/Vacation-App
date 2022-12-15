@@ -51,13 +51,13 @@ profileController.patch(
     const userId = req.user._id;
     const body = req.body;
 
-    const [user, _] = await profileService.editUserData(
-      userId,
-      body,
-      req.files
-    );
+    const result = await profileService.editUserData(userId, body, req.files);
 
-    res.status(201).json(user);
+    if (Array.isArray(result)) {
+      return res.status(201).json(result[0]);
+    }
+
+    res.status(201).json(result);
   })
 );
 
@@ -80,17 +80,27 @@ profileController.patch(
     const agencyId = req.agency._id;
     const body = req.body;
 
-    const [agency, _] = await profileService.editAgencyData(
+    const result = await profileService.editAgencyData(
       agencyId,
       req.files,
       body
     );
 
+    if (Array.isArray(result)) {
+      return res.status(201).json({
+        email: result[0].email,
+        agencyName: result[0].agencyName,
+        _id: result[0]._id,
+        image: result[0].image,
+        isAgency: true,
+      });
+    }
+
     res.status(201).json({
-      email: agency.email,
-      agencyName: agency.agencyName,
-      _id: agency._id,
-      image: agency.image,
+      email: result[0].email,
+      agencyName: result[0].agencyName,
+      _id: result[0]._id,
+      image: result[0].image,
       isAgency: true,
     });
   })
