@@ -2,7 +2,7 @@
 <section class="wrapper" *ngIf="!isLoading">
   <div class="container">
     <article class="title">
-      <h1 *ngIf="offers.length > 0">Offers from {{ agency.agencyName }}</h1>
+      <h1 *ngIf="offers.length > 0">Offers from <span class="agency-name">{{ agency.agencyName }}</span></h1>
       <ng-container *ngIf="offers.length == 0">
         <h1>No added offers...</h1>
         <a [routerLink]="['/agency/profile', agency._id]"
