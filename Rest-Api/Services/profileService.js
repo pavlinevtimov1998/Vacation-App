@@ -94,20 +94,14 @@ exports.editAgencyData = async (agencyId, files, body) => {
       );
 
       return Promise.all([
-        Agency.findByIdAndUpdate(agencyId, body, { new: true }).select(
-          "agencyName email image"
-        ),
+        Agency.findByIdAndUpdate(agencyId, body, { new: true }),
         deleteCloudinaryImage(cloudinaryImageId),
       ]);
     } else {
-      return Agency.findByIdAndUpdate(agencyId, body, { new: true }).select(
-        "agencyName email image"
-      );
+      return Agency.findByIdAndUpdate(agencyId, body, { new: true });
     }
   } else {
-    return Agency.findByIdAndUpdate(agencyId, body, { new: true }).select(
-      "agencyName email image"
-    );
+    return Agency.findByIdAndUpdate(agencyId, body, { new: true });
   }
 };
 
