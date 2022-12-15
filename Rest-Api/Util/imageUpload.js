@@ -5,7 +5,7 @@ const { unlink } = require("fs");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "./uploads");
+    cb(null, "./Uploads");
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname);
@@ -21,20 +21,18 @@ exports.deleteCloudinaryImage = (id) => cloudinary.uploader.destroy(id);
 const asyncUnlink = (img) => promisify(unlink)(img);
 
 exports.getImagesUrl = async (files) => {
-  const promises = [];
-  const localImagePromises = [];
+  const filesPath = [];
+  const localImagePaths = [];
 
   for (let i = 0; i < files.length; i++) {
-    promises.push(uploadToCloudinary(files[i].path));
+    filesPath.push(files[i].path);
+    localImagePaths.push(files.length[i]);
   }
 
-  const imagesUrl = await Promise.all(promises);
+  const imagesUrl = await Promise.all(
+    filesPath.map((p) => uploadToCloudinary(p))
+  );
+  await Promise.all(filesPath.map((p) => asyncUnlink(p)));
 
-  for (let i = 0; i < files.length; i++) {
-    localImagePromises.push(asyncUnlink(files[i].path));
-  }
-
-  await Promise.all(localImagePromises);
-
-  return imagesUrl.map((img) => img.url);
+  return imagesUrl.map((img) => img.url.replace("http", "https"));
 };
