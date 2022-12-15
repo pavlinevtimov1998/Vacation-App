@@ -3,7 +3,7 @@ const Offer = require("../Models/Offer");
 
 const topOffers = () =>
   Offer.find()
-    .sort({ peopleBooked: -1 })
+    .sort({ peopleFavourite: -1 })
     .limit(5)
     .select("agency images -country")
     .populate({
@@ -11,7 +11,7 @@ const topOffers = () =>
       select: "agencyName offers image",
     });
 
-const TopCountries = () => Country.find().sort({ rating: -1 }).limit(3);
+const TopCountries = () => Country.find().limit(3);
 
 module.exports = {
   topOffers,
