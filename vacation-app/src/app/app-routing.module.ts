@@ -2,7 +2,6 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 import { AuthGuard } from './auth/guards/auth.guard';
 import { UserAuthGuard } from './auth/guards/user-auth.guard';
-import { AboutUsComponent } from './core/about-us/about-us.component';
 import { WelcomePageComponent } from './core/home/welcome-page/welcome-page.component';
 import { NotFoundComponent } from './core/not-found/not-found.component';
 import { TopAgenciesComponent } from './core/top-agencies/top-agencies.component';
@@ -48,10 +47,6 @@ const routes: Routes = [
     path: 'countries',
     loadChildren: () =>
       import('./country/country.module').then((m) => m.CountryModule),
-  },
-  {
-    path: 'about-us',
-    component: AboutUsComponent,
   },
   {
     path: '404',
