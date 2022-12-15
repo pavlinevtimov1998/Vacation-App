@@ -6,7 +6,7 @@
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  margin-block: 20%;
+  margin-block: 10%;
 }
 
 .sign-up {
@@ -86,6 +86,7 @@
   }
   .banner {
     gap: 55px;
+    margin-block: 15%;
   }
 }
 

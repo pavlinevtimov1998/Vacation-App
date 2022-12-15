@@ -137,7 +137,7 @@ app-offer-item {
   .country-details {
     width: 80%;
     flex-direction: column-reverse;
-    gap: 20px;
+    gap: 40px;
   }
 
   .country-image {

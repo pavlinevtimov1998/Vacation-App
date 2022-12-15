@@ -25,6 +25,10 @@
   min-height: 60vh;
 }
 
+.flex-start {
+  justify-content: flex-start;
+}
+
 app-offer-item {
   width: 31%;
   height: 40vw;

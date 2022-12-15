@@ -39,7 +39,6 @@
           placeholder="Email"
           [(ngModel)]="userData.email"
           #email="ngModel"
-          required
         />
         <ng-container *ngIf="email.touched">
           <p *ngIf="email.errors?.['required']" class="error">
