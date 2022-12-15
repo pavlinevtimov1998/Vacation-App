@@ -80,10 +80,9 @@ offerSchema.pre("findOne", function (next) {
     select: "agencyName offers",
     populate: {
       path: "offers",
-      select:
-        "-description -__v -ratingsQuantity -rating -peopleBooked -createdAt",
+      select: "-description -__v -peopleBooked -createdAt -image",
+      options: { limit: 3, sort: { createdAt: -1 } },
     },
-    options: { limit: 3, sort: { createdAt: -1 } },
   });
   next();
 });
