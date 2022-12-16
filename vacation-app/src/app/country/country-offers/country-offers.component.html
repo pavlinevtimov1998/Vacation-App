@@ -23,7 +23,7 @@
     <div
       class="offers-container"
       [ngClass]="{ 'no-offers': offers.length == 0 }"
-      [ngClass]="{ 'flex-start': offers.length % 2 == 0 }"
+      [ngClass]="{ 'flex-start': offers.length % 2 == 0 && offers.length > 0 }"
       *ngIf="!paginationLoading"
     >
       <h1 *ngIf="offers.length == 0" class="no-results">No Results...</h1>
