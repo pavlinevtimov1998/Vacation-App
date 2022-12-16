@@ -78,6 +78,11 @@
   justify-content: space-between;
 }
 
+.flex-start {
+  justify-content: flex-start;
+  gap: 40px;
+}
+
 .no-offers {
   justify-content: center;
   min-height: 20vh;
@@ -165,6 +170,10 @@ app-offer-item {
 
   app-offer-item {
     margin-block: 3%;
+  }
+
+  .flex-start {
+    gap: 20px;
   }
 }
 
