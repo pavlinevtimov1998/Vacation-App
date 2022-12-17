@@ -19,12 +19,12 @@ const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
-    canActivate: [AuthGuard],
+    canLoad: [AuthGuard],
   },
   {
     path: 'user',
     loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
-    canActivate: [UserAuthGuard],
+    canLoad: [UserAuthGuard],
   },
   {
     path: 'agency',
