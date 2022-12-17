@@ -91,16 +91,16 @@ profileController.patch(
         email: result[0].email,
         agencyName: result[0].agencyName,
         _id: result[0]._id,
-        image: result[0].image,
+        image: result[0]?.image,
         isAgency: true,
       });
     }
 
     res.status(201).json({
-      email: result[0].email,
-      agencyName: result[0].agencyName,
-      _id: result[0]._id,
-      image: result[0].image,
+      email: result.email,
+      agencyName: result.agencyName,
+      _id: result._id,
+      image: result?.image,
       isAgency: true,
     });
   })

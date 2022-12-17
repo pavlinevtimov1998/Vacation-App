@@ -1,11 +1,6 @@
 <div class="aside">
   <div class="img-container">
-    <img *ngIf="image" [src]="image" />
-    <img
-      *ngIf="!image"
-      src="/assets/img/default-user.png"
-      alt="default account image"
-    />
+    <img [src]="image || '/assets/img/agency-default.png'" />
   </div>
   <div class="line"></div>
 </div>
