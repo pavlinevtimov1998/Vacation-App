@@ -10,6 +10,11 @@
 * HTML & CSS
 * [Cloudinary](https://cloudinary.com/) for image storage
 
+<img src="/Screenshot%202022-12-18%20225441.png" alt="" width="900" height="500"/>
+
+<img src="/Screenshot%202022-12-18%20225519.png" alt="" width="300" height="300"/> <img src="/Screenshot%202022-12-18%20225530.png" alt="" width="300" height="300"/> <img src="/Screenshot%202022-12-18%20225546.png" alt="" width="300" height="300"/>
+    
+
 ## Functionality
 * Guests can see countries, offers in every country, offers catalog, agency profiles
 * Logged Users can book for offer, cancel booking, add comments to offers, add offers to favourites, remove from favourites, profile page and edit profile
