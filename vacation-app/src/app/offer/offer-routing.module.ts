@@ -1,6 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
+import { BookGuard } from '../auth/guards/book.guard';
 
-import { UserAuthGuard } from '../auth/guards/user-auth.guard';
 import { OfferCatalogComponent } from '../offer/offer-catalog/offer-catalog.component';
 import { BookingComponent } from './booking/booking.component';
 
@@ -13,7 +13,7 @@ const routes: Routes = [
   {
     path: 'book/:offerId',
     component: BookingComponent,
-    canActivate: [UserAuthGuard],
+    canActivate: [BookGuard],
   },
 ];
 

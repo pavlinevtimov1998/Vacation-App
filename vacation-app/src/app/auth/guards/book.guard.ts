@@ -7,14 +7,14 @@ import {
   UrlTree,
 } from '@angular/router';
 import { map, Observable } from 'rxjs';
-
 import { AuthService } from '../auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AgencyAuthGuard implements CanActivate {
+export class BookGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -23,14 +23,13 @@ export class AgencyAuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-      
     return this.authService.currentUser$.pipe(
       map((account) => {
-        if (account && account?.isAgency) {
+        if (account && !account?.isAgency) {
           return true;
         }
 
-        return this.router.createUrlTree(['/auth/agency/login']);
+        return this.router.createUrlTree(['/auth/user/login']);
       })
     );
   }
