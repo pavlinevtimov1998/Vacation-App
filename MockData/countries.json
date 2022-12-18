@@ -1,0 +1,142 @@
+[{
+  "_id": {
+    "$oid": "6379dc86ac559a805696342c"
+  },
+  "image": "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1668931414/cyprus_lmzvfi.jpg",
+  "info": "Cyprus is an island country in the Middle East in the Eastern Mediterranean Sea. Nearby countries include Turkey, Syria, and Lebanon. Geographically, Cyprus is a central plain with mountains to the north and south. The government system is a republic; the chief of state and head of government is the president.",
+  "name": "Cyprus",
+  "offers": [
+    {
+      "$oid": "63991c593a2806448b357f74"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "63737c59db5822ea9ef334e8"
+  },
+  "image": "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1668461413/greece_gmgi32.jpg",
+  "info": "Greece has the longest coastline in Europe and is the southernmost country in Europe. The mainland has rugged mountains, forests, and lakes, but the country is well known for the thousands of islands dotting the blue Aegean Sea to the east, the Mediterranean Sea to the south, and the Ionian Sea to the west.",
+  "name": "Greece",
+  "offers": []
+},{
+  "_id": {
+    "$oid": "6379dc37ac559a805696342a"
+  },
+  "image": "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1668931309/portugal_lmvh5q.jpg",
+  "info": "Portugal is the westernmost point of Europe and lies on the west coast of the Iberian Peninsula. The long Atlantic coastline is popular with visitors and locals alike. Surfers are drawn to the strong surf in the west, and the warm, sandy beaches in the south are a haven for tourists.",
+  "name": "Portugal",
+  "offers": []
+},{
+  "_id": {
+    "$oid": "6379dc2aac559a8056963429"
+  },
+  "image": "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1670878948/italy-flag_nqudon.jpg",
+  "info": "Italy, country of south-central Europe, occupying a peninsula that juts deep into the Mediterranean Sea. Italy comprises some of the most varied and scenic landscapes on Earth and is often described as a country shaped like a boot. At its broad top stand the Alps, which are among the world's most rugged mountains.",
+  "name": "Italy",
+  "offers": [
+    {
+      "$oid": "639649ebbb261ea3e60b8655"
+    },
+    {
+      "$oid": "6397197681fd466c74cddc3b"
+    },
+    {
+      "$oid": "6398c89a866842a47414b391"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "6379dc18ac559a8056963428"
+  },
+  "image": "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1668931315/turkey_wxiqzy.jpg",
+  "info": "Turkey is a large peninsula that bridges the continents of Europe and Asia. Turkey is surrounded on three sides by the Black Sea, the Mediterranean Sea, and the Aegean Sea. Istanbul, the largest city in Turkey, is built on land in the Bosporus seaway. The city is partly in Europe and partly in Asia.",
+  "name": "Turkey",
+  "offers": []
+},{
+  "_id": {
+    "$oid": "6372359c40b9485b69897803"
+  },
+  "image": "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1668461422/france_fum18o.jpg",
+  "info": "France is one of the oldest nations on Earth and the most ethnically diverse country in Europe. These deep and broad influences have made France a world leader throughout history in nearly all aspects of culture, including cuisine, wine-making, politics, philosophy, music, art, film, fashion, literature, and sports.",
+  "name": "France",
+  "offers": [
+    {
+      "$oid": "639b883f07530720c87d881d"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "6379e31cac559a805696342d"
+  },
+  "image": "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1668932673/bulgaria_sgxflx.webp",
+  "info": "Bulgaria is famous for being one of the oldest countries in Europe. Its diverse landscape boasts mountains, beaches, mineral springs, and many UNESCO World Heritage sites. Bulgaria is also known for its rose oil, lavender, rakiya, and wine. It introduced the world to yogurt and the Cyrillic alphabet too.",
+  "name": "Bulgaria",
+  "offers": [
+    {
+      "$oid": "639919237b7b4677fceb4710"
+    },
+    {
+      "$oid": "63991a763a2806448b357f45"
+    },
+    {
+      "$oid": "63991b663a2806448b357f61"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "6379dc44ac559a805696342b"
+  },
+  "image": "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1670879031/malta-flag_cc947w.jpg",
+  "info": "Malta is a popular tourist destination and known for its warm climate and breathtaking landscapes that serve as locations for major film productions. The archipelago is home to some of the oldest temples in the world, such as the Megalithic Temples of Malta.",
+  "name": "Malta",
+  "offers": []
+},{
+  "_id": {
+    "$oid": "63722dd7bb32f901346fd4ad"
+  },
+  "image": "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1668461400/spain_vuznoh.jpg",
+  "info": "The Kingdom of Spain has a population of 47.1 million people (in 2020), the capital and largest city is Madrid; Spain's second city is Barcelona, the capital city of Catalonia. The official and national language is Spanish, co-official languages are Catalan, Galician, Basque, and Occitan.",
+  "name": "Spain",
+  "offers": [
+    {
+      "$oid": "639916817b7b4677fceb46f8"
+    },
+    {
+      "$oid": "6399175b3a2806448b357f27"
+    },
+    {
+      "$oid": "6399186d7b7b4677fceb4704"
+    },
+    {
+      "$oid": "639ed9182f122505352ff14d"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "639b7592a9a46f7c49e69dd1"
+  },
+  "image": "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1671132420/croatia_fldk2r.jpg",
+  "info": "Located in southeast Europe, Croatia is geographically diverse. The crescent-shaped country features low mountains and highlands near the Adriatic coastline, flat plains that hug the Hungarian border, and a multitude of islands. In mountainous regions, winters are cold and snowy and the summers are mild.",
+  "name": "Croatia",
+  "offers": [
+    {
+      "$oid": "639dacc2c02f84fd022cd7d2"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "639b75dba9a46f7c49e69dd2"
+  },
+  "image": "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1671132701/switz_wmf1s2.jpg",
+  "info": "Switzerland is a small mountainous country located in central Europe. This landlocked country is about the size of New Jersey and is between France and Italy. It is also bordered by Austria, Germany, and Liechtenstein.",
+  "name": "Switzerland",
+  "offers": []
+},{
+  "_id": {
+    "$oid": "639b7714a9a46f7c49e69dd3"
+  },
+  "image": "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1671132928/austria_f30hrw.jpg",
+  "info": "Austria is a small country in central Europe famous for its beautiful scenery on the one hand – lots of green views and snow-capped mountains which are a heaven for skiers – and its rich culture on the other hand: castles, churches, museums and lots of music.",
+  "name": "Austria",
+  "offers": []
+}]

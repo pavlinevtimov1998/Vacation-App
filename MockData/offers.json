@@ -1,0 +1,557 @@
+[{
+  "_id": {
+    "$oid": "639649ebbb261ea3e60b8655"
+  },
+  "title": "Aleph Rome, Curio Collection by Hilton",
+  "town": "Rome",
+  "country": {
+    "$oid": "6379dc2aac559a8056963429"
+  },
+  "description": "Located in the heart of the city, Aleph Rome, Curio Collection by Hilton, blends ancient charm with contemporary comforts. The hotel’s façade features sculptures and engravings, elements from its historical use as a bank headquarters.",
+  "price": 269,
+  "images": [
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1670793706/k7wgnwvxdz2wlxwm719z.jpg",
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1670793706/tiihziszp4tznmda8mml.jpg",
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1670793706/o3ifxvhrh66sektphj0g.jpg"
+  ],
+  "features": [
+    ""
+  ],
+  "peopleBooked": [],
+  "peopleFavourite": [
+    {
+      "$oid": "6397102593df2530d66f800f"
+    },
+    {
+      "$oid": "639674a9099d7ecbe34cd633"
+    }
+  ],
+  "agency": {
+    "$oid": "63964732bb261ea3e60b8641"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670793707121"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670976871063"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6397197681fd466c74cddc3b"
+  },
+  "title": "Alpina Dolomites",
+  "town": "Alpe di Siusi",
+  "country": {
+    "$oid": "6379dc2aac559a8056963429"
+  },
+  "description": "With a unique architectural design inspired by nature, the Alpina Dolomites is built of wood, stone, and glass atop the Alpe di Siusi. This ultramodern boutique chalet offers spectacular views of the Dolomites, a UNESCO World Heritage Site, and ski-in/ski-out access.",
+  "price": 356,
+  "images": [
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1670846838/d7ls3wy5jx3bpsbwjuu1.jpg",
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1670846838/xyuufvhrx6x415rtynhq.jpg",
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1670846838/xms5hftduhql8wal851p.jpg"
+  ],
+  "features": [
+    ""
+  ],
+  "peopleBooked": [
+    {
+      "$oid": "6397102593df2530d66f800f"
+    }
+  ],
+  "peopleFavourite": [
+    {
+      "$oid": "6397102593df2530d66f800f"
+    },
+    {
+      "$oid": "639b7af209f7cad9e914ab49"
+    }
+  ],
+  "agency": {
+    "$oid": "639710bfe063795a83b48779"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670846838339"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1671135871940"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "639916817b7b4677fceb46f8"
+  },
+  "title": "Majestic Hotel & Spa Barcelona",
+  "town": "Barcelona",
+  "country": {
+    "$oid": "63722dd7bb32f901346fd4ad"
+  },
+  "description": "Set on the vibrant Passeig de Gràcia in Barcelona, Majestic Hotel & Spa Barcelona boasts over 100 years of history and serves as a creative hub, hosting an annual art show and featuring works by a variety of established and up-and-coming artists.",
+  "price": 349,
+  "images": [
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1670977152/hundmofzrmz6igzqqjrs.jpg",
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1670977152/euktemyjv59usqkmbdxh.jpg",
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1670977152/awmyqu1ymtah0zmskxr9.jpg",
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1670977152/hfwfsvbqoccvngwq8hl3.jpg"
+  ],
+  "features": [
+    "Fitness Center",
+    "Restaurant",
+    "Bar",
+    "Wellness and Spa",
+    "Parking",
+    "Family-Friendly"
+  ],
+  "peopleBooked": [
+    {
+      "$oid": "639b7b9e09f7cad9e914ab5a"
+    }
+  ],
+  "peopleFavourite": [],
+  "agency": {
+    "$oid": "639910d972da16f821a59743"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670977153331"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1671136197771"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6399175b3a2806448b357f27"
+  },
+  "title": "Gran Hotel Calderon",
+  "town": "Barcelona",
+  "country": {
+    "$oid": "63722dd7bb32f901346fd4ad"
+  },
+  "description": "Located just off Passeig de Gràcia Boulevard, NH Collection Gran Hotel Calderon is close to landmarks such as Casa Batlló and La Sagrada Familia. The hotel features a modernist Catalan design and is surrounded by the sights and attractions of Barcelona.",
+  "price": 235,
+  "images": [
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1670977371/onzl3bagbqikqcsymull.jpg",
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1670977370/tecfvemdaoi9vdc5bylc.jpg",
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1670977371/klwqwdqulms1safbqpkw.jpg",
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1670977370/mpcocmmszemt2uwaj5oy.jpg"
+  ],
+  "features": [
+    "Fitness Center",
+    "Pool",
+    "Pet-Friendly",
+    "Restaurant",
+    "Wellness and Spa",
+    "Parking"
+  ],
+  "peopleBooked": [],
+  "peopleFavourite": [],
+  "agency": {
+    "$oid": "639910d972da16f821a59743"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670977371412"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670977371412"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6399186d7b7b4677fceb4704"
+  },
+  "title": "InterContinental Madrid",
+  "town": "Madrid",
+  "country": {
+    "$oid": "63722dd7bb32f901346fd4ad"
+  },
+  "description": "Located on Paseo de la Castellana, formerly a street of palaces, InterContinental Hotel Madrid was built on the foundations of the palace of Aliaga. The hotel offers a chance to experience the Spanish capital.",
+  "price": 199,
+  "images": [
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1670977644/v3cckg9wk2hxcpbz1pyt.jpg",
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1670977644/n3qed9tj8fioxhtebrt9.jpg",
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1670977644/xfvpieh0nhen75obwu07.jpg",
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1670977644/rjuaondtxbglfe7v5wsc.jpg"
+  ],
+  "features": [
+    "Restaurant",
+    "Bar",
+    "Wellness and Spa",
+    "Parking",
+    "Family-Friendly",
+    "Airport Transportation"
+  ],
+  "peopleBooked": [],
+  "peopleFavourite": [
+    {
+      "$oid": "639b7af209f7cad9e914ab49"
+    }
+  ],
+  "agency": {
+    "$oid": "639910d972da16f821a59743"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670977645459"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1671136177227"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "639919237b7b4677fceb4710"
+  },
+  "title": "Grifid Encanto Beach Hotel - Wellness & SPA",
+  "town": "Varna",
+  "country": {
+    "$oid": "6379e31cac559a805696342d"
+  },
+  "description": "Located in Golden Sands, Grifid Encanto Beach Hotel - Wellness & SPA is on the beach. Aladzha Monastery and Euxinograd are notable landmarks, and the area's natural beauty can be seen at Golden Sands Beach and Sea Garden. Traveling with kids? Consider Minigolf course, or check out an event or a game at Ticha Stadium.",
+  "price": 269,
+  "images": [
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1670977826/ul10b88myiyqszjslhom.webp",
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1670977826/pmfhchpb0bfyjgwgq9nb.webp",
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1670977826/gnhyq6tsysifbl20gtc4.webp",
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1670977826/w46eamxi2fxo1dazzstd.webp"
+  ],
+  "features": [
+    "Fitness Center",
+    "Pool",
+    "Restaurant",
+    "Bar",
+    "Wellness and Spa",
+    "Parking"
+  ],
+  "peopleBooked": [
+    {
+      "$oid": "639b7af209f7cad9e914ab49"
+    }
+  ],
+  "peopleFavourite": [
+    {
+      "$oid": "639b7af209f7cad9e914ab49"
+    },
+    {
+      "$oid": "639daaccc02f84fd022cd74e"
+    }
+  ],
+  "agency": {
+    "$oid": "639910d972da16f821a59743"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670977827065"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1671277344520"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63991a763a2806448b357f45"
+  },
+  "title": "Aquahouse Hotel & SPA",
+  "town": "Varna",
+  "country": {
+    "$oid": "6379e31cac559a805696342d"
+  },
+  "description": "Located in Varna, Aquahouse Hotel & SPA is near the beach. Grand Mall and Kolhozen pazar market are worth checking out if shopping is on the agenda, while those wishing to experience the area's natural beauty can explore Saints Constantine and Helena Central Beach and Saints Constantine and Helena South Beach. Traveling with kids? Consider Aquapolis and Varna Aquarium.",
+  "price": 119,
+  "images": [
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1670978166/uezeetihlgklw1yxzvlj.webp",
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1670978166/oud175jfx5wbt5l4fo3y.webp",
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1670978166/ayoamwwmzr3bdsagfdam.webp"
+  ],
+  "features": [
+    "Fitness Center",
+    "Pool",
+    "Restaurant",
+    "Bar",
+    "Wellness and Spa",
+    "Parking",
+    "Family-Friendly"
+  ],
+  "peopleBooked": [
+    {
+      "$oid": "639b7af209f7cad9e914ab49"
+    }
+  ],
+  "peopleFavourite": [
+    {
+      "$oid": "639b7b9e09f7cad9e914ab5a"
+    },
+    {
+      "$oid": "639daaccc02f84fd022cd74e"
+    }
+  ],
+  "agency": {
+    "$oid": "639910d972da16f821a59743"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670978166525"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1671277445878"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63991b663a2806448b357f61"
+  },
+  "title": "Villa Chinka by Astor Garden Hotel",
+  "town": "Varna",
+  "country": {
+    "$oid": "6379e31cac559a805696342d"
+  },
+  "description": "Located in Varna, Villa Chinka by Astor Garden Hotel is near the airport and on the beach. St. St. Konstantin and Elena Monastery and Euxinograd are local landmarks, and travelers looking to shop may want to visit Grand Mall and Mall Varna. Aquapolis and Varna Aquarium are also worth visiting.",
+  "price": 220,
+  "images": [
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1670978405/wglczs8dpcknmyczemra.webp",
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1670978405/b5dokggfhzypkjjnqpyd.webp",
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1670978405/ulisbqouinuziiye5b20.webp",
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1670978405/bzoovodxcnz25wmyzwsm.webp",
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1670978405/esjjdjqkzpoxidsibaic.webp"
+  ],
+  "features": [
+    "Fitness Center",
+    "Restaurant",
+    "Bar",
+    "Wellness and Spa",
+    "Parking",
+    "Family-Friendly"
+  ],
+  "peopleBooked": [
+    {
+      "$oid": "639b7af209f7cad9e914ab49"
+    }
+  ],
+  "peopleFavourite": [
+    {
+      "$oid": "639674a9099d7ecbe34cd633"
+    },
+    {
+      "$oid": "639b7b9e09f7cad9e914ab5a"
+    },
+    {
+      "$oid": "639b7af209f7cad9e914ab49"
+    }
+  ],
+  "agency": {
+    "$oid": "63964732bb261ea3e60b8641"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670978406360"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1671356040895"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63991c593a2806448b357f74"
+  },
+  "title": "Radisson Beach Resort Larnaca",
+  "town": "Larnaca",
+  "country": {
+    "$oid": "6379dc86ac559a805696342c"
+  },
+  "description": "Located in Oroklini, Radisson Beach Resort Larnaca is near the beach. Sourp Stepanos Church and Larnaka Medieval Castle are local landmarks, and some of the area's activities can be experienced at Port of Larnaca and Larnaca Tennis Club. Looking to enjoy an event or a game while in town? See what's happening at Antonis Papadopoulos Stadium or Comunity Sport Complex.",
+  "price": 355,
+  "images": [
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1670978649/zkewdvookaifuunmrghi.webp",
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1670978649/hejl8atykflwxou6e84t.webp",
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1670978649/kppdmrh5ljtq7ezghpal.webp",
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1670978649/ru7u9s5jb6vyoq3uk3zt.webp"
+  ],
+  "features": [
+    "Fitness Center",
+    "Pool",
+    "Pet-Friendly",
+    "Restaurant",
+    "Bar",
+    "Wellness and Spa",
+    "Parking",
+    "Family-Friendly"
+  ],
+  "peopleBooked": [],
+  "peopleFavourite": [
+    {
+      "$oid": "639674a9099d7ecbe34cd633"
+    }
+  ],
+  "agency": {
+    "$oid": "63964732bb261ea3e60b8641"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670978649846"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1671314641416"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "639b883f07530720c87d881d"
+  },
+  "title": "Cap Estel",
+  "town": "Eze",
+  "country": {
+    "$oid": "6372359c40b9485b69897803"
+  },
+  "description": "Set on a private, gated peninsula, Cap Estel is surrounded by the Mediterranean Sea and boasts stunning panoramic views. This serene oasis offers lush gardens and a private beach.",
+  "price": 359,
+  "images": [
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1671137346/us2ii8bj1td0hxrl8dxh.jpg",
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1671137346/qkdilieecsdx7zgd227d.jpg",
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1671137346/ltpxiqxscu0hy1v5hucs.jpg",
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1671137346/kvuajjlelshzz6c47y8z.jpg"
+  ],
+  "features": [
+    "Pool",
+    "Pet-Friendly",
+    "Restaurant",
+    "Wellness and Spa",
+    "Parking"
+  ],
+  "peopleBooked": [],
+  "peopleFavourite": [],
+  "agency": {
+    "$oid": "639910d972da16f821a59743"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1671137343958"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1671314643055"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "639dacc2c02f84fd022cd7d2"
+  },
+  "title": "Radisson Blu Resort & Spa",
+  "town": "Split",
+  "country": {
+    "$oid": "639b7592a9a46f7c49e69dd1"
+  },
+  "description": "Overlooking the Adriatic Sea and the islands of Hvar and Brac, the Radisson Blu Resort & Spa, Split is immersed in the ancient history and natural beauty of Croatia’s Dalmatian Coast.",
+  "price": 169,
+  "images": [
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1671277761/klolki2g74ea8d927shx.jpg",
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1671277761/dxska2sghrcud1ohml2e.jpg",
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1671277761/b7p2zataompkmr2lzf7m.jpg",
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1671277761/cldibjffeskifuo8ri9o.jpg"
+  ],
+  "features": [
+    "Fitness Center",
+    "Pool",
+    "Restaurant",
+    "Bar",
+    "Wellness and Spa",
+    "Parking",
+    "Family-Friendly"
+  ],
+  "peopleBooked": [],
+  "peopleFavourite": [
+    {
+      "$oid": "639b7af209f7cad9e914ab49"
+    }
+  ],
+  "agency": {
+    "$oid": "639dabf4c02f84fd022cd7b1"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1671277762240"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1671356020791"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "639ed9182f122505352ff14d"
+  },
+  "title": "Las Arenas",
+  "town": "Valencia",
+  "country": {
+    "$oid": "63722dd7bb32f901346fd4ad"
+  },
+  "description": "Located in front of Valencia’s Las Arenas Beach, Hotel Las Arenas is a stone’s throw from the seafront promenade, marina, and popular La Malvarrosa Beach. Originally built in 1898, the white-stone resort has been updated to reflect a cool modern Spanish aesthetic.",
+  "price": 255,
+  "images": [
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1671354647/nftqvvcbnrqg1fxsve4p.jpg",
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1671354647/xtciyypodncw8duim5mc.jpg",
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1671354647/ec6ef75kh5ap2utfnj2v.jpg",
+    "https://res.cloudinary.com/dlw7pmlvx/image/upload/v1671354647/b1uytsl9bgcygx6jfgpb.jpg"
+  ],
+  "features": [
+    "Fitness Center",
+    "Pool",
+    "Bar",
+    "Wellness and Spa",
+    "Parking"
+  ],
+  "peopleBooked": [],
+  "peopleFavourite": [
+    {
+      "$oid": "639b7af209f7cad9e914ab49"
+    }
+  ],
+  "agency": {
+    "$oid": "639dabf4c02f84fd022cd7b1"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1671354648349"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1671358341409"
+    }
+  },
+  "__v": 0
+}]
