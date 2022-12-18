@@ -10,7 +10,7 @@
 * HTML & CSS
 * [Cloudinary](https://cloudinary.com/) for image storage
 
-<img src="/Screenshot%202022-12-18%20225441.png" alt="" width="900" height="500"/>
+<img src="/Screenshot%202022-12-18%20225441.png" alt="" width="850" height="400"/>
 
 <img src="/Screenshot%202022-12-18%20225519.png" alt="" width="250" height="250"/> <img src="/Screenshot%202022-12-18%20225530.png" alt="" width="250" height="250"/> <img src="/Screenshot%202022-12-18%20225546.png" alt="" width="250" height="250"/>
     
