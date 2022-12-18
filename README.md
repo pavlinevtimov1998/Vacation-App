@@ -26,6 +26,9 @@
 * npm install
 * npm run dev
 
+### DB:
+* You can add [MockData](MockData) to you local MongoDB
+
 <hr/>
 
 <img src='./mean-logo.png' >
